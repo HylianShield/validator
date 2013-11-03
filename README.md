@@ -33,9 +33,20 @@ var_dump("{$checkString}");
 var_dump($checkString->type());
 // string
 
+// A stricter version \HylianShield\Validator\Url\Webpage is in the making.
+// This one will also match file paths and is way too forgiving for most applications.
 $url = new Validator\Url;
 var_dump($url('https://github.com/johmanx10/hylianshield'));
 // true
+
+// This will become \HylianShield\Validator\Date\Mysql in the near future.
+$mysqlDate = new Validator\Regexp('/^\d{4}\-\d{2}\-\d{2}$/');
+
+var_dump($mysqlDate('2013-12-12'));
+// true
+
+var_dump($mysqlDate('2013-012-12'));
+// false
 ```
 
 ![Hylian Shield](http://fc00.deviantart.net/fs70/f/2011/258/3/9/hylian_shield_vector_by_reptiletc-d49y46o.png)
