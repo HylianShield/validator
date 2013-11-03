@@ -2,6 +2,15 @@
 
 The Hylian Shield between your application and input data.
 
+- [The Hylian Shield in action](#the-hylian-shield-in-action)
+  - [Validators](#validators)
+  - [Serializers](#serializers)
+  - [Configurations](#configurations)
+- [Planned validators](#planned-validators)
+  - [Core](#core)
+  - [Date](#date)
+  - [Url](#url)
+
 ## The Hylian Shield in action
 
 ### Validators
