@@ -1,4 +1,3 @@
-hylianshield
-============
+# Hylian Shield
 
-The Hylian Shield between your application and input data
+The Hylian Shield between your application and input data.
