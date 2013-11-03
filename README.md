@@ -137,4 +137,81 @@ unset($configuration); // Implicitly calls store when the configuration is dirty
 
 The configuration model has a protected property required which holds the properties you ought to be required by your configuration. Since that list can't be altered, it is suggested that you make a new configuration model for each configuration you want to test. By doing that, you can set validators and validation rules in the construct and be done with them. This makes for a highly re-usable configuration.
 
+Here's an example of how I used this for my template configuration:
+
+```php
+<?php
+/**
+ * Template data.
+ *
+ * @package JohManX
+ * @subpackage StaticBlog
+ * @copyright 2013 Jan-Marten "Joh Man X" de Boer
+ */
+
+namespace JohManX\StaticBlog\Template;
+
+use \HylianShield\Validator;
+
+/**
+ * Configuration.
+ */
+class Configuration extends \HylianShield\Configuration
+{
+    /**
+     * A list of properties that are required,
+     *
+     * @var array $required
+     */
+    protected $required = array('inputRoot', 'outputRoot', 'websiteRoot');
+
+    /**
+     * The constructor for Data.
+     *
+     * @param array $input
+     */
+    public function __construct(array $input = array())
+    {
+        parent::__construct($input);
+
+        $config =& $this;
+
+        // Add validators.
+        $config->setValidator(new Validator\Boolean);
+        $config->setValidator(new Validator\File\Exists);
+        $config->setValidator(new Validator\File\Readable);
+        $config->setValidator(new Validator\File\Writable);
+        $config->setValidator(new Validator\Url);
+
+        // Set validation rules.
+        $config->setValidationRules(
+            'forceStore',
+            array('boolean')
+        );
+
+        $config->setValidationRules(
+            'highlighter',
+            array('file_exists', 'file_readable')
+        );
+
+        $config->setValidationRules(
+            'inputRoot',
+            array('file_exists', 'file_readable')
+        );
+
+        $config->setValidationRules(
+            'outputRoot',
+            array('file_exists', 'file_readable')
+        );
+
+        $config->setValidationRules('websiteRoot', array('url'));
+
+        $config->setValidationRules(
+            'cacheRoot',
+            array('file_exists', 'file_writable')
+        );
+    }
+}
+```
+
 ![Hylian Shield](http://fc00.deviantart.net/fs70/f/2011/258/3/9/hylian_shield_vector_by_reptiletc-d49y46o.png)
