@@ -83,7 +83,6 @@ var_dump($json);
 
 ```php
 <?php
-
 use \HylianShield\Validator;
 
 $configuration = \HylianShield\Configuration\Factory::getFromJsonFile('shield.json');
