@@ -11,6 +11,8 @@ The Hylian Shield between your application and input data.
   - [Date](#date)
   - [Url](#url)
 
+![Hylian Shield](http://fc00.deviantart.net/fs70/f/2011/258/3/9/hylian_shield_vector_by_reptiletc-d49y46o.png)
+
 ## The Hylian Shield in action
 
 ### Validators
@@ -247,5 +249,3 @@ class Configuration extends \HylianShield\Configuration
 - Url\Network\Cifs
 - Url\Network\Samba
 - Url\Network\Ftp
-
-![Hylian Shield](http://fc00.deviantart.net/fs70/f/2011/258/3/9/hylian_shield_vector_by_reptiletc-d49y46o.png)
