@@ -136,4 +136,6 @@ unset($configuration); // Implicitly calls store when the configuration is dirty
 
 ```
 
+The configuration model has a protected property required which holds the properties you ought to be required by your configuration. Since that list can't be altered, it is suggested that you make a new configuration model for each configuration you want to test. By doing that, you can set validators and validation rules in the construct and be done with them. This makes for a highly re-usable configuration.
+
 ![Hylian Shield](http://fc00.deviantart.net/fs70/f/2011/258/3/9/hylian_shield_vector_by_reptiletc-d49y46o.png)
