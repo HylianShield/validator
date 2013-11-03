@@ -216,4 +216,27 @@ class Configuration extends \HylianShield\Configuration
 }
 ```
 
+## Planned validators
+
+## Core
+- Float
+- Array
+- Object
+- XOR (This is so you can chain validators in a logical XOR setup rather than just AND)
+
+### Date
+- Date\Mysql
+
+### Url
+- Url\Webpage
+- Url\Webpage\Http
+- Url\Webpage\Https
+- Url\File
+- Url\File\Unix
+- Url\File\Windows
+- Url\Network\Nfs
+- Url\Network\Cifs
+- Url\Network\Samba
+- Url\Network\Ftp
+
 ![Hylian Shield](http://fc00.deviantart.net/fs70/f/2011/258/3/9/hylian_shield_vector_by_reptiletc-d49y46o.png)
