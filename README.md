@@ -4,6 +4,8 @@ The Hylian Shield between your application and input data.
 
 ## The Hylian Shield in action
 
+### Validators
+
 ```php
 <?php
 use \HylianShield\Validator;
@@ -47,6 +49,91 @@ var_dump($mysqlDate('2013-12-12'));
 
 var_dump($mysqlDate('2013-012-12'));
 // false
+```
+
+### Serializers
+
+```php
+<?php
+$serializer = "\HylianShield\Serializer\JsonConf";
+
+$json = '{ "shield": { "origin": "Hylian", "rupees": 70 } }';
+
+$data = $serializer::unserialize($json);
+
+var_dump($data['shield']['origin']); // 'Hylian'
+// Check the
+var_dump($data['shield']['rupees']); // 70
+
+$json = $serializer::serialize($data);
+
+// The output is optimized for editing as a configuration.
+var_dump($json);
+
+// {
+//   "shield": {
+//     "origin": "Hylian",
+//     "rupees": 70
+//   }
+// }
+
+```
+
+### Configurations
+
+```php
+<?php
+
+use \HylianShield\Validator;
+
+$configuration = \HylianShield\Configuration\Factory::getFromJsonFile('shield.json');
+// OR: new \HylianShield\Configuration(array('origin' => 'Hylian'));
+// OR: new \HylianShield\Configuration combined with setSerializer and unserialize
+// OR: new \HylianShield\Configuration combined with setStorage and loadStorage
+
+// We assume the following was in our JSON storage:
+// {
+//   "origin": "Hylian",
+//   "rupees": 70
+// }
+
+$configuration->setValidator(new Validator\String(5, 12), 'origin');
+$configuration->setValidator(new Validator\Integer(1, 4), 'price');
+
+$configuration->setValidationRules('origin', array('origin'));
+$configuration->setValidationRules('rupees', array('price'));
+
+var_dump($configuration->validate()); // true
+
+$configuration->store(); // Won't do anything as the configuration is not dirty.
+
+$configuration['origin'] = array('12');
+
+var_dump($configuration->validate()); // false
+var_dump($configuration->validate(true));
+// array(
+//   'origin' => array(
+//     'value' => '(array) array(0 => \'12\')',
+//     'failed' => array(0 => 'string:5,12')
+//   )
+// )
+
+$configuration->store(); // Will throw an exception because the configuration is invalid.
+
+$configuration['origin'] = 'Hylian';
+
+$configuration->store(); // Stores in shield.json, because it is dirty.
+
+var_dump($configuration->serialize());
+// {
+//   "origin": "Hylian",
+//   "rupees": 70
+// }
+
+// Some magic implementations:
+echo $configuration; // Outputs a serialized version of the configuration.
+unset($configuration); // Implicitly calls store when the configuration is dirty.
+
 ```
 
 ![Hylian Shield](http://fc00.deviantart.net/fs70/f/2011/258/3/9/hylian_shield_vector_by_reptiletc-d49y46o.png)
