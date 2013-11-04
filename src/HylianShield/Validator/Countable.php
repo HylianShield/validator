@@ -33,7 +33,7 @@ class Countable extends \HylianShield\ValidatorAbstract
     /**
      * The type.
      *
-     * @var integer $type
+     * @var string $type
      */
     protected $type = 'countable';
 

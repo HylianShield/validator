@@ -17,7 +17,7 @@ class Writable extends \HylianShield\ValidatorAbstract
     /**
      * The type.
      *
-     * @var integer $type
+     * @var string $type
      */
     protected $type = 'file_writable';
 

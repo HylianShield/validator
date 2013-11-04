@@ -17,7 +17,7 @@ class Number extends \HylianShield\Validator\Countable
     /**
      * The type.
      *
-     * @var integer $type
+     * @var string $type
      */
     protected $type = 'number';
 

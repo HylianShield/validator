@@ -20,7 +20,7 @@ class LogicalXor extends \HylianShield\ValidatorAbstract
     /**
      * The type.
      *
-     * @var integer $type
+     * @var string $type
      */
     protected $type = 'xor';
 

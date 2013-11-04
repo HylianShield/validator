@@ -20,7 +20,7 @@ class LogicalOr extends \HylianShield\ValidatorAbstract
     /**
      * The type.
      *
-     * @var integer $type
+     * @var string $type
      */
     protected $type = 'or';
 

@@ -17,7 +17,7 @@ class Mysql extends \HylianShield\Validator\Regexp
     /**
      * The type.
      *
-     * @var integer $type
+     * @var string $type
      */
     protected $type = 'date_mysql';
 
