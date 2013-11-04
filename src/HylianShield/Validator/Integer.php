@@ -12,7 +12,7 @@ namespace HylianShield\Validator;
 /**
  * Integer.
  */
-class Integer extends \HylianShield\ValidatorAbstract
+class Integer extends \HylianShield\Validator\Countable
 {
     /**
      * The type.
