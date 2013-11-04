@@ -7,8 +7,6 @@ The Hylian Shield between your application and input data.
   - [Serializers](#serializers)
   - [Configurations](#configurations)
 - [Planned validators](#planned-validators)
-  - [Core](#core)
-  - [Date](#date)
   - [Url](#url)
 
 ![Hylian Shield](http://fc00.deviantart.net/fs70/f/2011/258/3/9/hylian_shield_vector_by_reptiletc-d49y46o.png)
@@ -251,9 +249,6 @@ class Configuration extends \HylianShield\Configuration
 ```
 
 ## Planned validators
-
-## Core
-- XOR (This is so you can chain validators in a logical XOR setup rather than just AND)
 
 ### Url
 - Url\Webpage
