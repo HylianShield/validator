@@ -38,7 +38,7 @@ class LogicalXor extends \HylianShield\ValidatorAbstract
      * @param \HylianShield\ValidatorAbstract $2 optional
      * @throws \InvalidArgumentException if one of the validators is not an instance
      *   of \HylianShield\ValidatorAbstract
-     * @throws \LogicException if less than 2 validators appear to be present
+     * @throws \LogicException if anything but exactly 2 validators appear to be present
      */
     final public function __construct()
     {
