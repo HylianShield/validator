@@ -81,8 +81,8 @@ class LogicalXor extends \HylianShield\ValidatorAbstract
             );
         }
 
-        // Create a custom validator that returns true on the first match.
-        // Since it is OR, the first match will suffice.
+        // Create a custom validator.
+        // Since it is XOR, only one match should happen.
         $this->validator = function ($value) use ($validators) {
             // Create a test where only the passing validators will remain.
             $test = array_filter(
