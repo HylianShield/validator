@@ -19,14 +19,14 @@ class Countable extends \HylianShield\ValidatorAbstract
     /**
      * The minimum length of the value.
      *
-     * @var integer $minLength
+     * @var integer|float $minLength
      */
     protected $minLength = 0;
 
     /**
      * The maximum length of the value.
      *
-     * @var integer $maxLength
+     * @var integer|float $maxLength
      */
     protected $maxLength = 0;
 
@@ -56,13 +56,15 @@ class Countable extends \HylianShield\ValidatorAbstract
      *
      * @param integer $minLength the minimum length of the value
      * @param integer $maxLength the maximum length of the value
-     * @throws \InvalidArgumentException when either minLength of maxLength is not an integer
+     * @throws \InvalidArgumentException when either minLength of maxLength is not an integer or float
      */
     public function __construct($minLength = 0, $maxLength = 0)
     {
-        if (!is_int($minLength) || !is_int($maxLength)) {
+        if (!(is_int($minLength) || is_float($minLength))
+            || !(is_int($maxLength) || is_float($maxLength))
+        ) {
             throw new InvalidArgumentException(
-                'Min and max length should be of type integer.'
+                'Min and max length should be of type integer or type float.'
             );
         }
 
@@ -76,7 +78,7 @@ class Countable extends \HylianShield\ValidatorAbstract
      * @param mixed $value
      * @return boolean
      * @throws \LogicException when $this->validator or $this->lengthCheck is not callable
-     * @throws \LogicException when either minLength of maxLength is not an integer
+     * @throws \LogicException when either minLength of maxLength is not an integer or float
      */
     final public function validate($value)
     {
@@ -87,9 +89,11 @@ class Countable extends \HylianShield\ValidatorAbstract
         $minLength = $this->minLength;
         $maxLength = $this->maxLength;
 
-        if (!is_int($minLength) || !is_int($maxLength)) {
-            throw new LogicException(
-                'Min and max length should be of type integer.'
+        if (!(is_int($minLength) || is_float($minLength))
+            || !(is_int($maxLength) || is_float($maxLength))
+        ) {
+            throw new InvalidArgumentException(
+                'Min and max length should be of type integer or type float.'
             );
         }
 
