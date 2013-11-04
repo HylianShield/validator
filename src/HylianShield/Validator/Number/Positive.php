@@ -1,25 +1,25 @@
 <?php
 /**
- * Validate positive floats.
+ * Validate positive numbers.
  *
  * @package HylianShield
  * @subpackage Validator
  * @copyright 2013 Jan-Marten "Joh Man X" de Boer
  */
 
-namespace HylianShield\Validator\Float;
+namespace HylianShield\Validator\Number;
 
 /**
  * Positive.
  */
-class Positive extends \HylianShield\Validator\Float
+class Positive extends \HylianShield\Validator\Float\Number
 {
     /**
      * The type.
      *
      * @var string $type
      */
-    protected $type = 'positive_float';
+    protected $type = 'positive_number';
 
     /**
      * Create a validator for a positive float.
@@ -30,4 +30,5 @@ class Positive extends \HylianShield\Validator\Float
         // @see http://php.net/manual/en/language.types.float.php
         parent::__construct(1e-16);
     }
+}
 }
