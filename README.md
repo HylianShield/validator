@@ -108,7 +108,7 @@ $configuration = \HylianShield\Configuration\Factory::getFromJsonFile('shield.js
 // If you don't feed setValidator a specific identifier as second argument,
 // it will use the return value of the type method from the validator.
 $configuration->setValidator(new Validator\String(5, 12), 'origin');
-$configuration->setValidator(new Validator\Integer(1, 4), 'price');
+$configuration->setValidator(new Validator\Integer(1, 100), 'price');
 
 $configuration->setValidationRules('origin', array('origin'));
 $configuration->setValidationRules('rupees', array('price'));

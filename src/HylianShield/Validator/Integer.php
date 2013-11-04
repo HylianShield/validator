@@ -27,4 +27,11 @@ class Integer extends \HylianShield\ValidatorAbstract
      * @var callable $validator
      */
     protected $validator = 'is_int';
+
+    /**
+     * The callable to return the length of the value.
+     *
+     * @var callable $lengthCheck
+     */
+    protected $lengthCheck = 'intval';
 }
