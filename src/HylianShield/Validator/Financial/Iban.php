@@ -12,7 +12,7 @@ namespace HylianShield\Validator\Financial;
 /**
  * String.
  */
-class Iban extends \HylianShield\Validator\String
+class Iban extends \HylianShield\ValidatorAbstract;
 {
     /**
      * The type.
@@ -22,38 +22,39 @@ class Iban extends \HylianShield\Validator\String
     protected $type = 'iban';
 
     /**
-     * The validator.
+     * List of classnames for \HylianShield\ValidatorAbstract descendants.
      *
-     * @var callable $validator
+     * @var array $validators
      */
-    protected $validator;
+    protected $validators = array();
 
     /**
-     * Check the validity of a BIC.
+     * Check the validity of an IBAN.
      *
-     * @ToDo needs more elaborate validation for per country BIC codes.
+     * @ToDo needs more elaborate validation for per country IBAN.
      */
     public function __construct()
     {
-        $this->validator = function ($bic) {
-            $country = substr($iban, 0, 2);
-            $control = (int) substr($iban, 2, 2);
+        $this->validator = new \HylianShield\Validator\LogicalAnd(
+            new \HylianShield\Validator\String(15,29),
+            function ($bic) {
+                $country = substr($iban, 0, 2);
+                $control = (int) substr($iban, 2, 2);
 
-            // Account number without country and control codes.
-            $ibanAccount = substr($iban, 4);
+                // Account number without country and control codes.
+                $ibanAccount = substr($iban, 4);
 
-            // Do the mod 97 shuffle.
-            $numerizedIban = $ibanAccount . $country . '00';
+                // Do the mod 97 shuffle.
+                $numerizedIban = $ibanAccount . $country . '00';
 
-            // Numerize using A=10, B=11 ... Z=35.
-            $numerizedIban = str_replace(range('A', 'Z'), range(10, 35), $numerizedIban);
+                // Numerize using A=10, B=11 ... Z=35.
+                $numerizedIban = str_replace(range('A', 'Z'), range(10, 35), $numerizedIban);
 
-            // Do the mod 97 check.
-            $calccontrol = 98 - bcmod($numerizedIban, 97);
+                // Do the mod 97 check.
+                $calccontrol = 98 - bcmod($numerizedIban, 97);
 
-            return $control === $calccontrol;
-        };
-
-        parent::__construct();
+                return $control === $calccontrol;
+            }
+        );
     }
 }

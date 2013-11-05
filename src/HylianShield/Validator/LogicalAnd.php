@@ -15,14 +15,14 @@ use \LogicException;
 /**
  * LogicalOr.
  */
-class LogicalOr extends \HylianShield\ValidatorAbstract
+class LogicalAnd extends \HylianShield\ValidatorAbstract
 {
     /**
      * The type.
      *
      * @var string $type
      */
-    protected $type = 'or';
+    protected $type = 'and';
 
     /**
      * List of classnames for \HylianShield\ValidatorAbstract descendants.
@@ -84,12 +84,12 @@ class LogicalOr extends \HylianShield\ValidatorAbstract
         // Since it is OR, the first match will suffice.
         $this->validator = function ($value) use ($validators) {
             foreach ($validators as $validator) {
-                if ($validator($value)) {
-                    return true;
+                if (!$validator($value)) {
+                    return false;
                 }
             }
 
-            return false;
+            return true;
         };
     }
 }
