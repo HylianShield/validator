@@ -19,7 +19,7 @@ class Bic extends \HylianShield\ValidatorAbstract
      *
      * @var string $type
      */
-    protected $type = 'bic';
+    protected $type = 'finacial_bic';
 
     /**
      * The validator.
