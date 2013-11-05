@@ -4,13 +4,13 @@
  *
  * @package HylianShield
  * @subpackage Validator
- * @copyright 2013 Remko Silvis
+ * @copyright 2013 Remko "CyberSecutor" Silvis
  */
 
 namespace HylianShield\Validator\Financial;
 
 /**
- * String.
+ * BIC validation.
  */
 class Bic extends \HylianShield\ValidatorAbstract
 {
