@@ -1,6 +1,6 @@
 <?php
 /**
- * Validate countable values.
+ * Validate value ranges.
  *
  * @package HylianShield
  * @subpackage Validator
@@ -12,9 +12,9 @@ namespace HylianShield\Validator;
 use \InvalidArgumentException;
 
 /**
- * Countable.
+ * Range.
  */
-class Countable extends \HylianShield\ValidatorAbstract
+abstract class Range extends \HylianShield\ValidatorAbstract
 {
     /**
      * The minimum length of the value.
@@ -35,7 +35,7 @@ class Countable extends \HylianShield\ValidatorAbstract
      *
      * @var string $type
      */
-    protected $type = 'countable';
+    protected $type = 'Range';
 
     /**
      * The validator.
