@@ -35,7 +35,7 @@ abstract class Range extends \HylianShield\ValidatorAbstract
      *
      * @var string $type
      */
-    protected $type = 'Range';
+    protected $type = 'range';
 
     /**
      * The validator.
