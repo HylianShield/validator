@@ -7,8 +7,6 @@ The Hylian Shield between your application and input data.
   - [Serializers](#serializers)
   - [Configurations](#configurations)
 - [Planned validators](#planned-validators)
-  - [Core](#core)
-  - [Date](#date)
   - [Url](#url)
 
 ![Hylian Shield](http://fc00.deviantart.net/fs70/f/2011/258/3/9/hylian_shield_vector_by_reptiletc-d49y46o.png)
@@ -52,13 +50,36 @@ $url = new Validator\Url;
 var_dump($url('https://github.com/johmanx10/hylianshield'));
 // true
 
-// This will become \HylianShield\Validator\Date\Mysql in the near future.
 $mysqlDate = new Validator\Regexp('/^\d{4}\-\d{2}\-\d{2}$/');
 
 var_dump($mysqlDate('2013-12-12'));
 // true
 
 var_dump($mysqlDate('2013-012-12'));
+// false
+
+// Or, because we want to prevent repetition and make our lives easy.
+$mysqlDate = new Validator\Date\Mysql;
+
+var_dump($mysqlDate('2013-12-12'));
+// true
+
+var_dump($mysqlDate('2013-012-12'));
+// false
+
+// While there is a type number check, we could do some magic with OR.
+$number = new Validator\LogicalOr(
+  new Validator\Integer,
+  new Validator\Float
+);
+
+var_dump($number(12));
+// true
+
+var_dump($number(12.00));
+// true
+
+var_dump($number('12.00'));
 // false
 ```
 
@@ -228,15 +249,6 @@ class Configuration extends \HylianShield\Configuration
 ```
 
 ## Planned validators
-
-## Core
-- Float
-- Array
-- Object
-- XOR (This is so you can chain validators in a logical XOR setup rather than just AND)
-
-### Date
-- Date\Mysql
 
 ### Url
 - Url\Webpage

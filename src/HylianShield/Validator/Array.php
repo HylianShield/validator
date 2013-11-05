@@ -1,6 +1,6 @@
 <?php
 /**
- * Validate booleans.
+ * Validate arrays.
  *
  * @package HylianShield
  * @subpackage Validator
@@ -10,21 +10,28 @@
 namespace HylianShield\Validator;
 
 /**
- * Boolean.
+ * Array.
  */
-class Boolean extends \HylianShield\ValidatorAbstract
+class Array extends \HylianShield\Validator\Countable
 {
     /**
      * The type.
      *
      * @var string $type
      */
-    protected $type = 'boolean';
+    protected $type = 'array';
 
     /**
      * The validator.
      *
      * @var callable $validator
      */
-    protected $validator = 'is_bool';
+    protected $validator = 'is_array';
+
+    /**
+     * The callable to return the length of the value.
+     *
+     * @var callable $lengthCheck
+     */
+    protected $lengthCheck = 'count';
 }

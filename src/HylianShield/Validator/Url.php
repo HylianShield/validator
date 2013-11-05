@@ -17,7 +17,7 @@ class Url extends \HylianShield\ValidatorAbstract
     /**
      * The type.
      *
-     * @var integer $type
+     * @var string $type
      */
     protected $type = 'url';
 

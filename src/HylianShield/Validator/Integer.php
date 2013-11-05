@@ -12,12 +12,12 @@ namespace HylianShield\Validator;
 /**
  * Integer.
  */
-class Integer extends \HylianShield\ValidatorAbstract
+class Integer extends \HylianShield\Validator\Countable
 {
     /**
      * The type.
      *
-     * @var integer $type
+     * @var string $type
      */
     protected $type = 'integer';
 

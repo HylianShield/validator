@@ -9,7 +9,6 @@
 
 namespace HylianShield;
 
-use \InvalidArgumentException;
 use \LogicException;
 
 /**
@@ -17,27 +16,6 @@ use \LogicException;
  */
 class ValidatorAbstract
 {
-    /**
-     * The minimum length of the value.
-     *
-     * @var integer $minLength
-     */
-    protected $minLength = 0;
-
-    /**
-     * The maximum length of the value.
-     *
-     * @var integer $maxLength
-     */
-    protected $maxLength = 0;
-
-    /**
-     * The function to use when checking the length. It has to return a numeric value.
-     *
-     * @var callable $lengthCheck
-     */
-    protected $lengthCheck = 'strlen';
-
     /**
      * The type of the validator.
      *
@@ -54,69 +32,20 @@ class ValidatorAbstract
     protected $validator;
 
     /**
-     * Check the properties of the validator to ensure a perfect implementation.
-     *
-     * @param integer $minLength the minimum length of the value
-     * @param integer $maxLength the maximum length of the value
-     * @throws \InvalidArgumentException when either minLength of maxLength is not an integer
-     */
-    public function __construct($minLength = 0, $maxLength = 0)
-    {
-        if (!is_int($minLength) || !is_int($maxLength)) {
-            throw new InvalidArgumentException(
-                'Min and max length should be of type integer.'
-            );
-        }
-
-        $this->minLength = $minLength;
-        $this->maxLength = $maxLength;
-    }
-
-    /**
      * Validate the supplied value against the current validator.
      *
      * @param mixed $value
      * @return boolean
-     * @throws \LogicException when $this->validator or $this->lengthCheck is not callable
-     * @throws \LogicException when either minLength of maxLength is not an integer
+     * @throws \LogicException when $this->validator is not callable
      */
-    final public function validate($value)
+    public function validate($value)
     {
         if (!is_callable($this->validator)) {
             throw new LogicException('Validator should be callable!');
         }
 
-        if (!is_callable($this->lengthCheck)) {
-            throw new LogicException('Length checker should be callable!');
-        }
-
-        $minLength = $this->minLength;
-        $maxLength = $this->maxLength;
-
-        if (!is_int($minLength) || !is_int($maxLength)) {
-            throw new LogicException(
-                'Min and max length should be of type integer.'
-            );
-        }
-
-        $valid = true;
-
         // Check if the validator validates.
-        $valid = $valid && call_user_func_array($this->validator, array($value));
-
-        // Check if the minimum length validates.
-        $valid = $valid && (
-            $minLength === 0
-            || call_user_func_array($this->lengthCheck, array($value)) >= $minLength
-        );
-
-        // Check if the maximum length validates.
-        $valid = $valid && (
-            $maxLength === 0
-            || call_user_func_array($this->lengthCheck, array($value)) <= $maxLength
-        );
-
-        return $valid;
+        return (bool) call_user_func_array($this->validator, array($value));
     }
 
     /**
@@ -154,6 +83,6 @@ class ValidatorAbstract
      */
     public function __tostring()
     {
-        return "{$this->type}:{$this->minLength},{$this->maxLength}";
+        return $this->type();
     }
 }
