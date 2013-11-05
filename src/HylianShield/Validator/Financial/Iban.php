@@ -1,10 +1,10 @@
 <?php
 /**
- * Validate International Bank Account Numbers (IBAN).
+ * Validate a conditional list in a logical AND fashion.
  *
  * @package HylianShield
  * @subpackage Validator
- * @copyright 2013 Remko Silvis
+ * @copyright 2013 Remko "CyberSecutor" Silvis
  */
 
 namespace HylianShield\Validator\Financial;

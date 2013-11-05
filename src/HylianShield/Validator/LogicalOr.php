@@ -1,10 +1,10 @@
 <?php
 /**
- * Validate a conditional list in a logical AND fashion.
+ * Validate a conditional list in a logical OR fashion.
  *
  * @package HylianShield
  * @subpackage Validator
- * @copyright 2013 Remko "CyberSecutor" Silvis
+ * @copyright 2013 Jan-Marten "Joh Man X" de Boer
  */
 
 namespace HylianShield\Validator;
