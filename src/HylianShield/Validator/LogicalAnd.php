@@ -13,7 +13,7 @@ use \InvalidArgumentException;
 use \LogicException;
 
 /**
- * LogicalOr.
+ * LogicalAnd.
  */
 class LogicalAnd extends \HylianShield\ValidatorAbstract
 {
