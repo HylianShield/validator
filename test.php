@@ -9,7 +9,7 @@
 
 // These requires should obviously be fixed by an autoloader.
 require_once 'src/HylianShield/ValidatorAbstract.php';
-require_once 'src/HylianShield/Validator/LogicalXor.php';
+require_once 'src/HylianShield/Validator/LogicalOr.php';
 require_once 'src/HylianShield/Validator/Url.php';
 require_once 'src/HylianShield/Validator/Url/Network.php';
 require_once 'src/HylianShield/Validator/Url/Network/Http.php';

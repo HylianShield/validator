@@ -12,7 +12,7 @@ namespace HylianShield\Validator\Url;
 /**
  * Webpage.
  */
-class Webpage extends \HylianShield\Validator\LogicalXor
+class Webpage extends \HylianShield\Validator\LogicalOr
 {
     /**
      * The type.
