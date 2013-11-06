@@ -12,7 +12,7 @@ namespace HylianShield\Validator;
 /**
  * Float.
  */
-class Float extends \HylianShield\Validator\Countable
+class Float extends \HylianShield\Validator\Range
 {
     /**
      * The type.
