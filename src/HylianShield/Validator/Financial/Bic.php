@@ -12,31 +12,29 @@ namespace HylianShield\Validator\Financial;
 /**
  * BIC validation.
  */
-class Bic extends \HylianShield\ValidatorAbstract
+class Bic extends \HylianShield\Validator\Regexp
 {
     /**
      * The type.
      *
      * @var string $type
      */
-    protected $type = 'finacial_bic';
+    protected $type = 'financial_bic';
 
     /**
-     * The validator.
+     * The pattern used when validating.
      *
-     * @var callable $validator
+     * @var string $pattern
      */
-    protected $validator;
+    private $pattern = '/^\w{6}[A-Z0-9]{2}([A-Z0-9]{3})?$/';
 
     /**
      * Check the validity of a BIC.
      *
-     * @ToDo needs more elaborate validation for per country BIC codes.
+     * @todo needs more elaborate validation for per country BIC codes.
      */
     public function __construct()
     {
-        $this->validator = function ($bic) {
-            return !preg_match('/^\w{6}[A-Z0-9]{2}([A-Z0-9]{3})?$/', $bic) === false;
-        };
+        parent::__construct($this->pattern);
     }
 }

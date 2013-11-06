@@ -74,14 +74,8 @@ class LogicalAnd extends \HylianShield\ValidatorAbstract
             }
         );
 
-        if (count($validators) < 2) {
-            throw new LogicException(
-                'Cannot perform a logical OR with less than two validators.'
-            );
-        }
-
         // Create a custom validator that returns true on the first match.
-        // Since it is OR, the first match will suffice.
+        // Since it is AND, all the validators should return true.
         $this->validator = function ($value) use ($validators) {
             foreach ($validators as $validator) {
                 if (!$validator($value)) {
