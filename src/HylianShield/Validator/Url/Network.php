@@ -124,13 +124,13 @@ class Network extends \HylianShield\ValidatorAbstract
                 return false;
             }
 
-            // Check if we meet the password requirement.
-            if ($this->requirePassword && empty($parsed['user'])) {
+            // Check if we meet the user requirement.
+            if ($this->requireUser && empty($parsed['user'])) {
                 return false;
             }
 
-            // Check if we meet the user requirement.
-            if ($this->requireUser && empty($parsed['pass'])) {
+            // Check if we meet the password requirement.
+            if ($this->requirePassword && empty($parsed['pass'])) {
                 return false;
             }
 
