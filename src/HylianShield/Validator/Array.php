@@ -12,7 +12,7 @@ namespace HylianShield\Validator;
 /**
  * Array.
  */
-class Array extends \HylianShield\Validator\Countable
+class Array extends \HylianShield\Validator\Range
 {
     /**
      * The type.

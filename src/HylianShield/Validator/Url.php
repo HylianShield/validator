@@ -22,13 +22,6 @@ class Url extends \HylianShield\ValidatorAbstract
     protected $type = 'url';
 
     /**
-     * The validator.
-     *
-     * @var callable $validator
-     */
-    protected $validator;
-
-    /**
      * Check the validity of URLs.
      */
     public function __construct()
