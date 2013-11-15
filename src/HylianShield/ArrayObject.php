@@ -99,16 +99,7 @@ class ArrayObject extends \ArrayObject
      */
     public function setSerializer($serializer)
     {
-        $string = new String;
-
-        if (!$string($serializer)) {
-            throw new InvalidArgumentException(
-                'Invalid serializer supplied: (' . gettype($serializer) . ') '
-                . var_export($serializer)
-            );
-        }
-
-        $class = new CoreClass\Exists;
+        $class = new CoreClass;
 
         if (!$class($serializer)) {
             throw new LogicException(
