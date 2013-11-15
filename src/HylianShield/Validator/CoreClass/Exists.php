@@ -1,30 +1,30 @@
 <?php
 /**
- * Validate arrays.
+ * Validate class existence.
  *
  * @package HylianShield
  * @subpackage Validator
  * @copyright 2013 Jan-Marten "Joh Man X" de Boer
  */
 
-namespace HylianShield\Validator;
+namespace HylianShield\Validator\CoreClass;
 
 /**
- * Object.
+ * Exists.
  */
-class Object extends \HylianShield\ValidatorAbstract
+class Exists extends \HylianShield\ValidatorAbstract
 {
     /**
      * The type.
      *
      * @var string $type
      */
-    protected $type = 'object';
+    protected $type = 'class_exists';
 
     /**
      * The validator.
      *
      * @var callable $validator
      */
-    protected $validator = 'is_object';
+    protected $validator = 'class_exists';
 }

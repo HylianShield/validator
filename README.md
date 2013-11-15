@@ -250,10 +250,20 @@ class Configuration extends \HylianShield\Configuration
 
 ## Planned validators
 
+### Core
+- Empty
+- Isset
+- Callable
+- Null
+- Resource
+- Scalar
+
+### Array
+- CoreArray\Holding # Tells if an array is holding the item we want to validate
+- CoreArray\List # Tells if the array is flat with numeric keys
+- CoreArray\Associative # Tells is the array is associative
+
 ### Url
-- Url\Webpage
-- Url\Webpage\Http
-- Url\Webpage\Https
 - Url\File
 - Url\File\Unix
 - Url\File\Windows

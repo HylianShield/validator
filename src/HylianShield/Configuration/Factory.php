@@ -10,6 +10,7 @@
 namespace HylianShield\Configuration;
 
 use \HylianShield\Configuration;
+use \HylianShield\Storage\Adapter\File;
 
 /**
  * Factory.
@@ -24,6 +25,13 @@ class Factory
     const SERIALIZER_JSON = '\HylianShield\Serializer\JsonConf';
 
     /**
+     * The serializer for PHP.
+     *
+     * @const string SERIALIZER_PHP
+     */
+    const SERIALIZER_PHP = '\HylianShield\Serializer\Php';
+
+    /**
      * Get the configuration from a given JSON file.
      *
      * @param string $file
@@ -31,49 +39,11 @@ class Factory
      */
     public static function getFromJsonFile($file)
     {
-        $data = self::getConfigFromFile($file);
-
+        $storage = new File($file);
         $config = new Configuration;
         $config->setSerializer(self::SERIALIZER_JSON);
-        $config->setStorage($file);
-        $config->unserialize($data);
-
-        return $config;
-    }
-
-    /**
-     * Read out and get the configuration from a given file.
-     *
-     * @param string $file
-     * @return string $config
-     * @throws \InvalidArgumentException when $file is not a file path
-     * @throws \RuntimeException when $file is not readable
-     * @throws \UnexpextedValueException when the contents of $file are empty
-     */
-    private static function getConfigFromFile($file)
-    {
-        if (!is_string($file) || !file_exists($file)) {
-            throw new InvalidArgumentException(
-                'Invalid configuration file supplied: (' . gettype($file)
-                . ') ' . var_export($file, true)
-            );
-        }
-
-        if (!is_readable($file)) {
-            throw new RuntimeException(
-                "The configuration file is not readable: {$file}"
-            );
-        }
-
-        // Get the configuration from the file.
-        $config = @trim(file_get_contents($file));
-
-        if (empty($config)) {
-            throw new UnexpextedValueException(
-                "The configuration file was empty: {$file}"
-            );
-        }
-
+        $config->setStorage($storage);
+        $config->loadStorage();
         return $config;
     }
 }

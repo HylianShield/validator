@@ -24,13 +24,6 @@ class Regexp extends \HylianShield\ValidatorAbstract
     protected $type = 'regexp';
 
     /**
-     * The validator.
-     *
-     * @var callable $validator
-     */
-    protected $validator;
-
-    /**
      * The pattern used when validating.
      *
      * @var string $pattern

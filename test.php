@@ -7,14 +7,9 @@
  * @copyright 2013 Jan-Marten "Joh Man X" de Boer
  */
 
-// These requires should obviously be fixed by an autoloader.
-require_once 'src/HylianShield/ValidatorAbstract.php';
-require_once 'src/HylianShield/Validator/LogicalOr.php';
-require_once 'src/HylianShield/Validator/Url.php';
-require_once 'src/HylianShield/Validator/Url/Network.php';
-require_once 'src/HylianShield/Validator/Url/Network/Http.php';
-require_once 'src/HylianShield/Validator/Url/Network/Https.php';
-require_once 'src/HylianShield/Validator/Url/Webpage.php';
+// Autoload our source files.
+require_once 'Autoloader.php';
+new Autoloader('src');
 
 // Create a new webpage validator.
 $webpage = new \HylianShield\Validator\Url\Webpage;
@@ -28,3 +23,35 @@ var_dump($webpage('http://www.google.com:443/')); // false
 var_dump($webpage('https://www.google.com/')); // true
 var_dump($webpage('https://www.google.com:80/')); // false
 var_dump($webpage('https://www.google.com:443/')); // true
+
+$class = new \HylianShield\Validator\CoreClass\Exists;
+
+var_dump($class('\HylianShield\Validator\CoreClass\Exists'));
+
+$array = new \HylianShield\Validator\CoreArray;
+$array = new \HylianShield\Validator\CoreArray;
+
+var_dump($array(array()));
+
+$boolean = new \HylianShield\Validator\Boolean;
+$object = new \HylianShield\Validator\Object;
+
+var_dump($boolean($array(array())));
+var_dump($object($array(array())));
+
+$dataContainer = new \HylianShield\ArrayObject(
+    array(
+        'OMG' => 'aapjes'
+    )
+);
+
+$dataContainer->setSerializer(\HylianShield\Configuration\Factory::SERIALIZER_JSON);
+
+var_dump($dataContainer['OMG']);
+echo $dataContainer;
+
+$newContainer = new \HylianShield\ArrayObject;
+$newContainer->setSerializer(\HylianShield\Configuration\Factory::SERIALIZER_JSON);
+$newContainer->unserialize((string) $dataContainer);
+$newContainer->setSerializer(\HylianShield\Configuration\Factory::SERIALIZER_PHP);
+echo $newContainer;
