@@ -4,4 +4,7 @@
       <directory>.</directory>
     </testsuite>
   </testsuites>
+  <logging>
+    <log type="coverage-html" target="../code-coverage" charset="UTF-8" yui="true" highlight="true" />
+  </logging>
 </phpunit>
