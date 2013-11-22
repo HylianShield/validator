@@ -22,7 +22,7 @@ use \HylianShield\Validator\CoreClass\Instance;
 /**
  * CoreClass.
  */
-class CoreClass extends \HylianShield\ValidatorAbstract
+class CoreClass extends \HylianShield\Validator
 {
     /**
      * The type.

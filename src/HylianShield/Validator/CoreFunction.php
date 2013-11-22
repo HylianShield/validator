@@ -12,7 +12,7 @@ namespace HylianShield\Validator;
 /**
  * CoreFunction.
  */
-class CoreFunction extends \HylianShield\ValidatorAbstract
+class CoreFunction extends \HylianShield\Validator
 {
     /**
      * The type.

@@ -15,7 +15,7 @@ use \LogicException;
 /**
  * LogicalAnd.
  */
-class LogicalAnd extends \HylianShield\ValidatorAbstract
+class LogicalAnd extends \HylianShield\Validator
 {
     /**
      * The type.
@@ -25,7 +25,7 @@ class LogicalAnd extends \HylianShield\ValidatorAbstract
     protected $type = 'and';
 
     /**
-     * List of classnames for \HylianShield\ValidatorAbstract descendants.
+     * List of classnames for \HylianShield\Validator descendants.
      *
      * @var array $validators
      */
@@ -34,9 +34,9 @@ class LogicalAnd extends \HylianShield\ValidatorAbstract
     /**
      * Initialize the validator.
      *
-     * @param \HylianShield\ValidatorAbstract $1 optional etc...
+     * @param \HylianShield\Validator $1 optional etc...
      * @throws \InvalidArgumentException if one of the validators is not an instance
-     *   of \HylianShield\ValidatorAbstract
+     *   of \HylianShield\Validator
      * @throws \LogicException if less than 2 validators appear to be present
      */
     final public function __construct()
@@ -63,7 +63,7 @@ class LogicalAnd extends \HylianShield\ValidatorAbstract
             ),
             // Now test them all against being an instance of our validator abstract.
             function ($instance) {
-                if (!($instance) instanceof \HylianShield\ValidatorAbstract) {
+                if (!($instance) instanceof \HylianShield\Validator) {
                     throw new InvalidArgumentException(
                         'Supplied argument is not a valid instance: ('
                         . gettype($instance) . ') ' . var_export($instance, true)

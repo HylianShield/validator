@@ -50,12 +50,12 @@ class Configuration extends \HylianShield\ArrayObject
     /**
      * Set a validator.
      *
-     * @param \HylianShield\ValidatorAbstract $validator
+     * @param \HylianShield\Validator $validator
      * @param string $type
      * @return void
      * @throws \InvalidArgumentException when $type is not a string
      */
-    public function setValidator(\HylianShield\ValidatorAbstract $validator, $type = null)
+    public function setValidator(\HylianShield\Validator $validator, $type = null)
     {
         if ($type !== null && !is_string($type)) {
             throw new InvalidArgumentException(

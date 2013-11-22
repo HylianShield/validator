@@ -14,7 +14,7 @@ use \InvalidArgumentException;
 /**
  * Range.
  */
-abstract class Range extends \HylianShield\ValidatorAbstract
+abstract class Range extends \HylianShield\Validator
 {
     /**
      * The minimum length of the value.

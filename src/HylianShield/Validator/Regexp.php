@@ -14,7 +14,7 @@ use \InvalidArgumentException;
 /**
  * Regexp.
  */
-class Regexp extends \HylianShield\ValidatorAbstract
+class Regexp extends \HylianShield\Validator
 {
     /**
      * The type.

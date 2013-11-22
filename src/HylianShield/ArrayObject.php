@@ -52,7 +52,7 @@ class ArrayObject extends \ArrayObject
      * @return void
      * @throws \LogicException
      */
-    public function append($value)
+    public function append()
     {
         throw new LogicException(
             'Cannot append to a data object. Specific key=>value pairs are required!'

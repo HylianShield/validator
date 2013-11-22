@@ -12,7 +12,7 @@ namespace HylianShield\Validator\File;
 /**
  * Writable.
  */
-class Writable extends \HylianShield\ValidatorAbstract
+class Writable extends \HylianShield\Validator
 {
     /**
      * The type.

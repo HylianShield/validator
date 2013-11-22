@@ -14,7 +14,7 @@ use \InvalidArgumentException;
 /**
  * Instance.
  */
-class Instance extends \HylianShield\ValidatorAbstract
+class Instance extends \HylianShield\Validator
 {
     /**
      * The type.

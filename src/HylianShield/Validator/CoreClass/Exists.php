@@ -12,7 +12,7 @@ namespace HylianShield\Validator\CoreClass;
 /**
  * Exists.
  */
-class Exists extends \HylianShield\ValidatorAbstract
+class Exists extends \HylianShield\Validator
 {
     /**
      * The type.

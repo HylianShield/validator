@@ -12,7 +12,7 @@ namespace HylianShield\Validator;
 /**
  * Object.
  */
-class Object extends \HylianShield\ValidatorAbstract
+class Object extends \HylianShield\Validator
 {
     /**
      * The type.

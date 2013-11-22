@@ -15,7 +15,7 @@ use \LogicException;
 /**
  * LogicalXor.
  */
-class LogicalXor extends \HylianShield\ValidatorAbstract
+class LogicalXor extends \HylianShield\Validator
 {
     /**
      * The type.
@@ -25,7 +25,7 @@ class LogicalXor extends \HylianShield\ValidatorAbstract
     protected $type = 'xor';
 
     /**
-     * List of classnames for \HylianShield\ValidatorAbstract descendants.
+     * List of classnames for \HylianShield\Validator descendants.
      *
      * @var array $validators
      */
@@ -34,10 +34,10 @@ class LogicalXor extends \HylianShield\ValidatorAbstract
     /**
      * Initialize the validator.
      *
-     * @param \HylianShield\ValidatorAbstract $1 optional
-     * @param \HylianShield\ValidatorAbstract $2 optional
+     * @param \HylianShield\Validator $1 optional
+     * @param \HylianShield\Validator $2 optional
      * @throws \InvalidArgumentException if one of the validators is not an instance
-     *   of \HylianShield\ValidatorAbstract
+     *   of \HylianShield\Validator
      * @throws \LogicException if anything but exactly 2 validators appear to be present
      */
     final public function __construct()
@@ -64,7 +64,7 @@ class LogicalXor extends \HylianShield\ValidatorAbstract
             ),
             // Now test them all against being an instance of our validator abstract.
             function ($instance) {
-                if (!($instance) instanceof \HylianShield\ValidatorAbstract) {
+                if (!($instance) instanceof \HylianShield\Validator) {
                     throw new InvalidArgumentException(
                         'Supplied argument is not a valid instance: ('
                         . gettype($instance) . ') ' . var_export($instance, true)

@@ -15,7 +15,7 @@ use \HylianShield\Validator\CoreClass;
 /**
  * Method.
  */
-class Method extends \HylianShield\ValidatorAbstract
+class Method extends \HylianShield\Validator
 {
     /**
      * The type.

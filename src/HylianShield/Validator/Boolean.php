@@ -12,7 +12,7 @@ namespace HylianShield\Validator;
 /**
  * Boolean.
  */
-class Boolean extends \HylianShield\ValidatorAbstract
+class Boolean extends \HylianShield\Validator
 {
     /**
      * The type.
