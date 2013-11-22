@@ -71,7 +71,7 @@ class Autoloader
 
             if (empty($path)) {
                 throw new RuntimeException(
-                    "Supplied class could not be found in our path: {$this->path}"
+                    "Supplied class {$class} could not be found in our path: {$this->path}"
                 );
             }
 
