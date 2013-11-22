@@ -63,17 +63,21 @@ class Autoloader
             return;
         }
 
-        // Get the path of the class file and include it.
-        $path = $this->getPath($class);
+        if (class_exists($class, false)) {
+            $path = "PHP_Core::{$class}";
+        } else {
+            // Get the path of the class file and include it.
+            $path = $this->getPath($class);
 
-        if (empty($path)) {
-            throw new RuntimeException(
-                "Supplied class could not be found in our path: {$this->path}"
-            );
+            if (empty($path)) {
+                throw new RuntimeException(
+                    "Supplied class could not be found in our path: {$this->path}"
+                );
+            }
+
+            // Include the class.
+            include_once $path;
         }
-
-        // Include the class.
-        include_once $path;
 
         // Store the class in the loaded array.
         $this->loaded[$class] = $path;
