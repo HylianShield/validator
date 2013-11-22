@@ -1,6 +1,6 @@
 # Hylian Shield
 
-Everything between your application and input data.
+Everything between your input and app.
 
 
 ![Hylian Shield](http://goo.gl/1XUYuG)
