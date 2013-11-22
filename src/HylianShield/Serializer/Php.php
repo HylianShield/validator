@@ -12,7 +12,7 @@ namespace HylianShield\Serializer;
 /**
  * Php.
  */
-class Php
+class Php extends \HylianShield\Serializer
 {
     /**
      * Serialize the given data.
@@ -20,7 +20,7 @@ class Php
      * @param mixed $data
      * @return string
      */
-    public static function serialize($data)
+    public function serialize($data)
     {
         return serialize($data);
     }
@@ -31,7 +31,7 @@ class Php
      * @param string $serialized
      * @return mixed
      */
-    public static function unserialize($serialized)
+    public function unserialize($serialized)
     {
         return unserialize($serialized);
     }

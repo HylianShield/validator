@@ -41,7 +41,8 @@ class Factory
     {
         $storage = new File($file);
         $config = new Configuration;
-        $config->setSerializer(self::SERIALIZER_JSON);
+        $serializer = self::SERIALIZER_JSON;
+        $config->setSerializer(new $serializer);
         $config->setStorage($storage);
         $config->loadStorage();
         return $config;

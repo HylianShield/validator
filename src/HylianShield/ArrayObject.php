@@ -23,11 +23,18 @@ use \HylianShield\Validator\CoreClass\Method;
 class ArrayObject extends \ArrayObject
 {
     /**
+     * The default serializer.
+     *
+     * @const string DEFAULT_SERIALIZER
+     */
+    const DEFAULT_SERIALIZER = '\HylianShield\Serializer\Php';
+
+    /**
      * The serializer to use when serializing the data.
      *
-     * @var string $serializer
+     * @var \HylianShield\Serializer $serializer
      */
-    protected $serializer = '\HylianShield\Serializer\Php';
+    protected $serializer;
 
     /**
      * Whether the data is dirty.
@@ -92,38 +99,10 @@ class ArrayObject extends \ArrayObject
     /**
      * Set the serializer.
      *
-     * @param string $serializer
-     * @throws \InvalidArgumentException when the given serializer is not a string
-     * @throws \LogicException when the given serializer class does not exist
-     * @throws \LogicException when the supplied serializer lacks specific methods
+     * @param \HylianShield\Serializer $serializer
      */
-    public function setSerializer($serializer)
+    public function setSerializer(\HylianShield\Serializer $serializer)
     {
-        $class = new CoreClass;
-
-        if (!$class($serializer)) {
-            throw new LogicException(
-                "Supplied serializer class could not be found: {$serializer}"
-            );
-        }
-
-        $required = array('serialize', 'unserialize');
-        $methodExists = new Method($serializer);
-
-        foreach ($required as $method) {
-            if (!$methodExists($method)) {
-                // Gather debugging information.
-                $existingMethods = get_class_methods($serializer);
-                $intersection = array_intersect($required, $existingMethods);
-                $diff = array_diff($required, $intersection);
-
-                throw new LogicException(
-                    "The supplied serializer {$serializer} is missing the "
-                    . 'following methods: ' . implode(', ', $diff)
-                );
-            }
-        }
-
         $this->serializer = $serializer;
     }
 
@@ -134,10 +113,11 @@ class ArrayObject extends \ArrayObject
      */
     public function serialize()
     {
-        return (string) call_user_func_array(
-            "{$this->serializer}::serialize",
-            array($this->getArrayCopy())
-        );
+        if (!isset($this->serializer)) {
+            $this->setDefaultSerializer();
+        }
+
+        return $this->serializer->serialize($this->getArrayCopy());
     }
 
     /**
@@ -166,10 +146,11 @@ class ArrayObject extends \ArrayObject
         // was no data to begin with.
         $dirty = $this->dirty || $this->count() > 0;
 
-        $data = call_user_func_array(
-            "{$this->serializer}::unserialize",
-            array($serialized)
-        );
+        if (!isset($this->serializer)) {
+            $this->setDefaultSerializer();
+        }
+
+        $data = $this->serializer->unserialize($serialized);
 
         $array = new CoreArray;
 
@@ -196,5 +177,16 @@ class ArrayObject extends \ArrayObject
     public function __tostring()
     {
         return $this->serialize();
+    }
+
+    /**
+     * Set the default serializer, in case none was given.
+     *
+     * @return void
+     */
+    private function setDefaultSerializer()
+    {
+        $serializer = $this::DEFAULT_SERIALIZER;
+        $this->serializer = new $serializer;
     }
 }

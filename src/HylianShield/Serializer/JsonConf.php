@@ -17,7 +17,7 @@ use \HylianShield\Validator\String;
 /**
  * JsonConf.
  */
-class JsonConf
+class JsonConf extends \HylianShield\Serializer
 {
     /**
      * The maximum depth of the configuration structure.
@@ -34,7 +34,7 @@ class JsonConf
      * @throws \LogicException when function json_encode does not exist
      * @throws \RuntimeException when serializing failed
      */
-    public static function serialize($data)
+    public function serialize($data)
     {
         $function = new CoreFunction;
 
@@ -84,7 +84,7 @@ class JsonConf
      * @throws \LogicException when function json_decode does not exist
      * @throws \RuntimeException when unserializing the JSON failed
      */
-    public static function unserialize($json)
+    public function unserialize($json)
     {
         $function = new CoreFunction;
 
