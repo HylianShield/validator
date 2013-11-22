@@ -44,18 +44,34 @@ class JsonConf extends \HylianShield\Serializer
             throw new LogicException('Missing function json_encode');
         }
 
-        $rv = json_encode(
-            $data,
-            // Encode to a minimalistic representation that stays editable by hand.
-            // Pretty printing ensures we have a line for each propery-value pair.
-            JSON_PRETTY_PRINT
-            // Unescaped slashes ensures that we can actually read URLs and the likes.
-            | JSON_UNESCAPED_SLASHES
-            // Unescaped Unicode ensures we can read UTF-8 characters in our editors.
-            | JSON_UNESCAPED_UNICODE
-            // The numeric check converts numeric values to a numeric representation.
-            | JSON_NUMERIC_CHECK
-        );
+        $bitmask = 0;
+
+        // The numeric check converts numeric values to a numeric representation.
+        // Available for PHP >= 5.3.3
+        if (defined('JSON_NUMERIC_CHECK')) {
+            $bitmask += JSON_NUMERIC_CHECK;
+        }
+
+        // Encode to a minimalistic representation that stays editable by hand.
+        // Pretty printing ensures we have a line for each propery-value pair.
+        // Available for PHP >= 5.4.0
+        if (defined('JSON_PRETTY_PRINT')) {
+            $bitmask += JSON_PRETTY_PRINT;
+        }
+
+        // Unescaped slashes ensures that we can actually read URLs and the likes.
+        // Available for PHP >= 5.4.0
+        if (defined('JSON_UNESCAPED_SLASHES')) {
+            $bitmask += JSON_UNESCAPED_SLASHES;
+        }
+
+        // Unescaped Unicode ensures we can read UTF-8 characters in our editors.
+        // Available for PHP >= 5.4.0
+        if (defined('JSON_UNESCAPED_UNICODE')) {
+            $bitmask += JSON_UNESCAPED_UNICODE;
+        }
+
+        $rv = json_encode($data, $bitmask);
 
         $string = new String;
 
