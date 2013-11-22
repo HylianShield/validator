@@ -56,10 +56,11 @@ class ArrayObject extends \ArrayObject
     /**
      * Forbid appending to this data.
      *
+     * @param mixed $value
      * @return void
      * @throws \LogicException
      */
-    public function append()
+    public function append($value)
     {
         throw new LogicException(
             'Cannot append to a data object. Specific key=>value pairs are required!'
