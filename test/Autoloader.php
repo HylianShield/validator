@@ -50,6 +50,19 @@ class Autoloader
     }
 
     /**
+     * Preload the entire codebase and unregister the autoloader.
+     * This is specifically usefull when you can't have an active autoloader in
+     * your testing environment, like say Travis-CLI.
+     *
+     * @return void
+     */
+    public function preload()
+    {
+        $this->loadFiles($this->path);
+        spl_autoload_unregister(array($this, 'loadClass'));
+    }
+
+    /**
      * Try to automatically load a class.
      *
      * @param string $class
@@ -102,5 +115,43 @@ class Autoloader
         }
 
         return $path;
+    }
+
+    /**
+     * Load files recursively from within the given directory.
+     *
+     * @param string $directory
+     * @return void
+     * @throws \RuntimeException when the directory could not be opened.
+     */
+    private function loadFiles($dir)
+    {
+        $originalDir = $dir;
+        $dir = realpath($dir);
+        $directory = dir($dir);
+
+        if (empty($directory)) {
+            throw new RuntimeException(
+                'Could not open directory: ('
+                . gettype($originalDir) . ') ' . var_export($originalDir)
+            );
+        }
+
+        while ($file = $directory->read()) {
+            if (in_array($file, array('.', '..'))) {
+                continue;
+            }
+
+            $path = "{$dir}/{$file}";
+
+            if (is_dir($path)) {
+                $this->loadFiles($path);
+                continue;
+            }
+
+            if (preg_match('/\.php$/', $file)) {
+                include_once $path;
+            }
+        }
     }
 }

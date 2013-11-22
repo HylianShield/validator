@@ -12,7 +12,7 @@ namespace HylianShield\Validator\Number;
 /**
  * Positive.
  */
-class Positive extends \HylianShield\Validator\Float\Number
+class Positive extends \HylianShield\Validator\Number
 {
     /**
      * The type.
@@ -30,5 +30,4 @@ class Positive extends \HylianShield\Validator\Float\Number
         // @see http://php.net/manual/en/language.types.float.php
         parent::__construct(1e-16);
     }
-}
 }

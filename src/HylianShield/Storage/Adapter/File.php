@@ -43,8 +43,7 @@ class File extends \HylianShield\Storage\Adapter
     protected $validStorageFlags = array(
         0,
         FILE_APPEND,
-        LOCK_EX,
-        FILE_APPEND | LOCK_EX
+        LOCK_EX
     );
 
     /**
@@ -82,6 +81,9 @@ class File extends \HylianShield\Storage\Adapter
         }
 
         $integer = new Integer;
+
+        // The combination of storage flags is a valid option.
+        $this->validStorageFlags[] = array_sum($this->validStorageFlags);
 
         if (!$integer($flags) || !in_array($flags, $this->validStorageFlags)) {
             throw new InvalidArgumentException(
