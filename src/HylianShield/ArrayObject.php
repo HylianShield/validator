@@ -54,6 +54,27 @@ class ArrayObject extends \ArrayObject
     }
 
     /**
+     * A convenience method to merge additional data to the array.
+     * Not that this method does not make it so you can do array_merge on this object.
+     *
+     * @param array $data
+     * @return void
+     */
+    public function merge(array $data)
+    {
+        // Merge the data and exchange the current set with the result of that.
+        $this->exchangeArray(
+            array_merge(
+                $this->getArrayCopy(),
+                $data
+            )
+        );
+
+        // Make the set dirty.
+        $this->dirty = true;
+    }
+
+    /**
      * Forbid appending to this data.
      *
      * @param mixed $value

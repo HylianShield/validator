@@ -165,4 +165,54 @@ class ArrayObjectTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($data->serialize(), $serializer->serialize($test));
     }
 
+    /**
+     * Return a set of arrays to merge against eachother.
+     *
+     * @return array
+     */
+    public function mergeProvider()
+    {
+        // Each entry represents a function call.
+        return array(
+            // Each entry represents an argument for the function call.
+            array(
+                // Each entry represents an array to merge against.
+                array(
+                    'foo' => 'bar',
+                    'baz' => 12
+                ),
+                array(
+                    'bar' => 'baz',
+                    'foo' => 12
+                ),
+                array(
+                    'honey' => 'tasty'
+                )
+            )
+        );
+    }
+
+    /**
+     * Test the merging of multiple sets of data.
+     *
+     * @dataProvider mergeProvider
+     */
+    public function testMerge()
+    {
+        $merges = func_get_args();
+        $test = array_shift($merges);
+        $check = $test;
+
+        $data = new ArrayObject($test);
+
+        $this->assertFalse($data->isDirty());
+
+        foreach ($merges as $merge) {
+            $check = array_merge($check, $merge);
+            $data->merge($merge);
+            $this->assertTrue($data->isDirty());
+            $this->assertEquals($data->getArrayCopy(), $check);
+        }
+    }
+
 }
