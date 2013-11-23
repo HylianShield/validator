@@ -1,7 +1,7 @@
 <phpunit colors="true" strict="true" bootstrap="bootstrap.php">
   <testsuites>
     <testsuite name="hylianshield">
-      <directory>.</directory>
+      <directory>Tests</directory>
     </testsuite>
   </testsuites>
   <logging>

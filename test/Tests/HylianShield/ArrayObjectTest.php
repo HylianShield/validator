@@ -9,7 +9,6 @@
 
 namespace Tests\HylianShield;
 
-use \LogicException;
 use \HylianShield\ArrayObject;
 
 /**
