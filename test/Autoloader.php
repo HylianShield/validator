@@ -52,7 +52,7 @@ class Autoloader
     /**
      * Preload the entire codebase and unregister the autoloader.
      * This is specifically usefull when you can't have an active autoloader in
-     * your testing environment, like say Travis-CLI.
+     * your testing environment, like say Travis-CI.
      *
      * @return void
      */
