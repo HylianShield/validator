@@ -188,7 +188,18 @@ class ArrayObjectTest extends \PHPUnit_Framework_TestCase
                 array(
                     'honey' => 'tasty'
                 )
-            )
+            ),
+            array(
+                // Each entry represents an array to merge against.
+                array(
+                    'foo' => 'bar',
+                    'baz' => 12
+                ),
+                range(1, 100),
+                array(
+                    'honey' => 'bear'
+                )
+            ),
         );
     }
 
