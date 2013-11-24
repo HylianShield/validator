@@ -30,7 +30,7 @@ abstract class Adapter
     /**
      * Get data from the storage.
      *
-     * @return mixed $data
+     * @return string $data
      */
     public abstract function get();
 }
