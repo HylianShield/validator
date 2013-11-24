@@ -9,10 +9,6 @@
 
 namespace Tests\HylianShield\Validator\CoreClass;
 
-// Sadly we can't let this be autoloaded, because if we were to apply an
-// autoloader to the Tests directory, PHPUnit would skip all loaded tests.
-require_once __DIR__ . '/../TestBase.php';
-
 use \HylianShield\Validator\CoreClass\Exists;
 
 /**
