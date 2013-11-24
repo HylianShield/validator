@@ -30,19 +30,23 @@ class JsonConfTest extends \Tests\HylianShield\Serializer\TestBase
      */
     public function testEncodingError()
     {
-        // This needs to be updated if future PHP versions increase or decrease
-        // the maximum depth of JSON structures.
-        $maximumDepth = 512;
-
-        // Generate an array with a depth over the maximum allowed depth of the
-        // json_encode function.
-        $test = array_reduce(
-            range(0, $maximumDepth + 1),
-            function($r) {
-                return array($r);
-            }
+        // Get a UTF-16BE character.
+        $encoding = mb_internal_encoding();
+        $unicode = '00f0';
+        $test = mb_convert_encoding(
+            pack('H*', $unicode),
+            $encoding,
+            'UTF-16BE'
         );
 
+        // There are 3 ways we can trigger this RuntimeException, of which 2 work
+        // on PHP < 5.5.
+        // - The first is to introduce a character outside of the range of UTF-8.
+        // - The second is to use a resource as argument.
+        // - The last one is to pass a structure with a depth of over 512.
+        // The last one will only work in PHP >= 5.5, as there was no previous
+        // limit to the depth of structures that could be encoded to JSON.
+        // Create an encoding error by sending the serialize method a non-UTF-8 char.
         $this->serializer->serialize($test);
     }
 
