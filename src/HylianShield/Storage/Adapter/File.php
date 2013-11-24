@@ -11,7 +11,6 @@ namespace HylianShield\Storage\Adapter;
 
 use \InvalidArgumentException;
 use \RuntimeException;
-use \UnexpectedValueException;
 use \HylianShield\Validator\Integer;
 use \HylianShield\Validator\LogicalAnd;
 use \HylianShield\Validator\String;
@@ -88,7 +87,7 @@ class File extends \HylianShield\Storage\Adapter
         if (!$integer($flags) || !in_array($flags, $this->validStorageFlags)) {
             throw new InvalidArgumentException(
                 'Supplied flags are invalid. Expected one of: '
-                . json_encode($this->validStorageFlags) . '; Yet supplied: ('
+                . var_export($this->validStorageFlags, true) . '; Yet supplied: ('
                 . gettype($flags) .') ' . var_export($flags, true)
             );
         }
@@ -98,31 +97,45 @@ class File extends \HylianShield\Storage\Adapter
     }
 
     /**
+     * Tell what settings we currently use for our adapter.
+     *
+     * @return array
+     */
+    final public function settings()
+    {
+        return array(
+            'file' => $this->storageFile,
+            'flags' => $this->storageFlags
+        );
+    }
+
+    /**
+     * Tell if the storage file is readable.
+     *
+     * @return bool
+     */
+    final public function pingRead()
+    {
+        $readable = new Readable;
+        return $readable($this->storageFile);
+    }
+
+    /**
      * Get data from storage.
      *
      * @return string
-     * @throws \RuntimeException when the file could not be accessed
-     * @throws \UnexpectedValueException when the storage file did not return a string
+     * @throws \RuntimeException when the data could not be accessed
      */
-    public function get()
+    final protected function read()
     {
-        $readable = new Readable;
-
-        if (!$readable($this->storageFile)) {
-            throw new RuntimeException(
-                "The storage file has become inaccessable: {$this->storageFile}"
-            );
-        }
-
         // Retrieve the contents of the storage file.
-        $rv = file_get_contents($this->storageFile);
+        // We suppres errors, since the adapter should be able to take care of
+        // unexpected results.
+        $rv = @file_get_contents($this->storageFile);
 
-        $string = new String;
-
-        if (!$string($rv)) {
-            throw new UnexpectedValueException(
-                'The storage file gave back an unexpected value: (' . gettype($rv)
-                . ') ' . var_export($rv, true)
+        if ($rv === false) {
+            throw new RuntimeException(
+                "Could not access data in file {$this->storageFile}."
             );
         }
 
@@ -130,34 +143,26 @@ class File extends \HylianShield\Storage\Adapter
     }
 
     /**
+     * Tell if the storage file is writable.
+     *
+     * @return bool
+     */
+    final public function pingWrite()
+    {
+        $writable = new Writable;
+        return $writable($this->storageFile);
+    }
+
+    /**
      * Store supplied data in the storage file.
      *
      * @param string $data
-     * @throws \InvalidArgumentException when anything but a string is supplied
-     * @throws \RuntimeException when the file has become inaccessable
      * @throws \RuntimeException when the data could not be stored (whole)
      */
-    public function store($data)
+    final protected function write($data)
     {
-        $string = new String;
-
-        if (!$string($data)) {
-            throw new InvalidArgumentException(
-                'Only strings can stored in a file: (' . gettype($data) . ') '
-                . var_export($data, true)
-            );
-        }
-
-        $writable = new Writable;
-
-        if (!$writable($this->storageFile)) {
-            throw new RuntimeException(
-                "The storage file has become inaccessable: {$this->storageFile}"
-            );
-        }
-
         $bytesIn = strlen($data);
-        $bytesStored = file_put_contents(
+        $bytesStored = @file_put_contents(
             $this->storageFile,
             $data,
             $this->storageFlags
