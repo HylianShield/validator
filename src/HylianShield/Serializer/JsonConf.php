@@ -53,7 +53,7 @@ class JsonConf extends \HylianShield\Serializer
         }
 
         // Encode to a minimalistic representation that stays editable by hand.
-        // Pretty printing ensures we have a line for each propery-value pair.
+        // Pretty printing ensures we have a line for each property=>value pair.
         // Available for PHP >= 5.4.0
         if (defined('JSON_PRETTY_PRINT')) {
             $bitmask += JSON_PRETTY_PRINT;
