@@ -73,11 +73,11 @@ class JsonConf extends \HylianShield\Serializer
             $options += JSON_UNESCAPED_UNICODE;
         }
 
-        $rv = json_encode($data, $options);
+        $rv = @json_encode($data, $options);
 
         $string = new String;
 
-        if (!$string($rv)) {
+        if ($rv === false || !$string($rv)) {
             $message = 'JSON encoding error #' . json_last_error();
 
             // Available for PHP >= 5.5.
