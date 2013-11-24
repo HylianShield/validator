@@ -39,13 +39,10 @@ class JsonConfTest extends \Tests\HylianShield\Serializer\TestBase
             'UTF-16BE'
         );
 
-        // There are 3 ways we can trigger this RuntimeException, of which 2 work
-        // on PHP < 5.5.
+        // There are 3 ways we can trigger this RuntimeException.
         // - The first is to introduce a character outside of the range of UTF-8.
         // - The second is to use a resource as argument.
         // - The last one is to pass a structure with a depth of over 512.
-        // The last one will only work in PHP >= 5.5, as there was no previous
-        // limit to the depth of structures that could be encoded to JSON.
         // Create an encoding error by sending the serialize method a non-UTF-8 char.
         $this->serializer->serialize($test);
     }
