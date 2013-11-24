@@ -76,9 +76,10 @@ class JsonConf extends \HylianShield\Serializer
         $rv = @json_encode($data, $options);
 
         $string = new String;
+        $error = json_last_error();
 
-        if ($rv === false || !$string($rv)) {
-            $message = 'JSON encoding error #' . json_last_error();
+        if (!$string($rv) || $error !== JSON_ERROR_NONE) {
+            $message = "JSON encoding error #{$error}";
 
             // Available for PHP >= 5.5.
             if ($function('json_last_error_msg')) {
