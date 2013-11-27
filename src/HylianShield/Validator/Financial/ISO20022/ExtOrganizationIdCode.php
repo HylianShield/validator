@@ -12,18 +12,19 @@ namespace HylianShield\Validator\Financial;
 /**
  * ISO 20022 external organization id code validator.
  */
-class ExtOrgIdCode extends \HylianShield\Validator\Regexp
+class ExtOrganizationalIdCode extends \HylianShield\Validator\Regexp
 {
     /**
      * The type.
      *
      * @var string $type
      */
-    protected $type = 'financial_extorgidcode';
+    protected $type = 'financial_extorganizationidcode';
 
     /**
      * A list of organization ID's for the OrgId.
      *
+     * See the tab 9 named "9-OrganisationIdentification" of the spreadshhet linked here:
      * @see http://www.iso20022.org/external_code_list.page
      *
      * Last update: 2013-11-06
