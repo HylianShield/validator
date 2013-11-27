@@ -10,9 +10,9 @@
 namespace HylianShield\Validator;
 
 /**
- * Array.
+ * CoreArray.
  */
-class Array extends \HylianShield\Validator\Range
+class CoreArray extends \HylianShield\Validator\Range
 {
     /**
      * The type.
