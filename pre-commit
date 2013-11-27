@@ -7,7 +7,6 @@ exec("git diff --name-only --diff-filter=ACM | egrep '.php$'", $files);
 $files = array_filter('empty', array_map('trim', $files));
 
 var_dump($files);
-
 exit(1);
 
 // Determine the phpunit configuration file.

@@ -10,7 +10,6 @@
 namespace HylianShield;
 
 use \LogicException;
-
 /**
  * Validator.
  */
