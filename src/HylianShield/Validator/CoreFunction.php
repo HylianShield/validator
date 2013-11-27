@@ -1,6 +1,6 @@
 <?php
 /**
- * Validate arrays.
+ * Validate functions.
  *
  * @package HylianShield
  * @subpackage Validator
@@ -10,21 +10,21 @@
 namespace HylianShield\Validator;
 
 /**
- * Object.
+ * CoreFunction.
  */
-class Object extends \HylianShield\Validator
+class CoreFunction extends \HylianShield\Validator
 {
     /**
      * The type.
      *
      * @var string $type
      */
-    protected $type = 'object';
+    protected $type = 'function';
 
     /**
      * The validator.
      *
      * @var callable $validator
      */
-    protected $validator = 'is_object';
+    protected $validator = 'function_exists';
 }

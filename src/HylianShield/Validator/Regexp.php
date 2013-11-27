@@ -14,7 +14,7 @@ use \InvalidArgumentException;
 /**
  * Regexp.
  */
-class Regexp extends \HylianShield\ValidatorAbstract
+class Regexp extends \HylianShield\Validator
 {
     /**
      * The type.
@@ -22,13 +22,6 @@ class Regexp extends \HylianShield\ValidatorAbstract
      * @var string $type
      */
     protected $type = 'regexp';
-
-    /**
-     * The validator.
-     *
-     * @var callable $validator
-     */
-    protected $validator;
 
     /**
      * The pattern used when validating.

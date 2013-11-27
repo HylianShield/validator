@@ -12,7 +12,7 @@ namespace HylianShield\Validator\File;
 /**
  * Readable.
  */
-class Readable extends \HylianShield\ValidatorAbstract
+class Readable extends \HylianShield\Validator
 {
     /**
      * The type.

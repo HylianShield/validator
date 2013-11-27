@@ -12,7 +12,7 @@ namespace HylianShield\Validator\Financial;
 /**
  * String.
  */
-class Iban extends \HylianShield\Validator\Countable
+class Iban extends \HylianShield\Validator\Range
 {
     /**
      * The type.

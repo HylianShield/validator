@@ -9,7 +9,6 @@
 
 namespace HylianShield;
 
-use \ArrayObject;
 use \InvalidArgumentException;
 use \LogicException;
 use \RuntimeException;
@@ -18,28 +17,14 @@ use \UnexpextedValueException;
 /**
  * Configuration.
  */
-class Configuration extends ArrayObject
+class Configuration extends \HylianShield\ArrayObject
 {
     /**
-     * The serializer to use when serializing the configuration.
+     * The storage in which the configuration is stored.
      *
-     * @var string $serializer
+     * @var \HylianShield\Storage\Adapter $storage
      */
-    protected $serializer = '\HylianShield\Serializer\Php';
-
-    /**
-     * The file in which the configuration is stored.
-     *
-     * @var string $storageFile
-     */
-    protected $storageFile;
-
-    /**
-     * Whether the configuration is dirty.
-     *
-     * @var boolean $dirty
-     */
-    protected $dirty = false;
+    protected $storage;
 
     /**
      * A set of validators, keyed by the data type it should validate.
@@ -63,24 +48,14 @@ class Configuration extends ArrayObject
     protected $required = array();
 
     /**
-     * Tell if the configuration is dirty and should be saved when possible.
-     *
-     * @return boolean
-     */
-    public function isDirty()
-    {
-        return $this->dirty;
-    }
-
-    /**
      * Set a validator.
      *
-     * @param \HylianShield\ValidatorAbstract $validator
+     * @param \HylianShield\Validator $validator
      * @param string $type
      * @return void
      * @throws \InvalidArgumentException when $type is not a string
      */
-    public function setValidator(\HylianShield\ValidatorAbstract $validator, $type = null)
+    public function setValidator(\HylianShield\Validator $validator, $type = null)
     {
         if ($type !== null && !is_string($type)) {
             throw new InvalidArgumentException(
@@ -245,15 +220,9 @@ class Configuration extends ArrayObject
             );
         }
 
-        if (!isset($this->storageFile)) {
+        if (!isset($this->storage)) {
             throw new LogicException(
-                'Tried to store the configuration, but no storage file set.'
-            );
-        }
-
-        if (!is_writable($this->storageFile)) {
-            throw new RuntimeException(
-                "Current configuration is not writable: {$this->storageFile}"
+                'Tried to store the configuration, but no storage was set.'
             );
         }
 
@@ -267,22 +236,13 @@ class Configuration extends ArrayObject
         $encodedConfig = $this->serialize();
 
         if (empty($encodedConfig)) {
-            throw new UnexpextedValueException(
+            throw new UnexpectedValueException(
                 'Could not properly encode the following: '
                 . var_export($this->getArrayCopy(), true)
             );
         }
 
-        // Store the configuration with an exclusive lock on the file and get the
-        // amount of bytes stored.
-        $bytes = file_put_contents($this->storageFile, $encodedConfig, LOCK_EX);
-
-        // Writing failed or was only partially done.
-        if (empty($bytes) || $bytes < strlen($encodedConfig)) {
-            throw new RuntimeException(
-                "Failed writing configuration to: {$this->storageFile}"
-            );
-        }
+        $this->storage->store($encodedConfig);
 
         $this->dirty = false;
     }
@@ -304,29 +264,14 @@ class Configuration extends ArrayObject
     }
 
     /**
-     * Set the path to the storage file.
+     * Set the storage adapter.
      *
-     * @param string $file
+     * @param \HylianShield\Storage\Adapter $adapter
      * @return void
-     * @throws \InvalidArgumentException when $file is not a file path
-     * @throws \RuntimeException when $file is not writable
      */
-    public function setStorage($file)
+    public function setStorage(\HylianShield\Storage\Adapter $adapter)
     {
-        if (!is_string($file) || !file_exists($file)) {
-            throw new InvalidArgumentException(
-                'Invalid configuration file supplied: (' . gettype($file)
-                . ') ' . var_export($file, true)
-            );
-        }
-
-        if (!is_writable($file)) {
-            throw new RuntimeException(
-                "The configuration file is not writable: {$file}"
-            );
-        }
-
-        $this->storageFile = $file;
+        $this->storage = $adapter;
     }
 
     /**
@@ -337,145 +282,13 @@ class Configuration extends ArrayObject
      */
     public function loadStorage()
     {
-        if (!isset($this->storageFile)) {
+        if (!isset($this->storage)) {
             throw new LogicException(
-                'Cannot load from storage when no storage file is set.'
+                'Cannot load from storage when no storage is set.'
             );
         }
 
-        $this->unserialize(@trim(file_get_contents($this->storageFile)));
-    }
-
-    /**
-     * Forbid appending to this configuration.
-     *
-     * @return void
-     * @throws \LogicException
-     */
-    public function append($value)
-    {
-        throw new LogicException(
-            'Cannot append to a configuration object. Specific key=>value pairs are required!'
-        );
-    }
-
-    /**
-     * Set a given property.
-     *
-     * @param mixed $index
-     * @param mixed $value
-     */
-    public function offsetSet($index, $value)
-    {
-        $oldValue = $this->offsetExists($index) ? $this->offsetGet($index) : null;
-
-        parent::offsetSet($index, $value);
-
-        if ($oldValue !== $value) {
-            $this->dirty = true;
-        }
-    }
-
-    /**
-     * Unset a given property.
-     *
-     * @param mixed $index
-     */
-    public function offsetUnset($index)
-    {
-        parent::offsetUnset($index);
-        $this->dirty = true;
-    }
-
-    /**
-     * Set the serializer.
-     *
-     * @param string $serializer
-     * @throws \InvalidArgumentException when the given serializer is not a string
-     * @throws \LogicException when the given serializer class does not exist
-     * @throws \LogicException when the supplied serializer lacks specific methods
-     */
-    public function setSerializer($serializer)
-    {
-        if (!is_string($serializer)) {
-            throw new InvalidArgumentException(
-                'Invalid serializer supplied: (' . gettype($serializer) . ') '
-                . var_export($serializer)
-            );
-        }
-
-        if (!class_exists($serializer, true)) {
-            throw new LogicException(
-                "Supplied serializer class could not be found: {$serializer}"
-            );
-        }
-
-        $required = array('serialize', 'unserialize');
-
-        foreach ($required as $method) {
-            if (!method_exists($serializer, $method)) {
-                // Gather debugging information.
-                $existingMethods = get_class_methods($serializer);
-                $intersection = array_intersect($required, $existingMethods);
-                $diff = array_diff($required, $intersection);
-
-                throw new LogicException(
-                    "The supplied serializer {$serializer} is missing the "
-                    . 'following methods: ' . implode(', ', $diff)
-                );
-            }
-        }
-
-        $this->serializer = $serializer;
-    }
-
-    /**
-     * Return the serialized representation of the configuration.
-     *
-     * @return string
-     */
-    public function serialize()
-    {
-        return (string) call_user_func_array(
-            "{$this->serializer}::serialize",
-            array($this->getArrayCopy())
-        );
-    }
-
-    /**
-     * Import a serialized configuration and make it our own.
-     * Note: this overrides our current configuration.
-     *
-     * @param string $serialized
-     * @return void
-     */
-    public function unserialize($serialized)
-    {
-        // Conditionally update the dirty flag afterwards.
-        // We don't believe the configuration to have become dirty if there
-        // was no configuration to begin with.
-        $dirty = $this->dirty || $this->count() > 0;
-
-        // Update the configuration.
-        $this->exchangeArray(
-            call_user_func_array(
-                "{$this->serializer}::unserialize",
-                array($serialized)
-            )
-        );
-
-        // Set the dirty flag.
-        $this->dirty = $dirty;
-    }
-
-    /**
-     * Convert the configuration to a string.
-     *
-     * @return string
-     */
-    public function __tostring()
-    {
-        return $this->serialize();
+        $this->unserialize(trim($this->storage->get()));
     }
 
     /**
@@ -485,7 +298,7 @@ class Configuration extends ArrayObject
      */
     public function __destruct()
     {
-        if (isset($this->storageFile)) {
+        if (isset($this->storage)) {
             $this->store();
         }
     }

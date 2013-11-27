@@ -12,9 +12,9 @@ namespace HylianShield;
 use \LogicException;
 
 /**
- * ValidatorAbstract.
+ * Validator.
  */
-class ValidatorAbstract
+class Validator
 {
     /**
      * The type of the validator.

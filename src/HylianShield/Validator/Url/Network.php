@@ -12,7 +12,7 @@ namespace HylianShield\Validator\Url;
 /**
  * Network.
  */
-class Network extends \HylianShield\ValidatorAbstract
+class Network extends \HylianShield\Validator
 {
     /**
      * The type.
