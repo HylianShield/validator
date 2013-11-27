@@ -14,7 +14,7 @@ use \LogicException;
 /**
  * Validator.
  */
-class Validator
+abstract class Validator
 {
     /**
      * The type of the validator.
