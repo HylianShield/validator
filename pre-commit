@@ -11,7 +11,7 @@ return false;
 exit(1);
 
 // Determine the phpunit configuration file.
-$configuration = realpath(__DIR__ '/../../test/phpunit.xml');
+$configuration = realpath(__DIR__ . '/../../test/phpunit.xml');
 
 // If we found files, go test them.
 if (count($files)) {
