@@ -24,7 +24,7 @@ class ExtPersonIdCode extends \HylianShield\Validator\Regexp
     /**
      * A list of person ID methods for the private identification.
      *
-     * See the tab 10 named "10-PersonIdentification" of the spreadshhet linked here:
+     * See the tab 10 named "10-PersonIdentification" of the spreadsheet linked here:
      * @see http://www.iso20022.org/external_code_list.page
      *
      * Last update: 2013-11-06

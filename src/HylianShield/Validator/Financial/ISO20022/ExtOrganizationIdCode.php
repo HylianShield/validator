@@ -24,7 +24,7 @@ class ExtOrganizationalIdCode extends \HylianShield\Validator\Regexp
     /**
      * A list of organization ID's for the OrgId.
      *
-     * See the tab 9 named "9-OrganisationIdentification" of the spreadshhet linked here:
+     * See the tab 9 named "9-OrganisationIdentification" of the spreadsheet linked here:
      * @see http://www.iso20022.org/external_code_list.page
      *
      * Last update: 2013-11-06
