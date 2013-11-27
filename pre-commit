@@ -6,6 +6,10 @@ exec("git diff --name-only --diff-filter=ACM | egrep '.php$'", $files);
 // Remove empty lines.
 $files = array_filter('empty', array_map('trim', $files));
 
+var_dump($files);
+
+exit(1);
+
 // Determine the phpunit configuration file.
 $configuration = realpath(__DIR__ '/../../test/phpunit.xml');
 
