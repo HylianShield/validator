@@ -1,2 +1,2 @@
 #!/bin/sh
-phpunit -c test/phpunit.xml
+phpunit -c `git rev-parse --show-toplevel`/test/phpunit.xml
