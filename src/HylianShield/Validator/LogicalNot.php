@@ -15,7 +15,7 @@ use \LogicException;
 /**
  * LogicalNot.
  */
-class LogicalNot extends \HylianShield\ValidatorAbstract
+class LogicalNot extends \HylianShield\Validator
 {
     /**
      * The type.
@@ -27,9 +27,9 @@ class LogicalNot extends \HylianShield\ValidatorAbstract
     /**
      * Initialize the validator.
      *
-     * @param \HylianShield\ValidatorAbstract $validator
+     * @param \HylianShield\Validator $validator
      */
-    final public function __construct(\HylianShield\ValidatorAbstract $validator)
+    final public function __construct(\HylianShield\Validator $validator)
     {
         // Create a custom validator that returns the inverse value of the
         // supplied validator.

@@ -1,10 +1,10 @@
 <?php
 /**
- * Validate a conditional list in a logical XOR fashion.
+ * Validate a conditional list in a logical AND fashion.
  *
  * @package HylianShield
  * @subpackage Validator
- * @copyright 2013 Jan-Marten "Joh Man X" de Boer
+ * @copyright 2013 Remko "CyberSecutor" Silvis
  */
 
 namespace HylianShield\Validator;
@@ -13,16 +13,16 @@ use \InvalidArgumentException;
 use \LogicException;
 
 /**
- * LogicalXor.
+ * LogicalAnd.
  */
-class LogicalXor extends \HylianShield\Validator
+class LogicalAnd extends \HylianShield\Validator
 {
     /**
      * The type.
      *
      * @var string $type
      */
-    protected $type = 'xor';
+    protected $type = 'and';
 
     /**
      * List of classnames for \HylianShield\Validator descendants.
@@ -34,11 +34,10 @@ class LogicalXor extends \HylianShield\Validator
     /**
      * Initialize the validator.
      *
-     * @param \HylianShield\Validator $1 optional
-     * @param \HylianShield\Validator $2 optional
+     * @param \HylianShield\Validator $1 optional etc...
      * @throws \InvalidArgumentException if one of the validators is not an instance
      *   of \HylianShield\Validator
-     * @throws \LogicException if anything but exactly 2 validators appear to be present
+     * @throws \LogicException if less than 2 validators appear to be present
      */
     final public function __construct()
     {
@@ -75,25 +74,16 @@ class LogicalXor extends \HylianShield\Validator
             }
         );
 
-        if (count($validators) !== 2) {
-            throw new LogicException(
-                'Cannot perform a logical XOR with anything but two validators.'
-            );
-        }
-
-        // Create a custom validator.
-        // Since it is XOR, only one match should happen.
+        // Create a custom validator that returns true on the first match.
+        // Since it is AND, all the validators should return true.
         $this->validator = function ($value) use ($validators) {
-            // Create a test where only the passing validators will remain.
-            $test = array_filter(
-                $validators,
-                function ($validator) use ($value) {
-                    return $validator($value);
+            foreach ($validators as $validator) {
+                if (!$validator($value)) {
+                    return false;
                 }
-            );
+            }
 
-            // The result of this test must be exactly 1 to be a valid XOR gate.
-            return count($test) === 1;
+            return true;
         };
     }
 }

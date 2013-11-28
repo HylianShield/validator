@@ -12,7 +12,7 @@ namespace HylianShield\Validator;
 /**
  * Number.
  */
-class Number extends \HylianShield\Validator\Countable
+class Number extends \HylianShield\Validator\Range
 {
     /**
      * The type.
@@ -53,7 +53,7 @@ class Number extends \HylianShield\Validator\Countable
         // Set a custom validator.
         $this->validator = function ($value) {
             return is_int($value) || is_float($value);
-        }
+        };
 
         parent::__construct($minLength, $maxLength);
     }

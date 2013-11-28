@@ -12,7 +12,7 @@ namespace HylianShield\Validator;
 /**
  * Url.
  */
-class Url extends \HylianShield\ValidatorAbstract
+class Url extends \HylianShield\Validator
 {
     /**
      * The type.
@@ -22,24 +22,12 @@ class Url extends \HylianShield\ValidatorAbstract
     protected $type = 'url';
 
     /**
-     * The validator.
-     *
-     * @var callable $validator
-     */
-    protected $validator;
-
-    /**
      * Check the validity of URLs.
-     *
-     * @param integer $minLength the minimum length of the value
-     * @param integer $maxLength the maximum length of the value
      */
-    public function __construct($minLength = 0, $maxLength = 0)
+    public function __construct()
     {
         $this->validator = function ($url) {
             return parse_url($url) !== false;
         };
-
-        parent::__construct($minLength, $maxLength);
     }
 }

@@ -10,9 +10,9 @@
 namespace HylianShield\Validator;
 
 /**
- * Array.
+ * Object.
  */
-class Array extends \HylianShield\ValidatorAbstract
+class Object extends \HylianShield\Validator
 {
     /**
      * The type.
