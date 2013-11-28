@@ -149,7 +149,7 @@ class Network extends \HylianShield\Validator
 
             // Test the query for invalid parameters.
             if (!empty($parsed['query'])) {
-                parse_url($parsed['query'], $query);
+                parse_str($parsed['query'], $query);
                 $queryKeys = array_keys($query);
 
                 // Check if any of the parameters is not allowed.
