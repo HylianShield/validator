@@ -5,6 +5,7 @@ php:
   - 5.5
 before_script:
   - cd test
+  - composer validate
 script: phpunit
 notifications:
   irc: "irc.freenode.net#johmanx"
