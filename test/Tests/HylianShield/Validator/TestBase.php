@@ -65,9 +65,12 @@ abstract class TestBase extends \PHPUnit_Framework_TestCase
         if ($reflectionMethod->getNumberOfRequiredParameters() === 0) {
             $this->validator = new $this->validatorClass;
         } else {
-            // If not, create an instance while skipping the constructor.
-            $reflectionClass = new ReflectionClass($this->validatorClass);
-            $this->validator = $reflectionClass->newInstanceWithoutConstructor();
+            // Creating an instance without a constructor cannot be done on 5.3.
+            if (phpversion() >= 5.4) {
+                // If not, create an instance while skipping the constructor.
+                $reflectionClass = new ReflectionClass($this->validatorClass);
+                $this->validator = $reflectionClass->newInstanceWithoutConstructor();
+            }
 
             // As we assume the constructor will create the validator, we can't
             // automatically throw a bunch of validations at it.
@@ -102,10 +105,15 @@ abstract class TestBase extends \PHPUnit_Framework_TestCase
             // incomplete if we don't process the method as a whole.
             $this->validations = array();
 
-            // Simply test if the validator and it's class name are corresponding.
-            // At least then PHPUnit thinks it's been a good boy and won't say
-            // it skipped tests.
-            $this->assertInstanceOf($this->validatorClass, $this->validator);
+            if (phpversion() >= 5.4) {
+                // Simply test if the validator and it's class name are corresponding.
+                // At least then PHPUnit thinks it's been a good boy and won't say
+                // it skipped tests.
+                $this->assertInstanceOf($this->validatorClass, $this->validator);
+            } else {
+                // At least we know this much.
+                $this->assertEmpty($this->validator);
+            }
         }
 
         foreach ($this->validations as $validation) {
