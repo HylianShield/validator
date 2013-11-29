@@ -83,7 +83,12 @@ abstract class TestBase extends \PHPUnit_Framework_TestCase
      */
     public function testType()
     {
-        $this->assertInternalType('string', $this->validator->type());
+        if (!$this->testValidations && phpversion() <= 5.4) {
+            // At least we know this much.
+            $this->assertEmpty($this->validator);
+        } else {
+            $this->assertInternalType('string', $this->validator->type());
+        }
     }
 
     /**
@@ -91,7 +96,12 @@ abstract class TestBase extends \PHPUnit_Framework_TestCase
      */
     public function testToString()
     {
-        $this->assertInternalType('string', $this->validator->__tostring());
+        if (!$this->testValidations && phpversion() <= 5.4) {
+            // At least we know this much.
+            $this->assertEmpty($this->validator);
+        } else {
+            $this->assertInternalType('string', $this->validator->__tostring());
+        }
     }
 
     /**
