@@ -83,7 +83,7 @@ abstract class TestBase extends \PHPUnit_Framework_TestCase
      */
     public function testType()
     {
-        if (!$this->testValidations && phpversion() <= 5.4) {
+        if (!$this->testValidations && phpversion() < 5.4) {
             // At least we know this much.
             $this->assertEmpty($this->validator);
         } else {
@@ -96,7 +96,7 @@ abstract class TestBase extends \PHPUnit_Framework_TestCase
      */
     public function testToString()
     {
-        if (!$this->testValidations && phpversion() <= 5.4) {
+        if (!$this->testValidations && phpversion() < 5.4) {
             // At least we know this much.
             $this->assertEmpty($this->validator);
         } else {
