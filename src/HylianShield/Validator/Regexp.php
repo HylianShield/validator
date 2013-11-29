@@ -14,21 +14,14 @@ use \InvalidArgumentException;
 /**
  * Regexp.
  */
-class Regexp extends \HylianShield\ValidatorAbstract
+class Regexp extends \HylianShield\Validator
 {
     /**
      * The type.
      *
-     * @var integer $type
+     * @var string $type
      */
     protected $type = 'regexp';
-
-    /**
-     * The validator.
-     *
-     * @var callable $validator
-     */
-    protected $validator;
 
     /**
      * The pattern used when validating.
@@ -56,7 +49,7 @@ class Regexp extends \HylianShield\ValidatorAbstract
 
         // Create a validator on the fly.
         $this->validator = function ($subject) use ($pattern) {
-            return (bool) preg_match($pattern, $subject);
+            return is_string($subject) && preg_match($pattern, $subject);
         };
     }
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * Validate strings.
+ * Validate floats.
  *
  * @package HylianShield
  * @subpackage Validator
@@ -10,21 +10,28 @@
 namespace HylianShield\Validator;
 
 /**
- * String.
+ * Float.
  */
-class String extends \HylianShield\Validator\Range
+class Float extends \HylianShield\Validator\Range
 {
     /**
      * The type.
      *
      * @var string $type
      */
-    protected $type = 'string';
+    protected $type = 'float';
 
     /**
      * The validator.
      *
      * @var callable $validator
      */
-    protected $validator = 'is_string';
+    protected $validator = 'is_float';
+
+    /**
+     * The callable to return the length of the value.
+     *
+     * @var callable $lengthCheck
+     */
+    protected $lengthCheck = 'round';
 }

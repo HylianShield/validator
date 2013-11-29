@@ -12,12 +12,12 @@ namespace HylianShield\Validator\File;
 /**
  * Readable.
  */
-class Readable extends \HylianShield\ValidatorAbstract
+class Readable extends \HylianShield\Validator
 {
     /**
      * The type.
      *
-     * @var integer $type
+     * @var string $type
      */
     protected $type = 'file_readable';
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * Validate integers.
+ * Validate arrays.
  *
  * @package HylianShield
  * @subpackage Validator
@@ -10,28 +10,28 @@
 namespace HylianShield\Validator;
 
 /**
- * Integer.
+ * CoreArray.
  */
-class Integer extends \HylianShield\Validator\Range
+class CoreArray extends \HylianShield\Validator\Range
 {
     /**
      * The type.
      *
      * @var string $type
      */
-    protected $type = 'integer';
+    protected $type = 'array';
 
     /**
      * The validator.
      *
      * @var callable $validator
      */
-    protected $validator = 'is_int';
+    protected $validator = 'is_array';
 
     /**
      * The callable to return the length of the value.
      *
      * @var callable $lengthCheck
      */
-    protected $lengthCheck = 'intval';
+    protected $lengthCheck = 'count';
 }

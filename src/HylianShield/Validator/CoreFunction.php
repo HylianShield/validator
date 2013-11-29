@@ -1,6 +1,6 @@
 <?php
 /**
- * Validate strings.
+ * Validate functions.
  *
  * @package HylianShield
  * @subpackage Validator
@@ -10,21 +10,21 @@
 namespace HylianShield\Validator;
 
 /**
- * String.
+ * CoreFunction.
  */
-class String extends \HylianShield\Validator\Range
+class CoreFunction extends \HylianShield\Validator
 {
     /**
      * The type.
      *
      * @var string $type
      */
-    protected $type = 'string';
+    protected $type = 'function';
 
     /**
      * The validator.
      *
      * @var callable $validator
      */
-    protected $validator = 'is_string';
+    protected $validator = 'function_exists';
 }
