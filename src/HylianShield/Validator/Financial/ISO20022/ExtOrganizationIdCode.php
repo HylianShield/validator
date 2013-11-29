@@ -7,7 +7,7 @@
  * @copyright 2013 Remko "CyberSecutor" Silvis
  */
 
-namespace HylianShield\Validator\Financial;
+namespace HylianShield\Validator\Financial\ISO20022;
 
 /**
  * ISO 20022 external organization id code validator.
