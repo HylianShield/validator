@@ -1,3 +1,4 @@
 code-coverage/*
 doc/*
 composer.lock
+vendor/*
