@@ -73,7 +73,7 @@ class ExtPersonIdCode extends \HylianShield\Validator\Regexp
     public function __construct()
     {
         parent::__construct(
-            '/^' . implode('|', $this->personIdentifiers) . '&/'
+            '/^' . implode('|', $this->personIdentifiers) . '$/'
         );
     }
 }
