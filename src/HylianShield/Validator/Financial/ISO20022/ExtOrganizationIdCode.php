@@ -12,7 +12,7 @@ namespace HylianShield\Validator\Financial\ISO20022;
 /**
  * ISO 20022 external organization id code validator.
  */
-class ExtOrganizationalIdCode extends \HylianShield\Validator\Regexp
+class ExtOrganizationIdCode extends \HylianShield\Validator\Regexp
 {
     /**
      * The type.
@@ -100,7 +100,7 @@ class ExtOrganizationalIdCode extends \HylianShield\Validator\Regexp
     public function __construct()
     {
         parent::__construct(
-            '/^' . implode('|', $this->organizationIdentifiers) . '&/'
+            '/^' . implode('|', $this->organizationIdentifiers) . '$/'
         );
     }
 }
