@@ -1,0 +1,27 @@
+{
+  "name": "hylianshield/hylianshield",
+  "type": "library",
+  "description": "Data validation and sanitizing",
+  "keywords": ["hylianshield", "validator", "validate", "validation", "sanitize", "sanitizer", "sanitizing"],
+  "homepage": "https://github.com/johmanx10/hylianshield",
+  "license": "Apache-2.0",
+  "authors": [
+    {
+      "name": "Remko Silvis",
+      "role": "Developer"
+    },
+    {
+      "name": "Jan-Marten de Boer",
+      "role": "Developer",
+      "email": "github@johmanx.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.3"
+  },
+  "autoload": {
+    "psr-0": {
+      "HylianShield": "src"
+    }
+  }
+}

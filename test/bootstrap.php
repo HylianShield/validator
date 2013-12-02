@@ -18,5 +18,4 @@ $autoloader->preload();
 
 // Sadly we can't let this be autoloaded, because if we were to apply an
 // autoloader to the Tests directory, PHPUnit would skip all loaded tests.
-require_once __DIR__ . '/Tests/HylianShield/Serializer/TestBase.php';
 require_once __DIR__ . '/Tests/HylianShield/Validator/TestBase.php';
