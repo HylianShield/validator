@@ -22,6 +22,13 @@ class Iban extends \HylianShield\Validator\Range
     protected $type = 'financial_iban';
 
     /**
+     * The callable to return the length of the value.
+     *
+     * @var callable $lengthCheck
+     */
+    protected $lengthCheck = 'strlen';
+
+    /**
      * Check the validity of an IBAN.
      *
      * @ToDo needs more elaborate validation for per country IBAN.
