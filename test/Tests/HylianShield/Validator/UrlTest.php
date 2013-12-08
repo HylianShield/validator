@@ -32,6 +32,6 @@ class UrlTest extends \Tests\HylianShield\Validator\TestBase
         array('protocol://user:pass@host.tld:1337/path?param=val#hash', true),
         array('AB12-00-00', true),
         array(8.333, true),
-        array(new DateTime, false)
+        array('', true)
     );
 }
