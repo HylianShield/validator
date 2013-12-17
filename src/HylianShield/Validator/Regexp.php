@@ -35,6 +35,8 @@ class Regexp extends \HylianShield\Validator
      *
      * @param string $pattern
      * @throws \InvalidArgumentException when the pattern is not a string
+     * @throws \InvalidArgumentException when the pattern has an invalid delimiter
+     * @throws \InvalidArgumentException when no ending delimiter was found
      */
     public function __construct($pattern)
     {
@@ -42,6 +44,23 @@ class Regexp extends \HylianShield\Validator
             throw new InvalidArgumentException(
                 'Pattern must be a string: (' . gettype($pattern) . ') '
                 . var_export($pattern, true)
+            );
+        }
+
+        // The first character will be the delimiter.
+        $delim = mb_substr($pattern, 0, 1);
+
+        if (preg_match('/[a-z0-9\\\\]/i', $delim)) {
+            throw new InvalidArgumentException(
+                "Delimiter must not be alphanumeric or backslash: {$delim}"
+            );
+        }
+
+        // Detect if the ending delimiter was found, excluding escaped delimiters
+        // using a negative lookbehind.
+        if (!preg_match('/(?<!\\\\)' . "\\" . $delim . '/', mb_substr($pattern, 1))) {
+            throw new InvalidArgumentException(
+                "No ending delimiter found: {$delim}"
             );
         }
 

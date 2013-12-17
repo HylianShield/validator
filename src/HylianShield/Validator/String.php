@@ -27,4 +27,11 @@ class String extends \HylianShield\Validator\Range
      * @var callable $validator
      */
     protected $validator = 'is_string';
+
+    /**
+     * The callable to return the length of the value.
+     *
+     * @var callable $lengthCheck
+     */
+    protected $lengthCheck = 'strlen';
 }
