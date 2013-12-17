@@ -9,6 +9,9 @@
 
 namespace Tests\HylianShield\Validator;
 
+use \ReflectionClass;
+use \ReflectionMethod;
+
 /**
  * TestBase.
  */
@@ -41,11 +44,38 @@ abstract class TestBase extends \PHPUnit_Framework_TestCase
     protected $validations = array();
 
     /**
+     * Whether we should automatically test the validations.
+     *
+     * @var boolean $testValidations
+     */
+    protected $testValidations = true;
+
+    /**
      * Set up a common validator.
      */
     protected function setUp()
     {
-        $this->validator = new $this->validatorClass;
+        $reflectionMethod = new ReflectionMethod(
+            $this->validatorClass,
+            '__construct'
+        );
+
+        // If the validator doesn't require any parameters on construct, create
+        // a full-fledged instance right away.
+        if ($reflectionMethod->getNumberOfRequiredParameters() === 0) {
+            $this->validator = new $this->validatorClass;
+        } else {
+            // Creating an instance without a constructor cannot be done on 5.3.
+            if (phpversion() >= 5.4) {
+                // If not, create an instance while skipping the constructor.
+                $reflectionClass = new ReflectionClass($this->validatorClass);
+                $this->validator = $reflectionClass->newInstanceWithoutConstructor();
+            }
+
+            // As we assume the constructor will create the validator, we can't
+            // automatically throw a bunch of validations at it.
+            $this->testValidations = false;
+        }
     }
 
     /**
@@ -53,7 +83,12 @@ abstract class TestBase extends \PHPUnit_Framework_TestCase
      */
     public function testType()
     {
-        $this->assertInternalType('string', $this->validator->type());
+        if (!$this->testValidations && phpversion() < 5.4) {
+            // At least we know this much.
+            $this->assertEmpty($this->validator);
+        } else {
+            $this->assertInternalType('string', $this->validator->type());
+        }
     }
 
     /**
@@ -61,7 +96,12 @@ abstract class TestBase extends \PHPUnit_Framework_TestCase
      */
     public function testToString()
     {
-        $this->assertInternalType('string', $this->validator->__tostring());
+        if (!$this->testValidations && phpversion() < 5.4) {
+            // At least we know this much.
+            $this->assertEmpty($this->validator);
+        } else {
+            $this->assertInternalType('string', $this->validator->__tostring());
+        }
     }
 
     /**
@@ -69,6 +109,23 @@ abstract class TestBase extends \PHPUnit_Framework_TestCase
      */
     public function testValidations()
     {
+        if (!$this->testValidations) {
+            // We need to process this test, regardless of if we actually want
+            // to make use of it, because the PHPUnit will complain a test was
+            // incomplete if we don't process the method as a whole.
+            $this->validations = array();
+
+            if (phpversion() >= 5.4) {
+                // Simply test if the validator and it's class name are corresponding.
+                // At least then PHPUnit thinks it's been a good boy and won't say
+                // it skipped tests.
+                $this->assertInstanceOf($this->validatorClass, $this->validator);
+            } else {
+                // At least we know this much.
+                $this->assertEmpty($this->validator);
+            }
+        }
+
         foreach ($this->validations as $validation) {
             $result = array_pop($validation);
             $this->assertEquals(

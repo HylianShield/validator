@@ -10,7 +10,15 @@
 namespace HylianShield\Validator\CoreClass;
 
 use \InvalidArgumentException;
+use \HylianShield\Validator\LogicalNot;
+use \HylianShield\Validator\LogicalAnd;
+use \HylianShield\Validator\LogicalXor;
+use \HylianShield\Validator\Object;
+use \HylianShield\Validator\String;
+use \HylianShield\Validator\CoreArray;
 use \HylianShield\Validator\CoreClass;
+use \HylianShield\Validator\CoreClass\Exists;
+use \HylianShield\Validator\CoreClass\Instance;
 
 /**
  * Method.
@@ -32,7 +40,17 @@ class Method extends \HylianShield\Validator
      */
     public function __construct($class)
     {
-        $validClass = new CoreClass;
+        $validClass = new LogicalXor(
+            new LogicalAnd(
+                new Object,
+                new LogicalNot(new CoreArray),
+                new LogicalNot(new Instance('\Function'))
+            ),
+            new LogicalAnd(
+                new String,
+                new Exists
+            )
+        );
 
         if (!$validClass($class)) {
             throw new InvalidArgumentException(
