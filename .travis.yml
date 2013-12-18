@@ -5,7 +5,10 @@ php:
   - 5.5
 before_script:
   - composer validate
-  - cd test
-script: phpunit
+  - mkdir -p build/logs
+script:
+  - phpunit -c test/phpunit.xml
+after_script:
+  - php vendor/bin/coveralls -v
 notifications:
   irc: "irc.freenode.net#johmanx"
