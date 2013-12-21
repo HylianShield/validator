@@ -7,7 +7,7 @@
  * @copyright 2013 Remko "CyberSecutor" Silvs
  */
 
-namespace HylianShield\Validator;
+namespace HylianShield\Validator\String;
 
 /**
  * Utf8.
@@ -40,7 +40,8 @@ class Utf8 extends \HylianShield\Validator\Range
      */
     function __construct() {
         $this->validator = function($string) {
-            return mb_check_encoding($string, 'UTF-8');
+            // mb_check_encoding will pass integers.
+            return is_string($string) ? mb_check_encoding($string, 'UTF-8') : false;
         };
     }
 }

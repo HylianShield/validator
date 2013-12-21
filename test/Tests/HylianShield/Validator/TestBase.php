@@ -133,7 +133,8 @@ abstract class TestBase extends \PHPUnit_Framework_TestCase
                 call_user_func_array(
                     array($this->validator, 'validate'),
                     $validation
-                )
+                ),
+                'For value (' . implode(',', $validation) . ')'
             );
         }
     }
