@@ -109,7 +109,7 @@ class Autoloader
         // Replace commonly used class breaking points in the class name to construct
         // a proper file path.
         $path = $this->path . str_replace('\\', DIRECTORY_SEPARATOR, $class) . '.php';
-var_dump($path);
+
         if (!file_exists($path)) {
             return false;
         }
