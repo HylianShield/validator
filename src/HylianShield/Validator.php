@@ -30,6 +30,27 @@ abstract class Validator
      * @var callable $validator
      */
     protected $validator;
+    
+    /**
+     * Temporary storage of the value to be validated.
+     *
+     * @var string $lastValue
+     */
+    private $lastValue;
+    
+    /**
+     * Temporary storage of the validation result.
+     *
+     * @var string $lastResult
+     */
+    private $lastResult;
+    
+    /**
+     * Set a message to be retrieved if a value doesn't pass the validator.
+     *
+     * @var string $lastMessage
+     */
+    private $lastMessage = '';
 
     /**
      * Validate the supplied value against the current validator.
@@ -40,12 +61,64 @@ abstract class Validator
      */
     public function validate($value)
     {
+        $this->lastValue = $value;
+        $this->lastMessage = '';
+        
         if (!is_callable($this->validator)) {
             throw new LogicException('Validator should be callable!');
         }
 
         // Check if the validator validates.
-        return (bool) call_user_func_array($this->validator, array($value));
+        $this->lastResult = (bool) call_user_func_array($this->validator, array($this->lastValue));
+        
+        return $this->lastResult;
+    }
+    
+    /**
+     * Set a validator.
+     *
+     * @param callable $callable
+     * @throws \LogicException when $callable is not callable
+     */
+    final public function setValidator($callable) {
+        if (!is_callable($callable)) {
+            throw new \LogicException('Validator is not callable');
+        }
+        
+        $this->validator = $callable;
+    }
+    
+    /**
+     * Set type.
+     *
+     * @param string $type
+     * @throws \LogicException when $type is not string
+     */
+    final public function setType($type) {
+        if (!is_string($type)) {
+            throw new \LogicException('Type must be a string');
+        }
+        
+        $this->type = $type;
+    }
+    
+    /**
+     * Get the message explaining the fail.
+     *
+     * @todo Add message for objects and arrays
+     * @return string
+     */
+    final public function getMessage() {
+        // Create a message.
+        if ($this->lastResult === false) {
+            if (is_scalar($this->lastValue)) {
+                $this->lastMessage = "Ivalid value ({$this->lastValue}). Expected value: " . $this->__tostring();
+            } else {
+                $this->lastMessage = 'Ivalid value. Expected value ' . $this->__tostring();
+            }
+        }
+        
+        return $this->lastMessage;
     }
 
     /**

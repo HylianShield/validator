@@ -31,19 +31,29 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase {
             // Call original clone.
             false,
             // Call autoload.
-            true,
-            // Mocked methods.
-            array('validate'),
-            // Clone arguments.
-            false
+            true
         );
-
-        $stub->expects($this->atLeastOnce())
-            ->method('validate')
-            ->will($this->returnValue(true));
+        
+        $stub->setType('test_type');
+        
+        // Test true.
+        $stub->setValidator(function(){ return true; });
 
         $this->assertTrue($stub->validate('something'));
         $this->assertTrue($stub('something else'));
+        $this->assertEmpty($stub->getMessage());
+        
+        // Test false.
+        $stub->setValidator(function(){ return false; });
+        
+        $this->assertFalse($stub->validate('something'));
+        $this->assertNotEmpty($stub->getMessage());
+        
+        // Test true, message should be empty again.
+        $stub->setValidator(function(){ return true; });
+        
+        $this->assertTrue($stub->validate('something'));
+        $this->assertEmpty($stub->getMessage());
     }
 
     /**
