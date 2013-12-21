@@ -1,6 +1,6 @@
 <?php
 /**
- * Validate strings.
+ * Validate UTF-8 strings.
  *
  * @package HylianShield
  * @subpackage Validator
