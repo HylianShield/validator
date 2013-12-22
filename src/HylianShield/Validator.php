@@ -50,7 +50,7 @@ abstract class Validator
      *
      * @var string $lastMessage
      */
-    private $lastMessage = '';
+    private $lastMessage = null;
 
     /**
      * Validate the supplied value against the current validator.
@@ -62,7 +62,7 @@ abstract class Validator
     public function validate($value)
     {
         $this->lastValue = $value;
-        $this->lastMessage = '';
+        $this->lastMessage = null;
         
         if (!is_callable($this->validator)) {
             throw new LogicException('Validator should be callable!');
@@ -82,12 +82,12 @@ abstract class Validator
      */
     final public function getMessage() {
         // Create a message.
-        if ($this->lastResult === false) {
+        if ($this->lastResult === false && !isset($this->lastMessage)) {
             if (is_scalar($this->lastValue)) {
-                $this->lastMessage = "Invalid value ("
-                    . var_export($this->lastValue) . "). Expected value: " . $this->__tostring();
+                $this->lastMessage = 'Invalid value supplied: (' . gettype($this->lastValue) . ') '
+                    . var_export($this->lastValue, true) . "; Expected: {$this}";
             } else {
-                $this->lastMessage = 'Invalid value. Expected value ' . $this->__tostring();
+                $this->lastMessage = "Invalid value supplied; Expected: {$this}";
             }
         }
         
