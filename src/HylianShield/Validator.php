@@ -75,34 +75,6 @@ abstract class Validator
     }
     
     /**
-     * Set a validator.
-     *
-     * @param callable $callable
-     * @throws \LogicException when $callable is not callable
-     */
-    final public function setValidator($callable) {
-        if (!is_callable($callable)) {
-            throw new \LogicException('Validator is not callable');
-        }
-        
-        $this->validator = $callable;
-    }
-    
-    /**
-     * Set type.
-     *
-     * @param string $type
-     * @throws \LogicException when $type is not string
-     */
-    final public function setType($type) {
-        if (!is_string($type)) {
-            throw new \LogicException('Type must be a string');
-        }
-        
-        $this->type = $type;
-    }
-    
-    /**
      * Get the message explaining the fail.
      *
      * @todo Add message for objects and arrays
@@ -112,9 +84,10 @@ abstract class Validator
         // Create a message.
         if ($this->lastResult === false) {
             if (is_scalar($this->lastValue)) {
-                $this->lastMessage = "Ivalid value ({$this->lastValue}). Expected value: " . $this->__tostring();
+                $this->lastMessage = "Invalid value ("
+                    . var_export($this->lastValue) . "). Expected value: " . $this->__tostring();
             } else {
-                $this->lastMessage = 'Ivalid value. Expected value ' . $this->__tostring();
+                $this->lastMessage = 'Invalid value. Expected value ' . $this->__tostring();
             }
         }
         
