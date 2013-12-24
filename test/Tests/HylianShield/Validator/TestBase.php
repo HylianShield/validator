@@ -130,7 +130,7 @@ abstract class TestBase extends \PHPUnit_Framework_TestCase
         $validationNr = 1;
         foreach ($this->validations as $validation) {
             $result = array_pop($validation);
-            
+
             $this->assertEquals(
                 $result,
                 call_user_func_array(
@@ -141,7 +141,15 @@ abstract class TestBase extends \PHPUnit_Framework_TestCase
                     . gettype(current($validation)) . ') '
                     . var_export(current($validation), true) . "; Expected: {$this->validator}"
             );
-            
+
+            $message = $this->validator->getMessage();
+
+            if ($result === false) {
+                $this->assertFalse(empty($message));
+            } else {
+                $this->assertEmpty($message);
+            }
+
             $validationNr++;
         }
     }

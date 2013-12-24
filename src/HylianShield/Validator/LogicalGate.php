@@ -61,7 +61,7 @@ abstract class LogicalGate extends \HylianShield\Validator
         // At least 2 validators should be present.
         if (count($validators) < 2) {
             throw new LogicException(
-                'Cannot perform a logical XOR with less than two validators.'
+                'Cannot perform a logical gate with less than two validators.'
             );
         }
 
@@ -70,10 +70,12 @@ abstract class LogicalGate extends \HylianShield\Validator
 
         // Check if the implemtation kept its promise.
         if (!is_callable($this->validator)) {
+            // @codeCoverageIgnoreStart
             throw new LogicException(
                 'Invalid implementation of createValidator by ' . get_class($this)
                 . '. It should set a callable to property validator.'
             );
+            // @codeCoverageIgnoreEnd
         }
     }
 
@@ -90,8 +92,8 @@ abstract class LogicalGate extends \HylianShield\Validator
      *
      * @return string
      */
-    public function __tostring()
+    final public function __tostring()
     {
-        return $this->gateType();
+        return call_user_func_array($this->gateType, array());
     }
 }
