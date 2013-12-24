@@ -126,15 +126,23 @@ abstract class TestBase extends \PHPUnit_Framework_TestCase
             }
         }
 
+        // Keep track of the validation count so you know which one failed.
+        $validationNr = 1;
         foreach ($this->validations as $validation) {
             $result = array_pop($validation);
+            
             $this->assertEquals(
                 $result,
                 call_user_func_array(
                     array($this->validator, 'validate'),
                     $validation
-                )
+                ),
+                "Test failed for validation number {$validationNr}. Value supplied: ("
+                    . gettype(current($validation)) . ') '
+                    . var_export(current($validation), true) . "; Expected: {$this->validator}"
             );
+            
+            $validationNr++;
         }
     }
 }
