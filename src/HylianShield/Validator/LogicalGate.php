@@ -1,6 +1,6 @@
 <?php
 /**
- * Validate a conditional list in a logical XOR fashion.
+ * Validate a conditional list in a logical gate.
  *
  * @package HylianShield
  * @subpackage Validator
