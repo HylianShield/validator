@@ -10,13 +10,19 @@
 namespace Tests\HylianShield\Validator;
 
 use \HylianShield\Validator;
-use \HylianShield\Validator\LogicalXor;
 
 /**
  * Logical XOR gate test.
  */
-class LogicalXorTest extends \PHPUnit_Framework_TestCase
+class LogicalXorTest extends \Tests\HylianShield\Validator\LogicalGateTestBase
 {
+    /**
+     * The name of the class to test.
+     *
+     * @var string $validatorClass
+     */
+    protected $validatorClass = '\HylianShield\Validator\LogicalXor';
+
     /**
      * Provide a set of instances.
      *
@@ -28,7 +34,7 @@ class LogicalXorTest extends \PHPUnit_Framework_TestCase
         return array(
             // Each entry represents an argument.
             array(
-                new LogicalXor(
+                array(
                     new Validator\Float,
                     new Validator\Number
                 ),
@@ -37,7 +43,7 @@ class LogicalXorTest extends \PHPUnit_Framework_TestCase
                 'xor(float:0,0; number:0,0)'
             ),
             array(
-              new LogicalXor(
+                array(
                     new Validator\Float,
                     new Validator\Integer
                 ),
@@ -46,7 +52,7 @@ class LogicalXorTest extends \PHPUnit_Framework_TestCase
                 'xor(float:0,0; integer:0,0)'
             ),
             array(
-              new LogicalXor(
+                array(
                     new Validator\Float,
                     new Validator\Integer
                 ),
@@ -55,27 +61,5 @@ class LogicalXorTest extends \PHPUnit_Framework_TestCase
                 'xor(float:0,0; integer:0,0)'
             )
         );
-    }
-
-    /**
-     * Test the Logical XOR.
-     *
-     * @dataProvider instanceProvider
-     */
-    public function testLogicalXor($validator, $value, $shouldPass, $string)
-    {
-        $this->assertEquals($shouldPass, $validator($value));
-        $this->assertEquals($string, (string) $validator);
-    }
-
-    /**
-     * Test a lack of validators.
-     *
-     * @expectedException \LogicException
-     * @expectedExceptionMessage Cannot perform a logical gate with less than two validators.
-     */
-    public function testLackOfValidators()
-    {
-        new LogicalXor(new Validator\Integer);
     }
 }

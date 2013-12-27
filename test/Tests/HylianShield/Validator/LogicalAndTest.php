@@ -10,13 +10,19 @@
 namespace Tests\HylianShield\Validator;
 
 use \HylianShield\Validator;
-use \HylianShield\Validator\LogicalAnd;
 
 /**
  * Logical AND gate test.
  */
-class LogicalAndTest extends \PHPUnit_Framework_TestCase
+class LogicalAndTest extends \Tests\HylianShield\Validator\LogicalGateTestBase
 {
+    /**
+     * The name of the class to test.
+     *
+     * @var string $validatorClass
+     */
+    protected $validatorClass = '\HylianShield\Validator\LogicalAnd';
+
     /**
      * Provide a set of instances.
      *
@@ -28,72 +34,23 @@ class LogicalAndTest extends \PHPUnit_Framework_TestCase
         return array(
             // Each entry represents an argument.
             array(
-                new LogicalAnd(
+                array(
                     new Validator\Float,
                     new Validator\Number
                 ),
                 1.0,
-                true
+                true,
+                'and(float:0,0; number:0,0)'
             ),
             array(
-              new LogicalAnd(
+                array(
                     new Validator\Float,
                     new Validator\Integer
                 ),
                 1.0,
-                false
+                false,
+                'and(float:0,0; integer:0,0)'
             )
         );
-    }
-
-    /**
-     * Test the Logical AND.
-     *
-     * @dataProvider instanceProvider
-     */
-    public function testLogicalAnd($validator, $value, $shouldPass)
-    {
-        $this->assertEquals($shouldPass, $validator($value));
-    }
-
-    /**
-     * Test a lack of validators.
-     *
-     * @expectedException \LogicException
-     * @expectedExceptionMessage Cannot perform a logical gate with less than two validators.
-     */
-    public function testLackOfValidators()
-    {
-        new LogicalAnd(new Validator\Integer);
-    }
-
-    /**
-     * Provide invalid arguments.
-     *
-     * @return array
-     */
-    public function invalidArgumentProvider()
-    {
-        // Each entry represents a function call.
-        return array(
-            // Each entry represents an argument.
-            array('aap', 'noot'),
-            array(12, 12.12),
-            array(new \StdClass, new \DateTime),
-            array(null, true),
-            array(true, true),
-            array(new Validator\Integer, false)
-        );
-    }
-
-    /**
-     * Test invalid arguments
-     *
-     * @expectedException \InvalidArgumentException
-     * @dataProvider invalidArgumentProvider
-     */
-    public function testInvalidArguments($a = null, $b = null)
-    {
-        new LogicalAnd($a, $b);
     }
 }

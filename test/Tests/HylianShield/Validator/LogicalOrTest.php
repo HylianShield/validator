@@ -10,13 +10,19 @@
 namespace Tests\HylianShield\Validator;
 
 use \HylianShield\Validator;
-use \HylianShield\Validator\LogicalOr;
 
 /**
  * Logical OR gate test.
  */
-class LogicalOrTest extends \PHPUnit_Framework_TestCase
+class LogicalOrTest extends \Tests\HylianShield\Validator\LogicalGateTestBase
 {
+    /**
+     * The name of the class to test.
+     *
+     * @var string $validatorClass
+     */
+    protected $validatorClass = '\HylianShield\Validator\LogicalOr';
+
     /**
      * Provide a set of instances.
      *
@@ -28,50 +34,32 @@ class LogicalOrTest extends \PHPUnit_Framework_TestCase
         return array(
             // Each entry represents an argument.
             array(
-                new LogicalOr(
+                array(
                     new Validator\Float,
                     new Validator\Number
                 ),
                 1.0,
-                true
+                true,
+                'or(float:0,0; number:0,0)'
             ),
             array(
-              new LogicalOr(
+                array(
                     new Validator\Float,
                     new Validator\Integer
                 ),
                 1.0,
-                true
+                true,
+                'or(float:0,0; integer:0,0)'
             ),
             array(
-              new LogicalOr(
+                array(
                     new Validator\Float,
                     new Validator\Integer
                 ),
                 '1.0',
-                false
+                false,
+                'or(float:0,0; integer:0,0)'
             )
         );
-    }
-
-    /**
-     * Test the Logical OR.
-     *
-     * @dataProvider instanceProvider
-     */
-    public function testLogicalOr($validator, $value, $shouldPass)
-    {
-        $this->assertEquals($shouldPass, $validator($value));
-    }
-
-    /**
-     * Test a lack of validators.
-     *
-     * @expectedException \LogicException
-     * @expectedExceptionMessage Cannot perform a logical gate with less than two validators.
-     */
-    public function testLackOfValidators()
-    {
-        new LogicalOr(new Validator\Integer);
     }
 }
