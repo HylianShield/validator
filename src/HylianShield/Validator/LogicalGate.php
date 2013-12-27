@@ -27,7 +27,7 @@ abstract class LogicalGate extends \HylianShield\Validator
     /**
      * Initialize the validator.
      *
-     * @param \HylianShield\Validator $1 optional
+     * @param \HylianShield\Validator $1
      * @param \HylianShield\Validator $2 optional
      * @throws \InvalidArgumentException if one of the validators is not an instance
      *   of \HylianShield\Validator

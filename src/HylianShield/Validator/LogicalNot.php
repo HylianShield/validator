@@ -27,9 +27,9 @@ class LogicalNot extends \HylianShield\Validator
     /**
      * The identifier of the validator passed to LogicalNot.
      *
-     * @var string $validatorIdentifier
+     * @var callable $validatorIdentifier
      */
-    private $validatorIdentifier;
+    private $gateType;
 
     /**
      * Initialize the validator.
@@ -38,7 +38,10 @@ class LogicalNot extends \HylianShield\Validator
      */
     final public function __construct(\HylianShield\Validator $validator)
     {
-        $this->validatorIdentifier = (string) $validator;
+        $type =& $this->type;
+        $this->gateType = function () use ($validator, $type) {
+            return "{$type}({$validator})";
+        };
 
         // Create a custom validator that returns the inverse value of the
         // supplied validator.
@@ -52,8 +55,8 @@ class LogicalNot extends \HylianShield\Validator
      *
      * @return string
      */
-    public function __tostring()
+    final public function __tostring()
     {
-        return "not({$this->validatorIdentifier})";
+        return call_user_func_array($this->gateType, array());
     }
 }
