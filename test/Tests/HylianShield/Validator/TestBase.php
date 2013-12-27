@@ -10,7 +10,6 @@
 namespace Tests\HylianShield\Validator;
 
 use \ReflectionClass;
-use \ReflectionMethod;
 
 /**
  * TestBase.
@@ -55,20 +54,19 @@ abstract class TestBase extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $reflectionMethod = new ReflectionMethod(
-            $this->validatorClass,
-            '__construct'
-        );
+        $reflectionClass = new ReflectionClass($this->validatorClass);
+        $reflectionMethod = $reflectionClass->getConstructor();
 
         // If the validator doesn't require any parameters on construct, create
         // a full-fledged instance right away.
-        if ($reflectionMethod->getNumberOfRequiredParameters() === 0) {
+        if ($reflectionMethod === null
+            || $reflectionMethod->getNumberOfRequiredParameters() === 0
+        ) {
             $this->validator = new $this->validatorClass;
         } else {
             // Creating an instance without a constructor cannot be done on 5.3.
             if (phpversion() >= 5.4) {
                 // If not, create an instance while skipping the constructor.
-                $reflectionClass = new ReflectionClass($this->validatorClass);
                 $this->validator = $reflectionClass->newInstanceWithoutConstructor();
             }
 
