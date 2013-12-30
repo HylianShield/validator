@@ -63,9 +63,11 @@ abstract class Range extends \HylianShield\Validator
         if (!(is_int($minLength) || is_float($minLength))
             || !(is_int($maxLength) || is_float($maxLength))
         ) {
+            // @codeCoverageIgnoreStart
             throw new InvalidArgumentException(
                 'Min and max length should be of type integer or type float.'
             );
+            // @codeCoverageIgnoreEnd
         }
 
         $this->minLength = $minLength;
@@ -83,7 +85,9 @@ abstract class Range extends \HylianShield\Validator
     final public function validate($value)
     {
         if (!is_callable($this->lengthCheck)) {
+            // @codeCoverageIgnoreStart
             throw new LogicException('Length checker should be callable!');
+            // @codeCoverageIgnoreEnd
         }
 
         $minLength = $this->minLength;
@@ -92,9 +96,11 @@ abstract class Range extends \HylianShield\Validator
         if (!(is_int($minLength) || is_float($minLength))
             || !(is_int($maxLength) || is_float($maxLength))
         ) {
+            // @codeCoverageIgnoreStart
             throw new InvalidArgumentException(
                 'Min and max length should be of type integer or type float.'
             );
+            // @codeCoverageIgnoreEnd
         }
 
         // Check if the basic validation validates.

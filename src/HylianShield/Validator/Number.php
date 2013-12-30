@@ -9,6 +9,8 @@
 
 namespace HylianShield\Validator;
 
+use \InvalidArgumentException;
+
 /**
  * Number.
  */

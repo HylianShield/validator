@@ -30,21 +30,21 @@ abstract class Validator
      * @var callable $validator
      */
     protected $validator;
-    
+
     /**
      * Temporary storage of the value to be validated.
      *
      * @var string $lastValue
      */
     private $lastValue;
-    
+
     /**
      * Temporary storage of the validation result.
      *
      * @var string $lastResult
      */
     private $lastResult;
-    
+
     /**
      * Set a message to be retrieved if a value doesn't pass the validator.
      *
@@ -63,17 +63,19 @@ abstract class Validator
     {
         $this->lastValue = $value;
         $this->lastMessage = null;
-        
+
         if (!is_callable($this->validator)) {
+            // @codeCoverageIgnoreStart
             throw new LogicException('Validator should be callable!');
+            // @codeCoverageIgnoreEnd
         }
 
         // Check if the validator validates.
         $this->lastResult = (bool) call_user_func_array($this->validator, array($this->lastValue));
-        
+
         return $this->lastResult;
     }
-    
+
     /**
      * Get the message explaining the fail.
      *
@@ -90,7 +92,7 @@ abstract class Validator
                 $this->lastMessage = "Invalid value supplied; Expected: {$this}";
             }
         }
-        
+
         return $this->lastMessage;
     }
 
@@ -114,9 +116,11 @@ abstract class Validator
     final public function type()
     {
         if (!is_string($this->type)) {
+            // @codeCoverageIgnoreStart
             throw new LogicException(
                 'Property type should be of data type string!'
             );
+            // @codeCoverageIgnoreEnd
         }
 
         return $this->type;

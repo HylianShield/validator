@@ -9,8 +9,6 @@
 
 namespace Tests\HylianShield\Validator;
 
-use \HylianShield\Validator\String;
-
 /**
  * StringTest.
  */

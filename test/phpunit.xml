@@ -7,6 +7,7 @@
   <filter>
     <blacklist>
       <directory>.</directory>
+      <directory>../vendor</directory>
     </blacklist>
   </filter>
   <logging>
