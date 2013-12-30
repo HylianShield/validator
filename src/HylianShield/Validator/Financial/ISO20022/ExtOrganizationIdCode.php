@@ -19,7 +19,7 @@ class ExtOrganizationIdCode extends \HylianShield\Validator\Regexp
      *
      * @var string $type
      */
-    protected $type = 'financial_extorganizationidcode';
+    protected $type = 'financial_iso20022_extorganizationidcode';
 
     /**
      * A list of organization ID's for the OrgId.
