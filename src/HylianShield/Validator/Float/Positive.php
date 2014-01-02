@@ -19,15 +19,15 @@ class Positive extends \HylianShield\Validator\Float
      *
      * @var string $type
      */
-    protected $type = 'positive_float';
+    protected $type = 'float_positive';
 
     /**
-     * Create a validator for a positive float.
+     * The minimum length of the value.
+     *
+     * PHP normally uses a precision of the IEEE 754 double precision format.
+     * @see http://php.net/manual/en/language.types.float.php
+     *
+     * @var integer|float $minLength
      */
-    public function __construct()
-    {
-        // PHP normally uses a precision of the IEEE 754 double precision format.
-        // @see http://php.net/manual/en/language.types.float.php
-        parent::__construct(1e-16);
-    }
+    protected $minLength = 1e-16;
 }

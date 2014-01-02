@@ -36,10 +36,12 @@ class Utf8 extends \HylianShield\Validator\Range
     protected $lengthCheck = 'mb_strlen';
 
     /**
-     * Initialize the validator.
+     * Create the validator.
+     *
+     * @return callable
      */
-    function __construct() {
-        $this->validator = function($string) {
+    protected function createValidator() {
+        return function($string) {
             // mb_check_encoding will pass integers.
             return is_string($string) && mb_check_encoding($string, 'UTF-8');
         };

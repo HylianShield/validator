@@ -38,25 +38,15 @@ class Number extends \HylianShield\Validator\Range
     protected $lengthCheck = 'round';
 
     /**
-     * Check the properties of the validator to ensure a perfect implementation.
+     * Create the validator
      *
-     * @param integer $minLength the minimum length of the value
-     * @param integer $maxLength the maximum length of the value
-     * @throws \InvalidArgumentException when either minLength of maxLength is not an integer
+     * @return callable
      */
-    public function __construct($minLength = 0, $maxLength = 0)
+    protected function createValidator()
     {
-        if (!is_int($minLength) || !is_int($maxLength)) {
-            throw new InvalidArgumentException(
-                'Min and max length should be of type integer.'
-            );
-        }
-
         // Set a custom validator.
-        $this->validator = function ($value) {
+        return function ($value) {
             return is_int($value) || is_float($value);
         };
-
-        parent::__construct($minLength, $maxLength);
     }
 }
