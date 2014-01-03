@@ -27,4 +27,11 @@ class Positive extends \HylianShield\Validator\Integer
      * @var integer $minLength
      */
     protected $minLength = 1;
+
+    /**
+     * The maximum length of the value.
+     *
+     * @var integer $maxLength
+     */
+    protected $maxLength = 0;
 }

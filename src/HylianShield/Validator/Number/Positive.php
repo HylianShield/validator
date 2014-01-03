@@ -30,4 +30,11 @@ class Positive extends \HylianShield\Validator\Number
      * @var integer|float $minLength
      */
     protected $minLength = 1e-16;
+
+    /**
+     * The maximum length of the value.
+     *
+     * @var integer|float $maxLength
+     */
+    protected $maxLength = 0;
 }
