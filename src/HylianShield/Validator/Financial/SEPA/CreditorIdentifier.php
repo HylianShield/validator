@@ -10,7 +10,7 @@
 namespace HylianShield\Validator\Financial\SEPA;
 
 /**
- * String.
+ * Creditor Identifier.
  */
 class CreditorIdentifier extends \HylianShield\Validator\Range
 {

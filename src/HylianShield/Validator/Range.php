@@ -93,24 +93,34 @@ abstract class Range extends \HylianShield\Validator
 
         $minLength = $this->minLength;
         $maxLength = $this->maxLength;
+        $lengthCheck = $this->lengthCheck;
+        $lastResult = $this->lastResult;
 
-        $this->validator = function ($value) use ($validator, $minLength, $maxLength) {
+        $this->validator = function (
+            $value
+        ) use (
+            $validator,
+            $minLength,
+            $maxLength,
+            $lengthCheck,
+            $lastResult
+        ) {
             // Check if the basic validation validates.
             $valid = call_user_func_array($validator, array($value));
 
             // Check if the minimum length validates.
             $valid = $valid && (
                 $minLength === 0
-                || call_user_func_array($this->lengthCheck, array($value)) >= $minLength
+                || call_user_func_array($lengthCheck, array($value)) >= $minLength
             );
 
             // Check if the maximum length validates.
             $valid = $valid && (
                 $maxLength === 0
-                || call_user_func_array($this->lengthCheck, array($value)) <= $maxLength
+                || call_user_func_array($lengthCheck, array($value)) <= $maxLength
             );
 
-            $this->lastResult = $valid;
+            $lastResult = $valid;
 
             return $valid;
         };
