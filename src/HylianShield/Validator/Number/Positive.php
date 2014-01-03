@@ -37,4 +37,11 @@ class Positive extends \HylianShield\Validator\Number
      * @var integer|float $maxLength
      */
     protected $maxLength = 0;
+
+    /**
+     * Define the ability to overload the range while constucting the object.
+     *
+     * @var boolean $canOverloadRange
+     */
+    protected $canOverloadRange = false;
 }

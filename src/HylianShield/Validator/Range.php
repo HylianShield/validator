@@ -31,6 +31,13 @@ abstract class Range extends \HylianShield\Validator
     protected $maxLength = 0;
 
     /**
+     * Define the ability to overload the range while constucting the object.
+     *
+     * @var boolean $canOverloadRange
+     */
+    protected $canOverloadRange = true;
+
+    /**
      * The type.
      *
      * @var string $type
@@ -58,8 +65,20 @@ abstract class Range extends \HylianShield\Validator
      * @param integer $maxLength the maximum length of the value
      * @throws \InvalidArgumentException when either minLength of maxLength is not an integer or float
      */
-    final public function __construct($minLength = 0, $maxLength = 0)
+    final public function __construct($minLength = null, $maxLength = null)
     {
+        if ($this->canOverloadRange === false || !isset($minLength)) {
+            $minLength = $this->minLength;
+        } elseif (isset($minLength)) {
+            $this->minLength = $minLength;
+        }
+
+        if ($this->canOverloadRange === false || !isset($maxLength)) {
+            $maxLength = $this->maxLength;
+        } elseif (isset($maxLength)) {
+            $this->maxLength = $maxLength;
+        }
+
         if (!(is_int($minLength) || is_float($minLength))
             || !(is_int($maxLength) || is_float($maxLength))
         ) {
@@ -81,18 +100,6 @@ abstract class Range extends \HylianShield\Validator
             // @codeCoverageIgnoreEnd
         }
 
-        if (!(is_int($minLength) || is_float($minLength))
-            || !(is_int($maxLength) || is_float($maxLength))
-        ) {
-            // @codeCoverageIgnoreStart
-            throw new InvalidArgumentException(
-                'Min and max length should be of type integer or type float.'
-            );
-            // @codeCoverageIgnoreEnd
-        }
-
-        $minLength = $this->minLength;
-        $maxLength = $this->maxLength;
         $lengthCheck = $this->lengthCheck;
         $lastResult = $this->lastResult;
 
@@ -124,9 +131,6 @@ abstract class Range extends \HylianShield\Validator
 
             return $valid;
         };
-
-        $this->minLength = $minLength;
-        $this->maxLength = $maxLength;
     }
 
     /**

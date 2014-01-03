@@ -34,4 +34,11 @@ class Negative extends \HylianShield\Validator\Integer
      * @var integer $maxLength
      */
     protected $maxLength = -1;
+
+    /**
+     * Define the ability to overload the range while constucting the object.
+     *
+     * @var boolean $canOverloadRange
+     */
+    protected $canOverloadRange = false;
 }

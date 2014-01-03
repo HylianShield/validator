@@ -36,6 +36,13 @@ class CreditorIdentifier extends \HylianShield\Validator\Range
     protected $minLength = 12;
 
     /**
+     * Define the ability to overload the range while constucting the object.
+     *
+     * @var boolean $canOverloadRange
+     */
+    protected $canOverloadRange = false;
+
+    /**
      * The maximum length of the value.
      *
      * @var integer $maxLength
