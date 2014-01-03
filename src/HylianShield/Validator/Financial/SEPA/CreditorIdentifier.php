@@ -12,7 +12,7 @@ namespace HylianShield\Validator\Financial\SEPA;
 /**
  * Creditor Identifier.
  */
-class CreditorIdentifier extends \HylianShield\Validator\Range
+class CreditorIdentifier extends \HylianShield\Validator\Range\Immutable
 {
     /**
      * The type.
@@ -34,13 +34,6 @@ class CreditorIdentifier extends \HylianShield\Validator\Range
      * @var integer $minLength
      */
     protected $minLength = 12;
-
-    /**
-     * Define the ability to overload the range while constucting the object.
-     *
-     * @var boolean $canOverloadRange
-     */
-    protected $canOverloadRange = false;
 
     /**
      * The maximum length of the value.

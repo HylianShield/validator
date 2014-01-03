@@ -12,7 +12,7 @@ namespace HylianShield\Validator\Float;
 /**
  * Positive.
  */
-class Positive extends \HylianShield\Validator\Float
+class Positive extends \HylianShield\Validator\Range\Immutable
 {
     /**
      * The type.
@@ -32,16 +32,16 @@ class Positive extends \HylianShield\Validator\Float
     protected $minLength = 1e-16;
 
     /**
-     * The maximum length of the value.
+     * The validator.
      *
-     * @var integer|float $maxLength
+     * @var callable $validator
      */
-    protected $maxLength = 0;
+    protected $validator = 'is_float';
 
     /**
-     * Define the ability to overload the range while constucting the object.
+     * The callable to return the length of the value.
      *
-     * @var boolean $canOverloadRange
+     * @var callable $lengthCheck
      */
-    protected $canOverloadRange = false;
+    protected $lengthCheck = 'floatval';
 }

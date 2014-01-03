@@ -12,7 +12,7 @@ namespace HylianShield\Validator\String;
 /**
  * Utf8.
  */
-class Utf8 extends \HylianShield\Validator\Range
+class Utf8 extends \HylianShield\Validator\Range\Mutable
 {
     /**
      * The type.

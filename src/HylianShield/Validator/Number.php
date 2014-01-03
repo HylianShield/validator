@@ -14,7 +14,7 @@ use \InvalidArgumentException;
 /**
  * Number.
  */
-class Number extends \HylianShield\Validator\Range
+class Number extends \HylianShield\Validator\Range\Mutable
 {
     /**
      * The type.
@@ -24,18 +24,11 @@ class Number extends \HylianShield\Validator\Range
     protected $type = 'number';
 
     /**
-     * The validator.
-     *
-     * @var callable $validator
-     */
-    protected $validator;
-
-    /**
      * The callable to return the length of the value.
      *
      * @var callable $lengthCheck
      */
-    protected $lengthCheck = 'round';
+    protected $lengthCheck = 'floatval';
 
     /**
      * Create the validator

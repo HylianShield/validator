@@ -12,7 +12,7 @@ namespace HylianShield\Validator\Integer;
 /**
  * Positive.
  */
-class Positive extends \HylianShield\Validator\Integer
+class Positive extends \HylianShield\Validator\Range\Immutable
 {
     /**
      * The type.
@@ -22,23 +22,16 @@ class Positive extends \HylianShield\Validator\Integer
     protected $type = 'integer_positive';
 
     /**
+     * The validator.
+     *
+     * @var string $validator
+     */
+    protected $validator = 'is_int';
+
+    /**
      * The minimum length of the value.
      *
      * @var integer $minLength
      */
     protected $minLength = 1;
-
-    /**
-     * The maximum length of the value.
-     *
-     * @var integer $maxLength
-     */
-    protected $maxLength = 0;
-
-    /**
-     * Define the ability to overload the range while constucting the object.
-     *
-     * @var boolean $canOverloadRange
-     */
-    protected $canOverloadRange = false;
 }

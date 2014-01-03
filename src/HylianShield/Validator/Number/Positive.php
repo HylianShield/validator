@@ -12,7 +12,7 @@ namespace HylianShield\Validator\Number;
 /**
  * Positive.
  */
-class Positive extends \HylianShield\Validator\Number
+class Positive extends \HylianShield\Validator\Range\Immutable
 {
     /**
      * The type.
@@ -27,21 +27,27 @@ class Positive extends \HylianShield\Validator\Number
      * PHP normally uses a precision of the IEEE 754 double precision format.
      * @see http://php.net/manual/en/language.types.float.php
      *
-     * @var integer|float $minLength
+     * @var float $minLength
      */
     protected $minLength = 1e-16;
 
     /**
-     * The maximum length of the value.
+     * The callable to return the length of the value.
      *
-     * @var integer|float $maxLength
+     * @var callable $lengthCheck
      */
-    protected $maxLength = 0;
+    protected $lengthCheck = 'floatval';
 
     /**
-     * Define the ability to overload the range while constucting the object.
+     * Create the validator
      *
-     * @var boolean $canOverloadRange
+     * @return callable
      */
-    protected $canOverloadRange = false;
+    protected function createValidator()
+    {
+        // Set a custom validator.
+        return function ($value) {
+            return is_int($value) || is_float($value);
+        };
+    }
 }
