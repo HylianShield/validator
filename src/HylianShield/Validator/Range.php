@@ -31,6 +31,13 @@ abstract class Range extends \HylianShield\Validator
     protected $maxLength = 0;
 
     /**
+     * Define the ability to overload the range while constucting the object.
+     *
+     * @var boolean $canOverloadRange
+     */
+    protected $canOverloadRange = true;
+
+    /**
      * The type.
      *
      * @var string $type
@@ -58,8 +65,20 @@ abstract class Range extends \HylianShield\Validator
      * @param integer $maxLength the maximum length of the value
      * @throws \InvalidArgumentException when either minLength of maxLength is not an integer or float
      */
-    public function __construct($minLength = 0, $maxLength = 0)
+    final public function __construct($minLength = null, $maxLength = null)
     {
+        if ($this->canOverloadRange === false || !isset($minLength)) {
+            $minLength = $this->minLength;
+        } elseif (isset($minLength)) {
+            $this->minLength = $minLength;
+        }
+
+        if ($this->canOverloadRange === false || !isset($maxLength)) {
+            $maxLength = $this->maxLength;
+        } elseif (isset($maxLength)) {
+            $this->maxLength = $maxLength;
+        }
+
         if (!(is_int($minLength) || is_float($minLength))
             || !(is_int($maxLength) || is_float($maxLength))
         ) {
@@ -70,55 +89,57 @@ abstract class Range extends \HylianShield\Validator
             // @codeCoverageIgnoreEnd
         }
 
-        $this->minLength = $minLength;
-        $this->maxLength = $maxLength;
-    }
+        $validator = $this->createValidator();
+        if (!is_callable($validator)) {
+            throw new LogicException('Validator should be callable!');
+        }
 
-    /**
-     * Validate the supplied value against the current validator.
-     *
-     * @param mixed $value
-     * @return boolean
-     * @throws \LogicException when $this->validator or $this->lengthCheck is not callable
-     * @throws \LogicException when either minLength of maxLength is not an integer or float
-     */
-    final public function validate($value)
-    {
         if (!is_callable($this->lengthCheck)) {
             // @codeCoverageIgnoreStart
             throw new LogicException('Length checker should be callable!');
             // @codeCoverageIgnoreEnd
         }
 
-        $minLength = $this->minLength;
-        $maxLength = $this->maxLength;
+        $lengthCheck = $this->lengthCheck;
+        $lastResult = $this->lastResult;
 
-        if (!(is_int($minLength) || is_float($minLength))
-            || !(is_int($maxLength) || is_float($maxLength))
+        $this->validator = function (
+            $value
+        ) use (
+            $validator,
+            $minLength,
+            $maxLength,
+            $lengthCheck,
+            $lastResult
         ) {
-            // @codeCoverageIgnoreStart
-            throw new InvalidArgumentException(
-                'Min and max length should be of type integer or type float.'
+            // Check if the basic validation validates.
+            $valid = call_user_func_array($validator, array($value));
+
+            // Check if the minimum length validates.
+            $valid = $valid && (
+                $minLength === 0
+                || call_user_func_array($lengthCheck, array($value)) >= $minLength
             );
-            // @codeCoverageIgnoreEnd
-        }
 
-        // Check if the basic validation validates.
-        $valid = parent::validate($value);
+            // Check if the maximum length validates.
+            $valid = $valid && (
+                $maxLength === 0
+                || call_user_func_array($lengthCheck, array($value)) <= $maxLength
+            );
 
-        // Check if the minimum length validates.
-        $valid = $valid && (
-            $minLength === 0
-            || call_user_func_array($this->lengthCheck, array($value)) >= $minLength
-        );
+            $lastResult = $valid;
 
-        // Check if the maximum length validates.
-        $valid = $valid && (
-            $maxLength === 0
-            || call_user_func_array($this->lengthCheck, array($value)) <= $maxLength
-        );
+            return $valid;
+        };
+    }
 
-        return $valid;
+    /**
+     * Return the current validator or overload to create a new one.
+     *
+     * @return callable
+     */
+    protected function createValidator() {
+        return $this->validator;
     }
 
     /**

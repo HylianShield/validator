@@ -19,13 +19,26 @@ class Positive extends \HylianShield\Validator\Integer
      *
      * @var string $type
      */
-    protected $type = 'positive_integer';
+    protected $type = 'integer_positive';
 
     /**
-     * Create a validator for a positive integer.
+     * The minimum length of the value.
+     *
+     * @var integer $minLength
      */
-    public function __construct()
-    {
-        parent::__construct(1);
-    }
+    protected $minLength = 1;
+
+    /**
+     * The maximum length of the value.
+     *
+     * @var integer $maxLength
+     */
+    protected $maxLength = 0;
+
+    /**
+     * Define the ability to overload the range while constucting the object.
+     *
+     * @var boolean $canOverloadRange
+     */
+    protected $canOverloadRange = false;
 }

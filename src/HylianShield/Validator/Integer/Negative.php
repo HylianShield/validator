@@ -19,13 +19,26 @@ class Negative extends \HylianShield\Validator\Integer
      *
      * @var string $type
      */
-    protected $type = 'negative_integer';
+    protected $type = 'integer_negative';
 
     /**
-     * Create a validator for a negative integer.
+     * The minimum length of the value.
+     *
+     * @var integer $minLength
      */
-    public function __construct()
-    {
-        parent::__construct(0, -1);
-    }
+    protected $minLength = 0;
+
+    /**
+     * The maximum length of the value.
+     *
+     * @var integer $maxLength
+     */
+    protected $maxLength = -1;
+
+    /**
+     * Define the ability to overload the range while constucting the object.
+     *
+     * @var boolean $canOverloadRange
+     */
+    protected $canOverloadRange = false;
 }
