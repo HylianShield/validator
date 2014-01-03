@@ -1,10 +1,18 @@
+BASE = "test/Tests/HylianShield/Validator/"
+FLAGS = ""
+
+# If a validator is supplied, we want to unit test that.
+ifneq ($(strip $(VALIDATOR)),)
+        FLAGS = $(BASE)$(VALIDATOR)"Test.php"
+endif
+
 base: composer precommit test
 
 codecoverage:
-	@vendor/bin/phpunit -c test/phpunit-coverage.xml
+	@vendor/bin/phpunit -c test/phpunit-coverage.xml $(FLAGS)
 
 unittest:
-	@vendor/bin/phpunit -c test/phpunit.xml
+	@vendor/bin/phpunit -c test/phpunit.xml $(FLAGS)
 
 composer:
 	@curl -sS https://getcomposer.org/installer | sudo php
