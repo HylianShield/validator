@@ -99,7 +99,7 @@ abstract class Range extends \HylianShield\Validator
             // Check if the maximum length validates.
             // Use a cached version of the length, if available, or trigger the length check.
             if ($maxLength !== 0
-                && ($length ?: call_user_func_array($lengthCheck, array($value))) > $maxLength
+                && (isset($length) ? $length : call_user_func_array($lengthCheck, array($value))) > $maxLength
             ) {
                 return false;
             }
