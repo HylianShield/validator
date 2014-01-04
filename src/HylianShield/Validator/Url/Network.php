@@ -89,7 +89,31 @@ class Network extends \HylianShield\Validator
      */
     final public function __construct()
     {
-        $this->validator = function ($url) {
+        // These references are so we can safely introduce the selected properties
+        // in the scope of the validator in PHP <= 5.3.
+
+        $schemes =& $this->allowedSchemes;
+        $ports =& $this->allowedPorts;
+        $allowedParameters =& $this->allowedQueryParameters;
+        $requiredParameters =& $this->requiredQueryParameters;
+        $invalidParameters =& $this->invalidQueryParameters;
+
+        $emptyPathAllowed =& $this->emptyPathAllowed;
+        $requireUser =& $this->requireUser;
+        $requirePassword =& $this->requirePassword;
+        $requirePort =& $this->requirePort;
+
+        $this->validator = function ($url) use (
+            $schemes,
+            $emptyPathAllowed,
+            $requireUser,
+            $requirePassword,
+            $requirePort,
+            $ports,
+            $allowedParameters,
+            $requiredParameters,
+            $invalidParameters
+        ) {
             $parsed = parse_url($url);
             
             // The URL is seriously malformed. Nothing more we can do.
@@ -110,9 +134,7 @@ class Network extends \HylianShield\Validator
             }
 
             // Additionally, if we only allow a range of schemes, test for that.
-            if (!empty($this->allowedSchemes)
-                && !in_array($parsed['scheme'], $this->allowedSchemes)
-            ) {
+            if (!empty($schemes)&& !in_array($parsed['scheme'], $schemes)) {
                 return false;
             }
 
@@ -127,29 +149,29 @@ class Network extends \HylianShield\Validator
             // Currently, this logic will never be triggered.
 
             // We don't allow empty paths.
-            if (!$this->emptyPathAllowed && empty($path)) {
+            if (!$emptyPathAllowed && empty($path)) {
                 return false;
             }
 
             // Check if we meet the user requirement.
-            if ($this->requireUser && empty($parsed['user'])) {
+            if ($requireUser && empty($parsed['user'])) {
                 return false;
             }
 
             // Check if we meet the password requirement.
-            if ($this->requirePassword && empty($parsed['pass'])) {
+            if ($requirePassword && empty($parsed['pass'])) {
                 return false;
             }
 
             // Check if our port meets the requirements.
-            if ($this->requirePort && empty($parsed['port'])) {
+            if ($requirePort && empty($parsed['port'])) {
                 return false;
             }
 
             // Check if the port meets our supplied range.
             if (!empty($parsed['port'])
-                && !empty($this->allowedPorts)
-                && !in_array((int) $parsed['port'], $this->allowedPorts)
+                && !empty($ports)
+                && !in_array((int) $parsed['port'], $ports)
             ) {
                 return false;
             }
@@ -167,28 +189,28 @@ class Network extends \HylianShield\Validator
                 // Currently, this logic will never be triggered.
 
                 // Check if any of the parameters is not allowed.
-                if (!empty($this->allowedQueryParameters)) {
+                if (!empty($allowedParameters)) {
                     foreach ($queryKeys as $key) {
                         // Well, this particular one was not allowed.
-                        if (!in_array($key, $this->allowedQueryParameters)) {
+                        if (!in_array($key, $allowedParameters)) {
                             return false;
                         }
                     }
                 }
 
                 // Check if one of them matches the invalid list.
-                if (!empty($this->invalidQueryParameters)) {
+                if (!empty($invalidParameters)) {
                     foreach ($queryKeys as $key) {
                         // Well, this particular one was not allowed.
-                        if (in_array($key, $this->invalidQueryParameters)) {
+                        if (in_array($key, $invalidParameters)) {
                             return false;
                         }
                     }
                 }
 
                 // Check if all required keys are present.
-                if (!empty($this->requiredQueryParameters)) {
-                    foreach ($this->requiredQueryParameters as $required) {
+                if (!empty($requiredParameters)) {
+                    foreach ($requiredParameters as $required) {
                         // Well, this one wasn't present.
                         if (!in_array($required, $queryKeys)) {
                             return false;
@@ -197,7 +219,7 @@ class Network extends \HylianShield\Validator
                 }
 
                 // @codeCoverageIgnoreEnd
-            } elseif (!empty($this->requiredQueryParameters)) {
+            } elseif (!empty($requiredParameters)) {
                 // @codeCoverageIgnoreStart
                 return false;
                 // @codeCoverageIgnoreEnd
