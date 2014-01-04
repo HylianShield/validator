@@ -24,10 +24,17 @@ class Negative extends \HylianShield\Validator
     protected $type = 'integer_negative';
 
     /**
+     * The boundary for a negative integer.
+     *
+     * @var integer BOUNDARY
+     */
+    const BOUNDARY = -1;
+
+    /**
      * Create a validator for negative integers.
      */
     public function __construct()
     {
-        $this->validator = new Integer(0, -1);
+        $this->validator = new Integer(0, $this::BOUNDARY);
     }
 }

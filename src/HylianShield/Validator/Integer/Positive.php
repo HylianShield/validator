@@ -24,10 +24,17 @@ class Positive extends \HylianShield\Validator
     protected $type = 'integer_positive';
 
     /**
+     * The boundary for a positive integer.
+     *
+     * @var integer BOUNDARY
+     */
+    const BOUNDARY = 1;
+
+    /**
      * Create a validator for positive integers.
      */
     public function __construct()
     {
-        $this->validator = new Integer(1);
+        $this->validator = new Integer($this::BOUNDARY);
     }
 }
