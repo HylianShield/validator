@@ -33,7 +33,7 @@ class Positive extends \HylianShield\Validator
     const BOUNDARY = 1e-16;
 
     /**
-     * Create a validator for positive integers.
+     * Create a validator for a positive float.
      */
     public function __construct()
     {

@@ -31,7 +31,7 @@ class Negative extends \HylianShield\Validator
     const BOUNDARY = -1;
 
     /**
-     * Create a validator for negative integers.
+     * Create a validator for a negative integer.
      */
     public function __construct()
     {
