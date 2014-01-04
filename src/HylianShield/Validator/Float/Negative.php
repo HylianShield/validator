@@ -30,7 +30,7 @@ class Negative extends \HylianShield\Validator
      * @see http://php.net/manual/en/language.types.float.php
      * @var float BOUNDARY
      */
-    const BOUNDARY = -1e-16;
+    const BOUNDARY = -1.11e-16;
 
     /**
      * Create a validator for a negative float.
