@@ -91,20 +91,12 @@ class Network extends \HylianShield\Validator
     {
         $this->validator = function ($url) {
             $parsed = parse_url($url);
-
+            
             // The URL is seriously malformed. Nothing more we can do.
             if (empty($parsed)) {
+                // @codeCoverageIgnoreStart
                 return false;
-            }
-
-            // There must be a scheme present.
-            // Additionally, if we only allow a range of schemes, test for that.
-            if (empty($parsed['scheme'])
-                || (!empty($this->allowedSchemes)
-                    && !in_array($parsed['scheme'], $this->allowedSchemes)
-                )
-            ) {
-                return false;
+                // @codeCoverageIgnoreEnd
             }
 
             // We always need a host.
@@ -112,12 +104,27 @@ class Network extends \HylianShield\Validator
                 return false;
             }
 
-            // A path must always be present. Even if it's empty.
-            if (!isset($parsed['path'])) {
+            // There must be a scheme present.
+            if (empty($parsed['scheme'])) {
                 return false;
             }
 
-            $path = trim($parsed['path'], '/');
+            // Additionally, if we only allow a range of schemes, test for that.
+            if (!empty($this->allowedSchemes)
+                && !in_array($parsed['scheme'], $this->allowedSchemes)
+            ) {
+                return false;
+            }
+
+            // If an empty path is disallowed, that will be checked later on.
+            $path = isset($parsed['path'])
+                ? trim($parsed['path'], '/')
+                : '';
+
+            // @codeCoverageIgnoreStart
+            // @todo Extend the corresponding tests when there are
+            // actually implementations using this.
+            // Currently, this logic will never be triggered.
 
             // We don't allow empty paths.
             if (!$this->emptyPathAllowed && empty($path)) {
@@ -147,10 +154,17 @@ class Network extends \HylianShield\Validator
                 return false;
             }
 
+            // @codeCoverageIgnoreEnd
+
             // Test the query for invalid parameters.
             if (!empty($parsed['query'])) {
                 parse_str($parsed['query'], $query);
                 $queryKeys = array_keys($query);
+
+                // @codeCoverageIgnoreStart
+                // @todo Extend the corresponding tests when there are
+                // actually implementations using this.
+                // Currently, this logic will never be triggered.
 
                 // Check if any of the parameters is not allowed.
                 if (!empty($this->allowedQueryParameters)) {
@@ -181,8 +195,12 @@ class Network extends \HylianShield\Validator
                         }
                     }
                 }
+
+                // @codeCoverageIgnoreEnd
             } elseif (!empty($this->requiredQueryParameters)) {
+                // @codeCoverageIgnoreStart
                 return false;
+                // @codeCoverageIgnoreEnd
             }
 
             return true;

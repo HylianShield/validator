@@ -1,6 +1,6 @@
 <?php
 /**
- * Test for \HylianShield\Validator\Utf8.
+ * Test for \HylianShield\Validator\String\Utf8.
  *
  * @package HylianShield
  * @subpackage Test

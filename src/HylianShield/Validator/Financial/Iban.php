@@ -10,7 +10,7 @@
 namespace HylianShield\Validator\Financial;
 
 /**
- * String.
+ * Iban.
  */
 class Iban extends \HylianShield\Validator\Range\Immutable
 {
