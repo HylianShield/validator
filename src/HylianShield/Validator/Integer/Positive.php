@@ -9,10 +9,12 @@
 
 namespace HylianShield\Validator\Integer;
 
+use \HylianShield\Validator\Integer;
+
 /**
  * Positive.
  */
-class Positive extends \HylianShield\Validator\Range\Immutable
+class Positive extends \HylianShield\Validator
 {
     /**
      * The type.
@@ -22,16 +24,10 @@ class Positive extends \HylianShield\Validator\Range\Immutable
     protected $type = 'integer_positive';
 
     /**
-     * The validator.
-     *
-     * @var string $validator
+     * Create a validator for positive integers.
      */
-    protected $validator = 'is_int';
-
-    /**
-     * The minimum length of the value.
-     *
-     * @var integer $minLength
-     */
-    protected $minLength = 1;
+    public function __construct()
+    {
+        $this->validator = new Integer(1);
+    }
 }

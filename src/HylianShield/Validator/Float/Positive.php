@@ -9,10 +9,12 @@
 
 namespace HylianShield\Validator\Float;
 
+use \HylianShield\Validator\Float;
+
 /**
  * Positive.
  */
-class Positive extends \HylianShield\Validator\Range\Immutable
+class Positive extends \HylianShield\Validator
 {
     /**
      * The type.
@@ -22,26 +24,12 @@ class Positive extends \HylianShield\Validator\Range\Immutable
     protected $type = 'float_positive';
 
     /**
-     * The minimum length of the value.
-     *
-     * PHP normally uses a precision of the IEEE 754 double precision format.
-     * @see http://php.net/manual/en/language.types.float.php
-     *
-     * @var integer|float $minLength
+     * Create a validator for positive integers.
      */
-    protected $minLength = 1e-16;
-
-    /**
-     * The validator.
-     *
-     * @var callable $validator
-     */
-    protected $validator = 'is_float';
-
-    /**
-     * The callable to return the length of the value.
-     *
-     * @var callable $lengthCheck
-     */
-    protected $lengthCheck = 'floatval';
+    public function __construct()
+    {
+        // PHP normally uses a precision of the IEEE 754 double precision format.
+        // @see http://php.net/manual/en/language.types.float.php
+        $this->validator = new Float(1e-16);
+    }
 }

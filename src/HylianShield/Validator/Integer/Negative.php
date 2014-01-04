@@ -9,10 +9,12 @@
 
 namespace HylianShield\Validator\Integer;
 
+use \HylianShield\Validator\Integer;
+
 /**
  * Negative.
  */
-class Negative extends \HylianShield\Validator\Range\Immutable
+class Negative extends \HylianShield\Validator
 {
     /**
      * The type.
@@ -22,16 +24,10 @@ class Negative extends \HylianShield\Validator\Range\Immutable
     protected $type = 'integer_negative';
 
     /**
-     * The validator.
-     *
-     * @var string $validator
+     * Create a validator for negative integers.
      */
-    protected $validator = 'is_int';
-
-    /**
-     * The maximum length of the value.
-     *
-     * @var integer $maxLength
-     */
-    protected $maxLength = -1;
+    public function __construct()
+    {
+        $this->validator = new Integer(0, -1);
+    }
 }

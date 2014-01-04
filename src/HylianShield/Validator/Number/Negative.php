@@ -9,10 +9,14 @@
 
 namespace HylianShield\Validator\Number;
 
+use \HylianShield\Validator\Float;
+use \HylianShield\Validator\Integer;
+use \HylianShield\Validator\LogicalOr;
+
 /**
  * Negative.
  */
-class Negative extends \HylianShield\Validator\Range\Immutable
+class Negative extends \HylianShield\Validator
 {
     /**
      * The type.
@@ -22,32 +26,11 @@ class Negative extends \HylianShield\Validator\Range\Immutable
     protected $type = 'number_negative';
 
     /**
-     * The maximum length of the value.
-     *
-     * PHP normally uses a precision of the IEEE 754 double precision format.
-     * @see http://php.net/manual/en/language.types.float.php
-     *
-     * @var float $maxLength
-     */
-    protected $maxLength = -1e-16;
-
-    /**
-     * The callable to return the length of the value.
-     *
-     * @var callable $lengthCheck
-     */
-    protected $lengthCheck = 'floatval';
-
-    /**
      * Create the validator
-     *
-     * @return callable
      */
-    protected function createValidator()
+    public function __construct()
     {
         // Set a custom validator.
-        return function ($value) {
-            return is_int($value) || is_float($value);
-        };
+        $this->validator = new LogicalOr(new Integer\Negative, new Float\Negative);
     }
 }
