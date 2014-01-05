@@ -112,11 +112,10 @@ $positiveNumbers = array_filter(
 
 For more examples and documentation about specific validators, have a look at [the wiki](https://github.com/johmanx10/hylianshield/wiki). There is some sweet awesome and exotic stuff in there, like the Logical Gates, which enable you to combine validators.
 
-Want to filter out all negative teenagers from a range? Let's shoot 'm down:
+Want to filter out all teenagers from a range? Let's shoot 'm down:
 
 ```php
 <?php
-
 use \HylianShield\Validator;
 use Validator\Integer;
 use Validator\LogicalNot;
