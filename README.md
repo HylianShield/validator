@@ -125,7 +125,7 @@ $noTeensAllowed = array_filter(
 	range(-100, 100),
 	new LogicalAnd(
 		new Integer(1, 100),
-		new LogicalNog(new Integer(10, 18))
+		new LogicalNot(new Integer(10, 18))
 	)
 );
 // $noTeensAllowed will now hold a range of 1..100, excluding 10..18.
