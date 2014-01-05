@@ -33,47 +33,21 @@ class NegativeTest extends \Tests\HylianShield\Validator\TestBase
         array('0123456789', false),
         array('', false),
         array('€αβγδε', false),
-        array(0.123456789, false),
         array(null, false),
         array(0, false),
+        array(.1, false),
         array(-.1, false),
+        array('.1', false),
+        array(1, false),
+        array(-1, true),
+        array(\HylianShield\Validator\Float\Positive::BOUNDARY, false),
+        array(\HylianShield\Validator\Integer\Positive::BOUNDARY, false),
+        array(\HylianShield\Validator\Float\Negative::BOUNDARY, false),
+        array(\HylianShield\Validator\Integer\Negative::BOUNDARY, true),
         array(array(), false),
         array(array(12), false),
         array('count', false),
         array('strtotime', false),
         array('MyNonExistentFunction', false)
     );
-
-    /**
-     * Set up a common validator.
-     */
-    protected function setUp()
-    {
-        $range = range(-10, 10);
-        $boundary = Negative::BOUNDARY;
-
-        $this->validations = array_merge(
-            $this->validations,
-            array_map(
-                function ($int) use ($boundary) {
-                    return array($int, $int <= $boundary);
-                },
-                $range
-            ),
-            array_map(
-                function ($int) {
-                    return array("{$int}", false);
-                },
-                $range
-            ),
-            array_map(
-                function ($int) {
-                    return array((float) $int, false);
-                },
-                $range
-            )
-        );
-
-        parent::setUp();
-    }
 }

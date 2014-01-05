@@ -9,7 +9,7 @@
 
 namespace Tests\HylianShield\Validator\Number;
 
-use \HylianShield\Validator\Float\Negative;
+use \HylianShield\Validator\Number\Negative;
 
 /**
  * Negative test.
@@ -36,45 +36,18 @@ class NegativeTest extends \Tests\HylianShield\Validator\TestBase
         array(null, false),
         array(0, false),
         array(.1, false),
+        array(-.1, true),
+        array('.1', false),
+        array(1, false),
+        array(-1, true),
+        array(\HylianShield\Validator\Float\Positive::BOUNDARY, false),
+        array(\HylianShield\Validator\Integer\Positive::BOUNDARY, false),
+        array(\HylianShield\Validator\Float\Negative::BOUNDARY, true),
+        array(\HylianShield\Validator\Integer\Negative::BOUNDARY, true),
         array(array(), false),
         array(array(12), false),
         array('count', false),
         array('strtotime', false),
         array('MyNonExistentFunction', false)
     );
-
-    /**
-     * Set up a common validator.
-     */
-    protected function setUp()
-    {
-        $range = range(-10, 10);
-        $boundary = Negative::BOUNDARY;
-
-        $this->validations = array_merge(
-            $this->validations,
-            array_map(
-                function ($number) use ($boundary) {
-                    $number = .1 * $number;
-                    return array($number, $number <= $boundary);
-                },
-                $range
-            ),
-            array_map(
-                function ($number) use ($boundary) {
-                    $number = (integer) $number;
-                    return array($number, $number <= $boundary);
-                },
-                $range
-            ),
-            array_map(
-                function ($number) {
-                    return array("{$number}", false);
-                },
-                $range
-            )
-        );
-
-        parent::setUp();
-    }
 }

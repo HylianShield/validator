@@ -36,44 +36,18 @@ class PositiveTest extends \Tests\HylianShield\Validator\TestBase
         array(null, false),
         array(0, false),
         array(.1, true),
+        array(-.1, false),
+        array('.1', false),
+        array(1, false),
+        array(-1, false),
+        array(\HylianShield\Validator\Float\Positive::BOUNDARY, true),
+        array(\HylianShield\Validator\Integer\Positive::BOUNDARY, false),
+        array(\HylianShield\Validator\Float\Negative::BOUNDARY, false),
+        array(\HylianShield\Validator\Integer\Negative::BOUNDARY, false),
         array(array(), false),
         array(array(12), false),
         array('count', false),
         array('strtotime', false),
         array('MyNonExistentFunction', false)
     );
-
-    /**
-     * Set up a common validator.
-     */
-    protected function setUp()
-    {
-        $range = range(-10, 10);
-        $boundary = Positive::BOUNDARY;
-
-        $this->validations = array_merge(
-            $this->validations,
-            array_map(
-                function ($float) use ($boundary) {
-                    $float = .1 * $float;
-                    return array($float, $float >= $boundary);
-                },
-                $range
-            ),
-            array_map(
-                function ($float) {
-                    return array("{$float}", false);
-                },
-                $range
-            ),
-            array_map(
-                function ($float) {
-                    return array((integer) $float, false);
-                },
-                $range
-            )
-        );
-
-        parent::setUp();
-    }
 }
