@@ -112,11 +112,32 @@ $positiveNumbers = array_filter(
 
 For more examples and documentation about specific validators, have a look at [the wiki](https://github.com/johmanx10/hylianshield/wiki). There is some sweet awesome and exotic stuff in there, like the Logical Gates, which enable you to combine validators.
 
+Want to filter out all negative teenagers from a range? Let's shoot 'm down:
+
+```php
+<?php
+
+use \HylianShield\Validator;
+use Validator\Integer;
+use Validator\LogicalNot;
+use Validator\LogicalAnd;
+
+$noTeensAllowed = array_filter(
+	range(-100, 100),
+	new LogicalAnd(
+		new Integer(1, 100),
+		new LogicalNog(new Integer(10, 18))
+	)
+);
+// $noTeensAllowed will now hold a range of 1..100, excluding 10..18.
+```
+
 ## Installation
 
 ### As a composer package
 
 Simply add `"hylianshield/hylianshield": ">=0.1.0"` to your `composer.json` and run `php composer.phar install`.
+Thanks to free packaging over at [packagist.org](https://packagist.org/packages/hylianshield/hylianshield)
 
 ### As a submodule on git
 
