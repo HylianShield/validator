@@ -9,25 +9,34 @@
 
 namespace HylianShield\Validator\Float;
 
+use \HylianShield\Validator\Float;
+
 /**
  * Positive.
  */
-class Positive extends \HylianShield\Validator\Float
+class Positive extends \HylianShield\Validator
 {
     /**
      * The type.
      *
      * @var string $type
      */
-    protected $type = 'positive_float';
+    protected $type = 'float_positive';
+
+    /**
+     * The boundary for a positive float.
+     * PHP normally uses a precision of the IEEE 754 double precision format.
+     *
+     * @see http://php.net/manual/en/language.types.float.php
+     * @var float BOUNDARY
+     */
+    const BOUNDARY = 1.11e-16;
 
     /**
      * Create a validator for a positive float.
      */
     public function __construct()
     {
-        // PHP normally uses a precision of the IEEE 754 double precision format.
-        // @see http://php.net/manual/en/language.types.float.php
-        parent::__construct(1e-16);
+        $this->validator = new Float($this::BOUNDARY);
     }
 }

@@ -9,10 +9,14 @@
 
 namespace HylianShield\Validator\Url;
 
+use \HylianShield\Validator\LogicalOr;
+use \HylianShield\Validator\Url\Network\Http;
+use \HylianShield\Validator\Url\Network\Https;
+
 /**
  * Webpage.
  */
-class Webpage extends \HylianShield\Validator\LogicalOr
+class Webpage extends \HylianShield\Validator
 {
     /**
      * The type.
@@ -22,12 +26,10 @@ class Webpage extends \HylianShield\Validator\LogicalOr
     protected $type = 'url_webpage';
 
     /**
-     * A list of validators.
-     *
-     * @var array $validators
+     * Create a validator for webpages.
      */
-    protected $validators = array(
-        '\HylianShield\Validator\Url\Network\Http',
-        '\HylianShield\Validator\Url\Network\Https'
-    );
+    public function __construct()
+    {
+        $this->validator = new LogicalOr(new Http, new Https);
+    }
 }

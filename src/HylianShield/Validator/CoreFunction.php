@@ -22,9 +22,12 @@ class CoreFunction extends \HylianShield\Validator
     protected $type = 'function';
 
     /**
-     * The validator.
-     *
-     * @var callable $validator
+     * Create a validator that tests if a function exists.
      */
-    protected $validator = 'function_exists';
+    public function __construct()
+    {
+        $this->validator = function ($value) {
+            return is_string($value) && function_exists($value);
+        };     
+    }
 }

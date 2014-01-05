@@ -43,7 +43,7 @@ abstract class Validator
      *
      * @var string $lastResult
      */
-    private $lastResult;
+    protected $lastResult;
 
     /**
      * Set a message to be retrieved if a value doesn't pass the validator.

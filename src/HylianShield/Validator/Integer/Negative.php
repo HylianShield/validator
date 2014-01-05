@@ -9,23 +9,32 @@
 
 namespace HylianShield\Validator\Integer;
 
+use \HylianShield\Validator\Integer;
+
 /**
  * Negative.
  */
-class Negative extends \HylianShield\Validator\Integer
+class Negative extends \HylianShield\Validator
 {
     /**
      * The type.
      *
      * @var string $type
      */
-    protected $type = 'negative_integer';
+    protected $type = 'integer_negative';
+
+    /**
+     * The boundary for a negative integer.
+     *
+     * @var integer BOUNDARY
+     */
+    const BOUNDARY = -1;
 
     /**
      * Create a validator for a negative integer.
      */
     public function __construct()
     {
-        parent::__construct(0, -1);
+        $this->validator = new Integer(0, $this::BOUNDARY);
     }
 }

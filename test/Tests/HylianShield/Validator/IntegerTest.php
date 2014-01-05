@@ -1,6 +1,6 @@
 <?php
 /**
- * Test for \HylianShield\Validator\Number.
+ * Test for \HylianShield\Validator\Integer.
  *
  * @package HylianShield
  * @subpackage Test
@@ -9,19 +9,19 @@
 
 namespace Tests\HylianShield\Validator;
 
-use \HylianShield\Validator\Number;
+use \HylianShield\Validator\Integer;
 
 /**
- * Number test.
+ * Integer test.
  */
-class NumberTest extends \Tests\HylianShield\Validator\TestBase
+class IntegerTest extends \Tests\HylianShield\Validator\TestBase
 {
     /**
      * The name of our class to test.
      *
      * @var string $validatorClass
      */
-    protected $validatorClass = '\HylianShield\Validator\Number';
+    protected $validatorClass = '\HylianShield\Validator\Integer';
 
     /**
      * A set of validations to pass.
@@ -34,9 +34,8 @@ class NumberTest extends \Tests\HylianShield\Validator\TestBase
         array('', false),
         array('€αβγδε', false),
         array(0123456789, true),
-        array(0.123456789, true),
+        array(0.123456789, false),
         array(null, false),
-        array(0, true),
-        array(.1, true)
+        array(0, true)
     );
 }
