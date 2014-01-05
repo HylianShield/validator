@@ -9,23 +9,32 @@
 
 namespace HylianShield\Validator\Integer;
 
+use \HylianShield\Validator\Integer;
+
 /**
  * Positive.
  */
-class Positive extends \HylianShield\Validator\Integer
+class Positive extends \HylianShield\Validator
 {
     /**
      * The type.
      *
      * @var string $type
      */
-    protected $type = 'positive_integer';
+    protected $type = 'integer_positive';
+
+    /**
+     * The boundary for a positive integer.
+     *
+     * @var integer BOUNDARY
+     */
+    const BOUNDARY = 1;
 
     /**
      * Create a validator for a positive integer.
      */
     public function __construct()
     {
-        parent::__construct(1);
+        $this->validator = new Integer($this::BOUNDARY);
     }
 }

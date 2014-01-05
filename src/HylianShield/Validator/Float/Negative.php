@@ -9,25 +9,34 @@
 
 namespace HylianShield\Validator\Float;
 
+use \HylianShield\Validator\Float;
+
 /**
  * Negative.
  */
-class Negative extends \HylianShield\Validator\Float
+class Negative extends \HylianShield\Validator
 {
     /**
      * The type.
      *
      * @var string $type
      */
-    protected $type = 'negative_float';
+    protected $type = 'float_negative';
+
+    /**
+     * The boundary for a negative float.
+     * PHP normally uses a precision of the IEEE 754 double precision format.
+     *
+     * @see http://php.net/manual/en/language.types.float.php
+     * @var float BOUNDARY
+     */
+    const BOUNDARY = -1.11e-16;
 
     /**
      * Create a validator for a negative float.
      */
     public function __construct()
     {
-        // PHP normally uses a precision of the IEEE 754 double precision format.
-        // @see http://php.net/manual/en/language.types.float.php
-        parent::__construct(0, -1e-16);
+        $this->validator = new Float(0, $this::BOUNDARY);
     }
 }

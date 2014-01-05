@@ -9,10 +9,16 @@
 
 namespace HylianShield\Validator;
 
+use \HylianShield\Validator\Float;
+use \HylianShield\Validator\Integer;
+use \HylianShield\Validator\LogicalOr;
+
 /**
  * Number.
+ * We extend Float, since number needs to use the same precision as the most
+ * precise of the internal validators.
  */
-class Number extends \HylianShield\Validator\Range
+class Number extends \HylianShield\Validator\Float
 {
     /**
      * The type.
@@ -22,39 +28,11 @@ class Number extends \HylianShield\Validator\Range
     protected $type = 'number';
 
     /**
-     * The validator.
-     *
-     * @var callable $validator
+     * Create the validator
      */
-    protected $validator;
-
-    /**
-     * The callable to return the length of the value.
-     *
-     * @var callable $lengthCheck
-     */
-    protected $lengthCheck = 'round';
-
-    /**
-     * Check the properties of the validator to ensure a perfect implementation.
-     *
-     * @param integer $minLength the minimum length of the value
-     * @param integer $maxLength the maximum length of the value
-     * @throws \InvalidArgumentException when either minLength of maxLength is not an integer
-     */
-    public function __construct($minLength = 0, $maxLength = 0)
+    protected function createValidator()
     {
-        if (!is_int($minLength) || !is_int($maxLength)) {
-            throw new InvalidArgumentException(
-                'Min and max length should be of type integer.'
-            );
-        }
-
         // Set a custom validator.
-        $this->validator = function ($value) {
-            return is_int($value) || is_float($value);
-        };
-
-        parent::__construct($minLength, $maxLength);
+        return new LogicalOr(new Integer, new Float);
     }
 }
