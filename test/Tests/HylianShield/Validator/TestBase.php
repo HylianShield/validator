@@ -119,7 +119,10 @@ abstract class TestBase extends \PHPUnit_Framework_TestCase
             // At least we know this much.
             $this->assertEmpty($this->validator);
         } else {
-            $this->assertInternalType('string', $this->validator->__tostring());
+            $string = $this->validator->__tostring();
+            $this->assertInternalType('string', $string);
+            $type = $this->validator->type();
+            $this->assertRegexp('/^' . preg_quote($type) . '(\:(.+)|\((.+)\))?/', $string);
         }
     }
 
