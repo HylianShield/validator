@@ -1,6 +1,6 @@
 # ![Hylian Shield](http://goo.gl/N6ugyU) Hylian Shield
 
-[![Build Status](https://travis-ci.org/johmanx10/hylianshield.png?branch=development)](https://travis-ci.org/johmanx10/hylianshield)
+[![Build Status](https://travis-ci.org/johmanx10/hylianshield.png?branch=master)](https://travis-ci.org/johmanx10/hylianshield)
 [![Latest Stable Version](https://poser.pugx.org/hylianshield/hylianshield/v/stable.png)](https://packagist.org/packages/hylianshield/hylianshield)
 [![Latest Unstable Version](https://poser.pugx.org/hylianshield/hylianshield/v/unstable.png)](https://packagist.org/packages/hylianshield/hylianshield)
 [![Dependency Status](https://www.versioneye.com/user/projects/52c7eaadec137524070000b5/badge.png)](https://www.versioneye.com/user/projects/52c7eaadec137524070000b5)
