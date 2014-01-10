@@ -12,7 +12,7 @@ namespace HylianShield\Validator;
 /**
  * CoreArray.
  */
-class CoreArray extends \HylianShield\Validator\Range
+class CoreArray extends \HylianShield\Validator\Range\Mutable
 {
     /**
      * The type.

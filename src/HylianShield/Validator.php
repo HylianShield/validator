@@ -32,6 +32,27 @@ abstract class Validator
     protected $validator;
 
     /**
+     * Temporary storage of the value to be validated.
+     *
+     * @var string $lastValue
+     */
+    private $lastValue;
+
+    /**
+     * Temporary storage of the validation result.
+     *
+     * @var string $lastResult
+     */
+    protected $lastResult;
+
+    /**
+     * Set a message to be retrieved if a value doesn't pass the validator.
+     *
+     * @var string $lastMessage
+     */
+    private $lastMessage = null;
+
+    /**
      * Validate the supplied value against the current validator.
      *
      * @param mixed $value
@@ -40,12 +61,39 @@ abstract class Validator
      */
     public function validate($value)
     {
+        $this->lastValue = $value;
+        $this->lastMessage = null;
+
         if (!is_callable($this->validator)) {
+            // @codeCoverageIgnoreStart
             throw new LogicException('Validator should be callable!');
+            // @codeCoverageIgnoreEnd
         }
 
         // Check if the validator validates.
-        return (bool) call_user_func_array($this->validator, array($value));
+        $this->lastResult = (bool) call_user_func_array($this->validator, array($this->lastValue));
+
+        return $this->lastResult;
+    }
+
+    /**
+     * Get the message explaining the fail.
+     *
+     * @todo Add message for objects and arrays
+     * @return string
+     */
+    final public function getMessage() {
+        // Create a message.
+        if ($this->lastResult === false && !isset($this->lastMessage)) {
+            if (is_scalar($this->lastValue)) {
+                $this->lastMessage = 'Invalid value supplied: (' . gettype($this->lastValue) . ') '
+                    . var_export($this->lastValue, true) . "; Expected: {$this}";
+            } else {
+                $this->lastMessage = "Invalid value supplied; Expected: {$this}";
+            }
+        }
+
+        return $this->lastMessage;
     }
 
     /**
@@ -68,9 +116,11 @@ abstract class Validator
     final public function type()
     {
         if (!is_string($this->type)) {
+            // @codeCoverageIgnoreStart
             throw new LogicException(
                 'Property type should be of data type string!'
             );
+            // @codeCoverageIgnoreEnd
         }
 
         return $this->type;

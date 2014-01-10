@@ -1,2 +1,5 @@
 code-coverage/*
 doc/*
+composer.lock
+vendor/*
+build/log/*

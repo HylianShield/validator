@@ -12,7 +12,7 @@ namespace HylianShield\Validator;
 /**
  * Integer.
  */
-class Integer extends \HylianShield\Validator\Range
+class Integer extends \HylianShield\Validator\Range\Mutable
 {
     /**
      * The type.

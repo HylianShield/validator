@@ -19,7 +19,7 @@ class ExtPersonIdCode extends \HylianShield\Validator\Regexp
      *
      * @var string $type
      */
-    protected $type = 'financial_extpersonidcode';
+    protected $type = 'financial_iso20022_extpersonidcode';
 
     /**
      * A list of person ID methods for the private identification.
@@ -73,7 +73,7 @@ class ExtPersonIdCode extends \HylianShield\Validator\Regexp
     public function __construct()
     {
         parent::__construct(
-            '/^' . implode('|', $this->personIdentifiers) . '&/'
+            '/^' . implode('|', $this->personIdentifiers) . '$/'
         );
     }
 }

@@ -1,18 +1,18 @@
 <?php
 /**
- * Validate a conditional list in a logical AND fashion.
+ * Validate an IBAN number.
  *
  * @package HylianShield
  * @subpackage Validator
- * @copyright 2013 Remko "CyberSecutor" Silvis
+ * @copyright 2014 Remko "CyberSecutor" Silvis
  */
 
 namespace HylianShield\Validator\Financial;
 
 /**
- * String.
+ * Iban.
  */
-class Iban extends \HylianShield\Validator\Range
+class Iban extends \HylianShield\Validator\Range\Immutable
 {
     /**
      * The type.
@@ -22,13 +22,35 @@ class Iban extends \HylianShield\Validator\Range
     protected $type = 'financial_iban';
 
     /**
-     * Check the validity of an IBAN.
+     * The callable to return the length of the value.
      *
-     * @ToDo needs more elaborate validation for per country IBAN.
+     * @var callable $lengthCheck
      */
-    public function __construct()
+    protected $lengthCheck = 'strlen';
+
+    /**
+     * The minimum length of the value.
+     *
+     * @var integer $minLength
+     */
+    protected $minLength = 15;
+
+    /**
+     * The maximum length of the value.
+     *
+     * @var integer $maxLength
+     */
+    protected $maxLength = 29;
+
+    /**
+     * Create the validator
+     *
+     * @todo needs more elaborate validation for per country IBAN.
+     * @return callable
+     */
+    protected function createValidator()
     {
-        $this->validator = function ($iban) {
+        return function ($iban) {
             $country = substr($iban, 0, 2);
             $control = (int) substr($iban, 2, 2);
 
@@ -46,7 +68,5 @@ class Iban extends \HylianShield\Validator\Range
 
             return $control === $calccontrol;
         };
-
-        parent::__construct(15, 29);
     }
 }

@@ -4,7 +4,12 @@ php:
   - 5.4
   - 5.5
 before_script:
-  - cd test
-script: phpunit
+  - composer validate
+  - composer install --dev --no-interaction
+  - mkdir -p build/logs
+script:
+  - phpunit -c test/phpunit.xml
+after_script:
+  - php vendor/bin/coveralls -v
 notifications:
   irc: "irc.freenode.net#johmanx"

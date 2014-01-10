@@ -12,7 +12,7 @@ namespace HylianShield\Validator;
 /**
  * Float.
  */
-class Float extends \HylianShield\Validator\Range
+class Float extends \HylianShield\Validator\Range\Mutable
 {
     /**
      * The type.
@@ -33,5 +33,5 @@ class Float extends \HylianShield\Validator\Range
      *
      * @var callable $lengthCheck
      */
-    protected $lengthCheck = 'round';
+    protected $lengthCheck = 'floatval';
 }

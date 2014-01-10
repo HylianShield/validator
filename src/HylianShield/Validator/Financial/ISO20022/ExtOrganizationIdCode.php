@@ -7,19 +7,19 @@
  * @copyright 2013 Remko "CyberSecutor" Silvis
  */
 
-namespace HylianShield\Validator\Financial;
+namespace HylianShield\Validator\Financial\ISO20022;
 
 /**
  * ISO 20022 external organization id code validator.
  */
-class ExtOrganizationalIdCode extends \HylianShield\Validator\Regexp
+class ExtOrganizationIdCode extends \HylianShield\Validator\Regexp
 {
     /**
      * The type.
      *
      * @var string $type
      */
-    protected $type = 'financial_extorganizationidcode';
+    protected $type = 'financial_iso20022_extorganizationidcode';
 
     /**
      * A list of organization ID's for the OrgId.
@@ -100,7 +100,7 @@ class ExtOrganizationalIdCode extends \HylianShield\Validator\Regexp
     public function __construct()
     {
         parent::__construct(
-            '/^' . implode('|', $this->organizationIdentifiers) . '&/'
+            '/^' . implode('|', $this->organizationIdentifiers) . '$/'
         );
     }
 }
