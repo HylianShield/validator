@@ -40,6 +40,13 @@ abstract class LogicalGateTestBase extends \PHPUnit_Framework_TestCase
     {
         $reflection = new ReflectionClass($this->validatorClass);
         $validator = $reflection->newInstanceArgs($args);
+
+        // While we're at it, lest test the __tostring method.
+        $this->assertRegexp(
+            '/^' . preg_quote($validator->type()) . '(\:(.+)|\((.+)\))?/',
+            $validator->__tostring()
+        );
+
         $this->assertEquals($shouldPass, $validator($value));
         $this->assertEquals($string, (string) $validator);
     }

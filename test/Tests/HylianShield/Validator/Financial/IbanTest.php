@@ -28,6 +28,10 @@ class IbanTest extends \Tests\HylianShield\Validator\TestBase
      * @var array $validations
      */
     protected $validations = array(
+        array('', false),
+        array(null, false),
+        array('0', false),
+        array('NL5140536533000', false),
         array('NL51405365330000', true),
         array('BE83405365330000', true),
         array('NL52405365330000', false),
