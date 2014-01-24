@@ -37,6 +37,6 @@ class Negative extends \HylianShield\Validator
      */
     public function __construct()
     {
-        $this->validator = new Float(0, $this::BOUNDARY);
+        $this->validator = new Float(null, $this::BOUNDARY);
     }
 }

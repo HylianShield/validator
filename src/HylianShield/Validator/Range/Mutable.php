@@ -30,10 +30,10 @@ abstract class Mutable extends \HylianShield\Validator\Range
      * @param integer|float $maxLength the maximum length of the value
      * @throws \InvalidArgumentException when either minLength of maxLength is not an integer or float
      */
-    final public function __construct($minLength = 0, $maxLength = 0)
+    final public function __construct($minLength = null, $maxLength = null)
     {
-        if (!(is_int($minLength) || is_float($minLength))
-            || !(is_int($maxLength) || is_float($maxLength))
+        if ((isset($minLength) && !(is_int($minLength) || is_float($minLength)))
+            || (isset($maxLength) && !(is_int($maxLength) || is_float($maxLength)))
         ) {
             // @codeCoverageIgnoreStart
             throw new InvalidArgumentException(

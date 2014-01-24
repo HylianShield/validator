@@ -40,7 +40,7 @@ class LogicalOrTest extends \Tests\HylianShield\Validator\LogicalGateTestBase
                 ),
                 1.0,
                 true,
-                'or(float:0,0; number:0,0)'
+                'or(float:_,_; number:_,_)'
             ),
             array(
                 array(
@@ -49,7 +49,7 @@ class LogicalOrTest extends \Tests\HylianShield\Validator\LogicalGateTestBase
                 ),
                 1.0,
                 true,
-                'or(float:0,0; integer:0,0)'
+                'or(float:_,_; integer:_,_)'
             ),
             array(
                 array(
@@ -58,7 +58,7 @@ class LogicalOrTest extends \Tests\HylianShield\Validator\LogicalGateTestBase
                 ),
                 '1.0',
                 false,
-                'or(float:0,0; integer:0,0)'
+                'or(float:_,_; integer:_,_)'
             )
         );
     }
