@@ -40,7 +40,7 @@ class LogicalAndTest extends \Tests\HylianShield\Validator\LogicalGateTestBase
                 ),
                 1.0,
                 true,
-                'and(float:0,0; number:0,0)'
+                'and(float:_,_; number:_,_)'
             ),
             array(
                 array(
@@ -49,7 +49,7 @@ class LogicalAndTest extends \Tests\HylianShield\Validator\LogicalGateTestBase
                 ),
                 1.0,
                 false,
-                'and(float:0,0; integer:0,0)'
+                'and(float:_,_; integer:_,_)'
             )
         );
     }

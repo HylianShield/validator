@@ -39,4 +39,17 @@ class FloatTest extends \Tests\HylianShield\Validator\TestBase
         array(0, false),
         array(.1, true)
     );
+
+    /**
+     * Test if zero is an actual length that will be checked, as opposed to the
+     * default value null.
+     */
+    public function testDefaultNotZero()
+    {
+        $validator = $this->validatorClass;
+        $validator = new $validator(0, 0);
+        $this->assertTrue($validator->validate(0.));
+        $this->assertFalse($validator->validate(1.));
+        $this->assertFalse($validator->validate(-1.));
+    }
 }
