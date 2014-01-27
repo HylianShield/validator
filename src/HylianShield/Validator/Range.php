@@ -21,14 +21,14 @@ abstract class Range extends \HylianShield\Validator
      *
      * @var integer|float $minLength
      */
-    protected $minLength = 0;
+    protected $minLength = null;
 
     /**
      * The maximum length of the value.
      *
      * @var integer|float $maxLength
      */
-    protected $maxLength = 0;
+    protected $maxLength = null;
 
     /**
      * The type.
@@ -90,7 +90,7 @@ abstract class Range extends \HylianShield\Validator
 
             // Check if the minimum length validates.
             // Cache the length, in case maxLength needs it.
-            if ($minLength !== 0
+            if ($minLength !== null
                 && ($length = call_user_func_array($lengthCheck, array($value))) < $minLength
             ) {
                 return false;
@@ -98,7 +98,7 @@ abstract class Range extends \HylianShield\Validator
 
             // Check if the maximum length validates.
             // Use a cached version of the length, if available, or trigger the length check.
-            if ($maxLength !== 0
+            if ($maxLength !== null
                 && (isset($length) ? $length : call_user_func_array($lengthCheck, array($value))) > $maxLength
             ) {
                 return false;
@@ -124,6 +124,14 @@ abstract class Range extends \HylianShield\Validator
      */
     public function __tostring()
     {
-        return "{$this->type}:{$this->minLength},{$this->maxLength}";
+        $min = $this->minLength === null
+            ? '_'
+            : $this->minLength;
+
+        $max = $this->maxLength === null
+            ? '_'
+            : $this->maxLength;
+
+        return "{$this->type}:{$min},{$max}";
     }
 }
