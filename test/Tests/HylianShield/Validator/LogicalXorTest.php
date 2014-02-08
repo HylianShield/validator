@@ -40,7 +40,7 @@ class LogicalXorTest extends \Tests\HylianShield\Validator\LogicalGateTestBase
                 ),
                 1.0,
                 false,
-                'xor(float:0,0; number:0,0)'
+                'xor(float:_,_; number:_,_)'
             ),
             array(
                 array(
@@ -49,7 +49,7 @@ class LogicalXorTest extends \Tests\HylianShield\Validator\LogicalGateTestBase
                 ),
                 1.0,
                 true,
-                'xor(float:0,0; integer:0,0)'
+                'xor(float:_,_; integer:_,_)'
             ),
             array(
                 array(
@@ -58,7 +58,7 @@ class LogicalXorTest extends \Tests\HylianShield\Validator\LogicalGateTestBase
                 ),
                 '1.0',
                 false,
-                'xor(float:0,0; integer:0,0)'
+                'xor(float:_,_; integer:_,_)'
             )
         );
     }
