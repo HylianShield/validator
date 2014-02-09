@@ -20,3 +20,4 @@ $autoloader->preload();
 // autoloader to the Tests directory, PHPUnit would skip all loaded tests.
 require_once __DIR__ . '/Tests/HylianShield/Validator/TestBase.php';
 require_once __DIR__ . '/Tests/HylianShield/Validator/LogicalGateTestBase.php';
+require_once __DIR__ . '/Tests/HylianShield/Validator/String/SubsetTestBase.php';
