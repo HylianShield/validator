@@ -1,6 +1,6 @@
 <?php
 /**
- * Test for \HylianShield\Validator\Integer\Negative.
+ * Test for \HylianShield\Validator\CoreArray\Numeric.
  *
  * @package HylianShield
  * @subpackage Test
@@ -9,9 +9,7 @@
 namespace \Tests\HylianShield\Validator\CoreArray;
 
 /**
- * Description of Numeric
- *
- * @author 
+ * NumericTest.
  */
 class NumericTest extends \Tests\HylianShield\Validator\CoreArrayTest
 {
