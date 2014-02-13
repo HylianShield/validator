@@ -16,25 +16,25 @@ class Numeric extends \HylianShield\Validator\CoreArray
 {
     /**
      * The type.
-     * 
+     *
      * @var string $type
      */
     protected $type = 'array_numeric';
-    
+
     /**
-     * Constructs Numeric array validators.
+     * Creates a numeric array validator.
      */
-    public function __contruct() 
+    final protected function createValidator()
     {
-        $this->validator = function ($array) {
+        return function ($array) {
             // First check if $array is an actual array.
             if (!is_array($array)) {
                 return false;
             }
-            
+
             // Then get all the keys
             $keys = array_keys($array);
-        
+
             // And check if they all are numeric.
             $arrayLength = count($keys);
             for ($i = 0; $i < $arrayLength; $i++) {
@@ -42,7 +42,7 @@ class Numeric extends \HylianShield\Validator\CoreArray
                     return false;
                 }
             }
-        
+
             return true;
         };
     }
