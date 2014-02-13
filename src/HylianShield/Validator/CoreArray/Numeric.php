@@ -10,7 +10,7 @@
 namespace HylianShield\Validator\CoreArray;
 
 /**
- * CoreArray.
+ * Validates numeric arrays.
  */
 class Numeric extends \HylianShield\Validator\CoreArray
 {
