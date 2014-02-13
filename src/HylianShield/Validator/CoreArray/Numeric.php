@@ -14,8 +14,16 @@ namespace HylianShield\Validator\CoreArray;
  */
 class Numeric extends \HylianShield\Validator\CoreArray
 {
+    /**
+     * The type.
+     * 
+     * @var string $type
+     */
     protected $type = 'array_numeric';
     
+    /**
+     * Constructs Numeric array validators.
+     */
     public function __contruct() 
     {
         $this->validator = function ($array) {
