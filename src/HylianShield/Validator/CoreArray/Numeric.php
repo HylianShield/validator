@@ -27,9 +27,15 @@ class Numeric extends \HylianShield\Validator\CoreArray
     public function __contruct() 
     {
         $this->validator = function ($array) {
-            // First get all the keys
+            // First check if $array is an actual array.
+            if (!is_array($array)) {
+                return false;
+            }
+            
+            // Then get all the keys
             $keys = array_keys($array);
         
+            // And check if they all are numeric.
             for ($i = 0; $i < count($keys); $i++) {
                 if ($i !== $keys[$i]) {
                     return false;
