@@ -36,7 +36,8 @@ class Numeric extends \HylianShield\Validator\CoreArray
             $keys = array_keys($array);
         
             // And check if they all are numeric.
-            for ($i = 0; $i < count($keys); $i++) {
+            $arrayLength = count($keys);
+            for ($i = 0; $i < $arrayLength; $i++) {
                 if ($i !== $keys[$i]) {
                     return false;
                 }
