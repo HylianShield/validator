@@ -14,6 +14,9 @@ codecoverage:
 unittest:
 	@vendor/bin/phpunit -c test/phpunit.xml $(FLAGS)
 
+bench:
+	@vendor/bin/athletic -p benchmark/Benchmarks -b benchmark/bootstrap.php
+
 composer:
 	@curl -sS https://getcomposer.org/installer | sudo php
 	@sudo mv composer.phar /usr/local/bin/composer
