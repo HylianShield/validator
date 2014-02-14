@@ -10,6 +10,7 @@
 namespace HylianShield\Validator;
 
 use \InvalidArgumentException;
+use \LogicException;
 
 /**
  * Range.
