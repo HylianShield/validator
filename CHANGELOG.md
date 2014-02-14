@@ -1,3 +1,12 @@
+# v0.2.2
+
+- Fix the numeric arrar validator unit test
+- Improve performance of Range validators
+
+# v0.2.1
+
+Fix the Numeric array validator
+
 # v0.2.0
 
 Version 0.2.0 adds some new validators.
