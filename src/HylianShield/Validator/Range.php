@@ -76,37 +76,73 @@ abstract class Range extends \HylianShield\Validator
         $minLength =& $this->minLength;
         $maxLength =& $this->maxLength;
 
-        $this->validator = function (
-            $value
-        ) use (
-            $validator,
-            $minLength,
-            $maxLength,
-            $lengthCheck
-        ) {
-            // Check if the basic validation validates.
-            if (!call_user_func_array($validator, array($value))) {
-                return false;
-            }
+        // We create a number of scenarios to optimize validators.
+        // The first one doesn't require a length check at all.
+        if (!isset($minLength) && !isset($maxLength)) {
+            $this->validator = $validator;
+        } elseif (!isset($minLength)) {
+            // We only need to check the max length here.
+            $this->validator = function ($value) use ($validator, $lengthCheck, $maxLength) {
+                // Check if the basic validation validates.
+                if (!call_user_func_array($validator, array($value))) {
+                    return false;
+                }
 
-            // Check if the minimum length validates.
-            // Cache the length, in case maxLength needs it.
-            if ($minLength !== null
-                && ($length = call_user_func_array($lengthCheck, array($value))) < $minLength
+                // Check if the maximum length validates.
+                if (call_user_func_array($lengthCheck, array($value)) > $maxLength) {
+                    return false;
+                }
+
+                return true;
+            };
+        } elseif (!isset($maxLength)) {
+            // We only need to check the min length here.
+            $this->validator = function ($value) use ($validator, $lengthCheck, $minLength) {
+                // Check if the basic validation validates.
+                if (!call_user_func_array($validator, array($value))) {
+                    return false;
+                }
+
+                // Check if the minimum length validates.
+                if (call_user_func_array($lengthCheck, array($value)) < $minLength) {
+                    return false;
+                }
+
+                return true;
+            };
+        } else {
+            $this->validator = function (
+                $value
+            ) use (
+                $validator,
+                $minLength,
+                $maxLength,
+                $lengthCheck
             ) {
-                return false;
-            }
+                // Check if the basic validation validates.
+                if (!call_user_func_array($validator, array($value))) {
+                    return false;
+                }
 
-            // Check if the maximum length validates.
-            // Use a cached version of the length, if available, or trigger the length check.
-            if ($maxLength !== null
-                && (isset($length) ? $length : call_user_func_array($lengthCheck, array($value))) > $maxLength
-            ) {
-                return false;
-            }
+                // Check if the minimum length validates.
+                // Cache the length, in case maxLength needs it.
+                if ($minLength !== null
+                    && ($length = call_user_func_array($lengthCheck, array($value))) < $minLength
+                ) {
+                    return false;
+                }
 
-            return true;
-        };
+                // Check if the maximum length validates.
+                // Use a cached version of the length, if available, or trigger the length check.
+                if ($maxLength !== null
+                    && (isset($length) ? $length : call_user_func_array($lengthCheck, array($value))) > $maxLength
+                ) {
+                    return false;
+                }
+
+                return true;
+            };
+        }
     }
 
     /**

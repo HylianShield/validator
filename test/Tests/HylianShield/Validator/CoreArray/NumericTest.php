@@ -26,19 +26,19 @@ class NumericTest extends \Tests\HylianShield\Validator\TestBase
      * @var array $validations
      */
     protected $validations = array(
-        // array('Aap Noot Mies', false),
-        // array('0123456789', false),
-        // array('', false),
-        // array('€αβγδε', false),
-        // array(0123456789, false),
-        // array(0.123456789, false),
-        // array(null, false),
-        // array(0, false),
-        // array(.1, false),
-        // array(array(), true),
-        // array(array(12), true),
-        // array(array(1, 2, 3, 4), true),
-        // array(array("aap", "noot", "mies"), true),
+        array('Aap Noot Mies', false),
+        array('0123456789', false),
+        array('', false),
+        array('€αβγδε', false),
+        array(0123456789, false),
+        array(0.123456789, false),
+        array(null, false),
+        array(0, false),
+        array(.1, false),
+        array(array(), true),
+        array(array(12), true),
+        array(array(1, 2, 3, 4), true),
+        array(array("aap", "noot", "mies"), true),
         array(array(4 => "aap", 2 => "noot"), false),
         array(array("foo" => "aap", "bar" => "noot"), false)
     );
