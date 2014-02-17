@@ -1,7 +1,7 @@
 {
   "name": "hylianshield/hylianshield",
   "type": "library",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Data validation and sanitizing",
   "keywords": ["hylianshield", "validator", "validate", "validation", "sanitize", "sanitizer", "sanitizing"],
   "homepage": "https://github.com/johmanx10/hylianshield",

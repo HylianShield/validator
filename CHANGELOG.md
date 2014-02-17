@@ -1,3 +1,9 @@
+# v0.3.0
+
+- Added benchmarking suite and initial benchmarks
+- Improved performance of the Range validator
+- Conditionally improved performance of the String\Subset validator
+
 # v0.2.2
 
 - Fix the numeric arrar validator unit test

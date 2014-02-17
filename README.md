@@ -11,7 +11,7 @@ Everything between your input and app.
 
 ## Support
 
-By a fault, we support PHP 5.3, 5.4 and 5.5, which are all unit tested using Travis CI.
+To a fault, we support PHP 5.3, 5.4 and 5.5, which are all unit tested using Travis CI.
 
 ## What is HylianShield?
 The origins of the Hylian Shield can be found in the lore of Zelda games. However, we use both meanings of adventure and shielding to describe our HylianShield.
@@ -79,7 +79,7 @@ public function addPerson ($name, $age, $money, $website, $endOfLease) {
 
 	if (!$validAge->validate($age)) {
 		throw new InvalidArgumentException($validAge->getMessage());
-		// Invalid value supplied: (string) "19"; Expected: integer:18,0
+		// Invalid value supplied: (string) "19"; Expected: integer:18,_
 	}
 
 	if (!$validMoney($money)) {
@@ -139,7 +139,7 @@ $noTeensAllowed = array_filter(
 
 ### As a composer package
 
-Simply add `"hylianshield/hylianshield": ">=0.1.0"` to your `composer.json` and run `php composer.phar install`.
+Simply add `"hylianshield/hylianshield": ">=0.3.0"` to your `composer.json` and run `php composer.phar install`.
 Thanks to free packaging over at [packagist.org](https://packagist.org/packages/hylianshield/hylianshield)
 
 ### As a submodule on git
