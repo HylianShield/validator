@@ -44,6 +44,9 @@ class SubsetTestBase extends \Tests\HylianShield\Validator\TestBase
     {
         parent::setUp();
 
+        // Set the regex encoding to one that differs from the tested encoding.
+        mb_regex_encoding('EUC-JP');
+
         // Get the valid range.
         $validRange = $this->validator->getRange();
         $class = get_class($this->validator);
@@ -82,6 +85,42 @@ class SubsetTestBase extends \Tests\HylianShield\Validator\TestBase
 
             // Add this character as a validation that should fail.
             $this->validations[] = array($char, false);
+        }
+    }
+
+    /**
+     * Test validations.
+     */
+    public function testValidations()
+    {
+        parent::testValidations();
+    }
+
+    /**
+     * Test validations that are optimized.
+     *
+     * @depends testValidations
+     */
+    public function testOptimizedValidations()
+    {
+        // Get some basic information.
+        $class = get_class($this->validator);
+        $encoding = $class::ENCODING;
+        mb_regex_encoding($encoding);
+
+        // Reset the validator.
+        parent::setUp();
+
+        // Test the validations once more.
+        $this->testValidations();
+
+        // This method needs some assertions itself, to prevent it from being
+        // registered as skipped.
+        if (!$this->testValidations && phpversion() < 5.4) {
+            // At least we know this much.
+            $this->assertEmpty($this->validator);
+        } else {
+            $this->assertInternalType('string', $this->validator->type());
         }
     }
 }
