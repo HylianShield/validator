@@ -52,20 +52,29 @@ abstract class Subset extends \HylianShield\Validator\Range\Mutable
         $pattern = preg_quote(implode('', $this->getRange()), '/');
         $pattern = "/^[{$pattern}]+$/um";
 
-        // Return a new validator.
-        return function ($subject) use ($pattern, $encoding, $originalEncoding) {
-            // Set the regex encoding to an encoding that supports our range.
-            mb_regex_encoding($encoding);
+        // If the internal and current regex encoding don't match, use a specialized validator.
+        if ($encoding !== $originalEncoding) {
+            return function ($subject) use ($pattern, $encoding, $originalEncoding) {
+                // Set the regex encoding to an encoding that supports our range.
+                mb_regex_encoding($encoding);
 
-            // Check if the subject matches the pattern.
-            $valid = is_string($subject) && (
+                // Check if the subject matches the pattern.
+                $valid = is_string($subject) && (
+                    $subject === '' || preg_match($pattern, $subject)
+                );
+
+                // Restore it to the previous encoding.
+                mb_regex_encoding($originalEncoding);
+
+                return $valid;
+            };
+        }
+
+        // Return a simplified validator.
+        return function ($subject) use ($pattern) {
+            return is_string($subject) && (
                 $subject === '' || preg_match($pattern, $subject)
             );
-
-            // Restore it to the previous encoding.
-            mb_regex_encoding($originalEncoding);
-
-            return $valid;
         };
     }
 

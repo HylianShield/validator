@@ -1,7 +1,7 @@
 {
   "name": "hylianshield/hylianshield",
   "type": "library",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Data validation and sanitizing",
   "keywords": ["hylianshield", "validator", "validate", "validation", "sanitize", "sanitizer", "sanitizing"],
   "homepage": "https://github.com/johmanx10/hylianshield",
@@ -23,7 +23,8 @@
   "require-dev": {
     "phpunit/phpunit": "3.7.30",
     "php": ">=5.3",
-    "satooshi/php-coveralls": "0.6.1"
+    "satooshi/php-coveralls": "0.6.1",
+    "athletic/athletic": "v0.1.7"
   },
   "autoload": {
     "psr-0": {

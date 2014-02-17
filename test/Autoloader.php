@@ -154,4 +154,14 @@ class Autoloader
             }
         }
     }
+
+    /**
+     * Unregister the autoloader.
+     *
+     * @return void
+     */
+    public function __destruct()
+    {
+        spl_autoload_unregister(array($this, 'loadClass'));
+    }
 }
