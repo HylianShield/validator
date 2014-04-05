@@ -1,3 +1,30 @@
+# v0.3.0
+
+- Added benchmarking suite and initial benchmarks
+- Improved performance of the Range validator
+- Conditionally improved performance of the String\Subset validator
+
+# v0.2.2
+
+- Fix the numeric arrar validator unit test
+- Improve performance of Range validators
+
+# v0.2.1
+
+Fix the Numeric array validator
+
+# v0.2.0
+
+Version 0.2.0 adds some new validators.
+
+- Validator\CoreArray\Numeric
+- Validator\OneOf
+- Validator\String\Subset (abstract)
+- Validator\String\Utf8\Mes1
+- Validator\String\Utf8\Mes2
+- Validator\String\Utf8\Mes3A
+- Validator\String\Utf8\WordCharacter
+
 # v0.1.1
 
 Version 0.1.1 fixes behavior for the mutable ranges. Before, `0` was the default value
