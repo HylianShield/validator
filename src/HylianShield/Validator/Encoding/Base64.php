@@ -79,6 +79,17 @@ class Base64 extends \HylianShield\Validator
     const NUM_CHARACTERS_PER_GROUP = 4;
 
     /**
+     * A negative validation pattern that will break validation once an invalid
+     * character is found.
+     * This does a negative match against all characters outside of the Base 64
+     * alphabet table.
+     *
+     * @var string PATTERN
+     * @see http://tools.ietf.org/html/rfc4648#section-4
+     */
+    const PATTERN = '/^[^A-Za-z0-9\+\/]+$/';
+
+    /**
      * The validator type.
      *
      * @var string $type
@@ -108,14 +119,6 @@ class Base64 extends \HylianShield\Validator
      * @see http://tools.ietf.org/html/rfc4648#section-3.1
      */
     private $lineFeedCharacters;
-
-    /**
-     * A list of valid characters.
-     *
-     * @var array $validCharacters
-     * @see http://tools.ietf.org/html/rfc4648#section-4
-     */
-    private $validCharacters;
 
     /**
      * The constructor for Base64.
@@ -174,43 +177,6 @@ class Base64 extends \HylianShield\Validator
         return $this->lineFeedCharacters;
     }
 
-    /**
-     * Setter for validCharacters.
-     *
-     * @param array $validCharacters
-     * @return void
-     */
-    final protected function setValidCharacters(array $validCharacters)
-    {
-        $this->validCharacters = $validCharacters;
-    }
-
-    /**
-     * Get a list of valid characters. Does the setup if the list is absent.
-     *
-     * @return array $this->validCharacters
-     * @see http://tools.ietf.org/html/rfc4648#section-4
-     */
-    final protected function getValidCharacters()
-    {
-        if (!isset($this->validCharacters)) {
-            $this->setValidCharacters(
-                // The Base 64 alphabet.
-                array_merge(
-                    // A-Z.
-                    range('A', 'Z'),
-                    // a-z.
-                    range('a', 'z'),
-                    // 0-9.
-                    array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9'),
-                    // + and /.
-                    array('+', '/')
-                )
-            );
-        }
-
-        return $this->validCharacters;
-    }
 
     /**
      * Validate the given message.
@@ -238,14 +204,11 @@ class Base64 extends \HylianShield\Validator
 
         // The padding characters may not occur within the encoding.
         $message = $this->trimPadding($message);
-        $length = strlen($message);
-        $validCharacters = $this->getValidCharacters();
 
         // Check all characters inside the message.
-        for ($c = 0; $c < $length; $c++) {
-            if (!in_array($message[$c], $validCharacters, true)) {
-                return false;
-            }
+        if (preg_match($this::PATTERN, $message)) {
+            // An invalid character has been found.
+            return false;
         }
 
         // All rules are satisfied.

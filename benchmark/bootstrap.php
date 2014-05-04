@@ -24,3 +24,5 @@ $autoloader->preload();
 // Autoload the benchmarks.
 $autoloader = new Autoloader(__DIR__ . '/Benchmarks');
 $autoloader->preload();
+
+unset($autoloader);
