@@ -1,3 +1,11 @@
+# v0.5.0
+
+- Validator\Encoding\Base64
+
+# v0.4.0
+
+- Validator\OneOf\Many
+
 # v0.3.0
 
 - Added benchmarking suite and initial benchmarks
