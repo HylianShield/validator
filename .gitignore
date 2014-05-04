@@ -3,3 +3,5 @@ doc/*
 composer.lock
 vendor/*
 build/*
+.tags
+.tags_sorted_by_file
