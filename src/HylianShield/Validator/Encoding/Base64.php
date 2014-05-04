@@ -177,7 +177,6 @@ class Base64 extends \HylianShield\Validator
         return $this->lineFeedCharacters;
     }
 
-
     /**
      * Validate the given message.
      *
