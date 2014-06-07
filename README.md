@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/HylianShield/validator.png?branch=master)](https://travis-ci.org/HylianShield/validator)
 [![Latest Stable Version](https://poser.pugx.org/hylianshield/hylianshield/v/stable.png)](https://packagist.org/packages/hylianshield/validator)
 [![Latest Unstable Version](https://poser.pugx.org/hylianshield/hylianshield/v/unstable.png)](https://packagist.org/packages/hylianshield/hylianshield)
-[![Coverage Status](https://coveralls.io/repos/HylianShield/validator/badge.png)](https://coveralls.io/r/HylianShield/validator)
+[![Coverage Status](https://coveralls.io/repos/johmanx10/validator/badge.png)](https://coveralls.io/r/johmanx10/validator)
 
 Everything between your input and app.
 
