@@ -13,4 +13,4 @@ script:
 after_script:
   - php vendor/bin/coveralls -v
 notifications:
-  irc: "irc.freenode.net#johmanx"
+  irc: "irc.freenode.net#hnl"

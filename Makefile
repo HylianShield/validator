@@ -1,3 +1,4 @@
+PHPCMD=php -d suhosin.executor.include.whitelist=phar
 BASE = "test/Tests/HylianShield/Validator/"
 FLAGS = ""
 
@@ -18,16 +19,21 @@ bench:
 	@vendor/bin/athletic -p benchmark/Benchmarks -b benchmark/bootstrap.php
 
 composer:
-	@curl -sS https://getcomposer.org/installer | sudo php
-	@sudo mv composer.phar /usr/local/bin/composer
-	@echo Moved composer.phar to /usr/local/bin/composer.
-	@echo composer is now a global tool.
+	@curl -sS https://getcomposer.org/installer | $(PHPCMD)
 
-install:
-	@composer install
+production:
+	@$(PHPCMD) ./composer.phar self-update
+	@$(PHPCMD) ./composer.phar install --no-dev --optimize-autoloader
+
+development:
+	@$(PHPCMD) ./composer.phar self-update
+	@$(PHPCMD) ./composer.phar install --dev
+
+install: composer production
 
 update:
-	@composer update
+	@$(PHPCMD) ./composer.phar self-update
+	@$(PHPCMD) ./composer.phar update --optimize-autoloader
 
 docs:
 	@doxygen

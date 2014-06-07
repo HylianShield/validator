@@ -1,3 +1,7 @@
+# v0.6.0
+
+- Split off the validator as a separate project
+
 # v0.5.0
 
 - Validator\Encoding\Base64
