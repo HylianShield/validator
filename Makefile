@@ -1,39 +1,48 @@
-BASE = "test/Tests/HylianShield/Validator/"
-FLAGS = ""
-
-# If a validator is supplied, we want to unit test that.
-ifneq ($(strip $(VALIDATOR)),)
-        FLAGS = $(BASE)$(VALIDATOR)"Test.php"
-endif
-
-base: composer precommit test
+PHPCMD=php -d suhosin.executor.include.whitelist=phar
+PRECOMMIT=".git/hooks/pre-commit"
 
 codecoverage:
-	@vendor/bin/phpunit -c test/phpunit-coverage.xml $(FLAGS)
+	@vendor/bin/phpunit -c test/phpunit-coverage.xml
 
 unittest:
-	@vendor/bin/phpunit -c test/phpunit.xml $(FLAGS)
+	@vendor/bin/phpunit -c test/phpunit.xml
 
-bench:
-	@vendor/bin/athletic -p benchmark/Benchmarks -b benchmark/bootstrap.php
+test: unittest
+
+precommit:
+	@rm -f $(PRECOMMIT)
+	@echo "#!/bin/sh" > $(PRECOMMIT)
+	@echo "make test" >> $(PRECOMMIT)
+	@chmod a+x $(PRECOMMIT)
+	@echo Installed $(PRECOMMIT)
 
 composer:
-	@curl -sS https://getcomposer.org/installer | sudo php
-	@sudo mv composer.phar /usr/local/bin/composer
-	@echo Moved composer.phar to /usr/local/bin/composer.
-	@echo composer is now a global tool.
+	@curl -sS https://getcomposer.org/installer | $(PHPCMD)
 
-install:
-	@composer install
+production:
+	@$(PHPCMD) ./composer.phar self-update
+	@$(PHPCMD) ./composer.phar install --no-dev --optimize-autoloader
 
-update:
-	@composer update
+update-production:
+	@$(PHPCMD) ./composer.phar self-update
+	@$(PHPCMD) ./composer.phar update --no-dev --optimize-autoloader
+
+development:
+	@$(PHPCMD) ./composer.phar self-update
+	@$(PHPCMD) ./composer.phar install --dev
+
+update-development:
+	@$(PHPCMD) ./composer.phar self-update
+	@$(PHPCMD) ./composer.phar update --dev
+
+
+install-production: composer production
+
+install-development: composer precommit development test
+
+install: install-production
+
+update: update-production
 
 docs:
 	@doxygen
-
-precommit:
-	@chmod a+x pre-commit
-	@cd .git/hooks && rm -f pre-commit && ln -s ../../pre-commit && echo Installed pre-commit hook
-
-test: unittest
