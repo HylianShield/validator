@@ -1,3 +1,2 @@
 #!/bin/sh
-ROOT=`git rev-parse --show-toplevel`
-$ROOT/vendor/bin/phpunit -c $ROOT/test/phpunit.xml
+make test

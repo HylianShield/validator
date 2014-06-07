@@ -1,22 +1,14 @@
 PHPCMD=php -d suhosin.executor.include.whitelist=phar
-BASE = "test/Tests/HylianShield/Validator/"
-FLAGS = ""
-
-# If a validator is supplied, we want to unit test that.
-ifneq ($(strip $(VALIDATOR)),)
-        FLAGS = $(BASE)$(VALIDATOR)"Test.php"
-endif
 
 base: composer precommit test
 
 codecoverage:
-	@vendor/bin/phpunit -c test/phpunit-coverage.xml $(FLAGS)
+	@vendor/bin/phpunit -c test/phpunit-coverage.xml
 
 unittest:
-	@vendor/bin/phpunit -c test/phpunit.xml $(FLAGS)
+	@vendor/bin/phpunit -c test/phpunit.xml
 
-bench:
-	@vendor/bin/athletic -p benchmark/Benchmarks -b benchmark/bootstrap.php
+test: unittest
 
 composer:
 	@curl -sS https://getcomposer.org/installer | $(PHPCMD)
@@ -47,5 +39,3 @@ docs:
 precommit:
 	@chmod a+x pre-commit
 	@cd .git/hooks && rm -f pre-commit && ln -s ../../pre-commit && echo Installed pre-commit hook
-
-test: unittest

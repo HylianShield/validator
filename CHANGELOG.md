@@ -1,6 +1,8 @@
 # v0.6.0
 
 - Split off the validator as a separate project
+- Removed custom autoloader in favor of Composer
+- Removed sluggish benchmarking suite
 
 # v0.5.0
 
