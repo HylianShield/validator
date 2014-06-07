@@ -1,6 +1,5 @@
 PHPCMD=php -d suhosin.executor.include.whitelist=phar
-
-base: composer precommit test
+PRECOMMIT=".git/hooks/pre-commit"
 
 codecoverage:
 	@vendor/bin/phpunit -c test/phpunit-coverage.xml
@@ -9,6 +8,13 @@ unittest:
 	@vendor/bin/phpunit -c test/phpunit.xml
 
 test: unittest
+
+precommit:
+	@rm -f $(PRECOMMIT)
+	@echo "#!/bin/sh" > $(PRECOMMIT)
+	@echo "make test" >> $(PRECOMMIT)
+	@chmod a+x $(PRECOMMIT)
+	@echo Installed $(PRECOMMIT)
 
 composer:
 	@curl -sS https://getcomposer.org/installer | $(PHPCMD)
@@ -29,13 +35,14 @@ update-development:
 	@$(PHPCMD) ./composer.phar self-update
 	@$(PHPCMD) ./composer.phar update --dev
 
-install: composer production
+
+install-production: composer production
+
+install-development: composer precommit development test
+
+install: install-production
 
 update: update-production
 
 docs:
 	@doxygen
-
-precommit:
-	@chmod a+x pre-commit
-	@cd .git/hooks && rm -f pre-commit && ln -s ../../pre-commit && echo Installed pre-commit hook
