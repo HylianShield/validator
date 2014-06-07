@@ -25,15 +25,21 @@ production:
 	@$(PHPCMD) ./composer.phar self-update
 	@$(PHPCMD) ./composer.phar install --no-dev --optimize-autoloader
 
+update-production:
+	@$(PHPCMD) ./composer.phar self-update
+	@$(PHPCMD) ./composer.phar update --no-dev --optimize-autoloader
+
 development:
 	@$(PHPCMD) ./composer.phar self-update
 	@$(PHPCMD) ./composer.phar install --dev
 
+update-development:
+	@$(PHPCMD) ./composer.phar self-update
+	@$(PHPCMD) ./composer.phar update --dev
+
 install: composer production
 
-update:
-	@$(PHPCMD) ./composer.phar self-update
-	@$(PHPCMD) ./composer.phar update --optimize-autoloader
+update: update-production
 
 docs:
 	@doxygen
