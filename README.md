@@ -89,6 +89,8 @@ echo $validAge; // and(integer:6,65; not(integer:12,18))
 
 ## List of validators
 
+All the validators below live in the `\HylianShield\Validator` namespace.
+
 ### Core
 - `Boolean`
 - `CoreArray([integer $minCount][, integer $maxCount])`
@@ -136,6 +138,6 @@ echo $validAge; // and(integer:6,65; not(integer:12,18))
 - `LogicalXor(\HylianShield\ValidatorAbstract $a, \HylianShield\ValidatorAbstract $b)`
 - `LogicalNot(\HylianShield\ValidatorAbstract $validator)`
 
-### Financial
+### Financial, Encoding, File, OneOf
 
 Documentation is coming soon!
