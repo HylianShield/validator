@@ -138,6 +138,28 @@ All the validators below live in the `\HylianShield\Validator` namespace.
 - `LogicalXor(\HylianShield\ValidatorAbstract $a, \HylianShield\ValidatorAbstract $b)`
 - `LogicalNot(\HylianShield\ValidatorAbstract $validator)`
 
-### Financial, Encoding, File, OneOf
+### Financial
+
+- `Financial\Bic([boolean $allowTestBic = false])`
+- `Financial\Iban`
+- `Financial\ISO20022\ExtLocalInstrumentCode`
+- `Financial\ISO20022\ExtOrganizationIdCode`
+- `Financial\ISO20022\ExtPersonIdCode`
+- `Financial\SEPA\CreditorIdentifier`
+
+### Encoding
+
+- `Base64([integer $options = Base64::VALIDATE_PADDING])`
+
+### File
+
+- `File\Exists`
+- `File\Readable`
+- `File\Writable`
+
+### OneOf
+
+- `OneOf(mixed $a[, mixed $b[, ...]])`
+- `OneOf\Many(array $arguments)`
 
 Documentation is coming soon!

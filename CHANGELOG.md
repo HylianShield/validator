@@ -1,7 +1,8 @@
 # v0.6.1
 
 - Merged in hotfix from parent project: Validator\Financial\Bic updated for ISO 9362.
-- Updates `make composer` to install composer without the need of `curl`
+- Update `make composer` to install composer without the need of `curl`
+- Improved documentation
 
 # v0.6.0
 
