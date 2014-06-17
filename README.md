@@ -161,5 +161,3 @@ All the validators below live in the `\HylianShield\Validator` namespace.
 
 - `OneOf(mixed $a[, mixed $b[, ...]])`
 - `OneOf\Many(array $arguments)`
-
-Documentation is coming soon!
