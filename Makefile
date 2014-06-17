@@ -17,7 +17,7 @@ precommit:
 	@echo Installed $(PRECOMMIT)
 
 composer:
-	@curl -sS https://getcomposer.org/installer | $(PHPCMD)
+	@$(PHPCMD) -r "readfile('https://getcomposer.org/installer');" | $(PHPCMD)
 
 production:
 	@$(PHPCMD) ./composer.phar self-update
