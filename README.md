@@ -18,6 +18,10 @@ Data validation is not just about keeping your application secure. Although it s
 
 We recognize that PHP has no proper type hinting for scalar data types. This is a huge pain to deal with, since arguments that should accept scalar values, actually will support the `mixed` data type, meaning any and all data you find laying around in your application can be sent through there.
 
+## Documentation
+
+[A completely generated API doc](http://hylianshield.github.io/validator/) can be found on our github.io page.
+
 ## Use case
 
 We are an online shop. Our customer base is between 6 and 65 year olds.
@@ -87,9 +91,10 @@ if (!$validAge->validate($janesAge)) {
 echo $validAge; // and(integer:6,65; not(integer:12,18))
 ```
 
-## List of validators
+## Quick reference
 
 All the validators below live in the `\HylianShield\Validator` namespace.
+For a complete documentation, please visit our [API doc](http://hylianshield.github.io/validator/).
 
 ### Core
 - `Boolean`
