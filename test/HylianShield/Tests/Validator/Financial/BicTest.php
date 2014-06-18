@@ -38,8 +38,8 @@ class BicTest extends \HylianShield\Tests\Validator\TestBase
         array('RABO-NL-2Y', false),
         array('RBOS,NL2A', false),
         array('ABNABEBR', true),
-        array('ABNAML2A', true),
-        array('ABNANI2A', true),
+        array('ABNAML20', false),
+        array('ABNANI21', true),
         array('ABNANK2A', true),
         array('ABNANL2A', true),
         array('ANBANL2A', true),
@@ -77,20 +77,19 @@ class BicTest extends \HylianShield\Tests\Validator\TestBase
         array('INGBNL2A', true),
         array('INGBNLZA', true),
         array('INGINGBNL2A', true),
-        array('KRED8EBB', true),
-        array('KREDBEBB', true),
+        array('KRED8EBB', false),
         array('NICABEBB', true),
-        array('NL07RABO', true),
-        array('NL21RABO037', true),
-        array('NL28ABNA042', true),
-        array('NL30RABO012', true),
-        array('NL47RABO011', true),
-        array('NL59RABO016', true),
-        array('NL72INGB066', true),
+        array('NL07RABO', false),
+        array('NL21RABO037', false),
+        array('NL28ABNA042', false),
+        array('NL30RABO012', false),
+        array('NL47RABO011', false),
+        array('NL59RABO016', false),
+        array('NL72INGB066', false),
         array('NLINGB2A', true),
         array('NLRABO2U', true),
         array('PSTBNL21', true),
-        array('RABO2NLU', true),
+        array('RABO2NLU', false),
         array('RABONL24', true),
         array('RABONL2U', true),
         array('RABONL2Y', true),
@@ -101,4 +100,94 @@ class BicTest extends \HylianShield\Tests\Validator\TestBase
         array('TESTNL2A', true),
         array('TRIONL2U', true)
     );
+
+    /**
+     * Provide a set of invalid arguments.
+     *
+     * @return array
+     */
+    public function invalidArgumentProvider()
+    {
+        // Each entry represents a function call.
+        return array(
+            // Each entry represents an argument for the function call.
+            array('true'),
+            array(''),
+            array(0),
+            array(-1),
+            array(1)
+        );
+    }
+
+    /**
+     * Test an invalid construct.
+     *
+     * @dataProvider invalidArgumentProvider
+     * @expectedException \InvalidArgumentException
+     */
+    public function testInvalidConstruct($invalidArgument)
+    {
+        $validator = $this->validatorClass;
+        $validator = new $validator($invalidArgument);
+    }
+
+    /**
+     * Provide a set of valid validations.
+     *
+     * @return array
+     */
+    public function validAlternativeValidationSet()
+    {
+        // Each entry represents a function call.
+        return array(
+            // Each entry represents an argument for the function call.
+            array('ABNABEBR'),
+            array('ABNANK2A'),
+            array('ABNANL2A'),
+            array('ANBANL2A'),
+            array('ABNAML20'),
+            array('ABNANI21')
+        );
+    }
+
+    /**
+     * Test alternative validator construct using test BIC codes.
+     *
+     * @dataProvider validAlternativeValidationSet
+     */
+    public function testValidAlternateConstruct($validate) {
+        $validator = $this->validatorClass;
+        $validator = new $validator(true);
+
+        $this->assertEquals(true, $validator($validate));
+    }
+
+    /**
+     * Provide a set of invalid validations.
+     *
+     * @return array
+     */
+    public function invalidAlternativeValidationSet()
+    {
+        // Each entry represents a function call.
+        return array(
+            // Each entry represents an argument for the function call.
+            array('RBOS,NL2A'),
+            array('RABO2NLU'),
+            array('NL07RABO'),
+            array('NL21RABO037'),
+        );
+    }
+
+    /**
+     * Test alternative validator construct using test BIC codes.
+     *
+     * @dataProvider invalidAlternativeValidationSet
+     */
+    public function testInvalidAlternateConstruct($validate) {
+        $validator = $this->validatorClass;
+        $validator = new $validator(true);
+
+        $this->assertEquals(false, $validator($validate));
+    }
 }

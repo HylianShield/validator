@@ -1,7 +1,7 @@
 {
   "name": "hylianshield/validator",
   "type": "library",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Data validation and sanitizing",
   "keywords": ["hylianshield", "validator", "validate", "validation"],
   "homepage": "https://github.com/HylianShield/validator",
@@ -23,6 +23,9 @@
   "require-dev": {
     "phpunit/phpunit": "3.7.37",
     "satooshi/php-coveralls": "0.6.1"
+  },
+  "replace": {
+    "hylianshield/hylianshield": "0.5.1"
   },
   "autoload": {
     "psr-0": {
