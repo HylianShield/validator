@@ -74,7 +74,7 @@ $jane = new Customer();
 $jane->setDateOfBirth(new DateTime('2000-02-11'));
 $janesAge = $jane->getAge($today);
 
-if (!$validAge->validate($janesdAge)) {
+if (!$validAge->validate($janesAge)) {
     // YOU SHALL NOT PASS!
     throw new \Vendor\Project\InvalidAgeException(
         $validAge->getMessage();
