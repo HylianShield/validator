@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="https://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/HylianShield.html">\HylianShield</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">18</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1901607874"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1901607874" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-957773656"></a>
+                                <a href="../namespaces/HylianShield.html" style="margin-left: 30px; padding-left: 0">HylianShield</a>
+            </div>
+            <div id="namespace-957773656" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1701204427"></a>
+                                <a href="../namespaces/HylianShield.Tests.html" style="margin-left: 30px; padding-left: 0">Tests</a>
+            </div>
+            <div id="namespace-1701204427" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1539338785"></a>
+                                <a href="../namespaces/HylianShield.Tests.Validator.html" style="margin-left: 30px; padding-left: 0">Validator</a>
+            </div>
+            <div id="namespace-1539338785" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-720654425"></a>
+                                <a href="../namespaces/HylianShield.Tests.Validator.CoreArray.html" style="margin-left: 30px; padding-left: 0">CoreArray</a>
+            </div>
+            <div id="namespace-720654425" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.CoreArray.NumericTest.html">NumericTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1886764588"></a>
+                                <a href="../namespaces/HylianShield.Tests.Validator.CoreClass.html" style="margin-left: 30px; padding-left: 0">CoreClass</a>
+            </div>
+            <div id="namespace-1886764588" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.CoreClass.ExistsTest.html">ExistsTest</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.CoreClass.InstanceTest.html">InstanceTest</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.CoreClass.MethodTest.html">MethodTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1071283750"></a>
+                                <a href="../namespaces/HylianShield.Tests.Validator.Date.html" style="margin-left: 30px; padding-left: 0">Date</a>
+            </div>
+            <div id="namespace-1071283750" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.Date.MysqlTest.html">MysqlTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-388994599"></a>
+                                <a href="../namespaces/HylianShield.Tests.Validator.Encoding.html" style="margin-left: 30px; padding-left: 0">Encoding</a>
+            </div>
+            <div id="namespace-388994599" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.Encoding.Base64Test.html">Base64Test</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-525523944"></a>
+                                <a href="../namespaces/HylianShield.Tests.Validator.Financial.html" style="margin-left: 30px; padding-left: 0">Financial</a>
+            </div>
+            <div id="namespace-525523944" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2118270082"></a>
+                                <a href="../namespaces/HylianShield.Tests.Validator.Financial.BicTest.html" style="margin-left: 30px; padding-left: 0">BicTest</a>
+            </div>
+            <div id="namespace-2118270082" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.Financial.BicTest.BicTest.html">BicTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1304539781"></a>
+                                <a href="../namespaces/HylianShield.Tests.Validator.Financial.IbanTest.html" style="margin-left: 30px; padding-left: 0">IbanTest</a>
+            </div>
+            <div id="namespace-1304539781" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.Financial.IbanTest.IbanTest.html">IbanTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1832357458"></a>
+                                <a href="../namespaces/HylianShield.Tests.Validator.Financial.ISO20022.html" style="margin-left: 30px; padding-left: 0">ISO20022</a>
+            </div>
+            <div id="namespace-1832357458" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.Financial.ISO20022.ExtLocalInstrumentCodeTest.html">ExtLocalInstrumentCodeTest</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.Financial.ISO20022.ExtOrganizationIdCodeTest.html">ExtOrganizationIdCodeTest</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.Financial.ISO20022.ExtPersonIdCodeTest.html">ExtPersonIdCodeTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-28780306"></a>
+                                <a href="../namespaces/HylianShield.Tests.Validator.Financial.SEPA.html" style="margin-left: 30px; padding-left: 0">SEPA</a>
+            </div>
+            <div id="namespace-28780306" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1193386665"></a>
+                                <a href="../namespaces/HylianShield.Tests.Validator.Financial.SEPA.CreditorIdentifier.html" style="margin-left: 30px; padding-left: 0">CreditorIdentifier</a>
+            </div>
+            <div id="namespace-1193386665" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.Financial.SEPA.CreditorIdentifier.CreditorIdentifierTest.html">CreditorIdentifierTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-511577503"></a>
+                                <a href="../namespaces/HylianShield.Tests.Validator.Float.html" style="margin-left: 30px; padding-left: 0">Float</a>
+            </div>
+            <div id="namespace-511577503" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.Float.NegativeTest.html">NegativeTest</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.Float.PositiveTest.html">PositiveTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1182339015"></a>
+                                <a href="../namespaces/HylianShield.Tests.Validator.Integer.html" style="margin-left: 30px; padding-left: 0">Integer</a>
+            </div>
+            <div id="namespace-1182339015" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.Integer.NegativeTest.html">NegativeTest</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.Integer.PositiveTest.html">PositiveTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1899227460"></a>
+                                <a href="../namespaces/HylianShield.Tests.Validator.Number.html" style="margin-left: 30px; padding-left: 0">Number</a>
+            </div>
+            <div id="namespace-1899227460" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.Number.NegativeTest.html">NegativeTest</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.Number.PositiveTest.html">PositiveTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-886684052"></a>
+                                <a href="../namespaces/HylianShield.Tests.Validator.String.html" style="margin-left: 30px; padding-left: 0">String</a>
+            </div>
+            <div id="namespace-886684052" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-98160973"></a>
+                                <a href="../namespaces/HylianShield.Tests.Validator.String.Utf8.html" style="margin-left: 30px; padding-left: 0">Utf8</a>
+            </div>
+            <div id="namespace-98160973" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.String.Utf8.Mes1Test.html">Mes1Test</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.String.Utf8.Mes2Test.html">Mes2Test</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.String.Utf8.Mes3ATest.html">Mes3ATest</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.String.Utf8.WordCharacterTest.html">WordCharacterTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.String.SubsetTestBase.html">SubsetTestBase</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.String.Utf8Test.html">Utf8Test</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1563739493"></a>
+                                <a href="../namespaces/HylianShield.Tests.Validator.Url.html" style="margin-left: 30px; padding-left: 0">Url</a>
+            </div>
+            <div id="namespace-1563739493" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1276218197"></a>
+                                <a href="../namespaces/HylianShield.Tests.Validator.Url.Network.html" style="margin-left: 30px; padding-left: 0">Network</a>
+            </div>
+            <div id="namespace-1276218197" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.Url.Network.HttpsTest.html">HttpsTest</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.Url.Network.HttpTest.html">HttpTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.Url.NetworkTest.html">NetworkTest</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.Url.WebpageTest.html">WebpageTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.CoreArrayTest.html">CoreArrayTest</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.CoreFunctionTest.html">CoreFunctionTest</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.FloatTest.html">FloatTest</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.IntegerTest.html">IntegerTest</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.LogicalAndTest.html">LogicalAndTest</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.LogicalGateTestBase.html">LogicalGateTestBase</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.LogicalNotTest.html">LogicalNotTest</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.LogicalOrTest.html">LogicalOrTest</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.LogicalXorTest.html">LogicalXorTest</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.ManyTest.html">ManyTest</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.NumberTest.html">NumberTest</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.ObjectTest.html">ObjectTest</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.OneOfTest.html">OneOfTest</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.RegexpTest.html">RegexpTest</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.StringTest.html">StringTest</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Tests.Validator.TestBase.html">TestBase</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1559578634"></a>
+                                <a href="../namespaces/HylianShield.Validator.html" style="margin-left: 30px; padding-left: 0">Validator</a>
+            </div>
+            <div id="namespace-1559578634" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-63894215"></a>
+                                <a href="../namespaces/HylianShield.Validator.CoreArray.html" style="margin-left: 30px; padding-left: 0">CoreArray</a>
+            </div>
+            <div id="namespace-63894215" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Validator.CoreArray.Numeric.html">Numeric</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-279105229"></a>
+                                <a href="../namespaces/HylianShield.Validator.CoreClass.html" style="margin-left: 30px; padding-left: 0">CoreClass</a>
+            </div>
+            <div id="namespace-279105229" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Validator.CoreClass.Exists.html">Exists</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Validator.CoreClass.Instance.html">Instance</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Validator.CoreClass.Method.html">Method</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1184646023"></a>
+                                <a href="../namespaces/HylianShield.Validator.Date.html" style="margin-left: 30px; padding-left: 0">Date</a>
+            </div>
+            <div id="namespace-1184646023" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Validator.Date.Mysql.html">Mysql</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-964238155"></a>
+                                <a href="../namespaces/HylianShield.Validator.Encoding.html" style="margin-left: 30px; padding-left: 0">Encoding</a>
+            </div>
+            <div id="namespace-964238155" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Validator.Encoding.Base64.html">Base64</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-251359001"></a>
+                                <a href="../namespaces/HylianShield.Validator.File.html" style="margin-left: 30px; padding-left: 0">File</a>
+            </div>
+            <div id="namespace-251359001" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Validator.File.Exists.html">Exists</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Validator.File.Readable.html">Readable</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Validator.File.Writable.html">Writable</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1786057886"></a>
+                                <a href="../namespaces/HylianShield.Validator.Financial.html" style="margin-left: 30px; padding-left: 0">Financial</a>
+            </div>
+            <div id="namespace-1786057886" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1720206475"></a>
+                                <a href="../namespaces/HylianShield.Validator.Financial.ISO20022.html" style="margin-left: 30px; padding-left: 0">ISO20022</a>
+            </div>
+            <div id="namespace-1720206475" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Validator.Financial.ISO20022.ExtLocalInstrumentCode.html">ExtLocalInstrumentCode</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Validator.Financial.ISO20022.ExtOrganizationIdCode.html">ExtOrganizationIdCode</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Validator.Financial.ISO20022.ExtPersonIdCode.html">ExtPersonIdCode</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-193237399"></a>
+                                <a href="../namespaces/HylianShield.Validator.Financial.SEPA.html" style="margin-left: 30px; padding-left: 0">SEPA</a>
+            </div>
+            <div id="namespace-193237399" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Validator.Financial.SEPA.CreditorIdentifier.html">CreditorIdentifier</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Validator.Financial.Bic.html">Bic</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Validator.Financial.Iban.html">Iban</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1608018073"></a>
+                                <a href="../namespaces/HylianShield.Validator.Float.html" style="margin-left: 30px; padding-left: 0">Float</a>
+            </div>
+            <div id="namespace-1608018073" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Validator.Float.Negative.html">Negative</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Validator.Float.Positive.html">Positive</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2069540961"></a>
+                                <a href="../namespaces/HylianShield.Validator.Integer.html" style="margin-left: 30px; padding-left: 0">Integer</a>
+            </div>
+            <div id="namespace-2069540961" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Validator.Integer.Negative.html">Negative</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Validator.Integer.Positive.html">Positive</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2053487649"></a>
+                                <a href="../namespaces/HylianShield.Validator.Number.html" style="margin-left: 30px; padding-left: 0">Number</a>
+            </div>
+            <div id="namespace-2053487649" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Validator.Number.Negative.html">Negative</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Validator.Number.Positive.html">Positive</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-775135056"></a>
+                                <a href="../namespaces/HylianShield.Validator.OneOf.html" style="margin-left: 30px; padding-left: 0">OneOf</a>
+            </div>
+            <div id="namespace-775135056" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Validator.OneOf.Many.html">Many</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1061819976"></a>
+                                <a href="../namespaces/HylianShield.Validator.Range.html" style="margin-left: 30px; padding-left: 0">Range</a>
+            </div>
+            <div id="namespace-1061819976" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Validator.Range.Immutable.html">Immutable</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Validator.Range.Mutable.html">Mutable</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1882778099"></a>
+                                <a href="../namespaces/HylianShield.Validator.String.html" style="margin-left: 30px; padding-left: 0">String</a>
+            </div>
+            <div id="namespace-1882778099" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1311949367"></a>
+                                <a href="../namespaces/HylianShield.Validator.String.Utf8.html" style="margin-left: 30px; padding-left: 0">Utf8</a>
+            </div>
+            <div id="namespace-1311949367" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Validator.String.Utf8.Mes1.html">Mes1</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Validator.String.Utf8.Mes2.html">Mes2</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Validator.String.Utf8.Mes3A.html">Mes3A</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Validator.String.Utf8.WordCharacter.html">WordCharacter</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Validator.String.Subset.html">Subset</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Validator.String.Utf8.html">Utf8</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-148158900"></a>
+                                <a href="../namespaces/HylianShield.Validator.Url.html" style="margin-left: 30px; padding-left: 0">Url</a>
+            </div>
+            <div id="namespace-148158900" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-188948576"></a>
+                                <a href="../namespaces/HylianShield.Validator.Url.Network.html" style="margin-left: 30px; padding-left: 0">Network</a>
+            </div>
+            <div id="namespace-188948576" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Validator.Url.Network.Http.html">Http</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Validator.Url.Network.Https.html">Https</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Validator.Url.Network.html">Network</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Validator.Url.Webpage.html">Webpage</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Validator.Boolean.html">Boolean</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Validator.CoreArray.html">CoreArray</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Validator.CoreFunction.html">CoreFunction</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Validator.Float.html">Float</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Validator.Integer.html">Integer</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Validator.LogicalAnd.html">LogicalAnd</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Validator.LogicalGate.html">LogicalGate</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Validator.LogicalNot.html">LogicalNot</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Validator.LogicalOr.html">LogicalOr</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Validator.LogicalXor.html">LogicalXor</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Validator.Number.html">Number</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Validator.Object.html">Object</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Validator.OneOf.html">OneOf</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Validator.Range.html">Range</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Validator.Regexp.html">Regexp</a></li>
+                                                    <li class="class"><a href="../classes/HylianShield.Validator.String.html">String</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/HylianShield.Validator.html">Validator</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/HylianShield.Tests.Validator.Url.html">\HylianShield\Tests\Validator\Url</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\HylianShield\Tests\Validator\Url</small>NetworkTest</h1>
+                    <p><em>Network test.</em></p>
+                    
+
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/HylianShield.Tests.Validator.TestBase.html#method_testType" class="">testType()</a><br />
+                                                                    <a href="../classes/HylianShield.Tests.Validator.TestBase.html#method_testToString" class="">testToString()</a><br />
+                                                                    <a href="../classes/HylianShield.Tests.Validator.TestBase.html#method_testValidations" class="">testValidations()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/HylianShield.Tests.Validator.TestBase.html#method_setUp" class="">setUp()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/HylianShield.Tests.Validator.Url.NetworkTest.html#property_validatorClass" class="">$validatorClass</a><br />
+                                                                    <a href="../classes/HylianShield.Tests.Validator.TestBase.html#property_validator" class="">$validator</a><br />
+                                                                    <a href="../classes/HylianShield.Tests.Validator.Url.NetworkTest.html#property_validations" class="">$validations</a><br />
+                                                                    <a href="../classes/HylianShield.Tests.Validator.TestBase.html#property_testValidations" class="">$testValidations</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/test.HylianShield.Tests.Validator.Url.NetworkTest.html"><div class="path-wrapper">test/HylianShield/Tests/Validator/Url/NetworkTest.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">\HylianShield</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                                        <div class="namespace-wrapper">\PHPUnit_Framework_TestCase</div>
+                                                                    
+                                        <div class="namespace-wrapper"><a href="../classes/HylianShield.Tests.Validator.TestBase.html">\HylianShield\Tests\Validator\TestBase</a></div>
+                                                                                                    <div class="namespace-wrapper">\HylianShield\Tests\Validator\Url\NetworkTest</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_validatorClass" name="property_validatorClass" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$validatorClass</h3>
+                <pre class="signature">$validatorClass : string</pre>
+                <p><em>The name of our class to test.</em></p>
+                <p>This needs to be the class with the full namespace.</p>
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_validator" name="property_validator" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$validator</h3>
+                <pre class="signature">$validator : \HylianShield\Validator</pre>
+                <p><em>The validator to use for common tests.</em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/HylianShield.Validator.html">\HylianShield\Validator</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/HylianShield.Tests.Validator.TestBase.html"><div class="path-wrapper">\HylianShield\Tests\Validator\TestBase</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_validations" name="property_validations" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$validations</h3>
+                <pre class="signature">$validations : array</pre>
+                <p><em>A set of validations to pass.</em></p>
+                <p>Each entry is a function call, which should be an array with arguments
+to pass to the validator with the last one being either true or false.</p>
+<p>E.g.: array( array(12, true), array(-12, false) )</p>
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_testValidations" name="property_testValidations" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$testValidations</h3>
+                <pre class="signature">$testValidations : boolean</pre>
+                <p><em>Whether we should automatically test the validations.</em></p>
+                
+
+                                <h4>Type</h4>
+                boolean
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/HylianShield.Tests.Validator.TestBase.html"><div class="path-wrapper">\HylianShield\Tests\Validator\TestBase</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_testType" name="method_testType" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">testType()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">testType()</pre>
+                <p><em>Test the type method.</em></p>
+                
+
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/HylianShield.Tests.Validator.TestBase.html"><div class="path-wrapper">\HylianShield\Tests\Validator\TestBase</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_testToString" name="method_testToString" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">testToString()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">testToString()</pre>
+                <p><em>Test the __tostring method.</em></p>
+                
+
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/HylianShield.Tests.Validator.TestBase.html"><div class="path-wrapper">\HylianShield\Tests\Validator\TestBase</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_testValidations" name="method_testValidations" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">testValidations()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">testValidations()</pre>
+                <p><em>Test validations for our class.</em></p>
+                
+
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/HylianShield.Tests.Validator.TestBase.html"><div class="path-wrapper">\HylianShield\Tests\Validator\TestBase</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setUp" name="method_setUp" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">setUp()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setUp()</pre>
+                <p><em>Set up a common validator.</em></p>
+                
+
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/HylianShield.Tests.Validator.TestBase.html"><div class="path-wrapper">\HylianShield\Tests\Validator\TestBase</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">NetworkTest.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/test/HylianShield/Tests/Validator/Url/NetworkTest.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/HylianShield.html">\HylianShield</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on June 18th, 2014 at 19:38.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>
