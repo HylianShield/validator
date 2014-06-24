@@ -136,6 +136,9 @@ For a complete documentation, please visit our [API doc](http://hylianshield.git
 - `Url\Network\Https`
 - `Url\Network\Webpage`
 
+### Email
+- `Email`
+
 ### LogicalGate
 
 - `LogicalAnd(\HylianShield\ValidatorAbstract $a, \HylianShield\ValidatorAbstract $b, [, ...])`
