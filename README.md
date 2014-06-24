@@ -18,6 +18,10 @@ Data validation is not just about keeping your application secure. Although it s
 
 We recognize that PHP has no proper type hinting for scalar data types. This is a huge pain to deal with, since arguments that should accept scalar values, actually will support the `mixed` data type, meaning any and all data you find laying around in your application can be sent through there.
 
+## Documentation
+
+[A completely generated API doc](http://hylianshield.github.io/validator/) can be found on our github.io page.
+
 ## Use case
 
 We are an online shop. Our customer base is between 6 and 65 year olds.
@@ -74,7 +78,7 @@ $jane = new Customer();
 $jane->setDateOfBirth(new DateTime('2000-02-11'));
 $janesAge = $jane->getAge($today);
 
-if (!$validAge->validate($janesdAge)) {
+if (!$validAge->validate($janesAge)) {
     // YOU SHALL NOT PASS!
     throw new \Vendor\Project\InvalidAgeException(
         $validAge->getMessage();
@@ -87,9 +91,10 @@ if (!$validAge->validate($janesdAge)) {
 echo $validAge; // and(integer:6,65; not(integer:12,18))
 ```
 
-## List of validators
+## Quick reference
 
 All the validators below live in the `\HylianShield\Validator` namespace.
+For a complete documentation, please visit our [API doc](http://hylianshield.github.io/validator/).
 
 ### Core
 - `Boolean`
@@ -138,6 +143,26 @@ All the validators below live in the `\HylianShield\Validator` namespace.
 - `LogicalXor(\HylianShield\ValidatorAbstract $a, \HylianShield\ValidatorAbstract $b)`
 - `LogicalNot(\HylianShield\ValidatorAbstract $validator)`
 
-### Financial, Encoding, File, OneOf
+### Financial
 
-Documentation is coming soon!
+- `Financial\Bic([boolean $allowTestBic = false])`
+- `Financial\Iban`
+- `Financial\ISO20022\ExtLocalInstrumentCode`
+- `Financial\ISO20022\ExtOrganizationIdCode`
+- `Financial\ISO20022\ExtPersonIdCode`
+- `Financial\SEPA\CreditorIdentifier`
+
+### Encoding
+
+- `Base64([integer $options = Base64::VALIDATE_PADDING])`
+
+### File
+
+- `File\Exists`
+- `File\Readable`
+- `File\Writable`
+
+### OneOf
+
+- `OneOf(mixed $a[, mixed $b[, ...]])`
+- `OneOf\Many(array $arguments)`
