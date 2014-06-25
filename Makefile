@@ -35,7 +35,6 @@ update-development:
 	@$(PHPCMD) ./composer.phar self-update
 	@$(PHPCMD) ./composer.phar update --dev
 
-
 install-production: composer production
 
 install-development: composer precommit development test
@@ -43,6 +42,3 @@ install-development: composer precommit development test
 install: install-production
 
 update: update-production
-
-docs:
-	@doxygen
