@@ -63,6 +63,6 @@ follow these steps:
   or `make update` respectively.
 * Generate the new documentation using `make dox`.
 * Commit the new documentation with at least the new version in the commit message.
-* Push the changes to your repo and open a pull from yourrepo/gh-pages/vx.x.x to hylianshield/gh-pages/vx.x.x
+* Push the changes to your repo and open a pull from yourrepo/gh-pages/vx.x.x to hylianshield/gh-pages
 
 (*) The name may differ based on your operating system. Ubuntu was assumed.
