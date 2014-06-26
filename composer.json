@@ -1,7 +1,7 @@
 {
   "name": "hylianshield/validator",
   "type": "library",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "description": "Data validation and sanitizing",
   "keywords": ["hylianshield", "validator", "validate", "validation"],
   "homepage": "https://github.com/HylianShield/validator",
