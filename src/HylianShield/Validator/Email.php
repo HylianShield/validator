@@ -11,6 +11,8 @@ namespace HylianShield\Validator;
 
 /**
  * Validate email addresses.
+ * It will not accept UTF-8 characters outside the ASCII range.
+ * @see https://github.com/HylianShield/validator/issues/7
  *
  * Example: $validator = new \HylianShield\Validator\Email();
  * $validator->validate('navi@hylianshield.org');

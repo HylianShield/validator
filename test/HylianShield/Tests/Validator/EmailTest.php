@@ -34,6 +34,7 @@ class EmailTest extends \HylianShield\Tests\Validator\TestBase
         array(0, false),
         array('git@github.com', true),
         array('navi@hylianshield.org', true),
-        array('x+1234@mail.issuetracker.com', true)
+        array('x+1234@mail.issuetracker.com', true),
+        array('€αβγδε@woop.woop.woop', false)
     );
 }

@@ -18,7 +18,7 @@ $disallowedAgeStart = 12;
 $disallowedAgeEnd = 18;
 
 // So our valid ages are between 6 and 65, excluding 12 through 18.
-$validAge = new Validator\LogicalAnd(
+$ageValidator = new Validator\LogicalAnd(
     // We allow customers between the minimum and maximum age ...
     new Validator\Integer($minimumAge, $maximumAge),
     // ... so long as they are not ...
@@ -32,8 +32,8 @@ $validAge = new Validator\LogicalAnd(
 $suppliedAges = range(1, 120);
 
 // Of those, we allow the following.
-// This works because $validAge->__invoke($argument) maps to $validAge->validate($argument).
-$validAges = array_filter($suppliedAges, $validAges);
+// This works because $ageValidator->__invoke($argument) maps to $ageValidator->validate($argument).
+$validAges = array_filter($suppliedAges, $ageValidator);
 
 // Owh and here is Jim.
 $jim = new Customer();
@@ -44,7 +44,7 @@ $jim->setDateOfBirth(new DateTime('2007-03-22'));
 $today = new DateTime('2014-06-12');
 $jimsAge = $jim->getAge($today); // 7.
 
-if ($validAge->validate($jimsAge)) {
+if ($ageValidator->validate($jimsAge)) {
     // Jim is 7 years old, so he can pass!
 }
 
@@ -54,15 +54,15 @@ $jane = new Customer();
 $jane->setDateOfBirth(new DateTime('2000-02-11'));
 $janesAge = $jane->getAge($today);
 
-if (!$validAge->validate($janesAge)) {
+if (!$ageValidator->validate($janesAge)) {
     // YOU SHALL NOT PASS!
     throw new \Vendor\Project\InvalidAgeException(
-        $validAge->getMessage();
+        $ageValidator->getMessage();
         // The message will be the following:
         // Invalid value supplied: (integer) 14; Expected: and(integer:6,65; not(integer:12,18))
     );
 }
 
 // And if you ever want to know what validator you are dealing with, simply cast it to a string:
-echo $validAge; // and(integer:6,65; not(integer:12,18))
+echo $ageValidator; // and(integer:6,65; not(integer:12,18))
 ```

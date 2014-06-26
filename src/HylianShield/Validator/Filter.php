@@ -25,6 +25,21 @@ abstract class Filter extends \HylianShield\Validator
     const FILTER = 0;
 
     /**
+     * A list of valid filters for Filter implementations.
+     *
+     * @var array $allowedFilters
+     */
+    private static $allowedFilters = array(
+        FILTER_VALIDATE_BOOLEAN,
+        FILTER_VALIDATE_EMAIL,
+        FILTER_VALIDATE_FLOAT,
+        FILTER_VALIDATE_INT,
+        FILTER_VALIDATE_IP,
+        FILTER_VALIDATE_REGEXP,
+        FILTER_VALIDATE_URL
+    );
+
+    /**
      * Options for the filter, if it accepts any.
      *
      * @var array $options
@@ -53,7 +68,7 @@ abstract class Filter extends \HylianShield\Validator
     {
         $filter = $this::FILTER;
 
-        if (!is_integer($filter) || $filter <= 0) {
+        if (!in_array($this::FILTER, self::$allowedFilters, true)) {
             // @codeCoverageIgnoreStart
             throw new LogicException('Invalid filter configured!');
             // @codeCoverageIgnoreEnd
@@ -68,7 +83,7 @@ abstract class Filter extends \HylianShield\Validator
      * @param mixed $var
      * @return boolean
      */
-    protected function filterVar($var)
+    final protected function filterVar($var)
     {
         return filter_var(
             $var,
