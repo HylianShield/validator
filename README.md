@@ -22,4 +22,6 @@ To a fault, we support PHP 5.3, 5.4 and 5.5, which are all unit tested using Tra
 
 ## TL;DR
 
-HylianShield [*validator*](http://hylianshield.github.io/validator/) is an *awesome* project, works on your [*framework*](FRAMEWORKS.md) or *custom* code base. It uses [*composer*](INSTALLATION.md) as dependency manager, is hosted on [*packagist*](https://packagist.org/packages/hylianshield/validator). [#TravisCI](https://travis-ci.org/HylianShield/validator) #PHP5.3 #PHP5.4 #PHP5.5  [![Build Status](https://travis-ci.org/HylianShield/validator.png?branch=master)](https://travis-ci.org/HylianShield/validator) [![Latest Stable Version](https://poser.pugx.org/hylianshield/validator/v/stable.png)](https://packagist.org/packages/hylianshield/validator)
+HylianShield [*validator*](http://hylianshield.github.io/validator/) is an *awesome* project, works on your [*framework*](FRAMEWORKS.md) or *custom* code base. It uses [*composer*](INSTALLATION.md) as dependency manager, is hosted on [*packagist*](https://packagist.org/packages/hylianshield/validator). [#TravisCI](https://travis-ci.org/HylianShield/validator) #PHP5.3 #PHP5.4 #PHP5.5
+
+[![Build Status](https://travis-ci.org/HylianShield/validator.png?branch=master)](https://travis-ci.org/HylianShield/validator) [![Latest Stable Version](https://poser.pugx.org/hylianshield/validator/v/stable.png)](https://packagist.org/packages/hylianshield/validator)
