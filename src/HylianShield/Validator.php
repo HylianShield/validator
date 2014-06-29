@@ -131,7 +131,7 @@ abstract class Validator
      *
      * @return string
      */
-    public function __tostring()
+    public function __toString()
     {
         return $this->type();
     }

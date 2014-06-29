@@ -1,3 +1,8 @@
+# v0.7.0
+
+- Added Email validator
+- Fixed typo in validator abstract
+
 # v0.6.1
 
 - Merged in hotfix from parent project: Validator\Financial\Bic updated for ISO 9362.
