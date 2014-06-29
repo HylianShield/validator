@@ -14,7 +14,7 @@ use \LogicException;
 /**
  * Validator.
  */
-abstract class Validator
+abstract class Validator implements \HylianShield\ValidatorInterface
 {
     /**
      * The type of the validator.
@@ -80,7 +80,7 @@ abstract class Validator
      * Get the message explaining the fail.
      *
      * @todo Add message for objects and arrays
-     * @return string
+     * @return string|null
      */
     final public function getMessage() {
         // Create a message.
@@ -110,10 +110,22 @@ abstract class Validator
     /**
      * Return the type of the current validator.
      *
+     * @return string
+     * @deprecated Now uses getType for method name consistency.
+     */
+    final public function type()
+    {
+        trigger_error('Method deprecated. Use getType instead.', E_DEPRECATED);
+        return $this->getType();
+    }
+
+    /**
+     * Return the type of the current validator.
+     *
      * @return string $this->type
      * @throws \LogicException when $this->type is not a string
      */
-    final public function type()
+    final public function getType()
     {
         if (!is_string($this->type)) {
             // @codeCoverageIgnoreStart
@@ -133,6 +145,6 @@ abstract class Validator
      */
     public function __toString()
     {
-        return $this->type();
+        return $this->getType();
     }
 }

@@ -74,7 +74,7 @@ class ManyTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $validator->validate($test));
 
         // Test that the collection is correctly identified.
-        $type = $validator->type();
+        $type = $validator->getType();
         $identifier = implode(
             ', ',
             array_map(
