@@ -111,6 +111,19 @@ abstract class TestBase extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test that the type method is deprecated.
+     *
+     * @requires PHP 5.4
+     * @expectedException PHPUnit_Framework_Error_Deprecated
+     * @expectedExceptionCode E_USER_DEPRECATED
+     * @expectedExceptionMessage Method deprecated. Use getType instead.
+     */
+    public function testDeprecatedTypeMethod()
+    {
+        $this->validator->type();
+    }
+
+    /**
      * Test the __tostring method.
      */
     public function testToString()

@@ -115,7 +115,7 @@ abstract class Validator implements \HylianShield\ValidatorInterface
      */
     final public function type()
     {
-        trigger_error('Method deprecated. Use getType instead.', E_DEPRECATED);
+        trigger_error('Method deprecated. Use getType instead.', E_USER_DEPRECATED);
         return $this->getType();
     }
 
