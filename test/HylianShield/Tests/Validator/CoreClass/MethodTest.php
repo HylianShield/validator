@@ -47,7 +47,7 @@ class MethodTest extends \HylianShield\Tests\Validator\TestBase
     public function testInvalidConstruct($invalidArgument)
     {
         $validator = $this->validatorClass;
-        $validator = new $validator($invalidArgument);
+        new $validator($invalidArgument);
     }
 
     /**
