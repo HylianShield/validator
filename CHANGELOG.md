@@ -1,3 +1,11 @@
+# v0.8.0
+
+- Added an interface for validators
+- Added context to validations, which are used to enrich the messages of 
+validators.
+- Started support for HHVM
+- Added support for PHP 5.6
+
 # v0.7.0
 
 - Added Email validator
