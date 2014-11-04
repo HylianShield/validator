@@ -8,7 +8,7 @@
 
 namespace HylianShield\Tests\Validator\Date;
 
-use \HylianShield\Validator\Date\Mysql;
+
 
 /**
  * MysqlTest.

@@ -8,8 +8,6 @@
 
 namespace HylianShield\Tests\Validator\CoreClass;
 
-use \HylianShield\Validator\CoreClass\Exists;
-
 /**
  * ExistsTest.
  */

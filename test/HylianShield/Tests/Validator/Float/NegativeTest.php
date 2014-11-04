@@ -8,7 +8,7 @@
 
 namespace HylianShield\Tests\Validator\Float;
 
-use \HylianShield\Validator\Float\Negative;
+
 
 /**
  * Negative test.

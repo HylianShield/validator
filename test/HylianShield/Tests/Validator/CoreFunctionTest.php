@@ -8,7 +8,7 @@
 
 namespace HylianShield\Tests\Validator;
 
-use \HylianShield\Validator\CoreFunction;
+
 
 /**
  * CoreFunction test.

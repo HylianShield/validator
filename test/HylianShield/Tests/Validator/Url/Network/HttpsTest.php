@@ -8,7 +8,7 @@
 
 namespace HylianShield\Tests\Validator\Url\Network;
 
-use \HylianShield\Validator\Url\Network\Https;
+
 
 /**
  * Https test.

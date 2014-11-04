@@ -8,7 +8,7 @@
 
 namespace HylianShield\Tests\Validator\Number;
 
-use \HylianShield\Validator\Number\Negative;
+
 
 /**
  * Negative test.

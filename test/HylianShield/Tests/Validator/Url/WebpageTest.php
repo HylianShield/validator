@@ -8,8 +8,6 @@
 
 namespace HylianShield\Tests\Validator\Url;
 
-use \HylianShield\Validator\Url\Webpage;
-
 /**
  * Webpage test.
  */
