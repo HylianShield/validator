@@ -62,7 +62,6 @@ class SubsetTestBase extends \HylianShield\Tests\Validator\TestBase
             array('AapNootMies', true),
             array('0123456789', true),
             array('', true),
-            array(0123456789, false),
             array(null, false),
             array(0, false),
             // Test all characters within the range.

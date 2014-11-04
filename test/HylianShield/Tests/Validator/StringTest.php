@@ -29,7 +29,6 @@ class StringTest extends \HylianShield\Tests\Validator\TestBase
         array('Aap Noot Mies', true),
         array('0123456789', true),
         array('', true),
-        array(0123456789, false),
         array(null, false),
         array(0, false)
     );

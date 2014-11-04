@@ -46,7 +46,6 @@ class Utf8Test extends \HylianShield\Tests\Validator\TestBase
             array(mb_convert_encoding('€αβγδε', 'Latin1'), true),
             array(mb_convert_encoding('€αβγδε', 'UTF-16', 'UTF-8'), false),
             array(mb_convert_encoding('€αβγδε', 'UTF-32', 'UTF-8'), false),
-            array(0123456789, false),
             array(null, false),
             array(0, false)
         );

@@ -28,13 +28,11 @@ class ExtLocalInstrumentCodeTest extends \HylianShield\Tests\Validator\TestBase
      */
     protected $validations = array(
         array('Aap Noot Mies', false),
-        array(0123456789, false),
         array('', false),
         array(null, false),
         array(82, false),
-        array(0000, false),
-        array(0001, false),
-        array(0227, false),
+
+
         array('TRF', true),
         array('CHN', true),
         array('CPP', true),

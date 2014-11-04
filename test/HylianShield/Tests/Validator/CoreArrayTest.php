@@ -32,7 +32,6 @@ class CoreArrayTest extends \HylianShield\Tests\Validator\TestBase
         array('0123456789', false),
         array('', false),
         array('€αβγδε', false),
-        array(0123456789, false),
         array(0.123456789, false),
         array(null, false),
         array(0, false),

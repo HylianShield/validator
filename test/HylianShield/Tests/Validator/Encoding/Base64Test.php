@@ -39,7 +39,6 @@ class Base64Test extends \HylianShield\Tests\Validator\TestBase
         array('      ==', false),
         // Test invalid padding length.
         array('0123456789======', false),
-        array(0123456789, false),
         array(null, false),
         array(0, false)
     );
