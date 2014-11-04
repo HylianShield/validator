@@ -8,6 +8,8 @@
 
 namespace HylianShield;
 
+use \HylianShield\Validator\Context\ContextInterface;
+
 /**
  * ValidatorInterface.
  */
@@ -17,9 +19,10 @@ interface ValidatorInterface
      * Validate the supplied value against the current validator.
      *
      * @param mixed $value
+     * @param ContextInterface $context
      * @return boolean
      */
-    public function validate($value);
+    public function validate($value, ContextInterface $context = null);
 
     /**
      * Called when a class is directly called as if it was a function.

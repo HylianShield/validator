@@ -98,4 +98,11 @@ interface ContextInterface
      * @return ViolationInterface[]
      */
     public function getViolations();
+
+    /**
+     * Return a string representation of the context.
+     *
+     * @return string
+     */
+    public function __toString();
 }

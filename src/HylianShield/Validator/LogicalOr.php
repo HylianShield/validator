@@ -8,6 +8,8 @@
 
 namespace HylianShield\Validator;
 
+use \HylianShield\Validator\Context\ContextInterface;
+
 /**
  * LogicalOr.
  */
@@ -29,9 +31,14 @@ class LogicalOr extends \HylianShield\Validator\LogicalGate
     {
         // Create a custom validator that returns true on the first match.
         // Since it is OR, the first match will suffice.
-        $this->validator = function ($value) use ($validators) {
+        $this->validator = function (
+            $value,
+            ContextInterface $context
+        ) use (
+            $validators
+        ) {
             foreach ($validators as $validator) {
-                if ($validator($value)) {
+                if ($validator($value, $context)) {
                     return true;
                 }
             }

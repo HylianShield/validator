@@ -24,7 +24,7 @@ class Context implements ContextInterface
     /**
      * A list of registered context indications.
      *
-     * @var array $indications
+     * @var IndicationInterface[] $indications
      */
     protected $indications = array();
 
@@ -142,5 +142,24 @@ class Context implements ContextInterface
                 return $indication instanceof $interface;
             }
         );
+    }
+
+    /**
+     * Return a string representation of the context.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        $rv = 'Context:' . PHP_EOL;
+
+        $index = 1;
+
+        foreach ($this->indications as $indication) {
+            $rv .= "#{$index} {$indication}" . PHP_EOL;
+            $index++;
+        }
+
+        return $rv;
     }
 }
