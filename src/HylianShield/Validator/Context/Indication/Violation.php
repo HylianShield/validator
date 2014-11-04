@@ -5,6 +5,7 @@
  * @package HylianShield
  * @subpackage Validator
  */
+
 namespace HylianShield\Validator\Context\Indication;
 
 use \InvalidArgumentException;
