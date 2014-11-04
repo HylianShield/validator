@@ -45,7 +45,7 @@ class FloatTest extends \HylianShield\Tests\Validator\TestBase
     public function testDefaultNotZero()
     {
         $validator = $this->validatorClass;
-        /** @var Float $validator */
+        /** @var \HylianShield\Validator\Float $validator */
         $validator = new $validator(0, 0);
 
         $this->assertTrue($validator->validate(0.));

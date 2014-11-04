@@ -44,7 +44,7 @@ class IntegerTest extends \HylianShield\Tests\Validator\TestBase
     public function testDefaultNotZero()
     {
         $validator = $this->validatorClass;
-        /** @var Integer $validator */
+        /** @var \HylianShield\Validator\Integer $validator */
         $validator = new $validator(0, 0);
 
         $this->assertTrue($validator->validate(0));
