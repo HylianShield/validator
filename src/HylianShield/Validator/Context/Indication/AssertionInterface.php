@@ -13,5 +13,10 @@ namespace HylianShield\Validator\Context\Indication;
  */
 interface AssertionInterface extends IndicationInterface
 {
-
+    /**
+     * Get the result of the assertion.
+     *
+     * @return bool
+     */
+    public function getResult();
 }

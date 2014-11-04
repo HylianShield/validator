@@ -13,5 +13,10 @@ namespace HylianShield\Validator\Context\Indication;
  */
 interface IndicationInterface
 {
-
+    /**
+     * Get the description of the indication.
+     *
+     * @return string
+     */
+    public function getDescription();
 }

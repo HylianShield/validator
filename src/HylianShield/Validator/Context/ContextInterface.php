@@ -15,5 +15,42 @@ use \HylianShield\Validator\Context\Indication\IndicationInterface;
  */
 interface ContextInterface
 {
-    public function add(IndicationInterface $indication);
+    /**
+     * Add a context indication to the current context.
+     *
+     * @param IndicationInterface $indication
+     * @return mixed
+     */
+    public function addIndication(IndicationInterface $indication);
+
+    /**
+     * Add an assertion to the context.
+     *
+     * @param mixed $expression
+     * @param string $description
+     * @return mixed
+     */
+    public function addAssertion($expression, $description);
+
+    /**
+     * Add an intention to the context.
+     *
+     * @param string $description
+     * @return mixed
+     */
+    public function addIntention($description);
+
+    /**
+     * Add a constraint violation to the context.
+     *
+     * @param string $description
+     * @param integer $violationCode
+     * @param array $violationContext
+     * @return mixed
+     */
+    public function addViolation(
+        $description,
+        $violationCode,
+        array $violationContext = array()
+    );
 }
