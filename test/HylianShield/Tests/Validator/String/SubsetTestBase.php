@@ -124,7 +124,7 @@ class SubsetTestBase extends \HylianShield\Tests\Validator\TestBase
             // At least we know this much.
             $this->assertEmpty($this->validator);
         } else {
-            $this->assertInternalType('string', $this->validator->type());
+            $this->assertInternalType('string', $this->validator->getType());
         }
     }
 }

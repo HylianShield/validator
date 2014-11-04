@@ -43,7 +43,7 @@ abstract class LogicalGateTestBase extends \PHPUnit_Framework_TestCase
 
         // While we're at it, lest test the __tostring method.
         $this->assertRegexp(
-            '/^' . preg_quote($validator->type()) . '(\:(.+)|\((.+)\))?/',
+            '/^' . preg_quote($validator->getType()) . '(\:(.+)|\((.+)\))?/',
             $validator->__tostring()
         );
 
