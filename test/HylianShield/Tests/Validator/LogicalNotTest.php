@@ -4,7 +4,6 @@
  *
  * @package HylianShield
  * @subpackage Test
- * @copyright 2013 Jan-Marten "Joh Man X" de Boer
  */
 
 namespace HylianShield\Tests\Validator;
@@ -48,7 +47,7 @@ class LogicalNotTest extends \PHPUnit_Framework_TestCase
      *
      * @dataProvider validatorProvider
      */
-    public function testValidators($validator, $test, $result)
+    public function testValidators(Validator $validator, $test, $result)
     {
         $this->assertEquals(
             $result,

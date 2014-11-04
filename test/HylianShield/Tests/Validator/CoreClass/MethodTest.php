@@ -4,7 +4,6 @@
  *
  * @package HylianShield
  * @subpackage Test
- * @copyright 2013 Jan-Marten "Joh Man X" de Boer
  */
 
 namespace HylianShield\Tests\Validator\CoreClass;
@@ -48,7 +47,7 @@ class MethodTest extends \HylianShield\Tests\Validator\TestBase
     public function testInvalidConstruct($invalidArgument)
     {
         $validator = $this->validatorClass;
-        $validator = new $validator($invalidArgument);
+        new $validator($invalidArgument);
     }
 
     /**

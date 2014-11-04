@@ -4,12 +4,13 @@
  *
  * @package HylianShield
  * @subpackage Test
- * @copyright 2014 Jan-Marten "Joh Man X" de Boer
  */
 
 namespace HylianShield\Tests\Validator\String;
 
 use \LogicException;
+use \ReflectionClass;
+use \HylianShield\Validator\String\Subset;
 
 /**
  * SubsetTestBase.
@@ -48,9 +49,12 @@ class SubsetTestBase extends \HylianShield\Tests\Validator\TestBase
         mb_regex_encoding('EUC-JP');
 
         // Get the valid range.
-        $validRange = $this->validator->getRange();
+        /** @var Subset $validator */
+        $validator = $this->validator;
+        $validRange = $validator->getRange();
         $class = get_class($this->validator);
-        $encoding = $class::ENCODING;
+        $reflection = new ReflectionClass($class);
+        $encoding = $reflection->getConstant('ENCODING');
 
         if (empty($this->invalidCharacters)) {
             throw new LogicException(
@@ -63,7 +67,6 @@ class SubsetTestBase extends \HylianShield\Tests\Validator\TestBase
             array('AapNootMies', true),
             array('0123456789', true),
             array('', true),
-            array(0123456789, false),
             array(null, false),
             array(0, false),
             // Test all characters within the range.
@@ -105,7 +108,8 @@ class SubsetTestBase extends \HylianShield\Tests\Validator\TestBase
     {
         // Get some basic information.
         $class = get_class($this->validator);
-        $encoding = $class::ENCODING;
+        $reflection = new ReflectionClass($class);
+        $encoding = $reflection->getConstant('ENCODING');
         mb_regex_encoding($encoding);
 
         // Reset the validator.
@@ -120,7 +124,7 @@ class SubsetTestBase extends \HylianShield\Tests\Validator\TestBase
             // At least we know this much.
             $this->assertEmpty($this->validator);
         } else {
-            $this->assertInternalType('string', $this->validator->type());
+            $this->assertInternalType('string', $this->validator->getType());
         }
     }
 }

@@ -4,7 +4,6 @@
  *
  * @package HylianShield
  * @subpackage Validator
- * @copyright 2013 Jan-Marten "Joh Man X" de Boer
  */
 
 namespace HylianShield\Validator;
@@ -40,7 +39,7 @@ abstract class LogicalGate extends \HylianShield\Validator
             func_get_args(),
             // Now test them all against being an instance of our validator abstract.
             function ($instance) {
-                if (!($instance instanceof \HylianShield\Validator)) {
+                if (!($instance instanceof \HylianShield\ValidatorInterface)) {
                     throw new InvalidArgumentException(
                         'Supplied argument is not a valid instance: ('
                         . gettype($instance) . ') ' . var_export($instance, true)

@@ -4,12 +4,9 @@
  *
  * @package HylianShield
  * @subpackage Test
- * @copyright 2013 Jan-Marten "Joh Man X" de Boer
  */
 
 namespace HylianShield\Tests\Validator\Date;
-
-use \HylianShield\Validator\Date\Mysql;
 
 /**
  * MysqlTest.

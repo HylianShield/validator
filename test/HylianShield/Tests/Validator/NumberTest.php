@@ -4,7 +4,6 @@
  *
  * @package HylianShield
  * @subpackage Test
- * @copyright 2014 Jan-Marten "Joh Man X" de Boer
  */
 
 namespace HylianShield\Tests\Validator;
@@ -33,7 +32,6 @@ class NumberTest extends \HylianShield\Tests\Validator\TestBase
         array('0123456789', false),
         array('', false),
         array('€αβγδε', false),
-        array(0123456789, true),
         array(0.123456789, true),
         array(null, false),
         array(0, true),

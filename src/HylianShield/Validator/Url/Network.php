@@ -4,7 +4,6 @@
  *
  * @package HylianShield
  * @subpackage Validator
- * @copyright 2013 Jan-Marten "Joh Man X" de Boer
  */
 
 namespace HylianShield\Validator\Url;
@@ -115,7 +114,7 @@ class Network extends \HylianShield\Validator
             $invalidParameters
         ) {
             $parsed = parse_url($url);
-            
+
             // The URL is seriously malformed. Nothing more we can do.
             if (empty($parsed)) {
                 // @codeCoverageIgnoreStart

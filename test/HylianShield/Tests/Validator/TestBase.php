@@ -4,7 +4,6 @@
  *
  * @package HylianShield
  * @subpackage Test
- * @copyright 2013 Jan-Marten "Joh Man X" de Boer
  */
 
 namespace HylianShield\Tests\Validator;
@@ -93,7 +92,7 @@ abstract class TestBase extends \PHPUnit_Framework_TestCase
                 $expected = substr($expected, 4);
             }
 
-            $this->assertEquals($expected, $this->validator->type());
+            $this->assertEquals($expected, $this->validator->getType());
         }
     }
 
@@ -106,8 +105,21 @@ abstract class TestBase extends \PHPUnit_Framework_TestCase
             // At least we know this much.
             $this->assertEmpty($this->validator);
         } else {
-            $this->assertInternalType('string', $this->validator->type());
+            $this->assertInternalType('string', $this->validator->getType());
         }
+    }
+
+    /**
+     * Test that the type method is deprecated.
+     *
+     * @requires PHP 5.4
+     * @expectedException PHPUnit_Framework_Error_Deprecated
+     * @expectedExceptionCode E_USER_DEPRECATED
+     * @expectedExceptionMessage Method deprecated. Use getType instead.
+     */
+    public function testDeprecatedTypeMethod()
+    {
+        $this->validator->type();
     }
 
     /**
@@ -121,7 +133,7 @@ abstract class TestBase extends \PHPUnit_Framework_TestCase
         } else {
             $string = $this->validator->__tostring();
             $this->assertInternalType('string', $string);
-            $type = $this->validator->type();
+            $type = $this->validator->getType();
             $this->assertRegexp('/^' . preg_quote($type) . '(\:(.+)|\((.+)\))?/', $string);
         }
     }
