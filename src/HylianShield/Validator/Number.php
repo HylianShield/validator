@@ -4,14 +4,12 @@
  *
  * @package HylianShield
  * @subpackage Validator
- * @copyright 2013 Jan-Marten "Joh Man X" de Boer
  */
 
 namespace HylianShield\Validator;
 
 use \HylianShield\Validator\Float;
 use \HylianShield\Validator\Integer;
-use \HylianShield\Validator\LogicalOr;
 
 /**
  * Number.

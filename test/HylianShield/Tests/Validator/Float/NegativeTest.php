@@ -4,12 +4,9 @@
  *
  * @package HylianShield
  * @subpackage Test
- * @copyright 2014 Jan-Marten "Joh Man X" de Boer
  */
 
 namespace HylianShield\Tests\Validator\Float;
-
-use \HylianShield\Validator\Float\Negative;
 
 /**
  * Negative test.

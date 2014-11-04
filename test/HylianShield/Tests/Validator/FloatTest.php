@@ -4,7 +4,6 @@
  *
  * @package HylianShield
  * @subpackage Test
- * @copyright 2014 Jan-Marten "Joh Man X" de Boer
  */
 
 namespace HylianShield\Tests\Validator;
@@ -33,7 +32,6 @@ class FloatTest extends \HylianShield\Tests\Validator\TestBase
         array('0123456789', false),
         array('', false),
         array('€αβγδε', false),
-        array(0123456789, false),
         array(0.123456789, true),
         array(null, false),
         array(0, false),
@@ -47,7 +45,9 @@ class FloatTest extends \HylianShield\Tests\Validator\TestBase
     public function testDefaultNotZero()
     {
         $validator = $this->validatorClass;
+        /** @var \HylianShield\Validator\Float $validator */
         $validator = new $validator(0, 0);
+
         $this->assertTrue($validator->validate(0.));
         $this->assertFalse($validator->validate(1.));
         $this->assertFalse($validator->validate(-1.));

@@ -4,7 +4,6 @@
  *
  * @package HylianShield
  * @subpackage Validator
- * @copyright 2013 Remko "CyberSecutor" Silvs
  */
 
 namespace HylianShield\Validator\String;

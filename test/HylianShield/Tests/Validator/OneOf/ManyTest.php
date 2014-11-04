@@ -4,12 +4,10 @@
  *
  * @package HylianShield
  * @subpackage Test
- * @copyright 2014 Jan-Marten "Joh Man X" de Boer
  */
 
 namespace HylianShield\Tests\Validator;
 
-use \ReflectionClass;
 use \HylianShield\Validator\OneOf\Many;
 
 /**
@@ -74,7 +72,7 @@ class ManyTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $validator->validate($test));
 
         // Test that the collection is correctly identified.
-        $type = $validator->type();
+        $type = $validator->getType();
         $identifier = implode(
             ', ',
             array_map(

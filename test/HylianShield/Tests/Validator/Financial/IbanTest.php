@@ -4,7 +4,6 @@
  *
  * @package HylianShield
  * @subpackage Test
- * @copyright 2014 Remko "CyberSecutor" Silvis
  */
 
 namespace HylianShield\Tests\Validator\Financial\IbanTest;

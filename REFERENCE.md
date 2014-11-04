@@ -38,13 +38,18 @@ if (!$isValid) {
 
 // We should also be able to identify the type of the validator.
 $validatorsByType = array(
-    $validator->type() => $validator
+    $validator->getType() => $validator
 );
 
 // Or to ensure a more unique identifier.
 $uniqueValidators = array(
     "{$validator}" => $validator
 );
+
+// E.g.: Our range validators also describe their range.
+$validator = new Validator\Integer(1, 100);
+echo $validator->getType(); // integer
+echo $validator; // integer(1, 100)
 ```
 
 ## Core
@@ -92,10 +97,10 @@ $uniqueValidators = array(
 
 ## LogicalGate
 
-- `LogicalAnd(\HylianShield\Validator $a, \HylianShield\Validator $b, [, ...])`
-- `LogicalOr(\HylianShield\Validator $a, \HylianShield\Validator $b, [, ...])`
-- `LogicalXor(\HylianShield\Validator $a, \HylianShield\Validator $b)`
-- `LogicalNot(\HylianShield\Validator $validator)`
+- `LogicalAnd(\HylianShield\ValidatorÌnterface $a, \HylianShield\ValidatorÌnterface $b, [, ...])`
+- `LogicalOr(\HylianShield\ValidatorÌnterface $a, \HylianShield\ValidatorÌnterface $b, [, ...])`
+- `LogicalXor(\HylianShield\ValidatorÌnterface $a, \HylianShield\ValidatorÌnterface $b)`
+- `LogicalNot(\HylianShield\ValidatorÌnterface $validator)`
 
 ## Financial
 

@@ -4,7 +4,6 @@
  *
  * @package HylianShield
  * @subpackage Test
- * @copyright 2014 Remko "CyberSecutor" Silvis
  */
 
 namespace HylianShield\Tests\Validator\Financial\BicTest;
@@ -128,7 +127,7 @@ class BicTest extends \HylianShield\Tests\Validator\TestBase
     public function testInvalidConstruct($invalidArgument)
     {
         $validator = $this->validatorClass;
-        $validator = new $validator($invalidArgument);
+        new $validator($invalidArgument);
     }
 
     /**
