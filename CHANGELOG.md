@@ -4,7 +4,6 @@
 - Deprecated method type on Validator in favor of getType
 - Added context to validations, which are used to enrich the messages of 
 validators.
-- Started support for HHVM through Travis CI
 - Added support for PHP 5.6 through Travis CI
 - Fixed code style issues
 - Removed number tests using octet literals, as PHP does not interpret them 
