@@ -8,6 +8,8 @@
 
 namespace HylianShield\Validator;
 
+use HylianShield\Validator\Context\ContextInterface;
+
 /**
  * LogicalXor.
  */
@@ -29,12 +31,17 @@ class LogicalXor extends \HylianShield\Validator\LogicalGate
     {
         // Create a custom validator.
         // Since it is XOR, only one match should happen.
-        $this->validator = function ($value) use ($validators) {
+        $this->validator = function (
+            $value,
+            ContextInterface $context
+        ) use (
+            $validators
+        ) {
             // Create a test where only the passing validators will remain.
             $test = array_filter(
                 $validators,
-                function ($validator) use ($value) {
-                    return $validator($value);
+                function ($validator) use ($value, $context) {
+                    return $validator($value, $context);
                 }
             );
 

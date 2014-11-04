@@ -35,6 +35,18 @@ class Assertion extends IndicationAbstract implements AssertionInterface
     }
 
     /**
+     * Return a string representation of the current assertion.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return "Assertion - {$this->getDescription()}: " . (
+            $this->getResult() ? 'Yes' : 'No'
+        );
+    }
+
+    /**
      * Set the result of the assertion.
      *
      * @param boolean $result

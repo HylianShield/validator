@@ -8,6 +8,8 @@
 
 namespace HylianShield\Validator;
 
+use \HylianShield\Validator\Context\ContextInterface;
+
 /**
  * LogicalNot.
  */
@@ -41,8 +43,13 @@ class LogicalNot extends \HylianShield\Validator
 
         // Create a custom validator that returns the inverse value of the
         // supplied validator.
-        $this->validator = function ($value) use ($validator) {
-            return !$validator($value);
+        $this->validator = function (
+            $value,
+            ContextInterface $context
+        ) use (
+            $validator
+        ) {
+            return !$validator($value, $context);
         };
     }
 

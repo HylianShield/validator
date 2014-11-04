@@ -45,6 +45,18 @@ class Violation extends IndicationAbstract implements ViolationInterface
     }
 
     /**
+     * Return a string representation of the current assertion.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return 'Violation - '
+            . $this->interpolate($this->getDescription())
+            . " - Violation code #{$this->getCode()}";
+    }
+
+    /**
      * Set the code of the violation.
      *
      * @param integer $code

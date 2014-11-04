@@ -19,4 +19,11 @@ interface IndicationInterface
      * @return string
      */
     public function getDescription();
+
+    /**
+     * Get a string representation of the indication.
+     *
+     * @return string
+     */
+    public function __toString();
 }

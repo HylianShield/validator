@@ -21,4 +21,14 @@ class Intention extends IndicationAbstract implements IntentionInterface
     {
         $this->setDescription($description);
     }
+
+    /**
+     * Return a string representation of the current assertion.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return "Intention - {$this->getDescription()}";
+    }
 }

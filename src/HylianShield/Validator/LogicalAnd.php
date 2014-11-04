@@ -8,6 +8,8 @@
 
 namespace HylianShield\Validator;
 
+use \HylianShield\Validator\Context\ContextInterface;
+
 /**
  * LogicalAnd.
  */
@@ -29,9 +31,14 @@ class LogicalAnd extends \HylianShield\Validator\LogicalGate
     {
         // Create a custom validator that returns true on the first match.
         // Since it is AND, all the validators should return true.
-        $this->validator = function ($value) use ($validators) {
+        $this->validator = function (
+            $value,
+            ContextInterface $context = null
+        )  use (
+            $validators
+        ) {
             foreach ($validators as $validator) {
-                if (!$validator($value)) {
+                if (!$validator($value, $context)) {
                     return false;
                 }
             }
