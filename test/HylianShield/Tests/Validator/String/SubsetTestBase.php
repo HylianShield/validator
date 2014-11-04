@@ -10,6 +10,7 @@ namespace HylianShield\Tests\Validator\String;
 
 use \LogicException;
 use \ReflectionClass;
+use \HylianShield\Validator\String\Subset;
 
 /**
  * SubsetTestBase.
@@ -48,7 +49,9 @@ class SubsetTestBase extends \HylianShield\Tests\Validator\TestBase
         mb_regex_encoding('EUC-JP');
 
         // Get the valid range.
-        $validRange = $this->validator->getRange();
+        /** @var Subset $validator */
+        $validator = $this->validator;
+        $validRange = $validator->getRange();
         $class = get_class($this->validator);
         $reflection = new ReflectionClass($class);
         $encoding = $reflection->getConstant('ENCODING');

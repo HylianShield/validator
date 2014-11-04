@@ -47,7 +47,7 @@ class LogicalNotTest extends \PHPUnit_Framework_TestCase
      *
      * @dataProvider validatorProvider
      */
-    public function testValidators($validator, $test, $result)
+    public function testValidators(Validator $validator, $test, $result)
     {
         $this->assertEquals(
             $result,
