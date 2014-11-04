@@ -4,7 +4,6 @@
  *
  * @package HylianShield
  * @subpackage Test
- * @copyright 2014 Noë Snaterse.
  */
 namespace HylianShield\Tests\Validator\CoreArray;
 

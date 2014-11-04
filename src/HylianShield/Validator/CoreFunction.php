@@ -4,7 +4,6 @@
  *
  * @package HylianShield
  * @subpackage Validator
- * @copyright 2013 Jan-Marten "Joh Man X" de Boer
  */
 
 namespace HylianShield\Validator;
@@ -28,6 +27,6 @@ class CoreFunction extends \HylianShield\Validator
     {
         $this->validator = function ($value) {
             return is_string($value) && function_exists($value);
-        };     
+        };
     }
 }

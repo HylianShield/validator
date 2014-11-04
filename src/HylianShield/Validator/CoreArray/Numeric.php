@@ -4,7 +4,6 @@
  *
  * @package HylianShield
  * @subpackage Validator
- * @copyright 2014 Noë Snaterse.
  */
 
 namespace HylianShield\Validator\CoreArray;

@@ -4,7 +4,6 @@
  *
  * @package HylianShield
  * @subpackage Tools
- * @copyright 2014 Jan-Marten "Joh Man X" de Boer
  */
 
 // Change this with the ranges of the subset you want to test.

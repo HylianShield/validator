@@ -1,16 +1,12 @@
 <?php
 /**
- * Explicitly invalidate a value by inversing the result.
+ * Explicitly invalidate a value by inverting the result.
  *
  * @package HylianShield
  * @subpackage Validator
- * @copyright 2013 Jan-Marten "Joh Man X" de Boer
  */
 
 namespace HylianShield\Validator;
-
-use \InvalidArgumentException;
-use \LogicException;
 
 /**
  * LogicalNot.

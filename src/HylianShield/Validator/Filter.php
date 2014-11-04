@@ -66,8 +66,6 @@ abstract class Filter extends \HylianShield\Validator
      */
     final public function __construct()
     {
-        $filter = $this::FILTER;
-
         if (!in_array($this::FILTER, self::$allowedFilters, true)) {
             // @codeCoverageIgnoreStart
             throw new LogicException('Invalid filter configured!');

@@ -4,7 +4,6 @@
  *
  * @package HylianShield
  * @subpackage Test
- * @copyright 2013 Remko "CyberSecutor" Silvis
  */
 
 namespace HylianShield\Tests\Validator\String;
