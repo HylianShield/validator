@@ -38,6 +38,7 @@ abstract class LogicalGateTestBase extends \PHPUnit_Framework_TestCase
     final public function testLogicalGate($args, $value, $shouldPass, $string)
     {
         $reflection = new ReflectionClass($this->validatorClass);
+        /** @var Validator\LogicalGate $validator */
         $validator = $reflection->newInstanceArgs($args);
 
         // While we're at it, lest test the __tostring method.
