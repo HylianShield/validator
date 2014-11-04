@@ -61,6 +61,16 @@ abstract class Validator implements \HylianShield\ValidatorInterface
     private $lastContext = null;
 
     /**
+     * Convenience method for creating a context.
+     *
+     * @return Context
+     */
+    public static function createContext()
+    {
+        return new Context();
+    }
+
+    /**
      * Validate the supplied value against the current validator.
      *
      * @param mixed $value
@@ -71,7 +81,7 @@ abstract class Validator implements \HylianShield\ValidatorInterface
     public function validate($value, ContextInterface $context = null)
     {
         if (!isset($context)) {
-            $context = new Context();
+            $context = $this::createContext();
         }
 
         $this->lastValue = $value;

@@ -60,9 +60,10 @@ class CoreFunctionTest extends \HylianShield\Tests\Validator\TestBase
      */
     public function testContext()
     {
-        $context = new Context();
         $validator = $this->validatorClass;
+        /** @var \HylianShield\Validator\CoreFunction $validator */
         $validator = new $validator;
+        $context = $validator::createContext();
         $invalidFunction = 'Aap noot mies';
 
         $this->assertFalse(
