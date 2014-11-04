@@ -31,8 +31,6 @@ class ExtLocalInstrumentCodeTest extends \HylianShield\Tests\Validator\TestBase
         array('', false),
         array(null, false),
         array(82, false),
-
-
         array('TRF', true),
         array('CHN', true),
         array('CPP', true),

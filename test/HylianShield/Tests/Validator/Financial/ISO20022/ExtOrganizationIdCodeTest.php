@@ -31,8 +31,6 @@ class ExtOrganizationIdCodeTest extends \HylianShield\Tests\Validator\TestBase
         array('', false),
         array(null, false),
         array(82, false),
-
-
         array('BANK', true),
         array('CBID', true),
         array('CHID', true),

@@ -7,9 +7,6 @@
  */
 
 namespace HylianShield\Tests\Validator\Url\Network;
-
-
-
 /**
  * Http test.
  */

@@ -7,9 +7,6 @@
  */
 
 namespace HylianShield\Tests\Validator\Float;
-
-
-
 /**
  * Positive test.
  */

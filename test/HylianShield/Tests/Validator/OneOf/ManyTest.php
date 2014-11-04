@@ -7,8 +7,6 @@
  */
 
 namespace HylianShield\Tests\Validator;
-
-
 use \HylianShield\Validator\OneOf\Many;
 
 /**

@@ -7,9 +7,6 @@
  */
 
 namespace HylianShield\Tests\Validator\Integer;
-
-
-
 /**
  * Negative test.
  */

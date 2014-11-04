@@ -30,8 +30,6 @@ class ExtPersonIdCodeTest extends \HylianShield\Tests\Validator\TestBase
         array('', false),
         array(null, false),
         array(82, false),
-
-
         array('TRF', false),
         array('CHN', false),
         array('ARNU', true),
