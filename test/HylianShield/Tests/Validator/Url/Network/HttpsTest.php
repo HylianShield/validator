@@ -4,12 +4,9 @@
  *
  * @package HylianShield
  * @subpackage Test
- * @copyright 2014 Jan-Marten "Joh Man X" de Boer
  */
 
 namespace HylianShield\Tests\Validator\Url\Network;
-
-use \HylianShield\Validator\Url\Network\Https;
 
 /**
  * Https test.
@@ -33,7 +30,6 @@ class HttpsTest extends \HylianShield\Tests\Validator\TestBase
         array('0123456789', false),
         array('', false),
         array('€αβγδε', false),
-        array(0123456789, false),
         array(0.123456789, false),
         array(null, false),
         array(0, false),

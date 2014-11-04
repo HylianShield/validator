@@ -4,7 +4,6 @@
  *
  * @package HylianShield
  * @subpackage Validator
- * @copyright 2013 Remko "CyberSecutor" Silvis
  */
 
 namespace HylianShield\Validator\Financial\ISO20022;
@@ -54,7 +53,7 @@ class ExtLocalInstrumentCode extends \HylianShield\Validator\Regexp
         'DDT',
 
         // Transaction is related to truncated credit transfers.
-        // Conversion of physical instrument to electonric form for transmission to
+        // Conversion of physical instrument to electronic form for transmission to
         // the paying bank and where the original paper document does not continue in
         // the clearing process..The original instrument rules are retained throughout
         // the life of the instrument.

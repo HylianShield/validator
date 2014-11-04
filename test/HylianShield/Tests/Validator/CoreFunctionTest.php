@@ -4,12 +4,13 @@
  *
  * @package HylianShield
  * @subpackage Test
- * @copyright 2014 Jan-Marten "Joh Man X" de Boer
  */
 
 namespace HylianShield\Tests\Validator;
 
-use \HylianShield\Validator\CoreFunction;
+use \HylianShield\Validator\Context\Context;
+use \HylianShield\Validator\Context\ContextInterface;
+use \HylianShield\Validator\Context\Indication\ViolationInterface;
 
 /**
  * CoreFunction test.
@@ -33,7 +34,6 @@ class CoreFunctionTest extends \HylianShield\Tests\Validator\TestBase
         array('0123456789', false),
         array('', false),
         array('€αβγδε', false),
-        array(0123456789, false),
         array(0.123456789, false),
         array(null, false),
         array(0, false),
@@ -53,5 +53,37 @@ class CoreFunctionTest extends \HylianShield\Tests\Validator\TestBase
         // It is interesting to know if this invalidates a closure.
         $this->validations[] = array(function(){}, false);
         parent::setUp();
+    }
+
+    /**
+     * Test the context of a failed function validator.
+     */
+    public function testContext()
+    {
+        $validator = $this->validatorClass;
+        /** @var \HylianShield\Validator\CoreFunction $validator */
+        $validator = new $validator;
+        $context = $validator::createContext();
+        $invalidFunction = 'Aap noot mies';
+
+        $this->assertFalse(
+            $validator->validate($invalidFunction, $context)
+        );
+
+        $violations = $context->getViolations();
+        /** @var ViolationInterface $violation */
+        $violation = array_shift($violations);
+
+        $this->assertInstanceOf(
+            ContextInterface::VIOLATION_INTERFACE,
+            $violation
+        );
+
+        $this->assertEquals(
+            $invalidFunction,
+            $violation->interpolate(':name')
+        );
+
+        $this->assertTrue(strpos("{$violation}", $invalidFunction) > 0);
     }
 }

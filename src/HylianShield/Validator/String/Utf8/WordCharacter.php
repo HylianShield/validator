@@ -6,7 +6,6 @@
  *
  * @package HylianShield
  * @subpackage Validator
- * @copyright 2014 Jan-Marten "Joh Man X" de Boer
  */
 
 namespace HylianShield\Validator\String\Utf8;

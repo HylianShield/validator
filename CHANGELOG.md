@@ -1,3 +1,14 @@
+# v0.8.0
+
+- Added an interface for validators
+- Deprecated method type on Validator in favor of getType
+- Added context to validations, which are used to enrich the messages of 
+validators.
+- Added support for PHP 5.6 through Travis CI
+- Fixed code style issues
+- Removed number tests using octet literals, as PHP does not interpret them 
+as expected.
+
 # v0.7.0
 
 - Added Email validator
@@ -31,7 +42,7 @@
 
 # v0.2.2
 
-- Fix the numeric arrar validator unit test
+- Fix the numeric array validator unit test
 - Improve performance of Range validators
 
 # v0.2.1

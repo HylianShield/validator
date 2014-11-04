@@ -4,7 +4,6 @@
  *
  * @package HylianShield
  * @subpackage Validator
- * @copyright 2013 Remko "CyberSecutor" Silvis
  */
 
 namespace HylianShield\Validator\Financial;

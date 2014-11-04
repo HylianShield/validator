@@ -4,7 +4,6 @@
  *
  * @package HylianShield
  * @subpackage Validator
- * @copyright 2013 Jan-Marten "Joh Man X" de Boer
  */
 
 namespace HylianShield\Validator\CoreClass;
@@ -17,8 +16,6 @@ use \HylianShield\Validator\Object;
 use \HylianShield\Validator\String;
 use \HylianShield\Validator\CoreArray;
 use \HylianShield\Validator\CoreClass;
-use \HylianShield\Validator\CoreClass\Exists;
-use \HylianShield\Validator\CoreClass\Instance;
 
 /**
  * Method.

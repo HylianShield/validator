@@ -1,10 +1,9 @@
 <?php
 /**
- * Validate writability of files.
+ * Validate the ability to write a given file.
  *
  * @package HylianShield
  * @subpackage Validator
- * @copyright 2013 Jan-Marten "Joh Man X" de Boer
  */
 
 namespace HylianShield\Validator\File;

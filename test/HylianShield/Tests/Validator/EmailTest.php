@@ -8,6 +8,8 @@
 
 namespace HylianShield\Tests\Validator;
 
+use \HylianShield\Validator\Email;
+
 /**
  * EmailTest.
  */
@@ -29,7 +31,6 @@ class EmailTest extends \HylianShield\Tests\Validator\TestBase
         array('Aap Noot Mies', false),
         array('0123456789', false),
         array('', false),
-        array(0123456789, false),
         array(null, false),
         array(0, false),
         array('git@github.com', true),

@@ -1,16 +1,14 @@
 <?php
 /**
- * Explicitly invalidate a value by inversing the result.
+ * Explicitly invalidate a value by inverting the result.
  *
  * @package HylianShield
  * @subpackage Validator
- * @copyright 2013 Jan-Marten "Joh Man X" de Boer
  */
 
 namespace HylianShield\Validator;
 
-use \InvalidArgumentException;
-use \LogicException;
+use \HylianShield\Validator\Context\ContextInterface;
 
 /**
  * LogicalNot.
@@ -45,8 +43,13 @@ class LogicalNot extends \HylianShield\Validator
 
         // Create a custom validator that returns the inverse value of the
         // supplied validator.
-        $this->validator = function ($value) use ($validator) {
-            return !$validator($value);
+        $this->validator = function (
+            $value,
+            ContextInterface $context
+        ) use (
+            $validator
+        ) {
+            return !$validator($value, $context);
         };
     }
 

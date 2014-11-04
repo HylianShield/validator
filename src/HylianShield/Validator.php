@@ -4,17 +4,18 @@
  *
  * @package HylianShield
  * @subpackage Validator
- * @copyright 2013 Jan-Marten "Joh Man X" de Boer
  */
 
 namespace HylianShield;
 
 use \LogicException;
+use \HylianShield\Validator\Context\Context;
+use \HylianShield\Validator\Context\ContextInterface;
 
 /**
  * Validator.
  */
-abstract class Validator
+abstract class Validator implements \HylianShield\ValidatorInterface
 {
     /**
      * The type of the validator.
@@ -53,25 +54,76 @@ abstract class Validator
     private $lastMessage = null;
 
     /**
+     * The context used during the last failed validation.
+     *
+     * @var ContextInterface|null $lastContext
+     */
+    private $lastContext = null;
+
+    /**
+     * Convenience method for creating a context.
+     *
+     * @return Context
+     */
+    public static function createContext()
+    {
+        return new Context();
+    }
+
+    /**
      * Validate the supplied value against the current validator.
      *
      * @param mixed $value
+     * @param ContextInterface $context
      * @return boolean
      * @throws \LogicException when $this->validator is not callable
      */
-    public function validate($value)
+    public function validate($value, ContextInterface $context = null)
     {
+        if (!isset($context)) {
+            $context = $this::createContext();
+        }
+
         $this->lastValue = $value;
         $this->lastMessage = null;
+        $this->lastContext = null;
 
-        if (!is_callable($this->validator)) {
+        $validatorIsCallable = is_callable($this->validator);
+        $context->addAssertion('Validator is callable', $validatorIsCallable);
+
+        if (!$validatorIsCallable) {
             // @codeCoverageIgnoreStart
             throw new LogicException('Validator should be callable!');
             // @codeCoverageIgnoreEnd
         }
 
         // Check if the validator validates.
-        $this->lastResult = (bool) call_user_func_array($this->validator, array($this->lastValue));
+        if (is_string($this->validator)) {
+            $context->addIntention(
+                'Leaving out context for simplistic validator.'
+            );
+
+            $this->lastResult = (bool) call_user_func(
+                $this->validator,
+                $this->lastValue
+            );
+        } else {
+            $context->addIntention(
+                'Passing context to registered validator.'
+            );
+
+            $this->lastResult = (bool) call_user_func(
+                $this->validator,
+                $this->lastValue,
+                $context
+            );
+        }
+
+        $context->addAssertion('Validation was successful', $this->lastResult);
+
+        if ($this->lastResult === false) {
+            $this->lastContext = $context;
+        }
 
         return $this->lastResult;
     }
@@ -80,7 +132,7 @@ abstract class Validator
      * Get the message explaining the fail.
      *
      * @todo Add message for objects and arrays
-     * @return string
+     * @return string|null
      */
     final public function getMessage() {
         // Create a message.
@@ -90,6 +142,24 @@ abstract class Validator
                     . var_export($this->lastValue, true) . "; Expected: {$this}";
             } else {
                 $this->lastMessage = "Invalid value supplied; Expected: {$this}";
+            }
+
+            // If we have a context, use that to add some additional
+            // information to our message.
+            if (isset($this->lastContext)) {
+                $violations = array();
+                $index = 1;
+
+                foreach ($this->lastContext->getViolations() as $violation) {
+                    $violations[] = "#{$index} {$violation}";
+                    $index++;
+                }
+
+                if (count($violations) > 0) {
+                    $this->lastMessage .= PHP_EOL
+                        . 'Violations:'. PHP_EOL
+                        . implode(PHP_EOL, $violations);
+                }
             }
         }
 
@@ -110,10 +180,22 @@ abstract class Validator
     /**
      * Return the type of the current validator.
      *
+     * @return string
+     * @deprecated Now uses getType for method name consistency.
+     */
+    final public function type()
+    {
+        trigger_error('Method deprecated. Use getType instead.', E_USER_DEPRECATED);
+        return $this->getType();
+    }
+
+    /**
+     * Return the type of the current validator.
+     *
      * @return string $this->type
      * @throws \LogicException when $this->type is not a string
      */
-    final public function type()
+    final public function getType()
     {
         if (!is_string($this->type)) {
             // @codeCoverageIgnoreStart
@@ -133,6 +215,6 @@ abstract class Validator
      */
     public function __toString()
     {
-        return $this->type();
+        return $this->getType();
     }
 }

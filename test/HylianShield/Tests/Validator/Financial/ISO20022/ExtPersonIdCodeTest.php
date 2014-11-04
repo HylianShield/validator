@@ -4,7 +4,6 @@
  *
  * @package HylianShield
  * @subpackage Test
- * @copyright 2013 Remko "CyberSecutor" Silvis
  */
 
 namespace HylianShield\Tests\Validator\Financial\ISO20022;
@@ -28,13 +27,9 @@ class ExtPersonIdCodeTest extends \HylianShield\Tests\Validator\TestBase
      */
     protected $validations = array(
         array('Aap Noot Mies', false),
-        array(0123456789, false),
         array('', false),
         array(null, false),
         array(82, false),
-        array(0000, false),
-        array(0001, false),
-        array(0227, false),
         array('TRF', false),
         array('CHN', false),
         array('ARNU', true),

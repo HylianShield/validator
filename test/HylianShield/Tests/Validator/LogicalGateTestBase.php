@@ -4,7 +4,6 @@
  *
  * @package HylianShield
  * @subpackage Test
- * @copyright 2013 Jan-Marten "Joh Man X" de Boer
  */
 
 namespace HylianShield\Tests\Validator;
@@ -39,11 +38,12 @@ abstract class LogicalGateTestBase extends \PHPUnit_Framework_TestCase
     final public function testLogicalGate($args, $value, $shouldPass, $string)
     {
         $reflection = new ReflectionClass($this->validatorClass);
+        /** @var Validator\LogicalGate $validator */
         $validator = $reflection->newInstanceArgs($args);
 
         // While we're at it, lest test the __tostring method.
         $this->assertRegexp(
-            '/^' . preg_quote($validator->type()) . '(\:(.+)|\((.+)\))?/',
+            '/^' . preg_quote($validator->getType()) . '(\:(.+)|\((.+)\))?/',
             $validator->__tostring()
         );
 
