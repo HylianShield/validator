@@ -25,13 +25,13 @@ class Assertion extends IndicationAbstract implements AssertionInterface
     /**
      * Create a new assertion.
      *
-     * @param boolean $result
      * @param string $description
+     * @param boolean $result
      */
-    public function __construct($result, $description)
+    public function __construct($description, $result)
     {
-        $this->setResult($result);
         $this->setDescription($description);
+        $this->setResult($result);
     }
 
     /**
@@ -43,7 +43,7 @@ class Assertion extends IndicationAbstract implements AssertionInterface
      */
     protected function setResult($result)
     {
-        if (is_bool($result)) {
+        if (!is_bool($result)) {
             throw new InvalidArgumentException(
                 'Invalid assertion result: ' . gettype($result)
             );
