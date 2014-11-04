@@ -9,6 +9,7 @@
 namespace HylianShield\Tests\Validator\String;
 
 use \LogicException;
+use \ReflectionClass;
 
 /**
  * SubsetTestBase.
@@ -49,7 +50,8 @@ class SubsetTestBase extends \HylianShield\Tests\Validator\TestBase
         // Get the valid range.
         $validRange = $this->validator->getRange();
         $class = get_class($this->validator);
-        $encoding = $class::ENCODING;
+        $reflection = new ReflectionClass($class);
+        $encoding = $reflection->getConstant('ENCODING');
 
         if (empty($this->invalidCharacters)) {
             throw new LogicException(
@@ -103,7 +105,8 @@ class SubsetTestBase extends \HylianShield\Tests\Validator\TestBase
     {
         // Get some basic information.
         $class = get_class($this->validator);
-        $encoding = $class::ENCODING;
+        $reflection = new ReflectionClass($class);
+        $encoding = $reflection->getConstant('ENCODING');
         mb_regex_encoding($encoding);
 
         // Reset the validator.

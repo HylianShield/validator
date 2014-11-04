@@ -8,6 +8,8 @@
 
 namespace HylianShield\Tests\Validator;
 
+use \HylianShield\Validator\Email;
+
 /**
  * EmailTest.
  */
