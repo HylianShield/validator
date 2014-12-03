@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/index.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/namespace-HylianShield.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/namespace-HylianShield.Validator.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/namespace-HylianShield.Validator.Context.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/namespace-HylianShield.Validator.Context.Indication.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/namespace-HylianShield.Validator.CoreArray.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/namespace-HylianShield.Validator.CoreClass.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/namespace-HylianShield.Validator.Date.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/namespace-HylianShield.Validator.Encoding.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/namespace-HylianShield.Validator.File.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/namespace-HylianShield.Validator.Financial.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/namespace-HylianShield.Validator.Financial.ISO20022.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/namespace-HylianShield.Validator.Financial.SEPA.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/namespace-HylianShield.Validator.Float.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/namespace-HylianShield.Validator.Integer.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/namespace-HylianShield.Validator.Number.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/namespace-HylianShield.Validator.OneOf.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/namespace-HylianShield.Validator.Range.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/namespace-HylianShield.Validator.String.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/namespace-HylianShield.Validator.String.Utf8.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/namespace-HylianShield.Validator.Url.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/namespace-HylianShield.Validator.Url.Network.html</loc>
+</url>
+
+
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Boolean.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Context.Context.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Context.Indication.Assertion.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Context.Indication.IndicationAbstract.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Context.Indication.Intention.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Context.Indication.Violation.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.CoreArray.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.CoreArray.Numeric.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.CoreClass.Exists.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.CoreClass.Instance.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.CoreClass.Method.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.CoreFunction.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Date.Mysql.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Email.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Encoding.Base64.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.File.Exists.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.File.Readable.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.File.Writable.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Filter.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Financial.Bic.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Financial.Iban.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Financial.ISO20022.ExtLocalInstrumentCode.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Financial.ISO20022.ExtOrganizationIdCode.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Financial.ISO20022.ExtPersonIdCode.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Financial.SEPA.CreditorIdentifier.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Float.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Float.Negative.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Float.Positive.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Integer.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Integer.Negative.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Integer.Positive.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.LogicalAnd.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.LogicalGate.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.LogicalNot.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.LogicalOr.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.LogicalXor.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Number.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Number.Negative.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Number.Positive.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Object.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.OneOf.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.OneOf.Many.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Range.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Range.Immutable.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Range.Mutable.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Regexp.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.String.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.String.Subset.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.String.Utf8.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.String.Utf8.Mes1.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.String.Utf8.Mes2.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.String.Utf8.Mes3A.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.String.Utf8.WordCharacter.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Url.Network.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Url.Network.Http.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Url.Network.Https.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Url.Webpage.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Context.ContextInterface.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Context.Indication.AssertionInterface.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Context.Indication.IndicationInterface.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Context.Indication.IntentionInterface.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Context.Indication.ViolationInterface.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.ValidatorInterface.html</loc>
+</url>
+</urlset>

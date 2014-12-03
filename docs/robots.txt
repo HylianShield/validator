@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: http://hylianshield.github.io/validator/docs/sitemap.xml

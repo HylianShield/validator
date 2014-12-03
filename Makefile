@@ -1,9 +1,7 @@
 PHPCMD=php -d suhosin.executor.include.whitelist=phar
 COMPFILE=./composer.phar
 COMPCMD=$(PHPCMD) $(COMPFILE)
-DOCCMD=vendor/bin/phpdoc
-SOURCE=vendor/hylianshield/validator/src
-OUTPUT=docs
+DOCCMD=vendor/bin/apigen
 
 composer:
 	@if [ ! -f $(COMPFILE) ]; then \
@@ -21,4 +19,4 @@ update: dependencies
 	@$(COMPCMD) update --dev
 
 dox:
-	@$(DOCCMD) run -d $(SOURCE) -t $(OUTPUT)
+	@$(DOCCMD) --config apigen.neon

@@ -1,0 +1,1034 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1415139494">
+  <project timestamp="1415139494">
+    <package name="HylianShield">
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator.php">
+        <class name="Validator" namespace="HylianShield">
+          <metrics methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="57" coveredstatements="56" elements="64" coveredelements="63"/>
+        </class>
+        <line num="0" type="stmt" count="1"/>
+        <line num="68" type="method" name="createContext" crap="1" count="152"/>
+        <line num="69" type="stmt" count="1"/>
+        <line num="70" type="stmt" count="152"/>
+        <line num="81" type="method" name="validate" crap="5" count="152"/>
+        <line num="83" type="stmt" count="152"/>
+        <line num="84" type="stmt" count="151"/>
+        <line num="85" type="stmt" count="151"/>
+        <line num="87" type="stmt" count="152"/>
+        <line num="88" type="stmt" count="152"/>
+        <line num="89" type="stmt" count="152"/>
+        <line num="91" type="stmt" count="152"/>
+        <line num="92" type="stmt" count="152"/>
+        <line num="94" type="stmt" count="152"/>
+        <line num="101" type="stmt" count="152"/>
+        <line num="102" type="stmt" count="29"/>
+        <line num="104" type="stmt" count="29"/>
+        <line num="106" type="stmt" count="29"/>
+        <line num="107" type="stmt" count="29"/>
+        <line num="108" type="stmt" count="29"/>
+        <line num="109" type="stmt" count="29"/>
+        <line num="110" type="stmt" count="29"/>
+        <line num="111" type="stmt" count="141"/>
+        <line num="113" type="stmt" count="141"/>
+        <line num="115" type="stmt" count="141"/>
+        <line num="116" type="stmt" count="141"/>
+        <line num="117" type="stmt" count="141"/>
+        <line num="119" type="stmt" count="141"/>
+        <line num="122" type="stmt" count="152"/>
+        <line num="124" type="stmt" count="152"/>
+        <line num="125" type="stmt" count="129"/>
+        <line num="126" type="stmt" count="129"/>
+        <line num="128" type="stmt" count="152"/>
+        <line num="137" type="method" name="getMessage" crap="7" count="37"/>
+        <line num="139" type="stmt" count="37"/>
+        <line num="140" type="stmt" count="37"/>
+        <line num="141" type="stmt" count="37"/>
+        <line num="142" type="stmt" count="37"/>
+        <line num="143" type="stmt" count="37"/>
+        <line num="144" type="stmt" count="34"/>
+        <line num="149" type="stmt" count="37"/>
+        <line num="150" type="stmt" count="37"/>
+        <line num="151" type="stmt" count="37"/>
+        <line num="153" type="stmt" count="37"/>
+        <line num="154" type="stmt" count="1"/>
+        <line num="155" type="stmt" count="1"/>
+        <line num="156" type="stmt" count="37"/>
+        <line num="158" type="stmt" count="37"/>
+        <line num="159" type="stmt" count="1"/>
+        <line num="160" type="stmt" count="1"/>
+        <line num="161" type="stmt" count="1"/>
+        <line num="162" type="stmt" count="1"/>
+        <line num="163" type="stmt" count="37"/>
+        <line num="164" type="stmt" count="37"/>
+        <line num="166" type="stmt" count="37"/>
+        <line num="175" type="method" name="__invoke" crap="1" count="46"/>
+        <line num="177" type="stmt" count="46"/>
+        <line num="186" type="method" name="type" crap="1.12" count="35"/>
+        <line num="188" type="stmt" count="35"/>
+        <line num="189" type="stmt" count="0"/>
+        <line num="198" type="method" name="getType" crap="2" count="261"/>
+        <line num="200" type="stmt" count="261"/>
+        <line num="208" type="stmt" count="261"/>
+        <line num="216" type="method" name="__toString" crap="1" count="32"/>
+        <line num="218" type="stmt" count="32"/>
+        <metrics loc="220" ncloc="122" classes="1" methods="7" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="57" coveredstatements="56" elements="64" coveredelements="62"/>
+      </file>
+    </package>
+    <package name="HylianShield\Validator">
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Boolean.php">
+        <class name="Boolean" namespace="HylianShield\Validator">
+          <metrics methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <line num="30" type="stmt" count="1"/>
+        <metrics loc="29" ncloc="10" classes="1" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/CoreArray.php">
+        <class name="CoreArray" namespace="HylianShield\Validator">
+          <metrics methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <line num="37" type="stmt" count="1"/>
+        <metrics loc="36" ncloc="12" classes="1" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/CoreFunction.php">
+        <class name="CoreFunction" namespace="HylianShield\Validator">
+          <metrics methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="33" coveredstatements="33" elements="35" coveredelements="35"/>
+        </class>
+        <line num="0" type="stmt" count="1"/>
+        <line num="42" type="method" name="__construct" crap="3" count="5"/>
+        <line num="44" type="method" name="anonymous function" crap="3" count="5"/>
+        <line num="45" type="stmt" count="2"/>
+        <line num="47" type="stmt" count="2"/>
+        <line num="48" type="stmt" count="1"/>
+        <line num="49" type="stmt" count="1"/>
+        <line num="51" type="stmt" count="1"/>
+        <line num="53" type="stmt" count="1"/>
+        <line num="54" type="stmt" count="2"/>
+        <line num="55" type="stmt" count="2"/>
+        <line num="56" type="stmt" count="2"/>
+        <line num="57" type="stmt" count="2"/>
+        <line num="58" type="stmt" count="2"/>
+        <line num="59" type="stmt" count="2"/>
+        <line num="61" type="stmt" count="2"/>
+        <line num="62" type="stmt" count="2"/>
+        <line num="64" type="stmt" count="2"/>
+        <line num="66" type="stmt" count="5"/>
+        <line num="68" type="stmt" count="1"/>
+        <line num="89" type="stmt" count="1"/>
+        <metrics loc="67" ncloc="40" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="17" elements="18" coveredelements="18"/>
+      </file>
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Email.php">
+        <class name="Email" namespace="HylianShield\Validator">
+          <metrics methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <line num="37" type="stmt" count="1"/>
+        <metrics loc="36" ncloc="10" classes="1" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Filter.php">
+        <class name="Filter" namespace="HylianShield\Validator">
+          <metrics methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="11" coveredelements="11"/>
+        </class>
+        <line num="67" type="method" name="__construct" crap="2" count="4"/>
+        <line num="69" type="stmt" count="4"/>
+        <line num="75" type="stmt" count="4"/>
+        <line num="76" type="stmt" count="4"/>
+        <line num="84" type="method" name="filterVar" crap="1" count="1"/>
+        <line num="86" type="stmt" count="1"/>
+        <line num="87" type="stmt" count="1"/>
+        <line num="88" type="stmt" count="1"/>
+        <line num="90" type="stmt" count="1"/>
+        <line num="92" type="stmt" count="1"/>
+        <line num="93" type="stmt" count="1"/>
+        <line num="96" type="stmt" count="1"/>
+        <metrics loc="95" ncloc="45" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="11" coveredelements="11"/>
+      </file>
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/LogicalAnd.php">
+        <class name="LogicalAnd" namespace="HylianShield\Validator">
+          <metrics methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="15" elements="17" coveredelements="17"/>
+        </class>
+        <line num="30" type="method" name="createValidator" crap="3" count="10"/>
+        <line num="34" type="method" name="anonymous function" crap="3" count="10"/>
+        <line num="38" type="stmt" count="10"/>
+        <line num="40" type="stmt" count="10"/>
+        <line num="41" type="stmt" count="10"/>
+        <line num="42" type="stmt" count="8"/>
+        <line num="44" type="stmt" count="7"/>
+        <line num="46" type="stmt" count="6"/>
+        <line num="48" type="stmt" count="9"/>
+        <metrics loc="49" ncloc="26" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="9" coveredelements="9"/>
+      </file>
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/LogicalGate.php">
+        <class name="LogicalGate" namespace="HylianShield\Validator">
+          <metrics methods="4" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="19" coveredstatements="19" elements="23" coveredelements="22"/>
+        </class>
+        <line num="0" type="stmt" count="9"/>
+        <line num="35" type="method" name="__construct" crap="4" count="52"/>
+        <line num="38" type="stmt" count="52"/>
+        <line num="39" type="stmt" count="52"/>
+        <line num="41" type="stmt" count="52"/>
+        <line num="42" type="stmt" count="52"/>
+        <line num="43" type="stmt" count="18"/>
+        <line num="45" type="stmt" count="18"/>
+        <line num="46" type="stmt" count="18"/>
+        <line num="49" type="stmt" count="37"/>
+        <line num="51" type="stmt" count="52"/>
+        <line num="55" type="stmt" count="34"/>
+        <line num="57" type="stmt" count="9"/>
+        <line num="61" type="stmt" count="34"/>
+        <line num="62" type="stmt" count="3"/>
+        <line num="64" type="stmt" count="3"/>
+        <line num="68" type="stmt" count="31"/>
+        <line num="71" type="stmt" count="31"/>
+        <line num="79" type="stmt" count="31"/>
+        <line num="87" type="method" name="createValidator" crap="1" count="0"/>
+        <line num="94" type="method" name="__tostring" crap="1" count="9"/>
+        <line num="96" type="stmt" count="9"/>
+        <metrics loc="98" ncloc="46" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="18" elements="21" coveredelements="21"/>
+      </file>
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/LogicalNot.php">
+        <class name="LogicalNot" namespace="HylianShield\Validator">
+          <metrics methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="13" coveredelements="13"/>
+        </class>
+        <line num="37" type="method" name="__construct" crap="1" count="10"/>
+        <line num="39" type="stmt" count="10"/>
+        <line num="41" type="stmt" count="3"/>
+        <line num="46" type="method" name="anonymous function" crap="1" count="10"/>
+        <line num="50" type="stmt" count="5"/>
+        <line num="52" type="stmt" count="5"/>
+        <line num="54" type="stmt" count="10"/>
+        <line num="61" type="method" name="__tostring" crap="1" count="3"/>
+        <line num="63" type="stmt" count="3"/>
+        <line num="66" type="stmt" count="1"/>
+        <metrics loc="65" ncloc="32" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="10" coveredelements="10"/>
+      </file>
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/LogicalOr.php">
+        <class name="LogicalOr" namespace="HylianShield\Validator">
+          <metrics methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="15" elements="17" coveredelements="17"/>
+        </class>
+        <line num="30" type="method" name="createValidator" crap="3" count="19"/>
+        <line num="34" type="method" name="anonymous function" crap="3" count="19"/>
+        <line num="38" type="stmt" count="9"/>
+        <line num="40" type="stmt" count="9"/>
+        <line num="41" type="stmt" count="9"/>
+        <line num="42" type="stmt" count="8"/>
+        <line num="44" type="stmt" count="7"/>
+        <line num="46" type="stmt" count="5"/>
+        <line num="48" type="stmt" count="19"/>
+        <metrics loc="49" ncloc="26" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="9" coveredelements="9"/>
+      </file>
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/LogicalXor.php">
+        <class name="LogicalXor" namespace="HylianShield\Validator">
+          <metrics methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="11" coveredelements="11"/>
+        </class>
+        <line num="30" type="method" name="createValidator" crap="1" count="10"/>
+        <line num="34" type="stmt" count="10"/>
+        <line num="38" type="stmt" count="10"/>
+        <line num="41" type="stmt" count="10"/>
+        <line num="42" type="stmt" count="10"/>
+        <line num="44" type="stmt" count="10"/>
+        <line num="46" type="stmt" count="10"/>
+        <line num="49" type="stmt" count="10"/>
+        <line num="51" type="stmt" count="10"/>
+        <line num="53" type="stmt" count="1"/>
+        <metrics loc="52" ncloc="25" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="10" coveredelements="10"/>
+      </file>
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Number.php">
+        <class name="Number" namespace="HylianShield\Validator">
+          <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+        </class>
+        <line num="31" type="method" name="createValidator" crap="1" count="4"/>
+        <line num="34" type="stmt" count="4"/>
+        <metrics loc="36" ncloc="15" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+      </file>
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Object.php">
+        <class name="Object" namespace="HylianShield\Validator">
+          <metrics methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <line num="30" type="stmt" count="1"/>
+        <metrics loc="29" ncloc="10" classes="1" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/OneOf.php">
+        <class name="OneOf" namespace="HylianShield\Validator">
+          <metrics methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="17" elements="20" coveredelements="20"/>
+        </class>
+        <line num="41" type="method" name="__construct" crap="4" count="13"/>
+        <line num="44" type="stmt" count="13"/>
+        <line num="45" type="stmt" count="13"/>
+        <line num="47" type="stmt" count="13"/>
+        <line num="48" type="stmt" count="11"/>
+        <line num="49" type="stmt" count="1"/>
+        <line num="51" type="stmt" count="1"/>
+        <line num="54" type="stmt" count="10"/>
+        <line num="55" type="stmt" count="10"/>
+        <line num="56" type="stmt" count="12"/>
+        <line num="59" type="stmt" count="12"/>
+        <line num="60" type="stmt" count="2"/>
+        <line num="64" type="stmt" count="10"/>
+        <line num="65" type="stmt" count="10"/>
+        <line num="69" type="stmt" count="10"/>
+        <line num="71" type="stmt" count="10"/>
+        <line num="78" type="method" name="__tostring" crap="1" count="10"/>
+        <line num="80" type="stmt" count="10"/>
+        <line num="83" type="stmt" count="1"/>
+        <metrics loc="82" ncloc="42" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="16" elements="19" coveredelements="19"/>
+      </file>
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Range.php">
+        <class name="Range" namespace="HylianShield\Validator">
+          <metrics methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="58" coveredstatements="58" elements="62" coveredelements="62"/>
+        </class>
+        <line num="58" type="method" name="initialize" crap="17" count="92"/>
+        <line num="59" type="stmt" count="92"/>
+        <line num="61" type="stmt" count="92"/>
+        <line num="67" type="stmt" count="92"/>
+        <line num="73" type="stmt" count="92"/>
+        <line num="74" type="stmt" count="92"/>
+        <line num="75" type="stmt" count="92"/>
+        <line num="79" type="stmt" count="92"/>
+        <line num="80" type="stmt" count="60"/>
+        <line num="81" type="stmt" count="92"/>
+        <line num="85" type="stmt" count="3"/>
+        <line num="86" type="stmt" count="3"/>
+        <line num="90" type="stmt" count="3"/>
+        <line num="91" type="stmt" count="3"/>
+        <line num="94" type="stmt" count="3"/>
+        <line num="96" type="stmt" count="34"/>
+        <line num="100" type="stmt" count="3"/>
+        <line num="101" type="stmt" count="3"/>
+        <line num="105" type="stmt" count="3"/>
+        <line num="106" type="stmt" count="3"/>
+        <line num="109" type="stmt" count="3"/>
+        <line num="111" type="stmt" count="12"/>
+        <line num="112" type="method" name="anonymous function" crap="7" count="10"/>
+        <line num="115" type="stmt" count="5"/>
+        <line num="116" type="stmt" count="5"/>
+        <line num="117" type="stmt" count="5"/>
+        <line num="118" type="stmt" count="5"/>
+        <line num="121" type="stmt" count="5"/>
+        <line num="122" type="stmt" count="2"/>
+        <line num="128" type="stmt" count="5"/>
+        <line num="129" type="stmt" count="5"/>
+        <line num="130" type="stmt" count="3"/>
+        <line num="136" type="stmt" count="5"/>
+        <line num="137" type="stmt" count="5"/>
+        <line num="138" type="stmt" count="3"/>
+        <line num="141" type="stmt" count="4"/>
+        <line num="144" type="stmt" count="92"/>
+        <line num="151" type="method" name="createValidator" crap="1" count="56"/>
+        <line num="152" type="stmt" count="56"/>
+        <line num="160" type="method" name="__tostring" crap="3" count="40"/>
+        <line num="162" type="stmt" count="40"/>
+        <line num="163" type="stmt" count="40"/>
+        <line num="164" type="stmt" count="40"/>
+        <line num="166" type="stmt" count="40"/>
+        <line num="167" type="stmt" count="40"/>
+        <line num="168" type="stmt" count="40"/>
+        <line num="170" type="stmt" count="40"/>
+        <metrics loc="172" ncloc="89" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="44" coveredstatements="44" elements="48" coveredelements="48"/>
+      </file>
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Regexp.php">
+        <class name="Regexp" namespace="HylianShield\Validator">
+          <metrics methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="19" coveredstatements="19" elements="22" coveredelements="22"/>
+        </class>
+        <line num="40" type="method" name="__construct" crap="5" count="47"/>
+        <line num="42" type="stmt" count="47"/>
+        <line num="43" type="stmt" count="5"/>
+        <line num="44" type="stmt" count="5"/>
+        <line num="45" type="stmt" count="5"/>
+        <line num="46" type="stmt" count="5"/>
+        <line num="50" type="stmt" count="42"/>
+        <line num="52" type="stmt" count="42"/>
+        <line num="53" type="stmt" count="1"/>
+        <line num="54" type="stmt" count="1"/>
+        <line num="55" type="stmt" count="1"/>
+        <line num="60" type="stmt" count="41"/>
+        <line num="61" type="stmt" count="2"/>
+        <line num="62" type="stmt" count="2"/>
+        <line num="63" type="stmt" count="2"/>
+        <line num="66" type="stmt" count="39"/>
+        <line num="70" type="stmt" count="21"/>
+        <line num="72" type="stmt" count="39"/>
+        <line num="79" type="method" name="__tostring" crap="1" count="12"/>
+        <line num="81" type="stmt" count="12"/>
+        <metrics loc="83" ncloc="43" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="18" elements="21" coveredelements="21"/>
+      </file>
+    </package>
+    <package name="HylianShield\Validator\Context">
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Context/Context.php">
+        <class name="Context" namespace="HylianShield\Validator\Context">
+          <metrics methods="10" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="32" coveredstatements="21" elements="42" coveredelements="28"/>
+        </class>
+        <line num="37" type="method" name="addIndication" crap="1" count="152"/>
+        <line num="39" type="stmt" count="152"/>
+        <line num="41" type="stmt" count="152"/>
+        <line num="51" type="method" name="addAssertion" crap="1" count="152"/>
+        <line num="53" type="stmt" count="152"/>
+        <line num="54" type="stmt" count="152"/>
+        <line num="55" type="stmt" count="152"/>
+        <line num="57" type="stmt" count="152"/>
+        <line num="66" type="method" name="addIntention" crap="1" count="152"/>
+        <line num="68" type="stmt" count="152"/>
+        <line num="69" type="stmt" count="152"/>
+        <line num="70" type="stmt" count="152"/>
+        <line num="72" type="stmt" count="152"/>
+        <line num="83" type="method" name="addViolation" crap="1" count="2"/>
+        <line num="88" type="stmt" count="2"/>
+        <line num="89" type="stmt" count="2"/>
+        <line num="90" type="stmt" count="2"/>
+        <line num="92" type="stmt" count="2"/>
+        <line num="100" type="method" name="getAssertions" crap="2" count="0"/>
+        <line num="102" type="stmt" count="0"/>
+        <line num="104" type="stmt" count="0"/>
+        <line num="112" type="method" name="getIntentions" crap="2" count="0"/>
+        <line num="114" type="stmt" count="0"/>
+        <line num="116" type="stmt" count="0"/>
+        <line num="124" type="method" name="getViolations" crap="1" count="38"/>
+        <line num="126" type="stmt" count="38"/>
+        <line num="128" type="stmt" count="38"/>
+        <line num="137" type="method" name="getIndicationsByInterface" crap="1" count="38"/>
+        <line num="139" type="stmt" count="38"/>
+        <line num="140" type="stmt" count="38"/>
+        <line num="142" type="stmt" count="38"/>
+        <line num="144" type="stmt" count="38"/>
+        <line num="152" type="method" name="__toString" crap="6" count="0"/>
+        <line num="154" type="stmt" count="0"/>
+        <line num="156" type="stmt" count="0"/>
+        <line num="158" type="stmt" count="0"/>
+        <line num="159" type="stmt" count="0"/>
+        <line num="160" type="stmt" count="0"/>
+        <line num="161" type="stmt" count="0"/>
+        <line num="163" type="stmt" count="0"/>
+        <line num="166" type="stmt" count="1"/>
+        <metrics loc="165" ncloc="98" classes="1" methods="10" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="31" coveredstatements="20" elements="41" coveredelements="27"/>
+      </file>
+    </package>
+    <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Context/ContextInterface.php">
+      <line num="109" type="stmt" count="1"/>
+      <metrics loc="108" ncloc="37" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <package name="HylianShield\Validator\Context\Indication">
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Context/Indication/Assertion.php">
+        <class name="Assertion" namespace="HylianShield\Validator\Context\Indication">
+          <metrics methods="4" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="6" elements="20" coveredelements="8"/>
+        </class>
+        <line num="31" type="method" name="__construct" crap="1" count="152"/>
+        <line num="33" type="stmt" count="152"/>
+        <line num="34" type="stmt" count="152"/>
+        <line num="35" type="stmt" count="152"/>
+        <line num="42" type="method" name="__toString" crap="6" count="0"/>
+        <line num="44" type="stmt" count="0"/>
+        <line num="45" type="stmt" count="0"/>
+        <line num="46" type="stmt" count="0"/>
+        <line num="56" type="method" name="setResult" crap="2.50" count="152"/>
+        <line num="58" type="stmt" count="152"/>
+        <line num="59" type="stmt" count="0"/>
+        <line num="60" type="stmt" count="0"/>
+        <line num="61" type="stmt" count="0"/>
+        <line num="64" type="stmt" count="152"/>
+        <line num="66" type="stmt" count="152"/>
+        <line num="75" type="method" name="getResult" crap="6" count="0"/>
+        <line num="77" type="stmt" count="0"/>
+        <line num="78" type="stmt" count="0"/>
+        <line num="80" type="stmt" count="0"/>
+        <line num="83" type="stmt" count="0"/>
+        <line num="86" type="stmt" count="1"/>
+        <metrics loc="85" ncloc="47" classes="1" methods="4" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="6" elements="20" coveredelements="7"/>
+      </file>
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Context/Indication/IndicationAbstract.php">
+        <class name="IndicationAbstract" namespace="HylianShield\Validator\Context\Indication">
+          <metrics methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="5" elements="12" coveredelements="7"/>
+        </class>
+        <line num="32" type="method" name="setDescription" crap="2.50" count="152"/>
+        <line num="34" type="stmt" count="152"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="40" type="stmt" count="152"/>
+        <line num="42" type="stmt" count="152"/>
+        <line num="51" type="method" name="getDescription" crap="2.50" count="2"/>
+        <line num="53" type="stmt" count="2"/>
+        <line num="54" type="stmt" count="0"/>
+        <line num="56" type="stmt" count="0"/>
+        <line num="59" type="stmt" count="2"/>
+        <line num="62" type="stmt" count="1"/>
+        <metrics loc="61" ncloc="34" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="5" elements="12" coveredelements="5"/>
+      </file>
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Context/Indication/Intention.php">
+        <class name="Intention" namespace="HylianShield\Validator\Context\Indication">
+          <metrics methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="2" elements="5" coveredelements="3"/>
+        </class>
+        <line num="20" type="method" name="__construct" crap="1" count="152"/>
+        <line num="22" type="stmt" count="152"/>
+        <line num="23" type="stmt" count="152"/>
+        <line num="30" type="method" name="__toString" crap="2" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <line num="35" type="stmt" count="1"/>
+        <metrics loc="34" ncloc="15" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="2" elements="5" coveredelements="3"/>
+      </file>
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Context/Indication/Violation.php">
+        <class name="Violation" namespace="HylianShield\Validator\Context\Indication">
+          <metrics methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="45" coveredstatements="29" elements="53" coveredelements="37"/>
+        </class>
+        <line num="40" type="method" name="__construct" crap="1" count="2"/>
+        <line num="42" type="stmt" count="2"/>
+        <line num="43" type="stmt" count="2"/>
+        <line num="44" type="stmt" count="2"/>
+        <line num="45" type="stmt" count="2"/>
+        <line num="52" type="method" name="__toString" crap="1" count="2"/>
+        <line num="55" type="stmt" count="2"/>
+        <line num="56" type="stmt" count="2"/>
+        <line num="66" type="method" name="setCode" crap="2.50" count="2"/>
+        <line num="68" type="stmt" count="2"/>
+        <line num="69" type="stmt" count="0"/>
+        <line num="70" type="stmt" count="0"/>
+        <line num="71" type="stmt" count="0"/>
+        <line num="74" type="stmt" count="2"/>
+        <line num="76" type="stmt" count="2"/>
+        <line num="85" type="method" name="getCode" crap="2.50" count="2"/>
+        <line num="87" type="stmt" count="2"/>
+        <line num="88" type="stmt" count="0"/>
+        <line num="90" type="stmt" count="0"/>
+        <line num="93" type="stmt" count="2"/>
+        <line num="102" type="method" name="setContext" crap="1" count="2"/>
+        <line num="104" type="stmt" count="2"/>
+        <line num="106" type="stmt" count="2"/>
+        <line num="115" type="method" name="getContext" crap="2.50" count="2"/>
+        <line num="117" type="stmt" count="2"/>
+        <line num="118" type="stmt" count="0"/>
+        <line num="120" type="stmt" count="0"/>
+        <line num="123" type="stmt" count="2"/>
+        <line num="145" type="method" name="interpolate" crap="7.46" count="2"/>
+        <line num="150" type="stmt" count="2"/>
+        <line num="151" type="stmt" count="0"/>
+        <line num="152" type="stmt" count="0"/>
+        <line num="153" type="stmt" count="0"/>
+        <line num="156" type="stmt" count="2"/>
+        <line num="157" type="stmt" count="0"/>
+        <line num="159" type="stmt" count="0"/>
+        <line num="160" type="stmt" count="0"/>
+        <line num="163" type="stmt" count="2"/>
+        <line num="164" type="stmt" count="0"/>
+        <line num="166" type="stmt" count="0"/>
+        <line num="167" type="stmt" count="0"/>
+        <line num="170" type="stmt" count="2"/>
+        <line num="173" type="stmt" count="2"/>
+        <line num="175" type="stmt" count="2"/>
+        <line num="178" type="stmt" count="2"/>
+        <line num="179" type="stmt" count="2"/>
+        <line num="180" type="stmt" count="2"/>
+        <line num="181" type="stmt" count="2"/>
+        <line num="183" type="stmt" count="2"/>
+        <line num="186" type="stmt" count="2"/>
+        <line num="189" type="stmt" count="1"/>
+        <metrics loc="188" ncloc="103" classes="1" methods="8" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="43" coveredstatements="27" elements="51" coveredelements="31"/>
+      </file>
+    </package>
+    <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Context/Indication/AssertionInterface.php">
+      <line num="23" type="stmt" count="1"/>
+      <metrics loc="22" ncloc="8" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Context/Indication/IndicationInterface.php">
+      <line num="30" type="stmt" count="1"/>
+      <metrics loc="29" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Context/Indication/IntentionInterface.php">
+      <line num="18" type="stmt" count="1"/>
+      <metrics loc="17" ncloc="8" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Context/Indication/ViolationInterface.php">
+      <line num="48" type="stmt" count="1"/>
+      <metrics loc="47" ncloc="12" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <package name="HylianShield\Validator\CoreArray">
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/CoreArray/Numeric.php">
+        <class name="Numeric" namespace="HylianShield\Validator\CoreArray">
+          <metrics methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="22" coveredstatements="22" elements="24" coveredelements="24"/>
+        </class>
+        <line num="26" type="method" name="createValidator" crap="4" count="4"/>
+        <line num="28" type="method" name="anonymous function" crap="4" count="4"/>
+        <line num="30" type="stmt" count="1"/>
+        <line num="31" type="stmt" count="1"/>
+        <line num="35" type="stmt" count="1"/>
+        <line num="38" type="stmt" count="1"/>
+        <line num="39" type="stmt" count="1"/>
+        <line num="40" type="stmt" count="1"/>
+        <line num="41" type="stmt" count="1"/>
+        <line num="43" type="stmt" count="1"/>
+        <line num="45" type="stmt" count="1"/>
+        <line num="46" type="stmt" count="4"/>
+        <line num="49" type="stmt" count="1"/>
+        <metrics loc="48" ncloc="25" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="12" coveredelements="12"/>
+      </file>
+    </package>
+    <package name="HylianShield\Validator\CoreClass">
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/CoreClass/Exists.php">
+        <class name="Exists" namespace="HylianShield\Validator\CoreClass">
+          <metrics methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="11" coveredelements="11"/>
+        </class>
+        <line num="0" type="stmt" count="1"/>
+        <line num="32" type="method" name="__construct" crap="2" count="14"/>
+        <line num="34" type="stmt" count="14"/>
+        <line num="35" type="stmt" count="14"/>
+        <line num="36" type="stmt" count="3"/>
+        <line num="37" type="stmt" count="3"/>
+        <line num="38" type="stmt" count="3"/>
+        <line num="39" type="stmt" count="3"/>
+        <line num="44" type="stmt" count="3"/>
+        <line num="46" type="stmt" count="14"/>
+        <line num="48" type="stmt" count="1"/>
+        <metrics loc="47" ncloc="25" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="10" coveredelements="10"/>
+      </file>
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/CoreClass/Instance.php">
+        <class name="Instance" namespace="HylianShield\Validator\CoreClass">
+          <metrics methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="10" coveredelements="10"/>
+        </class>
+        <line num="31" type="method" name="__construct" crap="2" count="13"/>
+        <line num="33" type="stmt" count="13"/>
+        <line num="34" type="stmt" count="3"/>
+        <line num="35" type="stmt" count="3"/>
+        <line num="36" type="stmt" count="3"/>
+        <line num="37" type="stmt" count="3"/>
+        <line num="42" type="stmt" count="5"/>
+        <line num="44" type="stmt" count="10"/>
+        <line num="46" type="stmt" count="1"/>
+        <metrics loc="45" ncloc="23" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="9" coveredelements="9"/>
+      </file>
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/CoreClass/Method.php">
+        <class name="Method" namespace="HylianShield\Validator\CoreClass">
+          <metrics methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="18" elements="20" coveredelements="20"/>
+        </class>
+        <line num="38" type="method" name="__construct" crap="3" count="7"/>
+        <line num="40" type="stmt" count="7"/>
+        <line num="41" type="stmt" count="7"/>
+        <line num="42" type="stmt" count="7"/>
+        <line num="43" type="stmt" count="7"/>
+        <line num="44" type="stmt" count="7"/>
+        <line num="45" type="stmt" count="7"/>
+        <line num="46" type="stmt" count="7"/>
+        <line num="47" type="stmt" count="7"/>
+        <line num="49" type="stmt" count="7"/>
+        <line num="50" type="stmt" count="7"/>
+        <line num="52" type="stmt" count="7"/>
+        <line num="53" type="stmt" count="3"/>
+        <line num="54" type="stmt" count="3"/>
+        <line num="55" type="stmt" count="3"/>
+        <line num="56" type="stmt" count="3"/>
+        <line num="61" type="stmt" count="4"/>
+        <line num="63" type="stmt" count="4"/>
+        <line num="65" type="stmt" count="1"/>
+        <metrics loc="64" ncloc="42" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="17" elements="19" coveredelements="19"/>
+      </file>
+    </package>
+    <package name="HylianShield\Validator\Date">
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Date/Mysql.php">
+        <class name="Mysql" namespace="HylianShield\Validator\Date">
+          <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+        </class>
+        <line num="33" type="method" name="__construct" crap="1" count="4"/>
+        <line num="35" type="stmt" count="4"/>
+        <line num="36" type="stmt" count="4"/>
+        <metrics loc="37" ncloc="15" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+      </file>
+    </package>
+    <package name="HylianShield\Validator\Encoding">
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Encoding/Base64.php">
+        <class name="Base64" namespace="HylianShield\Validator\Encoding">
+          <metrics methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="34" coveredstatements="34" elements="42" coveredelements="42"/>
+        </class>
+        <line num="128" type="method" name="__construct" crap="1" count="69"/>
+        <line num="130" type="stmt" count="69"/>
+        <line num="133" type="stmt" count="69"/>
+        <line num="134" type="stmt" count="69"/>
+        <line num="143" type="method" name="setOptions" crap="2" count="69"/>
+        <line num="145" type="stmt" count="69"/>
+        <line num="146" type="stmt" count="4"/>
+        <line num="150" type="stmt" count="69"/>
+        <line num="151" type="stmt" count="69"/>
+        <line num="152" type="stmt" count="69"/>
+        <line num="160" type="method" name="setLineFeedCharacters" crap="1" count="61"/>
+        <line num="162" type="stmt" count="61"/>
+        <line num="163" type="stmt" count="61"/>
+        <line num="171" type="method" name="getLineFeedCharacters" crap="2" count="61"/>
+        <line num="173" type="stmt" count="61"/>
+        <line num="174" type="stmt" count="61"/>
+        <line num="175" type="stmt" count="61"/>
+        <line num="177" type="stmt" count="61"/>
+        <line num="186" type="method" name="validateMessage" crap="6" count="62"/>
+        <line num="189" type="stmt" count="62"/>
+        <line num="190" type="stmt" count="1"/>
+        <line num="195" type="stmt" count="62"/>
+        <line num="196" type="stmt" count="61"/>
+        <line num="197" type="stmt" count="61"/>
+        <line num="200" type="stmt" count="62"/>
+        <line num="201" type="stmt" count="61"/>
+        <line num="205" type="stmt" count="62"/>
+        <line num="208" type="stmt" count="62"/>
+        <line num="210" type="stmt" count="1"/>
+        <line num="214" type="stmt" count="62"/>
+        <line num="223" type="method" name="trimPadding" crap="1" count="62"/>
+        <line num="227" type="stmt" count="62"/>
+        <line num="236" type="method" name="removeLineFeeds" crap="1" count="61"/>
+        <line num="238" type="stmt" count="61"/>
+        <line num="247" type="method" name="validatePadding" crap="3" count="62"/>
+        <line num="249" type="stmt" count="62"/>
+        <line num="253" type="stmt" count="62"/>
+        <line num="254" type="stmt" count="61"/>
+        <line num="258" type="stmt" count="62"/>
+        <line num="261" type="stmt" count="62"/>
+        <line num="262" type="stmt" count="1"/>
+        <line num="266" type="stmt" count="62"/>
+        <line num="269" type="stmt" count="1"/>
+        <metrics loc="268" ncloc="92" classes="1" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="34" coveredstatements="34" elements="42" coveredelements="42"/>
+      </file>
+    </package>
+    <package name="HylianShield\Validator\Financial">
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Financial/Bic.php">
+        <class name="Bic" namespace="HylianShield\Validator\Financial">
+          <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="8" coveredelements="8"/>
+        </class>
+        <line num="45" type="method" name="__construct" crap="3" count="19"/>
+        <line num="47" type="stmt" count="19"/>
+        <line num="48" type="stmt" count="5"/>
+        <line num="51" type="stmt" count="19"/>
+        <line num="52" type="stmt" count="10"/>
+        <line num="53" type="stmt" count="10"/>
+        <line num="54" type="stmt" count="19"/>
+        <line num="56" type="stmt" count="19"/>
+        <line num="58" type="stmt" count="1"/>
+        <metrics loc="57" ncloc="25" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="8" coveredelements="8"/>
+      </file>
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Financial/Iban.php">
+        <class name="Iban" namespace="HylianShield\Validator\Financial">
+          <metrics methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="18" elements="20" coveredelements="20"/>
+        </class>
+        <line num="50" type="method" name="createValidator" crap="1" count="4"/>
+        <line num="52" type="method" name="anonymous function" crap="1" count="4"/>
+        <line num="53" type="stmt" count="1"/>
+        <line num="54" type="stmt" count="1"/>
+        <line num="57" type="stmt" count="1"/>
+        <line num="60" type="stmt" count="1"/>
+        <line num="63" type="stmt" count="1"/>
+        <line num="66" type="stmt" count="1"/>
+        <line num="68" type="stmt" count="1"/>
+        <line num="69" type="stmt" count="4"/>
+        <line num="72" type="stmt" count="1"/>
+        <metrics loc="71" ncloc="28" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="10" coveredelements="10"/>
+      </file>
+    </package>
+    <package name="HylianShield\Validator\Financial\ISO20022">
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Financial/ISO20022/ExtLocalInstrumentCode.php">
+        <class name="ExtLocalInstrumentCode" namespace="HylianShield\Validator\Financial\ISO20022">
+          <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+        </class>
+        <line num="313" type="method" name="__construct" crap="1" count="4"/>
+        <line num="315" type="stmt" count="4"/>
+        <line num="316" type="stmt" count="4"/>
+        <line num="317" type="stmt" count="4"/>
+        <line num="318" type="stmt" count="4"/>
+        <line num="320" type="stmt" count="1"/>
+        <metrics loc="319" ncloc="74" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+      </file>
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Financial/ISO20022/ExtOrganizationIdCode.php">
+        <class name="ExtOrganizationIdCode" namespace="HylianShield\Validator\Financial\ISO20022">
+          <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+        </class>
+        <line num="99" type="method" name="__construct" crap="1" count="4"/>
+        <line num="101" type="stmt" count="4"/>
+        <line num="102" type="stmt" count="4"/>
+        <line num="103" type="stmt" count="4"/>
+        <line num="104" type="stmt" count="4"/>
+        <line num="106" type="stmt" count="1"/>
+        <metrics loc="105" ncloc="0" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+      </file>
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Financial/ISO20022/ExtPersonIdCode.php">
+        <class name="ExtPersonIdCode" namespace="HylianShield\Validator\Financial\ISO20022">
+          <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+        </class>
+        <line num="72" type="method" name="__construct" crap="1" count="4"/>
+        <line num="74" type="stmt" count="4"/>
+        <line num="75" type="stmt" count="4"/>
+        <line num="76" type="stmt" count="4"/>
+        <line num="77" type="stmt" count="4"/>
+        <line num="79" type="stmt" count="1"/>
+        <metrics loc="78" ncloc="15" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+      </file>
+    </package>
+    <package name="HylianShield\Validator\Financial\SEPA">
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Financial/SEPA/CreditorIdentifier.php">
+        <class name="CreditorIdentifier" namespace="HylianShield\Validator\Financial\SEPA">
+          <metrics methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="20" coveredstatements="20" elements="22" coveredelements="22"/>
+        </class>
+        <line num="47" type="method" name="createValidator" crap="1" count="4"/>
+        <line num="49" type="method" name="anonymous function" crap="1" count="4"/>
+        <line num="51" type="stmt" count="1"/>
+        <line num="53" type="stmt" count="1"/>
+        <line num="54" type="stmt" count="1"/>
+        <line num="57" type="stmt" count="1"/>
+        <line num="60" type="stmt" count="1"/>
+        <line num="63" type="stmt" count="1"/>
+        <line num="66" type="stmt" count="1"/>
+        <line num="68" type="stmt" count="1"/>
+        <line num="69" type="stmt" count="4"/>
+        <line num="72" type="stmt" count="1"/>
+        <metrics loc="71" ncloc="29" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="11" coveredelements="11"/>
+      </file>
+    </package>
+    <package name="HylianShield\Validator\Float">
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Float/Negative.php">
+        <class name="Negative" namespace="HylianShield\Validator\Float">
+          <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+        </class>
+        <line num="37" type="method" name="__construct" crap="1" count="8"/>
+        <line num="39" type="stmt" count="8"/>
+        <line num="40" type="stmt" count="8"/>
+        <metrics loc="41" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+      </file>
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Float/Positive.php">
+        <class name="Positive" namespace="HylianShield\Validator\Float">
+          <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+        </class>
+        <line num="37" type="method" name="__construct" crap="1" count="8"/>
+        <line num="39" type="stmt" count="8"/>
+        <line num="40" type="stmt" count="8"/>
+        <metrics loc="41" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+      </file>
+    </package>
+    <package name="HylianShield\Validator\Integer">
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Integer/Negative.php">
+        <class name="Negative" namespace="HylianShield\Validator\Integer">
+          <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+        </class>
+        <line num="35" type="method" name="__construct" crap="1" count="8"/>
+        <line num="37" type="stmt" count="8"/>
+        <line num="38" type="stmt" count="8"/>
+        <metrics loc="39" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+      </file>
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Integer/Positive.php">
+        <class name="Positive" namespace="HylianShield\Validator\Integer">
+          <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+        </class>
+        <line num="35" type="method" name="__construct" crap="1" count="8"/>
+        <line num="37" type="stmt" count="8"/>
+        <line num="38" type="stmt" count="8"/>
+        <metrics loc="39" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+      </file>
+    </package>
+    <package name="HylianShield\Validator\Number">
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Number/Negative.php">
+        <class name="Negative" namespace="HylianShield\Validator\Number">
+          <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+        </class>
+        <line num="30" type="method" name="__construct" crap="1" count="4"/>
+        <line num="33" type="stmt" count="4"/>
+        <line num="34" type="stmt" count="4"/>
+        <line num="36" type="stmt" count="1"/>
+        <metrics loc="35" ncloc="16" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+      </file>
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Number/Positive.php">
+        <class name="Positive" namespace="HylianShield\Validator\Number">
+          <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+        </class>
+        <line num="30" type="method" name="__construct" crap="1" count="4"/>
+        <line num="33" type="stmt" count="4"/>
+        <line num="34" type="stmt" count="4"/>
+        <line num="36" type="stmt" count="1"/>
+        <metrics loc="35" ncloc="16" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+      </file>
+    </package>
+    <package name="HylianShield\Validator\OneOf">
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/OneOf/Many.php">
+        <class name="Many" namespace="HylianShield\Validator\OneOf">
+          <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+        </class>
+        <line num="28" type="method" name="__construct" crap="1" count="6"/>
+        <line num="30" type="stmt" count="6"/>
+        <line num="31" type="stmt" count="5"/>
+        <line num="33" type="stmt" count="1"/>
+        <metrics loc="32" ncloc="13" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+      </file>
+    </package>
+    <package name="HylianShield\Validator\Range">
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Range/Immutable.php">
+        <class name="Immutable" namespace="HylianShield\Validator\Range">
+          <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+        </class>
+        <line num="26" type="method" name="__construct" crap="1" count="8"/>
+        <line num="28" type="stmt" count="8"/>
+        <line num="29" type="stmt" count="8"/>
+        <line num="31" type="stmt" count="1"/>
+        <metrics loc="30" ncloc="13" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+      </file>
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Range/Mutable.php">
+        <class name="Mutable" namespace="HylianShield\Validator\Range">
+          <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="8" coveredelements="8"/>
+        </class>
+        <line num="32" type="method" name="__construct" crap="7" count="84"/>
+        <line num="34" type="stmt" count="84"/>
+        <line num="35" type="stmt" count="84"/>
+        <line num="36" type="stmt" count="84"/>
+        <line num="44" type="stmt" count="84"/>
+        <line num="45" type="stmt" count="84"/>
+        <line num="47" type="stmt" count="84"/>
+        <line num="48" type="stmt" count="84"/>
+        <metrics loc="49" ncloc="24" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="8" coveredelements="8"/>
+      </file>
+    </package>
+    <package name="HylianShield\Validator\String">
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/String/Subset.php">
+        <class name="Subset" namespace="HylianShield\Validator\String">
+          <metrics methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="40" coveredstatements="40" elements="43" coveredelements="43"/>
+        </class>
+        <line num="44" type="method" name="createValidator" crap="6" count="20"/>
+        <line num="47" type="stmt" count="20"/>
+        <line num="48" type="stmt" count="20"/>
+        <line num="51" type="stmt" count="20"/>
+        <line num="52" type="stmt" count="20"/>
+        <line num="55" type="stmt" count="20"/>
+        <line num="58" type="stmt" count="4"/>
+        <line num="61" type="stmt" count="4"/>
+        <line num="62" type="stmt" count="4"/>
+        <line num="63" type="stmt" count="4"/>
+        <line num="66" type="stmt" count="4"/>
+        <line num="68" type="stmt" count="4"/>
+        <line num="69" type="stmt" count="16"/>
+        <line num="74" type="stmt" count="4"/>
+        <line num="75" type="stmt" count="4"/>
+        <line num="76" type="stmt" count="4"/>
+        <line num="77" type="stmt" count="8"/>
+        <line num="87" type="method" name="getRange" crap="6" count="20"/>
+        <line num="90" type="stmt" count="20"/>
+        <line num="98" type="stmt" count="20"/>
+        <line num="99" type="stmt" count="20"/>
+        <line num="102" type="stmt" count="20"/>
+        <line num="103" type="stmt" count="20"/>
+        <line num="112" type="stmt" count="20"/>
+        <line num="115" type="stmt" count="20"/>
+        <line num="116" type="stmt" count="20"/>
+        <line num="117" type="stmt" count="20"/>
+        <line num="119" type="stmt" count="20"/>
+        <line num="120" type="stmt" count="20"/>
+        <line num="121" type="stmt" count="20"/>
+        <line num="123" type="stmt" count="20"/>
+        <line num="124" type="stmt" count="20"/>
+        <line num="126" type="stmt" count="20"/>
+        <line num="127" type="stmt" count="20"/>
+        <line num="128" type="stmt" count="20"/>
+        <line num="129" type="stmt" count="20"/>
+        <line num="131" type="stmt" count="20"/>
+        <line num="134" type="stmt" count="1"/>
+        <metrics loc="133" ncloc="67" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="35" coveredstatements="35" elements="38" coveredelements="38"/>
+      </file>
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/String/Utf8.php">
+        <class name="Utf8" namespace="HylianShield\Validator\String">
+          <metrics methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="8" coveredelements="8"/>
+        </class>
+        <line num="42" type="method" name="createValidator" crap="2" count="4"/>
+        <line num="43" type="method" name="anonymous function" crap="2" count="4"/>
+        <line num="45" type="stmt" count="1"/>
+        <line num="46" type="stmt" count="4"/>
+        <line num="49" type="stmt" count="1"/>
+        <metrics loc="48" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
+      </file>
+    </package>
+    <package name="HylianShield\Validator\String\Utf8">
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/String/Utf8/Mes1.php">
+        <class name="Mes1" namespace="HylianShield\Validator\String\Utf8">
+          <metrics methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <line num="48" type="stmt" count="1"/>
+        <metrics loc="47" ncloc="23" classes="1" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/String/Utf8/Mes2.php">
+        <class name="Mes2" namespace="HylianShield\Validator\String\Utf8">
+          <metrics methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <line num="63" type="stmt" count="1"/>
+        <metrics loc="62" ncloc="38" classes="1" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/String/Utf8/Mes3A.php">
+        <class name="Mes3A" namespace="HylianShield\Validator\String\Utf8">
+          <metrics methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <line num="69" type="stmt" count="1"/>
+        <metrics loc="68" ncloc="44" classes="1" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/String/Utf8/WordCharacter.php">
+        <class name="WordCharacter" namespace="HylianShield\Validator\String\Utf8">
+          <metrics methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <line num="44" type="stmt" count="1"/>
+        <metrics loc="43" ncloc="17" classes="1" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="HylianShield\Validator\Url">
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Url/Network.php">
+        <class name="Network" namespace="HylianShield\Validator\Url">
+          <metrics methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="60" coveredstatements="60" elements="62" coveredelements="62"/>
+        </class>
+        <line num="89" type="method" name="__construct" crap="29" count="16"/>
+        <line num="94" type="stmt" count="16"/>
+        <line num="95" type="stmt" count="16"/>
+        <line num="96" type="stmt" count="16"/>
+        <line num="97" type="stmt" count="16"/>
+        <line num="98" type="stmt" count="16"/>
+        <line num="100" type="stmt" count="16"/>
+        <line num="101" type="stmt" count="16"/>
+        <line num="102" type="stmt" count="16"/>
+        <line num="103" type="stmt" count="16"/>
+        <line num="106" type="stmt" count="4"/>
+        <line num="107" type="stmt" count="4"/>
+        <line num="108" type="stmt" count="4"/>
+        <line num="109" type="stmt" count="4"/>
+        <line num="110" type="stmt" count="4"/>
+        <line num="111" type="stmt" count="4"/>
+        <line num="112" type="stmt" count="4"/>
+        <line num="113" type="stmt" count="4"/>
+        <line num="114" type="stmt" count="4"/>
+        <line num="116" type="stmt" count="4"/>
+        <line num="119" type="stmt" count="4"/>
+        <line num="126" type="stmt" count="4"/>
+        <line num="127" type="stmt" count="4"/>
+        <line num="131" type="stmt" count="4"/>
+        <line num="132" type="stmt" count="1"/>
+        <line num="136" type="stmt" count="4"/>
+        <line num="137" type="stmt" count="3"/>
+        <line num="141" type="stmt" count="4"/>
+        <line num="142" type="stmt" count="4"/>
+        <line num="143" type="stmt" count="4"/>
+        <line num="181" type="stmt" count="4"/>
+        <line num="182" type="stmt" count="4"/>
+        <line num="183" type="stmt" count="4"/>
+        <line num="221" type="stmt" count="4"/>
+        <line num="227" type="stmt" count="4"/>
+        <line num="229" type="stmt" count="16"/>
+        <line num="231" type="stmt" count="1"/>
+        <metrics loc="230" ncloc="102" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="35" coveredstatements="35" elements="37" coveredelements="37"/>
+      </file>
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Url/Webpage.php">
+        <class name="Webpage" namespace="HylianShield\Validator\Url">
+          <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+        </class>
+        <line num="30" type="method" name="__construct" crap="1" count="4"/>
+        <line num="32" type="stmt" count="4"/>
+        <line num="33" type="stmt" count="4"/>
+        <line num="35" type="stmt" count="1"/>
+        <metrics loc="34" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+      </file>
+    </package>
+    <package name="HylianShield\Validator\Url\Network">
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Url/Network/Http.php">
+        <class name="Http" namespace="HylianShield\Validator\Url\Network">
+          <metrics methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <line num="37" type="stmt" count="1"/>
+        <metrics loc="36" ncloc="12" classes="1" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="/home/johmanx/git/validator/src/HylianShield/Validator/Url/Network/Https.php">
+        <class name="Https" namespace="HylianShield\Validator\Url\Network">
+          <metrics methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <line num="37" type="stmt" count="1"/>
+        <metrics loc="36" ncloc="12" classes="1" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+    </package>
+    <metrics files="57" loc="4242" ncloc="1857" classes="52" methods="95" coveredmethods="81" conditionals="0" coveredconditionals="0" statements="529" coveredstatements="485" elements="624" coveredelements="566"/>
+  </project>
+</coverage>

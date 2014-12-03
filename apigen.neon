@@ -1,0 +1,56 @@
+# Source file or directory to parse
+source: vendor/hylianshield/validator/src
+
+# Directory where to save the generated documentation
+destination: docs
+
+# List of allowed file extensions
+extensions: [php]
+
+# Title of generated documentation
+title: HylianShield validator
+
+# Documentation base URL
+baseUrl: http://hylianshield.github.io/validator/docs/
+
+# Element types for search input autocomplete
+autocomplete: [classes, constants, functions]
+
+# Generate documentation for methods and properties with given access level
+accessLevels: [public, protected]
+
+# Generate documentation for PHP internal classes
+php: No
+
+# Generate tree view of classes, interfaces and exceptions
+tree: Yes
+
+# Generate documentation for deprecated classes, methods, properties and constants
+deprecated: No
+
+# Generate documentation of tasks
+todo: No
+
+# Generate highlighted source code files
+sourceCode: Yes
+
+# Add a link to download documentation as a ZIP archive
+download: No
+
+# Wipe out the destination directory first
+wipeout: Yes
+
+# Don't display scanning and generating messages
+quiet: No
+
+# Display progressbars
+progressbar: Yes
+
+# Use colors
+colors: Yes
+
+# Check for update
+updateCheck: No
+
+# Display additional information in case of an error
+debug: Yes

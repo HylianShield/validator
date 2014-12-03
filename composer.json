@@ -3,7 +3,7 @@
         "php": ">=5.3"
     },
     "require-dev": {
-        "phpdocumentor/phpdocumentor": "~2",
+        "apigen/apigen": "2.8.1",
         "hylianshield/validator": ">=0"
     }
 }
