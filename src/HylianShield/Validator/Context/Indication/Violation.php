@@ -14,7 +14,8 @@ use \LogicException;
 /**
  * A constraint violation of a validation process.
  */
-class Violation extends IndicationAbstract implements ViolationInterface
+class Violation extends InterpolatableIndicationAbstract implements
+    ViolationInterface
 {
     /**
      * The violation code.
@@ -124,65 +125,12 @@ class Violation extends IndicationAbstract implements ViolationInterface
     }
 
     /**
-     * Interpolate the context parameters into the supplied local translation
-     * of the violation.
-     * The given string can use :param to denote the position where the
-     * parameters can be interpolated.
-     * E.g.:
-     * Context: ['user' => 'Impa', 'domain' => 'gerudo.vil.hyr']
-     * Translation: Invalid user :user and domain :domain found.
-     * Interpolated: Invalid user Impa and domain gerudo.vil.hyr found.
+     * Return a list of interpolation key and values.
      *
-     * @param string $translation
-     * @param string $interpolationStart
-     * @param string $interpolationEnd
-     * @return string
-     * @throws \InvalidArgumentException when $translation is not a string
-     * @throws \InvalidArgumentException when $interpolationStart is not a
-     *   string
-     * @throws \InvalidArgumentException when $interpolationEnd is not a string
+     * @return array
      */
-    public function interpolate(
-        $translation,
-        $interpolationStart = ':',
-        $interpolationEnd = ''
-    ) {
-        if (!is_string($translation)) {
-            throw new InvalidArgumentException(
-                'Invalid translation type supplied: ' . gettype($translation)
-            );
-        }
-
-        if (!is_string($interpolationStart)) {
-            throw new InvalidArgumentException(
-                'Invalid interpolationStart type supplied: '
-                . gettype($interpolationStart)
-            );
-        }
-
-        if (!is_string($interpolationEnd)) {
-            throw new InvalidArgumentException(
-                'Invalid interpolationEnd type supplied: '
-                . gettype($interpolationEnd)
-            );
-        }
-
-        $context = $this->getContext();
-
-        // Return an interpolated translation string.
-        return str_replace(
-            // Search for these entries.
-            array_map(
-                // Generate interpolation identifiers.
-                function ($key) use ($interpolationStart, $interpolationEnd) {
-                    return "{$interpolationStart}{$key}{$interpolationEnd}";
-                },
-                array_keys($context)
-            ),
-            // Replace with these entries.
-            array_values($context),
-            // Use this as input.
-            $translation
-        );
+    protected function getInterpolations()
+    {
+        return $this->getContext();
     }
 }

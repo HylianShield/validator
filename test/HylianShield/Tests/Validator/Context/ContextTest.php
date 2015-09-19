@@ -30,9 +30,9 @@ class ContextTest extends \PHPUnit_Framework_TestCase
             $context = new Context();
             $context->addAssertion('Am I an assertion?', true);
             $context->addViolation(
-                'I violated our %trust%',
+                'I violated our :trust',
                 1337,
-                array('%trust%' => 'contract')
+                array('trust' => 'contract')
             );
             $context->addIntention('I intend to be filled');
         }
