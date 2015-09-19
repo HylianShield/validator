@@ -26,4 +26,14 @@ class IntentionTest extends IndicationTestBase
             '\HylianShield\Validator\Context\Indication\Intention'
         );
     }
+
+    /**
+     * Get a list of default constructor arguments.
+     *
+     * @return array
+     */
+    protected function getDefaultConstructorArguments()
+    {
+        return array('I am an intention');
+    }
 }

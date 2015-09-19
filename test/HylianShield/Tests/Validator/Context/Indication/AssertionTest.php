@@ -29,6 +29,16 @@ class AssertionTest extends IndicationTestBase
     }
 
     /**
+     * Get a list of default constructor arguments.
+     *
+     * @return array
+     */
+    protected function getDefaultConstructorArguments()
+    {
+        return array('I am an assertion', true);
+    }
+
+    /**
      * Provide a list of invalid results.
      *
      * @return array

@@ -74,9 +74,44 @@ abstract class IndicationTestBase extends \PHPUnit_Framework_TestCase
      */
     protected function createEmptyInstance()
     {
+        $reflection = $this->getReflection();
+
+        if (method_exists($reflection, 'newInstanceWithoutConstructor')) {
+            $rv = $reflection->newInstanceWithoutConstructor();
+        } else {
+            // Emulate a fallback for PHP <= PHP 5.4.
+            $rv = $this->createDefaultInstance();
+
+            foreach ($reflection->getProperties() as $property) {
+                // Reset this property.
+                $property->setAccessible(true);
+                $property->setValue($rv, null);
+                $property->setAccessible(false);
+            }
+        }
+
+        return $rv;
+    }
+
+    /**
+     * Get a list of default constructor arguments.
+     *
+     * @return array
+     */
+    abstract protected function getDefaultConstructorArguments();
+
+    /**
+     * Get an instance filled using default constructor arguments.
+     *
+     * @return IndicationInterface
+     */
+    protected function createDefaultInstance()
+    {
         return $this
             ->getReflection()
-            ->newInstanceWithoutConstructor();
+            ->newInstanceArgs(
+                $this->getDefaultConstructorArguments()
+            );
     }
 
     /**

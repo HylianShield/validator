@@ -29,6 +29,20 @@ class ViolationTest extends IndicationTestBase
     }
 
     /**
+     * Get a list of default constructor arguments.
+     *
+     * @return array
+     */
+    protected function getDefaultConstructorArguments()
+    {
+        return array(
+            'I am a :violation',
+            1337,
+            array('violation' => 'default violation')
+        );
+    }
+
+    /**
      * Test that the context getter throws when the property is missing.
      *
      * @expectedException \LogicException
