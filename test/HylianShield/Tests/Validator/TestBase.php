@@ -125,6 +125,8 @@ abstract class TestBase extends \PHPUnit_Framework_TestCase
     /**
      * Test that the deprecated type method still returns the same value as
      * the new getter method, when errors are ignored.
+     *
+     * @requires PHP 5.4
      */
     public function testNewTypeGetterEqualsDeprecatedAlias()
     {
