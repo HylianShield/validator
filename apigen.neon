@@ -17,7 +17,7 @@ baseUrl: http://hylianshield.github.io/validator/docs/
 autocomplete: [classes, constants, functions]
 
 # Generate documentation for methods and properties with given access level
-accessLevels: [public, protected]
+accessLevels: [public]
 
 # Generate documentation for PHP internal classes
 php: No
