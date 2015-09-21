@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="generator" content="ApiGen 2.8.0">
 
-	<title>Interface HylianShield\Validator\Context\Indication\IndicationInterface | HylianShield validator</title>
+	<title>Interface HylianShield\Validator\Context\Indication\InterpolatableInterface | HylianShield validator</title>
 
 	<link rel="stylesheet" href="resources/style.css?3901564645">
 
@@ -84,9 +84,9 @@
 			<h3>Interfaces</h3>
 			<ul>
 				<li><a href="class-HylianShield.Validator.Context.Indication.AssertionInterface.html">AssertionInterface</a></li>
-				<li class="active"><a href="class-HylianShield.Validator.Context.Indication.IndicationInterface.html">IndicationInterface</a></li>
+				<li><a href="class-HylianShield.Validator.Context.Indication.IndicationInterface.html">IndicationInterface</a></li>
 				<li><a href="class-HylianShield.Validator.Context.Indication.IntentionInterface.html">IntentionInterface</a></li>
-				<li><a href="class-HylianShield.Validator.Context.Indication.InterpolatableInterface.html">InterpolatableInterface</a></li>
+				<li class="active"><a href="class-HylianShield.Validator.Context.Indication.InterpolatableInterface.html">InterpolatableInterface</a></li>
 				<li><a href="class-HylianShield.Validator.Context.Indication.ViolationInterface.html">ViolationInterface</a></li>
 			</ul>
 
@@ -129,12 +129,12 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Interface IndicationInterface</h1>
+	<h1>Interface InterpolatableInterface</h1>
 
 
 	<div class="description">
 	
-<p>Interface as a base for indications that can be added to a context.</p>
+<p>Interface for interpolatable entities.</p>
 
 	</div>
 
@@ -144,17 +144,12 @@
 
 	<div>
 		<h4>Direct known implementers</h4>
-			<a href="class-HylianShield.Validator.Context.Indication.AssertionInterface.html">HylianShield\Validator\Context\Indication\AssertionInterface</a>, 
-			<a href="class-HylianShield.Validator.Context.Indication.IndicationAbstract.html">HylianShield\Validator\Context\Indication\IndicationAbstract</a>, 
-			<a href="class-HylianShield.Validator.Context.Indication.IntentionInterface.html">HylianShield\Validator\Context\Indication\IntentionInterface</a>, 
+			<a href="class-HylianShield.Validator.Context.Indication.InterpolatableIndicationAbstract.html">HylianShield\Validator\Context\Indication\InterpolatableIndicationAbstract</a>, 
 			<a href="class-HylianShield.Validator.Context.Indication.ViolationInterface.html">HylianShield\Validator\Context\Indication\ViolationInterface</a>
 	</div>
 
 	<div>
 		<h4>Indirect known implementers</h4>
-			<a href="class-HylianShield.Validator.Context.Indication.Assertion.html">HylianShield\Validator\Context\Indication\Assertion</a>, 
-			<a href="class-HylianShield.Validator.Context.Indication.Intention.html">HylianShield\Validator\Context\Indication\Intention</a>, 
-			<a href="class-HylianShield.Validator.Context.Indication.InterpolatableIndicationAbstract.html">HylianShield\Validator\Context\Indication\InterpolatableIndicationAbstract</a>, 
 			<a href="class-HylianShield.Validator.Context.Indication.Violation.html">HylianShield\Validator\Context\Indication\Violation</a>
 	</div>
 
@@ -166,14 +161,14 @@
 		<b>Namespace:</b> <a href="namespace-HylianShield.html">HylianShield</a>\<a href="namespace-HylianShield.Validator.html">Validator</a>\<a href="namespace-HylianShield.Validator.Context.html">Context</a>\<a href="namespace-HylianShield.Validator.Context.Indication.html">Indication</a><br>
 		
 
-		<b>Located at</b> <a href="source-class-HylianShield.Validator.Context.Indication.IndicationInterface.html#11-29" title="Go to source code">HylianShield/Validator/Context/Indication/IndicationInterface.php</a><br>
+		<b>Located at</b> <a href="source-class-HylianShield.Validator.Context.Indication.InterpolatableInterface.html#11-53" title="Go to source code">HylianShield/Validator/Context/Indication/InterpolatableInterface.php</a><br>
 	</div>
 
 
 
 	<table class="summary methods" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="getDescription" id="_getDescription">
+	<tr data-order="interpolate" id="_interpolate">
 
 		<td class="attributes"><code>
 			 public 
@@ -183,58 +178,41 @@
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_getDescription">#</a>
-		<code><a href="source-class-HylianShield.Validator.Context.Indication.IndicationInterface.html#16-21" title="Go to source code">getDescription</a>( )</code>
+		<a class="anchor" href="#_interpolate">#</a>
+		<code><a href="source-class-HylianShield.Validator.Context.Indication.InterpolatableInterface.html#30-52" title="Go to source code">interpolate</a>( <span>string <var>$translation</var></span>, <span>string <var>$interpolationStart</var> = <code><a href="class-HylianShield.Validator.Context.Indication.InterpolatableInterface.html#INTERPOLATION_START">HylianShield\Validator\Context\Indication\InterpolatableInterface::<b>INTERPOLATION_START</b></a></code></span>, <span>string <var>$interpolationEnd</var> = InterpolatableInterface::INTERPOLATION_END </span> )</code>
 
 		<div class="description short">
 			
-<p>Get the description of the indication.</p>
+<p>Interpolate the context parameters into the supplied local translation of the
+violation.</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Get the description of the indication.</p>
+<p>Interpolate the context parameters into the supplied local translation of the
+violation.</p>
+
+<p>The given string can use :param to denote the position where the parameters
+can be interpolated.</p>
+
+<p>E.g.:</p>
+
+<p>Context: ['user' =&gt; 'Impa', 'domain' =&gt; 'gerudo.vil.hyr'] Translation:
+Invalid user :user and domain :domain found. Interpolated: Invalid user Impa and
+domain gerudo.vil.hyr found.</p>
 
 
 
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>string</code><br>string<br>
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="__toString" id="___toString">
-
-		<td class="attributes"><code>
-			 public 
-			string
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-HylianShield.Validator.Context.Indication.IndicationInterface.html#23-28" title="Go to source code">__toString</a>( )</code>
-
-		<div class="description short">
-			
-<p>Get a string representation of the indication.</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Get a string representation of the indication.</p>
-
-
-
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$translation</var></dt>
+					<dd></dd>
+					<dt><var>$interpolationStart</var></dt>
+					<dd></dd>
+					<dt><var>$interpolationEnd</var></dt>
+					<dd></dd>
+				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
@@ -256,6 +234,55 @@
 
 
 
+	<table class="summary constants" id="constants">
+	<caption>Constants summary</caption>
+	<tr data-order="INTERPOLATION_START" id="INTERPOLATION_START">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-HylianShield.Validator.Context.Indication.InterpolatableInterface.html#16-21" title="Go to source code"><b>INTERPOLATION_START</b></a>
+			</code>
+
+			<div class="description short">
+				
+<p>The starting character of an interpolatable tag.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>The starting character of an interpolatable tag.</p>
+
+
+			</div>
+		</td>
+		<td class="value"><div><a href="#INTERPOLATION_START" class="anchor">#</a><code><span class="php-quote">':'</span></code></div></td>
+	</tr>
+	<tr data-order="INTERPOLATION_END" id="INTERPOLATION_END">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-HylianShield.Validator.Context.Indication.InterpolatableInterface.html#23-28" title="Go to source code"><b>INTERPOLATION_END</b></a>
+			</code>
+
+			<div class="description short">
+				
+<p>The ending character of an interpolatable tag.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>The ending character of an interpolatable tag.</p>
+
+
+			</div>
+		</td>
+		<td class="value"><div><a href="#INTERPOLATION_END" class="anchor">#</a><code><span class="php-quote">''</span></code></div></td>
+	</tr>
+	</table>
 
 
 

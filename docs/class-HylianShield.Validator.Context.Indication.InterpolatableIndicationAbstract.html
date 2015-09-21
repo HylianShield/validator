@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="generator" content="ApiGen 2.8.0">
 
-	<title>Class HylianShield\Validator\Context\Indication\Assertion | HylianShield validator</title>
+	<title>Class HylianShield\Validator\Context\Indication\InterpolatableIndicationAbstract | HylianShield validator</title>
 
 	<link rel="stylesheet" href="resources/style.css?3901564645">
 
@@ -74,10 +74,10 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li class="active"><a href="class-HylianShield.Validator.Context.Indication.Assertion.html">Assertion</a></li>
+				<li><a href="class-HylianShield.Validator.Context.Indication.Assertion.html">Assertion</a></li>
 				<li><a href="class-HylianShield.Validator.Context.Indication.IndicationAbstract.html">IndicationAbstract</a></li>
 				<li><a href="class-HylianShield.Validator.Context.Indication.Intention.html">Intention</a></li>
-				<li><a href="class-HylianShield.Validator.Context.Indication.InterpolatableIndicationAbstract.html">InterpolatableIndicationAbstract</a></li>
+				<li class="active"><a href="class-HylianShield.Validator.Context.Indication.InterpolatableIndicationAbstract.html">InterpolatableIndicationAbstract</a></li>
 				<li><a href="class-HylianShield.Validator.Context.Indication.Violation.html">Violation</a></li>
 			</ul>
 
@@ -129,12 +129,12 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class Assertion</h1>
+	<h1>Class InterpolatableIndicationAbstract</h1>
 
 
 	<div class="description">
 	
-<p>An assertion created during a validation.</p>
+<p>Abstract implementation for interpolatable indication entities.</p>
 
 	</div>
 
@@ -149,15 +149,19 @@
 		</dd>
 		<dd style="padding-left:30px">
 			<img src="resources/inherit.png" alt="Extended by">
-<b><span>HylianShield\Validator\Context\Indication\Assertion</span></b>			
+<b><span>HylianShield\Validator\Context\Indication\InterpolatableIndicationAbstract</span></b>			
 			 implements 
-				<a href="class-HylianShield.Validator.Context.Indication.AssertionInterface.html"><span>HylianShield\Validator\Context\Indication\AssertionInterface</span></a>
+				<a href="class-HylianShield.Validator.Context.Indication.InterpolatableInterface.html"><span>HylianShield\Validator\Context\Indication\InterpolatableInterface</span></a>
 			
 			
 		</dd>
 	</dl>
 
 
+	<div>
+		<h4>Direct known subclasses</h4>
+			<a href="class-HylianShield.Validator.Context.Indication.Violation.html">HylianShield\Validator\Context\Indication\Violation</a>
+	</div>
 
 
 
@@ -165,59 +169,19 @@
 
 
 	<div class="info">
-		
+		<b>Abstract</b><br>
 		
 		<b>Namespace:</b> <a href="namespace-HylianShield.html">HylianShield</a>\<a href="namespace-HylianShield.Validator.html">Validator</a>\<a href="namespace-HylianShield.Validator.Context.html">Context</a>\<a href="namespace-HylianShield.Validator.Context.Indication.html">Indication</a><br>
 		
 
-		<b>Located at</b> <a href="source-class-HylianShield.Validator.Context.Indication.Assertion.html#13-85" title="Go to source code">HylianShield/Validator/Context/Indication/Assertion.php</a><br>
+		<b>Located at</b> <a href="source-class-HylianShield.Validator.Context.Indication.InterpolatableIndicationAbstract.html#13-91" title="Go to source code">HylianShield/Validator/Context/Indication/InterpolatableIndicationAbstract.php</a><br>
 	</div>
 
 
 
 	<table class="summary methods" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="__construct" id="___construct">
-
-		<td class="attributes"><code>
-			 public 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-HylianShield.Validator.Context.Indication.Assertion.html#25-35" title="Go to source code">__construct</a>( <span>string <var>$description</var></span>, <span>boolean <var>$result</var></span> )</code>
-
-		<div class="description short">
-			
-<p>Create a new assertion.</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Create a new assertion.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$description</var></dt>
-					<dd></dd>
-					<dt><var>$result</var></dt>
-					<dd></dd>
-				</dl></div>
-
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="__toString" id="___toString">
+	<tr data-order="interpolate" id="_interpolate">
 
 		<td class="attributes"><code>
 			 public 
@@ -227,121 +191,95 @@
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-HylianShield.Validator.Context.Indication.Assertion.html#37-47" title="Go to source code">__toString</a>( )</code>
+		<a class="anchor" href="#_interpolate">#</a>
+		<code><a href="source-class-HylianShield.Validator.Context.Indication.InterpolatableIndicationAbstract.html#19-83" title="Go to source code">interpolate</a>( <span>string <var>$translation</var></span>, <span>string <var>$interpolationStart</var> = <code><a href="class-HylianShield.Validator.Context.Indication.InterpolatableInterface.html#INTERPOLATION_START">HylianShield\Validator\Context\Indication\InterpolatableInterface::<b>INTERPOLATION_START</b></a></code></span>, <span>string <var>$interpolationEnd</var> = InterpolatableInterface::INTERPOLATION_END </span> )</code>
 
 		<div class="description short">
 			
-<p>Return a string representation of the current assertion.</p>
+<p>Interpolate the context parameters into the supplied local translation of the
+violation.</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Return a string representation of the current assertion.</p>
+<p>Interpolate the context parameters into the supplied local translation of the
+violation.</p>
+
+<p>The given string can use :param to denote the position where the parameters
+can be interpolated.</p>
+
+<p>E.g.:</p>
+
+<p>Context: ['user' =&gt; 'Impa', 'domain' =&gt; 'gerudo.vil.hyr'] Translation:
+Invalid user :user and domain :domain found. Interpolated: Invalid user Impa and
+domain gerudo.vil.hyr found.</p>
 
 
 
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$translation</var></dt>
+					<dd></dd>
+					<dt><var>$interpolationStart</var></dt>
+					<dd></dd>
+					<dt><var>$interpolationEnd</var></dt>
+					<dd></dd>
+				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code>string</code><br>string<br>
 				</div>
 
+				<h4>Throws</h4>
+				<div class="list">
+					<code>InvalidArgumentException</code><br>when $translation is not a string<br>
+					<code>InvalidArgumentException</code><br>when $interpolationStart is not a string<br>
+					<code>InvalidArgumentException</code><br>when $interpolationEnd is not a string<br>
+				</div>
 
 
 
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-HylianShield.Validator.Context.Indication.IndicationInterface.html#___toString">HylianShield\Validator\Context\Indication\IndicationInterface::__toString()</a></code></div>
+				<div class="list"><code><a href="class-HylianShield.Validator.Context.Indication.InterpolatableInterface.html#_interpolate">HylianShield\Validator\Context\Indication\InterpolatableInterface::interpolate()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="setResult" id="_setResult">
+	<tr data-order="getInterpolations" id="_getInterpolations">
 
 		<td class="attributes"><code>
-			 protected 
-			<code><a href="class-HylianShield.Validator.Context.Indication.Assertion.html">HylianShield\Validator\Context\Indication\Assertion</a></code>
+			abstract protected 
+			array
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_setResult">#</a>
-		<code><a href="source-class-HylianShield.Validator.Context.Indication.Assertion.html#49-67" title="Go to source code">setResult</a>( <span>boolean <var>$result</var></span> )</code>
+		<a class="anchor" href="#_getInterpolations">#</a>
+		<code><a href="source-class-HylianShield.Validator.Context.Indication.InterpolatableIndicationAbstract.html#85-90" title="Go to source code">getInterpolations</a>( )</code>
 
 		<div class="description short">
 			
-<p>Set the result of the assertion.</p>
+<p>Return a list of interpolation key and values.</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Set the result of the assertion.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$result</var></dt>
-					<dd></dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><code><a href="class-HylianShield.Validator.Context.Indication.Assertion.html">HylianShield\Validator\Context\Indication\Assertion</a></code></code><br>Assertion<br>
-				</div>
-
-				<h4>Throws</h4>
-				<div class="list">
-					<code>InvalidArgumentException</code><br>when $result is not a boolean.<br>
-				</div>
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getResult" id="_getResult">
-
-		<td class="attributes"><code>
-			 public 
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getResult">#</a>
-		<code><a href="source-class-HylianShield.Validator.Context.Indication.Assertion.html#69-84" title="Go to source code">getResult</a>( )</code>
-
-		<div class="description short">
-			
-<p>Get the result of the assertion.</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Get the result of the assertion.</p>
+<p>Return a list of interpolation key and values.</p>
 
 
 
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>boolean</code><br>bool<br>
-				</div>
-
-				<h4>Throws</h4>
-				<div class="list">
-					<code>LogicException</code><br>when the result property is not set.<br>
+					<code>array</code><br>array<br>
 				</div>
 
 
 
-				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-HylianShield.Validator.Context.Indication.AssertionInterface.html#_getResult">HylianShield\Validator\Context\Indication\AssertionInterface::getResult()</a></code></div>
+
 		</div>
 		</div></td>
 	</tr>
@@ -356,44 +294,34 @@
 		</code></td>
 	</tr>
 	</table>
-
-
-
-
-
-
-
-
-
-
-
-	<table class="summary properties" id="properties">
-	<caption>Properties summary</caption>
-	<tr data-order="result" id="$result">
-		<td class="attributes"><code>
-			protected  
-			boolean
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-HylianShield.Validator.Context.Indication.IndicationInterface.html#methods">HylianShield\Validator\Context\Indication\IndicationInterface</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-HylianShield.Validator.Context.Indication.IndicationInterface.html#___toString">__toString()</a>
 		</code></td>
-
-		<td class="name">
-				<a href="source-class-HylianShield.Validator.Context.Indication.Assertion.html#18-23" title="Go to source code"><var>$result</var></a>
-
-			<div class="description short">
-				
-<p>The result of the assertion.</p>
-
-			</div>
-
-			<div class="description detailed hidden">
-				
-<p>The result of the assertion.</p>
-
-
-			</div>
-		</td>
-		<td class="value"><div><a href="#$result" class="anchor">#</a><code></code></div></td>
 	</tr>
 	</table>
+
+
+
+
+
+
+
+
+	<table class="summary inherited">
+	<caption>Constants inherited from <a href="class-HylianShield.Validator.Context.Indication.InterpolatableInterface.html#constants">HylianShield\Validator\Context\Indication\InterpolatableInterface</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-HylianShield.Validator.Context.Indication.InterpolatableInterface.html#INTERPOLATION_END"><b>INTERPOLATION_END</b></a>, 
+			<a href="class-HylianShield.Validator.Context.Indication.InterpolatableInterface.html#INTERPOLATION_START"><b>INTERPOLATION_START</b></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
 
 	<table class="summary inherited">
 	<caption>Properties inherited from <a href="class-HylianShield.Validator.Context.Indication.IndicationAbstract.html#properties">HylianShield\Validator\Context\Indication\IndicationAbstract</a></caption>

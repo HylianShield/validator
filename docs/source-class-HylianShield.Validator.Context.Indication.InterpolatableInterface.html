@@ -5,7 +5,7 @@
 	<meta name="generator" content="ApiGen 2.8.0">
 	<meta name="robots" content="noindex">
 
-	<title>File HylianShield/Validator/Context/Indication/ViolationInterface.php | HylianShield validator</title>
+	<title>File HylianShield/Validator/Context/Indication/InterpolatableInterface.php | HylianShield validator</title>
 
 	<link rel="stylesheet" href="resources/style.css?3901564645">
 
@@ -87,8 +87,8 @@
 				<li><a href="class-HylianShield.Validator.Context.Indication.AssertionInterface.html">AssertionInterface</a></li>
 				<li><a href="class-HylianShield.Validator.Context.Indication.IndicationInterface.html">IndicationInterface</a></li>
 				<li><a href="class-HylianShield.Validator.Context.Indication.IntentionInterface.html">IntentionInterface</a></li>
-				<li><a href="class-HylianShield.Validator.Context.Indication.InterpolatableInterface.html">InterpolatableInterface</a></li>
-				<li class="active"><a href="class-HylianShield.Validator.Context.Indication.ViolationInterface.html">ViolationInterface</a></li>
+				<li class="active"><a href="class-HylianShield.Validator.Context.Indication.InterpolatableInterface.html">InterpolatableInterface</a></li>
+				<li><a href="class-HylianShield.Validator.Context.Indication.ViolationInterface.html">ViolationInterface</a></li>
 			</ul>
 
 
@@ -118,7 +118,7 @@
 				<a href="namespace-HylianShield.Validator.Context.Indication.html" title="Summary of HylianShield\Validator\Context\Indication"><span>Namespace</span></a>
 			</li>
 			<li>
-				<a href="class-HylianShield.Validator.Context.Indication.ViolationInterface.html" title="Summary of HylianShield\Validator\Context\Indication\ViolationInterface"><span>Class</span></a>
+				<a href="class-HylianShield.Validator.Context.Indication.InterpolatableInterface.html" title="Summary of HylianShield\Validator\Context\Indication\InterpolatableInterface"><span>Class</span></a>
 			</li>
 		</ul>
 		<ul>
@@ -132,7 +132,7 @@
 
 <pre><code><span id="1" class="l"><a class="l" href="#1"> 1: </a><span class="xlang">&lt;?php</span>
 </span><span id="2" class="l"><a class="l" href="#2"> 2: </a><span class="php-comment">/**
-</span></span><span id="3" class="l"><a class="l" href="#3"> 3: </a><span class="php-comment"> * Interface for constraint violations, created during a validation.
+</span></span><span id="3" class="l"><a class="l" href="#3"> 3: </a><span class="php-comment"> * Interface for interpolatable entities.
 </span></span><span id="4" class="l"><a class="l" href="#4"> 4: </a><span class="php-comment"> *
 </span></span><span id="5" class="l"><a class="l" href="#5"> 5: </a><span class="php-comment"> * @package HylianShield
 </span></span><span id="6" class="l"><a class="l" href="#6"> 6: </a><span class="php-comment"> * @subpackage Validator
@@ -141,25 +141,49 @@
 </span><span id="9" class="l"><a class="l" href="#9"> 9: </a><span class="php-keyword1">namespace</span> HylianShield\Validator\Context\Indication;
 </span><span id="10" class="l"><a class="l" href="#10">10: </a>
 </span><span id="11" class="l"><a class="l" href="#11">11: </a><span class="php-comment">/**
-</span></span><span id="12" class="l"><a class="l" href="#12">12: </a><span class="php-comment"> * Interface for constraint violations, created during a validation.
+</span></span><span id="12" class="l"><a class="l" href="#12">12: </a><span class="php-comment"> * Interface for interpolatable entities.
 </span></span><span id="13" class="l"><a class="l" href="#13">13: </a><span class="php-comment"> */</span>
-</span><span id="14" class="l"><a class="l" href="#14">14: </a><span class="php-keyword1">interface</span> <a id="ViolationInterface" href="#ViolationInterface">ViolationInterface</a> <span class="php-keyword1">extends</span> IndicationInterface, InterpolatableInterface
+</span><span id="14" class="l"><a class="l" href="#14">14: </a><span class="php-keyword1">interface</span> <a id="InterpolatableInterface" href="#InterpolatableInterface">InterpolatableInterface</a>
 </span><span id="15" class="l"><a class="l" href="#15">15: </a>{
 </span><span id="16" class="l"><a class="l" href="#16">16: </a>    <span class="php-comment">/**
-</span></span><span id="17" class="l"><a class="l" href="#17">17: </a><span class="php-comment">     * Get the violation code.
+</span></span><span id="17" class="l"><a class="l" href="#17">17: </a><span class="php-comment">     * The starting character of an interpolatable tag.
 </span></span><span id="18" class="l"><a class="l" href="#18">18: </a><span class="php-comment">     *
-</span></span><span id="19" class="l"><a class="l" href="#19">19: </a><span class="php-comment">     * @return integer
+</span></span><span id="19" class="l"><a class="l" href="#19">19: </a><span class="php-comment">     * @var string INTERPOLATION_START
 </span></span><span id="20" class="l"><a class="l" href="#20">20: </a><span class="php-comment">     */</span>
-</span><span id="21" class="l"><a class="l" href="#21">21: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_getCode" href="#_getCode">getCode</a>();
+</span><span id="21" class="l"><a class="l" href="#21">21: </a>    <span class="php-keyword1">const</span> <a id="INTERPOLATION_START" href="#INTERPOLATION_START">INTERPOLATION_START</a> = <span class="php-quote">':'</span>;
 </span><span id="22" class="l"><a class="l" href="#22">22: </a>
 </span><span id="23" class="l"><a class="l" href="#23">23: </a>    <span class="php-comment">/**
-</span></span><span id="24" class="l"><a class="l" href="#24">24: </a><span class="php-comment">     * Get the context parameters of the violation.
+</span></span><span id="24" class="l"><a class="l" href="#24">24: </a><span class="php-comment">     * The ending character of an interpolatable tag.
 </span></span><span id="25" class="l"><a class="l" href="#25">25: </a><span class="php-comment">     *
-</span></span><span id="26" class="l"><a class="l" href="#26">26: </a><span class="php-comment">     * @return array
+</span></span><span id="26" class="l"><a class="l" href="#26">26: </a><span class="php-comment">     * @var string INTERPOLATION_END
 </span></span><span id="27" class="l"><a class="l" href="#27">27: </a><span class="php-comment">     */</span>
-</span><span id="28" class="l"><a class="l" href="#28">28: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_getContext" href="#_getContext">getContext</a>();
-</span><span id="29" class="l"><a class="l" href="#29">29: </a>}
-</span><span id="30" class="l"><a class="l" href="#30">30: </a></span></code></pre>
+</span><span id="28" class="l"><a class="l" href="#28">28: </a>    <span class="php-keyword1">const</span> <a id="INTERPOLATION_END" href="#INTERPOLATION_END">INTERPOLATION_END</a> = <span class="php-quote">''</span>;
+</span><span id="29" class="l"><a class="l" href="#29">29: </a>
+</span><span id="30" class="l"><a class="l" href="#30">30: </a>    <span class="php-comment">/**
+</span></span><span id="31" class="l"><a class="l" href="#31">31: </a><span class="php-comment">     * Interpolate the context parameters into the supplied local translation
+</span></span><span id="32" class="l"><a class="l" href="#32">32: </a><span class="php-comment">     * of the violation.
+</span></span><span id="33" class="l"><a class="l" href="#33">33: </a><span class="php-comment">     *
+</span></span><span id="34" class="l"><a class="l" href="#34">34: </a><span class="php-comment">     * The given string can use :param to denote the position where the
+</span></span><span id="35" class="l"><a class="l" href="#35">35: </a><span class="php-comment">     * parameters can be interpolated.
+</span></span><span id="36" class="l"><a class="l" href="#36">36: </a><span class="php-comment">     *
+</span></span><span id="37" class="l"><a class="l" href="#37">37: </a><span class="php-comment">     * E.g.:
+</span></span><span id="38" class="l"><a class="l" href="#38">38: </a><span class="php-comment">     *
+</span></span><span id="39" class="l"><a class="l" href="#39">39: </a><span class="php-comment">     * Context: ['user' =&gt; 'Impa', 'domain' =&gt; 'gerudo.vil.hyr']
+</span></span><span id="40" class="l"><a class="l" href="#40">40: </a><span class="php-comment">     * Translation: Invalid user :user and domain :domain found.
+</span></span><span id="41" class="l"><a class="l" href="#41">41: </a><span class="php-comment">     * Interpolated: Invalid user Impa and domain gerudo.vil.hyr found.
+</span></span><span id="42" class="l"><a class="l" href="#42">42: </a><span class="php-comment">     *
+</span></span><span id="43" class="l"><a class="l" href="#43">43: </a><span class="php-comment">     * @param string $translation
+</span></span><span id="44" class="l"><a class="l" href="#44">44: </a><span class="php-comment">     * @param string $interpolationStart
+</span></span><span id="45" class="l"><a class="l" href="#45">45: </a><span class="php-comment">     * @param string $interpolationEnd
+</span></span><span id="46" class="l"><a class="l" href="#46">46: </a><span class="php-comment">     * @return string
+</span></span><span id="47" class="l"><a class="l" href="#47">47: </a><span class="php-comment">     */</span>
+</span><span id="48" class="l"><a class="l" href="#48">48: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_interpolate" href="#_interpolate">interpolate</a>(
+</span><span id="49" class="l"><a class="l" href="#49">49: </a>        <span class="php-var">$translation</span>,
+</span><span id="50" class="l"><a class="l" href="#50">50: </a>        <span class="php-var">$interpolationStart</span> = InterpolatableInterface::INTERPOLATION_START,
+</span><span id="51" class="l"><a class="l" href="#51">51: </a>        <span class="php-var">$interpolationEnd</span> = InterpolatableInterface::INTERPOLATION_END
+</span><span id="52" class="l"><a class="l" href="#52">52: </a>    );
+</span><span id="53" class="l"><a class="l" href="#53">53: </a>}
+</span><span id="54" class="l"><a class="l" href="#54">54: </a></span></code></pre>
 
 	<div id="footer">
 		HylianShield validator API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
