@@ -13,5 +13,3 @@ script:
   - phpunit -c test/phpunit.xml
 after_script:
   - php vendor/bin/coveralls -v
-notifications:
-  irc: "irc.freenode.net#hnl"
