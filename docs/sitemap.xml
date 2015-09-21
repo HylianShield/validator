@@ -87,6 +87,9 @@
 	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Context.Indication.Intention.html</loc>
 </url>
 <url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Context.Indication.InterpolatableIndicationAbstract.html</loc>
+</url>
+<url>
 	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Context.Indication.Violation.html</loc>
 </url>
 <url>
@@ -253,6 +256,9 @@
 </url>
 <url>
 	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Context.Indication.IntentionInterface.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Context.Indication.InterpolatableInterface.html</loc>
 </url>
 <url>
 	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Context.Indication.ViolationInterface.html</loc>

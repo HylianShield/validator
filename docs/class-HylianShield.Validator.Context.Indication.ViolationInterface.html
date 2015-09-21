@@ -77,6 +77,7 @@
 				<li><a href="class-HylianShield.Validator.Context.Indication.Assertion.html">Assertion</a></li>
 				<li><a href="class-HylianShield.Validator.Context.Indication.IndicationAbstract.html">IndicationAbstract</a></li>
 				<li><a href="class-HylianShield.Validator.Context.Indication.Intention.html">Intention</a></li>
+				<li><a href="class-HylianShield.Validator.Context.Indication.InterpolatableIndicationAbstract.html">InterpolatableIndicationAbstract</a></li>
 				<li><a href="class-HylianShield.Validator.Context.Indication.Violation.html">Violation</a></li>
 			</ul>
 
@@ -85,6 +86,7 @@
 				<li><a href="class-HylianShield.Validator.Context.Indication.AssertionInterface.html">AssertionInterface</a></li>
 				<li><a href="class-HylianShield.Validator.Context.Indication.IndicationInterface.html">IndicationInterface</a></li>
 				<li><a href="class-HylianShield.Validator.Context.Indication.IntentionInterface.html">IntentionInterface</a></li>
+				<li><a href="class-HylianShield.Validator.Context.Indication.InterpolatableInterface.html">InterpolatableInterface</a></li>
 				<li class="active"><a href="class-HylianShield.Validator.Context.Indication.ViolationInterface.html">ViolationInterface</a></li>
 			</ul>
 
@@ -140,7 +142,9 @@
 		<dd style="padding-left:0px">
 <b><span>HylianShield\Validator\Context\Indication\ViolationInterface</span></b>			
 			 implements 
-				<a href="class-HylianShield.Validator.Context.Indication.IndicationInterface.html"><span>HylianShield\Validator\Context\Indication\IndicationInterface</span></a>
+				<a href="class-HylianShield.Validator.Context.Indication.IndicationInterface.html"><span>HylianShield\Validator\Context\Indication\IndicationInterface</span></a>, 
+			
+				<a href="class-HylianShield.Validator.Context.Indication.InterpolatableInterface.html"><span>HylianShield\Validator\Context\Indication\InterpolatableInterface</span></a>
 			
 			
 		</dd>
@@ -163,7 +167,7 @@
 		<b>Namespace:</b> <a href="namespace-HylianShield.html">HylianShield</a>\<a href="namespace-HylianShield.Validator.html">Validator</a>\<a href="namespace-HylianShield.Validator.Context.html">Context</a>\<a href="namespace-HylianShield.Validator.Context.Indication.html">Indication</a><br>
 		
 
-		<b>Located at</b> <a href="source-class-HylianShield.Validator.Context.Indication.ViolationInterface.html#11-47" title="Go to source code">HylianShield/Validator/Context/Indication/ViolationInterface.php</a><br>
+		<b>Located at</b> <a href="source-class-HylianShield.Validator.Context.Indication.ViolationInterface.html#11-29" title="Go to source code">HylianShield/Validator/Context/Indication/ViolationInterface.php</a><br>
 	</div>
 
 
@@ -244,59 +248,6 @@
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="interpolate" id="_interpolate">
-
-		<td class="attributes"><code>
-			 public 
-			string
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_interpolate">#</a>
-		<code><a href="source-class-HylianShield.Validator.Context.Indication.ViolationInterface.html#30-46" title="Go to source code">interpolate</a>( <span>string <var>$translation</var></span> )</code>
-
-		<div class="description short">
-			
-<p>Interpolate the context parameters into the supplied local translation of the
-violation.</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Interpolate the context parameters into the supplied local translation of the
-violation.</p>
-
-<p>The given string can use :param to denote the position where the parameters
-can be interpolated.</p>
-
-<p>E.g.:</p>
-
-<p>Context: ['user' =&gt; 'Impa', 'domain' =&gt; 'gerudo.vil.hyr'] Translation:
-Invalid user :user and domain :domain found. Interpolated: Invalid user Impa and
-domain gerudo.vil.hyr found.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$translation</var></dt>
-					<dd></dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>string</code><br>string<br>
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
 	</table>
 
 	<table class="summary inherited">
@@ -308,6 +259,14 @@ domain gerudo.vil.hyr found.</p>
 		</code></td>
 	</tr>
 	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-HylianShield.Validator.Context.Indication.InterpolatableInterface.html#methods">HylianShield\Validator\Context\Indication\InterpolatableInterface</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-HylianShield.Validator.Context.Indication.InterpolatableInterface.html#_interpolate">interpolate()</a>
+		</code></td>
+	</tr>
+	</table>
 
 
 
@@ -316,6 +275,15 @@ domain gerudo.vil.hyr found.</p>
 
 
 
+	<table class="summary inherited">
+	<caption>Constants inherited from <a href="class-HylianShield.Validator.Context.Indication.InterpolatableInterface.html#constants">HylianShield\Validator\Context\Indication\InterpolatableInterface</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-HylianShield.Validator.Context.Indication.InterpolatableInterface.html#INTERPOLATION_END"><b>INTERPOLATION_END</b></a>, 
+			<a href="class-HylianShield.Validator.Context.Indication.InterpolatableInterface.html#INTERPOLATION_START"><b>INTERPOLATION_START</b></a>
+		</code></td>
+	</tr>
+	</table>
 
 
 
@@ -332,7 +300,7 @@ domain gerudo.vil.hyr found.</p>
 	</div>
 </div>
 </div>
-<script src="resources/combined.js?968027763"></script>
-<script src="elementlist.js?2592765297"></script>
+<script src="resources/combined.js?2724989544"></script>
+<script src="elementlist.js?986181166"></script>
 </body>
 </html>
