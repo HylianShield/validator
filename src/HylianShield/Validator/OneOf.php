@@ -66,7 +66,7 @@ class OneOf extends \HylianShield\Validator
 
         // Create a new validator that will test all supplied values explicitly.
         $this->validator = function ($subject) use ($values) {
-	    return in_array($subject, $values, true);
+            return in_array($subject, $values, true);
         };
     }
 
