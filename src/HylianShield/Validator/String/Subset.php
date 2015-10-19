@@ -30,6 +30,13 @@ abstract class Subset extends \HylianShield\Validator\Range\Mutable
     protected $type = 'string_subset';
 
     /**
+     * The callable to return the length of the value.
+     *
+     * @var callable $lengthCheck
+     */
+    protected $lengthCheck = 'mb_strlen';
+
+    /**
      * The hexadecimal boundaries of the active ranges.
      *
      * @var array $ranges
