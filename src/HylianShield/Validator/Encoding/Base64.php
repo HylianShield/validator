@@ -87,7 +87,7 @@ class Base64 extends \HylianShield\Validator
      * @var string PATTERN
      * @see http://tools.ietf.org/html/rfc4648#section-4
      */
-    const PATTERN = '/^[^A-Za-z0-9\+\/]+$/';
+    const PATTERN = '/^[A-Za-z0-9\+\/]+$/';
 
     /**
      * The validator type.
@@ -205,7 +205,7 @@ class Base64 extends \HylianShield\Validator
         $message = $this->trimPadding($message);
 
         // Check all characters inside the message.
-        if (preg_match($this::PATTERN, $message)) {
+        if (strlen($message) > 0 && !preg_match($this::PATTERN, $message)) {
             // An invalid character has been found.
             return false;
         }

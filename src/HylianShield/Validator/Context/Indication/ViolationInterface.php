@@ -11,7 +11,7 @@ namespace HylianShield\Validator\Context\Indication;
 /**
  * Interface for constraint violations, created during a validation.
  */
-interface ViolationInterface extends IndicationInterface
+interface ViolationInterface extends IndicationInterface, InterpolatableInterface
 {
     /**
      * Get the violation code.
@@ -26,22 +26,4 @@ interface ViolationInterface extends IndicationInterface
      * @return array
      */
     public function getContext();
-
-    /**
-     * Interpolate the context parameters into the supplied local translation
-     * of the violation.
-     *
-     * The given string can use :param to denote the position where the
-     * parameters can be interpolated.
-     *
-     * E.g.:
-     *
-     * Context: ['user' => 'Impa', 'domain' => 'gerudo.vil.hyr']
-     * Translation: Invalid user :user and domain :domain found.
-     * Interpolated: Invalid user Impa and domain gerudo.vil.hyr found.
-     *
-     * @param string $translation
-     * @return string
-     */
-    public function interpolate($translation);
 }

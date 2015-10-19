@@ -13,3 +13,4 @@ require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/HylianShield/Tests/Validator/TestBase.php';
 require_once __DIR__ . '/HylianShield/Tests/Validator/LogicalGateTestBase.php';
 require_once __DIR__ . '/HylianShield/Tests/Validator/String/SubsetTestBase.php';
+require_once __DIR__ . '/HylianShield/Tests/Validator/Context/Indication/IndicationTestBase.php';
