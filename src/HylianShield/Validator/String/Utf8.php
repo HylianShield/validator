@@ -39,8 +39,9 @@ class Utf8 extends \HylianShield\Validator\Range\Mutable
      *
      * @return callable
      */
-    protected function createValidator() {
-        return function($string) {
+    protected function createValidator()
+    {
+        return function ($string) {
             // mb_check_encoding will pass integers.
             return is_string($string) && mb_check_encoding($string, 'UTF-8');
         };

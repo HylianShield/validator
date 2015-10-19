@@ -134,7 +134,8 @@ abstract class Validator implements \HylianShield\ValidatorInterface
      * @todo Add message for objects and arrays
      * @return string|null
      */
-    final public function getMessage() {
+    final public function getMessage()
+    {
         // Create a message.
         if ($this->lastResult === false && !isset($this->lastMessage)) {
             if (is_scalar($this->lastValue)) {
