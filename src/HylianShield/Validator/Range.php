@@ -70,7 +70,7 @@ abstract class Range extends \HylianShield\Validator
             // @codeCoverageIgnoreEnd
         }
 
-        $lengthCheck = $this->lengthCheck;
+        $lengthCheck =& $this->lengthCheck;
         $minLength =& $this->minLength;
         $maxLength =& $this->maxLength;
 

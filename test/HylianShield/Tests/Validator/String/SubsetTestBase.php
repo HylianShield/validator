@@ -160,11 +160,11 @@ abstract class SubsetTestBase extends \HylianShield\Tests\Validator\TestBase
     final public function testStringLength($string, $length)
     {
         $this->assertEquals(
+            $length,
             call_user_func(
                 $this->getLengthChecker(),
                 $string
-            ),
-            $length
+            )
         );
     }
 
