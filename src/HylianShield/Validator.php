@@ -47,7 +47,7 @@ abstract class Validator implements \HylianShield\ValidatorInterface
     protected $lastResult;
 
     /**
-     * Set a message to be retrieved if a value doesn't pass the validator.
+     * Set a message to be retrieved if a value does not pass the validator.
      *
      * @var string $lastMessage
      */
@@ -210,7 +210,7 @@ abstract class Validator implements \HylianShield\ValidatorInterface
     }
 
     /**
-     * Return an indentifier.
+     * Return an identifier.
      *
      * @return string
      */

@@ -26,7 +26,7 @@ interface ValidatorInterface
 
     /**
      * Called when a class is directly called as if it was a function.
-     * This should directly forward the call to validate and return its rerults.
+     * This should directly forward the call to validate and return its results.
      *
      * @param mixed $value
      * @return boolean
@@ -48,7 +48,7 @@ interface ValidatorInterface
     public function getType();
 
     /**
-     * Return an indentifier.
+     * Return an identifier.
      * This may be more verbose than the return value of getType.
      *
      * @return string

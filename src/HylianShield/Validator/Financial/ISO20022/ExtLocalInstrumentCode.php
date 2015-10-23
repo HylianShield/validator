@@ -35,7 +35,7 @@ class ExtLocalInstrumentCode extends \HylianShield\Validator\Regexp
         'TRF',
 
         // Transaction is related to truncated checks.
-        // Conversion of physical instrument to electonric form for transmission to
+        // Conversion of physical instrument to electronic form for transmission to
         // the paying bank and where the original paper document does not continue in
         // the clearing process..The original instrument rules are retained throughout
         // the life of the instrument.
@@ -156,7 +156,7 @@ class ExtLocalInstrumentCode extends \HylianShield\Validator\Regexp
         '0000',
 
         // Transaction is related to converted (bank) payment.
-        // Conversion of physical instrument to electonric form for transmission to
+        // Conversion of physical instrument to electronic form for transmission to
         // the paying bank and where the original paper document does not continue in
         // the clearing process.The instrument rules change upon conversion.
         '0001',

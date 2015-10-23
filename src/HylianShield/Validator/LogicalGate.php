@@ -67,7 +67,7 @@ abstract class LogicalGate extends \HylianShield\Validator
         // Create a validator.
         $this->createValidator($validators);
 
-        // Check if the implemtation kept its promise.
+        // Check if the implementation kept its promise.
         if (!is_callable($this->validator)) {
             // @codeCoverageIgnoreStart
             throw new LogicException(
@@ -91,7 +91,7 @@ abstract class LogicalGate extends \HylianShield\Validator
      *
      * @return string
      */
-    final public function __tostring()
+    final public function __toString()
     {
         return call_user_func_array($this->gateType, array());
     }

@@ -55,7 +55,8 @@ abstract class Range extends \HylianShield\Validator
      *
      * @return void
      */
-    final protected function initialize() {
+    final protected function initialize()
+    {
         $validator = $this->createValidator();
 
         if (!is_callable($validator)) {
@@ -148,16 +149,17 @@ abstract class Range extends \HylianShield\Validator
      *
      * @return callable
      */
-    protected function createValidator() {
+    protected function createValidator()
+    {
         return $this->validator;
     }
 
     /**
-     * Return an indentifier.
+     * Return an identifier.
      *
      * @return string
      */
-    public function __tostring()
+    public function __toString()
     {
         $min = $this->minLength === null
             ? '_'

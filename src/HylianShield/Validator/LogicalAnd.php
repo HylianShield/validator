@@ -34,7 +34,7 @@ class LogicalAnd extends \HylianShield\Validator\LogicalGate
         $this->validator = function (
             $value,
             ContextInterface $context = null
-        )  use (
+        ) use (
             $validators
         ) {
             foreach ($validators as $validator) {
