@@ -188,8 +188,9 @@ abstract class TestBase extends \PHPUnit_Framework_TestCase
                     $validation
                 ),
                 "Test failed for validation number {$validationNr}. Value supplied: ("
-                    . gettype(current($validation)) . ') '
-                    . var_export(current($validation), true) . "; Expected: {$this->validator}"
+                . gettype(current($validation)) . ') '
+                . var_export(current($validation), true)
+                . "; Expected: {$this->validator}"
             );
 
             $message = $this->validator->getMessage();
