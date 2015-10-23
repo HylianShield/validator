@@ -21,16 +21,20 @@ class Https extends \HylianShield\Validator\Url\Network
     protected $type = 'url_network_https';
 
     /**
-     * Variable description
+     * Get the definition of the network protocol.
      *
-     * @var array $allowedSchemes
+     * @return ProtocolDefinitionInterface
      */
-    protected $allowedSchemes = array('https');
+    protected function getDefinition()
+    {
+        static $definition;
 
-    /**
-     * A list of allowed ports.
-     *
-     * @var array $allowedPorts
-     */
-    protected $allowedPorts = array(443);
+        if (!isset($definition)) {
+            $definition = new ProtocolDefinition();
+            $definition->setAllowedSchemes(array('https'));
+            $definition->setAllowedPorts(array(443));
+        }
+
+        return $definition;
+    }
 }

@@ -8,8 +8,6 @@
 
 namespace HylianShield\Validator;
 
-use \LogicException;
-
 /**
  * Range.
  */
