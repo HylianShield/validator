@@ -291,7 +291,7 @@ class Network extends \HylianShield\Validator
             if (!is_string($url)) {
                 $context->addViolation(
                     'Url was not a string',
-                    static::VIOLATION_STRING
+                    Network::VIOLATION_STRING
                 );
                 return false;
             }
@@ -338,7 +338,7 @@ class Network extends \HylianShield\Validator
             if (empty($url['host'])) {
                 $context->addViolation(
                     'Missing host index',
-                    static::VIOLATION_HOST
+                    Network::VIOLATION_HOST
                 );
                 return false;
             }
@@ -359,7 +359,7 @@ class Network extends \HylianShield\Validator
             if (empty($url['scheme'])) {
                 $context->addViolation(
                     'Missing URL scheme',
-                    static::VIOLATION_MISSING_SCHEME
+                    Network::VIOLATION_MISSING_SCHEME
                 );
                 return false;
             }
@@ -375,7 +375,7 @@ class Network extends \HylianShield\Validator
                 $context->addViolation(
                     'Illegal scheme ":scheme" encountered. '
                     . 'Expected one of: :schemes',
-                    static::VIOLATION_ILLEGAL_SCHEME,
+                    Network::VIOLATION_ILLEGAL_SCHEME,
                     array(
                         'scheme' => $url['scheme'],
                         'schemes' => implode(', ', $schemes)
@@ -416,7 +416,7 @@ class Network extends \HylianShield\Validator
             if (empty($url['path'])) {
                 $context->addViolation(
                     'Missing path',
-                    static::VIOLATION_EMPTY_PATH
+                    Network::VIOLATION_EMPTY_PATH
                 );
                 return false;
             }
@@ -436,7 +436,7 @@ class Network extends \HylianShield\Validator
             if (empty($url['user'])) {
                 $context->addViolation(
                     'Missing username',
-                    static::VIOLATION_EMPTY_USER
+                    Network::VIOLATION_EMPTY_USER
                 );
                 return false;
             }
@@ -456,7 +456,7 @@ class Network extends \HylianShield\Validator
             if (empty($url['pass'])) {
                 $context->addViolation(
                     'Missing password',
-                    static::VIOLATION_EMPTY_PASSWORD
+                    Network::VIOLATION_EMPTY_PASSWORD
                 );
                 return false;
             }
@@ -500,7 +500,7 @@ class Network extends \HylianShield\Validator
                 if ($availableAssertion->getResult() === false) {
                     $context->addViolation(
                         'Missing port index',
-                        static::VIOLATION_MISSING_PORT
+                        Network::VIOLATION_MISSING_PORT
                     );
                     return false;
                 }
@@ -517,7 +517,7 @@ class Network extends \HylianShield\Validator
                 if (!in_array((int) $url['port'], $ports, true)) {
                     $context->addViolation(
                         'Illegal port :port supplied. Expected one of: :ports',
-                        static::VIOLATION_ILLEGAL_PORT,
+                        Network::VIOLATION_ILLEGAL_PORT,
                         array(
                             'port' => $url['port'],
                             'ports' => implode(', ', $ports)
@@ -567,7 +567,7 @@ class Network extends \HylianShield\Validator
                 if (!in_array($key, $allowed, true)) {
                     $context->addViolation(
                         'Parameter :parameter is not in the list: :allowed',
-                        static::VIOLATION_ALLOWED_PARAMETER,
+                        Network::VIOLATION_ALLOWED_PARAMETER,
                         array(
                             'parameter' => $key,
                             'allowed' => implode(', ', $allowed)
@@ -597,7 +597,7 @@ class Network extends \HylianShield\Validator
                 if (in_array($key, $invalid, true)) {
                     $context->addViolation(
                         'Invalid parameter: :parameter; Illegal :illegal',
-                        static::VIOLATION_INVALID_PARAMETER,
+                        Network::VIOLATION_INVALID_PARAMETER,
                         array(
                             'parameter' => $key,
                             'illegal' => implode(', ', $invalid)
@@ -634,7 +634,7 @@ class Network extends \HylianShield\Validator
                         'Missing required parameter: :parameter; '
                         . 'Supplied: :parameters; '
                         . 'Required: :required',
-                        static::VIOLATION_REQUIRED_PARAMETER,
+                        Network::VIOLATION_REQUIRED_PARAMETER,
                         array(
                             'parameter' => $requiredParameter,
                             'parameters' => implode(', ', $url['queryKeys']),
