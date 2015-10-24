@@ -10,7 +10,7 @@ namespace HylianShield\Validator\Url;
 
 use \HylianShield\Validator\Context\ContextInterface;
 use \HylianShield\Validator\Context\Indication\Assertion;
-use HylianShield\Validator\Url\Network\ProtocolDefinition;
+use \HylianShield\Validator\Url\Network\ProtocolDefinition;
 use \HylianShield\Validator\Url\Network\ProtocolDefinitionInterface;
 
 /**

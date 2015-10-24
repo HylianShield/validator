@@ -13,3 +13,10 @@ script:
   - phpunit -c test/phpunit.xml
 after_script:
   - php vendor/bin/coveralls -v
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/669c175b0489f1325449
+    on_success: change
+    on_failure: always
+    on_start: never
