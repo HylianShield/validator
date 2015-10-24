@@ -199,6 +199,7 @@ class Network extends \HylianShield\Validator
     /**
      * Configure the rules and parsers for query parameters.
      *
+     * @param ProtocolDefinitionInterface $definition
      * @return void
      */
     private function configureQueryRules(
@@ -542,7 +543,7 @@ class Network extends \HylianShield\Validator
                 parse_str($url['query'], $query);
                 $url['query'] = $query;
             } else {
-                $url['query'] = [];
+                $url['query'] = array();
             }
 
             $url['queryKeys'] = array_keys($url['query']);
