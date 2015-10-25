@@ -29,8 +29,8 @@ class Email extends \HylianShield\Validator\Filter
     /**
      * The email validation filter.
      *
-     * @var integer FILTER
+     * @var integer $filter
      * @see http://php.net/manual/en/filter.filters.validate.php
      */
-    const FILTER = FILTER_VALIDATE_EMAIL;
+    protected $filter = FILTER_VALIDATE_EMAIL;
 }

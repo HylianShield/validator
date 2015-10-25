@@ -26,12 +26,13 @@ class LogicalAnd extends \HylianShield\Validator\LogicalGate
      * Initialize the validator.
      *
      * @param array $validators
+     * @return \Closure
      */
     final protected function createValidator(array $validators = array())
     {
         // Create a custom validator that returns true on the first match.
         // Since it is AND, all the validators should return true.
-        $this->validator = function (
+        return function (
             $value,
             ContextInterface $context = null
         ) use (
