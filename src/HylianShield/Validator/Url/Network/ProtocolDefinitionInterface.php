@@ -61,12 +61,12 @@ interface ProtocolDefinitionInterface
     public function isRequirePassword();
 
     /**
-     * Getter for the allowedQueryParameters property.
+     * Getter for the allowedParameters property.
      *
      * @return array
-     * @throws \LogicException when property allowedQueryParameters is not set.
+     * @throws \LogicException when property allowedParameters is not set.
      */
-    public function getAllowedQueryParameters();
+    public function getAllowedParameters();
 
     /**
      * Whether the definition holds allowed parameters.
@@ -76,12 +76,12 @@ interface ProtocolDefinitionInterface
     public function hasAllowedParameters();
 
     /**
-     * Getter for the invalidQueryParameters property.
+     * Getter for the invalidParameters property.
      *
      * @return array
-     * @throws \LogicException when property invalidQueryParameters is not set.
+     * @throws \LogicException when property invalidParameters is not set.
      */
-    public function getInvalidQueryParameters();
+    public function getInvalidParameters();
 
     /**
      * Whether the definition holds invalid parameters.
@@ -91,12 +91,12 @@ interface ProtocolDefinitionInterface
     public function hasInvalidParameters();
 
     /**
-     * Getter for the requiredQueryParameters property.
+     * Getter for the requiredParameters property.
      *
      * @return array
-     * @throws \LogicException when property requiredQueryParameters is not set.
+     * @throws \LogicException when property requiredParameters is not set.
      */
-    public function getRequiredQueryParameters();
+    public function getRequiredParameters();
 
     /**
      * Whether the definition holds required parameters.

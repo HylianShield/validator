@@ -7,7 +7,6 @@ namespace HylianShield\Validator\Url\Network;
 use \HylianShield\Validator\Url\Network\Parser\ParserInterface;
 use \HylianShield\Validator\Url\Network\Rule\RuleInterface;
 
-
 /**
  * An instruction set for network validators.
  */

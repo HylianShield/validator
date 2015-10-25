@@ -43,7 +43,7 @@ class AllowedParametersRule implements RuleInterface
     public static function fromDefinition(
         ProtocolDefinitionInterface $definition
     ) {
-        return new static($definition->getAllowedQueryParameters());
+        return new static($definition->getAllowedParameters());
     }
 
     /**

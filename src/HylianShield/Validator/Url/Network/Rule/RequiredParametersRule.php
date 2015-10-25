@@ -43,7 +43,7 @@ class RequiredParametersRule implements RuleInterface
     public static function fromDefinition(
         ProtocolDefinitionInterface $definition
     ) {
-        return new static($definition->getRequiredQueryParameters());
+        return new static($definition->getRequiredParameters());
     }
 
     /**

@@ -211,7 +211,7 @@ class CustomProtocolTest extends \HylianShield\Tests\Validator\TestBase
     public function testAllowedParameters(ProtocolDefinition $definition)
     {
         $allowedParameters = array('sword', 'shield', 'boomerang', 'bomb');
-        $definition->setAllowedQueryParameters($allowedParameters);
+        $definition->setAllowedParameters($allowedParameters);
 
         $base = 'hyr://goron.shop/stock?';
 
@@ -254,7 +254,7 @@ class CustomProtocolTest extends \HylianShield\Tests\Validator\TestBase
     public function testInvalidParameters(ProtocolDefinition $definition)
     {
         $invalidParameters = array('sword', 'shield', 'boomerang', 'bomb');
-        $definition->setInvalidQueryParameters($invalidParameters);
+        $definition->setInvalidParameters($invalidParameters);
 
         $base = 'hyr://goron.shop/stock?';
 
@@ -293,7 +293,7 @@ class CustomProtocolTest extends \HylianShield\Tests\Validator\TestBase
     public function testRequiredParameters(ProtocolDefinition $definition)
     {
         $requiredParameters = array('sword', 'shield', 'boomerang', 'bomb');
-        $definition->setRequiredQueryParameters($requiredParameters);
+        $definition->setRequiredParameters($requiredParameters);
 
         $base = 'hyr://goron.shop/stock?';
 

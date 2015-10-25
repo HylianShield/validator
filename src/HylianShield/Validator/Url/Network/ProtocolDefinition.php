@@ -58,23 +58,23 @@ class ProtocolDefinition implements ProtocolDefinitionInterface
     /**
      * A list of allowed query parameters.
      *
-     * @var array $allowedQueryParameters
+     * @var array $allowedParameters
      */
-    protected $allowedQueryParameters = array();
+    protected $allowedParameters = array();
 
     /**
      * A list of invalid query parameters.
      *
-     * @var array $invalidQueryParameters
+     * @var array $invalidParameters
      */
-    protected $invalidQueryParameters = array();
+    protected $invalidParameters = array();
 
     /**
      * A list of required query parameters.
      *
-     * @var array $requiredQueryParameters
+     * @var array $requiredParameters
      */
-    protected $requiredQueryParameters = array();
+    protected $requiredParameters = array();
 
     /**
      * Getter for the allowedSchemes property.
@@ -275,20 +275,20 @@ class ProtocolDefinition implements ProtocolDefinitionInterface
     }
 
     /**
-     * Getter for the allowedQueryParameters property.
+     * Getter for the allowedParameters property.
      *
      * @return array
-     * @throws \LogicException when property allowedQueryParameters is not set.
+     * @throws \LogicException when property allowedParameters is not set.
      */
-    public function getAllowedQueryParameters()
+    public function getAllowedParameters()
     {
-        if (!isset($this->allowedQueryParameters)) {
+        if (!isset($this->allowedParameters)) {
             throw new \LogicException(
-                'Missing property allowedQueryParameters'
+                'Missing property allowedParameters'
             );
         }
 
-        return $this->allowedQueryParameters;
+        return $this->allowedParameters;
     }
 
     /**
@@ -298,37 +298,37 @@ class ProtocolDefinition implements ProtocolDefinitionInterface
      */
     public function hasAllowedParameters()
     {
-        return (bool) $this->allowedQueryParameters;
+        return (bool) $this->allowedParameters;
     }
 
     /**
-     * Setter for the allowedQueryParameters property.
+     * Setter for the allowedParameters property.
      *
-     * @param array $allowedQueryParameters
+     * @param array $allowedParameters
      * @return static
      */
-    public function setAllowedQueryParameters(array $allowedQueryParameters)
+    public function setAllowedParameters(array $allowedParameters)
     {
-        $this->allowedQueryParameters = $allowedQueryParameters;
+        $this->allowedParameters = $allowedParameters;
 
         return $this;
     }
 
     /**
-     * Getter for the invalidQueryParameters property.
+     * Getter for the invalidParameters property.
      *
      * @return array
-     * @throws \LogicException when property invalidQueryParameters is not set.
+     * @throws \LogicException when property invalidParameters is not set.
      */
-    public function getInvalidQueryParameters()
+    public function getInvalidParameters()
     {
-        if (!isset($this->invalidQueryParameters)) {
+        if (!isset($this->invalidParameters)) {
             throw new \LogicException(
-                'Missing property invalidQueryParameters'
+                'Missing property invalidParameters'
             );
         }
 
-        return $this->invalidQueryParameters;
+        return $this->invalidParameters;
     }
 
     /**
@@ -338,37 +338,37 @@ class ProtocolDefinition implements ProtocolDefinitionInterface
      */
     public function hasInvalidParameters()
     {
-        return (bool) $this->invalidQueryParameters;
+        return (bool) $this->invalidParameters;
     }
 
     /**
-     * Setter for the invalidQueryParameters property.
+     * Setter for the invalidParameters property.
      *
-     * @param array $invalidQueryParameters
+     * @param array $invalidParameters
      * @return static
      */
-    public function setInvalidQueryParameters(array $invalidQueryParameters)
+    public function setInvalidParameters(array $invalidParameters)
     {
-        $this->invalidQueryParameters = $invalidQueryParameters;
+        $this->invalidParameters = $invalidParameters;
 
         return $this;
     }
 
     /**
-     * Getter for the requiredQueryParameters property.
+     * Getter for the requiredParameters property.
      *
      * @return array
-     * @throws \LogicException when property requiredQueryParameters is not set.
+     * @throws \LogicException when property requiredParameters is not set.
      */
-    public function getRequiredQueryParameters()
+    public function getRequiredParameters()
     {
-        if (!isset($this->requiredQueryParameters)) {
+        if (!isset($this->requiredParameters)) {
             throw new \LogicException(
-                'Missing property requiredQueryParameters'
+                'Missing property requiredParameters'
             );
         }
 
-        return $this->requiredQueryParameters;
+        return $this->requiredParameters;
     }
 
     /**
@@ -378,18 +378,18 @@ class ProtocolDefinition implements ProtocolDefinitionInterface
      */
     public function hasRequiredParameters()
     {
-        return (bool) $this->requiredQueryParameters;
+        return (bool) $this->requiredParameters;
     }
 
     /**
-     * Setter for the requiredQueryParameters property.
+     * Setter for the requiredParameters property.
      *
-     * @param array $requiredQueryParameters
+     * @param array $requiredParameters
      * @return static
      */
-    public function setRequiredQueryParameters(array $requiredQueryParameters)
+    public function setRequiredParameters(array $requiredParameters)
     {
-        $this->requiredQueryParameters = $requiredQueryParameters;
+        $this->requiredParameters = $requiredParameters;
 
         return $this;
     }
@@ -402,9 +402,9 @@ class ProtocolDefinition implements ProtocolDefinitionInterface
     public function hasQueryConfiguration()
     {
         return (
-            $this->allowedQueryParameters
-            || $this->invalidQueryParameters
-            || $this->requiredQueryParameters
+            $this->allowedParameters
+            || $this->invalidParameters
+            || $this->requiredParameters
         );
     }
 }
