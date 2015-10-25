@@ -18,7 +18,7 @@ class CoreFunction extends \HylianShield\Validator
     /**
      * The name of a function must be a string.
      *
-     * @var integer VIOLATION_STRING
+     * @var integer VIOLATION_PARSER
      */
     const VIOLATION_STRING = 1;
 

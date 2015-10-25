@@ -136,30 +136,6 @@ class CustomProtocolTest extends \HylianShield\Tests\Validator\TestBase
     }
 
     /**
-     * Test that the port rule factory throws an invalid argument exception.
-     *
-     * @return void
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Required flag must be a boolean: NULL
-     */
-    public function testIllegalPortFlagArgument()
-    {
-        $definition = $this->getMock(
-            '\HylianShield\Validator\Url\Network\ProtocolDefinition',
-            array('isRequirePort')
-        );
-
-        $definition
-            ->expects($this->once())
-            ->method('isRequirePort')
-            ->withAnyParameters()
-            ->will($this->returnValue(null));
-
-        /** @var ProtocolDefinition $definition */
-        new CustomProtocol($definition);
-    }
-
-    /**
      * Test against empty URL paths.
      *
      * @param ProtocolDefinition $definition
