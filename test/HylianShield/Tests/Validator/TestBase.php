@@ -116,6 +116,7 @@ abstract class TestBase extends \PHPUnit_Framework_TestCase
      * @return void
      * @expectedException \LogicException
      * @expectedExceptionMessage Property type should be of data type string!
+     * @requires PHP 5.4
      */
     public function testMissingType()
     {
@@ -135,6 +136,7 @@ abstract class TestBase extends \PHPUnit_Framework_TestCase
      * @return void
      * @expectedException \LogicException
      * @expectedExceptionMessage Validator should be callable!
+     * @requires PHP 5.4
      */
     public function testInvalidValidatorCallable()
     {

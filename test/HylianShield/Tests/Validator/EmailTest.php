@@ -45,6 +45,7 @@ class EmailTest extends \HylianShield\Tests\Validator\TestBase
      * @return void
      * @expectedException \LogicException
      * @expectedExceptionMessage Invalid filter configured!
+     * @requires PHP 5.4
      */
     public function testIllegalFilter()
     {
