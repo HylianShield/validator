@@ -20,10 +20,11 @@ class Many extends \HylianShield\Validator\OneOf
      */
     protected $type = 'oneof_many';
 
-    /**
+    /** @noinspection PhpMissingParentConstructorInspection
      * The constructor for Many.
      *
      * @param array $values
+     * @deprecated Will be removed in version 1.0. Use OneOf::fromArray instead.
      */
     public function __construct(array $values)
     {

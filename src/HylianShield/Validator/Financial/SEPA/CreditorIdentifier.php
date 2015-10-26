@@ -47,7 +47,7 @@ class CreditorIdentifier extends \HylianShield\Validator\Range\Immutable
     public function createValidator()
     {
         return function ($identifier) {
-            // Remove the buisiness code.
+            // Remove the business code.
             $identifier = substr_replace($identifier, '', 4, 3);
 
             $country = substr($identifier, 0, 2);

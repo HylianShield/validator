@@ -27,6 +27,29 @@ class OneOfTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test what happens when the fromArray factory method is called.
+     *
+     * @return void
+     */
+    public function testFromArrayConstructor()
+    {
+        $this->assertInstanceOf(
+            '\HylianShield\Validator\OneOf',
+            OneOf::fromArray(array(1))
+        );
+    }
+
+    /**
+     * Test the lack of constructor arguments using the factory method.
+     *
+     * @expectedException \LogicException
+     */
+    public function testEmptyFactoryCall()
+    {
+        OneOf::fromArray(array());
+    }
+
+    /**
      * Return a set of collections, the value to test and the expected result.
      *
      * @return array

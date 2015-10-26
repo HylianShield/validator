@@ -20,9 +20,9 @@ abstract class Filter extends \HylianShield\Validator
     /**
      * The filter to apply to the filter_var function.
      *
-     * @var integer FILTER
+     * @var integer $filter
      */
-    const FILTER = 0;
+    protected $filter = 0;
 
     /**
      * A list of valid filters for Filter implementations.
@@ -66,10 +66,8 @@ abstract class Filter extends \HylianShield\Validator
      */
     final public function __construct()
     {
-        if (!in_array($this::FILTER, self::$allowedFilters, true)) {
-            // @codeCoverageIgnoreStart
+        if (!in_array($this->filter, self::$allowedFilters, true)) {
             throw new LogicException('Invalid filter configured!');
-            // @codeCoverageIgnoreEnd
         }
 
         $this->validator = array($this, 'filterVar');
@@ -85,7 +83,7 @@ abstract class Filter extends \HylianShield\Validator
     {
         return filter_var(
             $var,
-            $this::FILTER,
+            $this->filter,
             array(
                 'options' => $this::$options,
                 'flags' => $this::$flags

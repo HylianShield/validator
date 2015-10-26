@@ -64,25 +64,28 @@ abstract class LogicalGate extends \HylianShield\Validator
             );
         }
 
-        // Create a validator.
-        $this->createValidator($validators);
+        // Create and set the validator.
+        $this->setValidator(
+            $this->createValidator($validators)
+        );
+    }
 
-        // Check if the implemtation kept its promise.
-        if (!is_callable($this->validator)) {
-            // @codeCoverageIgnoreStart
-            throw new LogicException(
-                'Invalid implementation of createValidator by ' . get_class($this)
-                . '. It should set a callable to property validator.'
-            );
-            // @codeCoverageIgnoreEnd
-        }
+    /**
+     * Set the internal validator.
+     *
+     * @param \Closure $validator
+     * @return void
+     */
+    private function setValidator(\Closure $validator)
+    {
+        $this->validator = $validator;
     }
 
     /**
      * Create a validator based on a set of validators.
      *
      * @param array $validators
-     * @return void
+     * @return \Closure
      */
     abstract protected function createValidator(array $validators = array());
 
@@ -91,7 +94,7 @@ abstract class LogicalGate extends \HylianShield\Validator
      *
      * @return string
      */
-    final public function __tostring()
+    final public function __toString()
     {
         return call_user_func_array($this->gateType, array());
     }

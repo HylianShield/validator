@@ -9,6 +9,7 @@
 namespace HylianShield\Tests\Validator;
 
 use \HylianShield\Validator;
+use \HylianShield\ValidatorInterface;
 
 /**
  * Logical AND gate test.

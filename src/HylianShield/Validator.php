@@ -47,7 +47,7 @@ abstract class Validator implements \HylianShield\ValidatorInterface
     protected $lastResult;
 
     /**
-     * Set a message to be retrieved if a value doesn't pass the validator.
+     * Set a message to be retrieved if a value does not pass the validator.
      *
      * @var string $lastMessage
      */
@@ -92,9 +92,7 @@ abstract class Validator implements \HylianShield\ValidatorInterface
         $context->addAssertion('Validator is callable', $validatorIsCallable);
 
         if (!$validatorIsCallable) {
-            // @codeCoverageIgnoreStart
             throw new LogicException('Validator should be callable!');
-            // @codeCoverageIgnoreEnd
         }
 
         // Check if the validator validates.
@@ -199,18 +197,16 @@ abstract class Validator implements \HylianShield\ValidatorInterface
     final public function getType()
     {
         if (!is_string($this->type)) {
-            // @codeCoverageIgnoreStart
             throw new LogicException(
                 'Property type should be of data type string!'
             );
-            // @codeCoverageIgnoreEnd
         }
 
         return $this->type;
     }
 
     /**
-     * Return an indentifier.
+     * Return an identifier.
      *
      * @return string
      */

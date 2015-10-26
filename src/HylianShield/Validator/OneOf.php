@@ -71,11 +71,28 @@ class OneOf extends \HylianShield\Validator
     }
 
     /**
+     * Helper method to construct the validator with an array of arguments.
+     *
+     * @param array $values
+     * @return static
+     */
+    public static function fromArray(array $values)
+    {
+        static $selfReflection;
+
+        if (!isset($selfReflection)) {
+            $selfReflection = new \ReflectionClass(__CLASS__);
+        }
+
+        return $selfReflection->newInstanceArgs($values);
+    }
+
+    /**
      * Return an identifier.
      *
      * @return string
      */
-    final public function __tostring()
+    final public function __toString()
     {
         return "{$this->type}({$this->collectionIdentifier})";
     }

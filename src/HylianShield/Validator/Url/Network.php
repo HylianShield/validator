@@ -8,11 +8,103 @@
 
 namespace HylianShield\Validator\Url;
 
+use \HylianShield\Validator\Context\ContextInterface;
+use \HylianShield\Validator\Url\Network\InstructionSet;
+use \HylianShield\Validator\Url\Network\InstructionSetInterface;
+use \HylianShield\Validator\Url\Network\Parser\ParserException;
+use \HylianShield\Validator\Url\Network\ProtocolDefinition;
+use \HylianShield\Validator\Url\Network\ProtocolDefinitionInterface;
+
 /**
  * Network.
  */
 class Network extends \HylianShield\Validator
 {
+    /**
+     * The violation code when a value was supplied to a parser, which could
+     * not be properly processed.
+     *
+     * @var int VIOLATION_PARSER
+     */
+    const VIOLATION_PARSER = 1;
+
+    /**
+     * The violation code when the host index is missing.
+     *
+     * @var int VIOLATION_HOST
+     */
+    const VIOLATION_HOST = 2;
+
+    /**
+     * The violation code when the scheme index is missing.
+     *
+     * @var int VIOLATION_MISSING_SCHEME
+     */
+    const VIOLATION_MISSING_SCHEME = 4;
+
+    /**
+     * The violation code when the scheme is illegal.
+     *
+     * @var int VIOLATION_ILLEGAL_SCHEME
+     */
+    const VIOLATION_ILLEGAL_SCHEME = 8;
+
+    /**
+     * The violation code when the path is empty.
+     *
+     * @var int VIOLATION_EMPTY_PATH
+     */
+    const VIOLATION_EMPTY_PATH = 16;
+
+    /**
+     * The violation code when the user is empty.
+     *
+     * @var int VIOLATION_EMPTY_USER
+     */
+    const VIOLATION_EMPTY_USER = 32;
+
+    /**
+     * The violation code when the password is empty.
+     *
+     * @var int VIOLATION_EMPTY_PASSWORD
+     */
+    const VIOLATION_EMPTY_PASSWORD = 64;
+
+    /**
+     * The violation code when the port is missing.
+     *
+     * @var int VIOLATION_MISSING_PORT
+     */
+    const VIOLATION_MISSING_PORT = 128;
+
+    /**
+     * The violation code when the port is illegal.
+     *
+     * @var int VIOLATION_ILLEGAL_PORT
+     */
+    const VIOLATION_ILLEGAL_PORT = 256;
+
+    /**
+     * The violation code when a parameter was not allowed.
+     *
+     * @var int VIOLATION_ALLOWED_PARAMETER
+     */
+    const VIOLATION_ALLOWED_PARAMETER = 512;
+
+    /**
+     * The violation code when a parameter was blacklisted.
+     *
+     * @var int VIOLATION_INVALID_PARAMETER
+     */
+    const VIOLATION_INVALID_PARAMETER = 1024;
+
+    /**
+     * The violation when a required parameter was missing.
+     *
+     * @var int VIOLATION_REQUIRED_PARAMETER
+     */
+    const VIOLATION_REQUIRED_PARAMETER = 2048;
+
     /**
      * The type.
      *
@@ -21,210 +113,65 @@ class Network extends \HylianShield\Validator
     protected $type = 'url_network';
 
     /**
-     * Variable description
-     *
-     * @var array $allowedSchemes
-     */
-    protected $allowedSchemes = array();
-
-    /**
-     * A list of allowed ports.
-     *
-     * @var array $allowedPorts
-     */
-    protected $allowedPorts = array();
-
-    /**
-     * Require a port to be given. By default a port can be left out in a URL.
-     *
-     * @var boolean $requirePort
-     */
-    protected $requirePort = false;
-
-    /**
-     * Whether an empty path is allowed. A path should still be present.
-     *
-     * @var boolean $emptyPathAllowed
-     */
-    protected $emptyPathAllowed = true;
-
-    /**
-     * Whether we require a user.
-     *
-     * @var boolean $requiresUser
-     */
-    protected $requireUser = false;
-
-    /**
-     * Whether we require a password.
-     *
-     * @var boolean $requirePassword
-     */
-    protected $requirePassword = false;
-
-    /**
-     * A list of allowed query parameters.
-     *
-     * @var array $allowedQueryParameters
-     */
-    protected $allowedQueryParameters = array();
-
-    /**
-     * A list of invalid query parameters.
-     *
-     * @var array $invalidQueryParameters
-     */
-    protected $invalidQueryParameters = array();
-
-    /**
-     * A list of required query parameters.
-     *
-     * @var array $requiredQueryParameters
-     */
-    protected $requiredQueryParameters = array();
-
-    /**
      * Initialize the validator.
      */
-    final public function __construct()
+    public function __construct()
     {
-        // These references are so we can safely introduce the selected properties
-        // in the scope of the validator in PHP <= 5.3.
+        $this->validator = $this->createValidator(
+            InstructionSet::fromDefinition(
+                $this->getDefinition()
+            )
+        );
+    }
 
-        $schemes =& $this->allowedSchemes;
-        $ports =& $this->allowedPorts;
-        $allowedParameters =& $this->allowedQueryParameters;
-        $requiredParameters =& $this->requiredQueryParameters;
-        $invalidParameters =& $this->invalidQueryParameters;
+    /**
+     * Get the definition of the network protocol.
+     *
+     * @return ProtocolDefinitionInterface
+     */
+    protected function getDefinition()
+    {
+        static $definition;
 
-        $emptyPathAllowed =& $this->emptyPathAllowed;
-        $requireUser =& $this->requireUser;
-        $requirePassword =& $this->requirePassword;
-        $requirePort =& $this->requirePort;
+        if (!isset($definition)) {
+            $definition = new ProtocolDefinition();
+        }
 
-        $this->validator = function ($url) use (
-            $schemes,
-            $emptyPathAllowed,
-            $requireUser,
-            $requirePassword,
-            $requirePort,
-            $ports,
-            $allowedParameters,
-            $requiredParameters,
-            $invalidParameters
+        return $definition;
+    }
+
+    /**
+     * Create a validator based on the supplied rules and parsers.
+     *
+     * @param InstructionSetInterface $instructions
+     * @return \Closure
+     */
+    private function createValidator(InstructionSetInterface $instructions)
+    {
+        /**
+         * Check whether the supplied URL is considered valid.
+         *
+         * @param mixed $url
+         * @param ContextInterface $context
+         * @return bool
+         */
+        return function (
+            $url,
+            ContextInterface $context
+        ) use (
+            $instructions
         ) {
-            $parsed = parse_url($url);
-
-            // The URL is seriously malformed. Nothing more we can do.
-            if (empty($parsed)) {
-                // @codeCoverageIgnoreStart
-                return false;
-                // @codeCoverageIgnoreEnd
-            }
-
-            // We always need a host.
-            if (empty($parsed['host'])) {
+            try {
+                $url = $instructions->parse($url);
+            } catch (ParserException $e) {
+                $context->addViolation(
+                    'Could not parse supplied URL',
+                    Network::VIOLATION_PARSER
+                );
                 return false;
             }
 
-            // There must be a scheme present.
-            if (empty($parsed['scheme'])) {
-                return false;
-            }
-
-            // Additionally, if we only allow a range of schemes, test for that.
-            if (!empty($schemes)&& !in_array($parsed['scheme'], $schemes)) {
-                return false;
-            }
-
-            // If an empty path is disallowed, that will be checked later on.
-            $path = isset($parsed['path'])
-                ? trim($parsed['path'], '/')
-                : '';
-
-            // @codeCoverageIgnoreStart
-            // @todo Extend the corresponding tests when there are
-            // actually implementations using this.
-            // Currently, this logic will never be triggered.
-
-            // We don't allow empty paths.
-            if (!$emptyPathAllowed && empty($path)) {
-                return false;
-            }
-
-            // Check if we meet the user requirement.
-            if ($requireUser && empty($parsed['user'])) {
-                return false;
-            }
-
-            // Check if we meet the password requirement.
-            if ($requirePassword && empty($parsed['pass'])) {
-                return false;
-            }
-
-            // Check if our port meets the requirements.
-            if ($requirePort && empty($parsed['port'])) {
-                return false;
-            }
-
-            // Check if the port meets our supplied range.
-            if (!empty($parsed['port'])
-                && !empty($ports)
-                && !in_array((int) $parsed['port'], $ports)
-            ) {
-                return false;
-            }
-
-            // @codeCoverageIgnoreEnd
-
-            // Test the query for invalid parameters.
-            if (!empty($parsed['query'])) {
-                parse_str($parsed['query'], $query);
-                $queryKeys = array_keys($query);
-
-                // @codeCoverageIgnoreStart
-                // @todo Extend the corresponding tests when there are
-                // actually implementations using this.
-                // Currently, this logic will never be triggered.
-
-                // Check if any of the parameters is not allowed.
-                if (!empty($allowedParameters)) {
-                    foreach ($queryKeys as $key) {
-                        // Well, this particular one was not allowed.
-                        if (!in_array($key, $allowedParameters)) {
-                            return false;
-                        }
-                    }
-                }
-
-                // Check if one of them matches the invalid list.
-                if (!empty($invalidParameters)) {
-                    foreach ($queryKeys as $key) {
-                        // Well, this particular one was not allowed.
-                        if (in_array($key, $invalidParameters)) {
-                            return false;
-                        }
-                    }
-                }
-
-                // Check if all required keys are present.
-                if (!empty($requiredParameters)) {
-                    foreach ($requiredParameters as $required) {
-                        // Well, this one wasn't present.
-                        if (!in_array($required, $queryKeys)) {
-                            return false;
-                        }
-                    }
-                }
-
-                // @codeCoverageIgnoreEnd
-            } elseif (!empty($requiredParameters)) {
-                // @codeCoverageIgnoreStart
-                return false;
-                // @codeCoverageIgnoreEnd
-            }
-
-            return true;
+            return $instructions->test($url, $context);
         };
     }
 }

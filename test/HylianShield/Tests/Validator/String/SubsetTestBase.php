@@ -204,4 +204,47 @@ abstract class SubsetTestBase extends \HylianShield\Tests\Validator\TestBase
             $this->assertInternalType('string', $this->validator->getType());
         }
     }
+
+    /**
+     * Test that the ranges getter throws when the property is malformed.
+     *
+     * @return void
+     * @expectedException \LogicException
+     * @expectedExceptionMessage No character ranges implemented.
+     */
+    public function testEmptyRange()
+    {
+        /** @var Subset $validator */
+        $validator = clone $this->validator;
+        $reflection = new \ReflectionObject($validator);
+        $rangesProperty = $reflection->getProperty('ranges');
+        $rangesProperty->setAccessible(true);
+        $rangesProperty->setValue($validator, array());
+        $rangesProperty->setAccessible(false);
+        $validator->getRange();
+    }
+
+    /**
+     * Test that the ranges getter throws when the property is malformed.
+     *
+     * @return void
+     * @expectedException \LogicException
+     * @expectedExceptionMessage Invalid range encountered:
+     */
+    public function testIllegalRangeStructure()
+    {
+        /** @var Subset $validator */
+        $validator = clone $this->validator;
+        $reflection = new \ReflectionObject($validator);
+        $rangesProperty = $reflection->getProperty('ranges');
+        $rangesProperty->setAccessible(true);
+        $rangesProperty->setValue(
+            $validator,
+            array(
+                array('a', 'b', 'c')
+            )
+        );
+        $rangesProperty->setAccessible(false);
+        $validator->getRange();
+    }
 }

@@ -110,6 +110,46 @@ abstract class TestBase extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test if the type getter throws when the property is not of the correct
+     * type.
+     *
+     * @return void
+     * @expectedException \LogicException
+     * @expectedExceptionMessage Property type should be of data type string!
+     * @requires PHP 5.4
+     */
+    public function testMissingType()
+    {
+        $validator = clone $this->validator;
+        $reflection = new \ReflectionObject($validator);
+        $property = $reflection->getProperty('type');
+        $property->setAccessible(true);
+        $property->setValue($validator, null);
+        $property->setAccessible(false);
+        $validator->getType();
+    }
+
+    /**
+     * Test if the type getter throws when the property is not of the correct
+     * type.
+     *
+     * @return void
+     * @expectedException \LogicException
+     * @expectedExceptionMessage Validator should be callable!
+     * @requires PHP 5.4
+     */
+    public function testInvalidValidatorCallable()
+    {
+        $validator = clone $this->validator;
+        $reflection = new \ReflectionObject($validator);
+        $property = $reflection->getProperty('validator');
+        $property->setAccessible(true);
+        $property->setValue($validator, null);
+        $property->setAccessible(false);
+        $validator->validate('something');
+    }
+
+    /**
      * Test that the type method is deprecated.
      *
      * @requires PHP 5.4
@@ -188,8 +228,9 @@ abstract class TestBase extends \PHPUnit_Framework_TestCase
                     $validation
                 ),
                 "Test failed for validation number {$validationNr}. Value supplied: ("
-                    . gettype(current($validation)) . ') '
-                    . var_export(current($validation), true) . "; Expected: {$this->validator}"
+                . gettype(current($validation)) . ') '
+                . var_export(current($validation), true)
+                . "; Expected: {$this->validator}"
             );
 
             $message = $this->validator->getMessage();

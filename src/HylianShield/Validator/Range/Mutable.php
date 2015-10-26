@@ -34,11 +34,9 @@ abstract class Mutable extends \HylianShield\Validator\Range
         if ((isset($minLength) && !(is_int($minLength) || is_float($minLength)))
             || (isset($maxLength) && !(is_int($maxLength) || is_float($maxLength)))
         ) {
-            // @codeCoverageIgnoreStart
             throw new InvalidArgumentException(
                 'Min and max length should be of type integer or type float.'
             );
-            // @codeCoverageIgnoreEnd
         }
 
         $this->minLength = $minLength;

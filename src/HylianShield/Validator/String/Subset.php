@@ -110,11 +110,9 @@ abstract class Subset extends \HylianShield\Validator\Range\Mutable
     {
         // Check if the implementation is in place.
         if (!is_array($this->ranges) || empty($this->ranges)) {
-            // @codeCoverageIgnoreStart
             throw new LogicException(
                 'No character ranges implemented. Expected list of ranges in $this->ranges.'
             );
-            // @codeCoverageIgnoreEnd
         }
 
         $rv = array();
@@ -123,12 +121,10 @@ abstract class Subset extends \HylianShield\Validator\Range\Mutable
         // Walk through all ranges.
         foreach ($this->ranges as $range) {
             if (!is_array($range) || count($range) !== 2) {
-                // @codeCoverageIgnoreStart
                 throw new LogicException(
                     'Invalid range encountered: (' . gettype($range) . ') '
                     . var_export($range, true)
                 );
-                // @codeCoverageIgnoreEnd
             }
 
             list($start, $end) = $range;

@@ -26,12 +26,13 @@ class LogicalOr extends \HylianShield\Validator\LogicalGate
      * Initialize the validator.
      *
      * @param array $validators
+     * @return \Closure
      */
     final protected function createValidator(array $validators = array())
     {
         // Create a custom validator that returns true on the first match.
         // Since it is OR, the first match will suffice.
-        $this->validator = function (
+        return function (
             $value,
             ContextInterface $context
         ) use (
