@@ -1,6 +1,14 @@
 <?php
 /**
  * An instruction set for network validators.
+ * The instruction set is meant to process the definition of a network
+ * protocol into a set of validation rules and parsers to process URLs into
+ * data that the validators can understand.
+ *
+ * The internally registered instructions are therefore highly dependent on
+ * configuration, which creates the possibility to implement highly
+ * configurable network validators, while the validators themselves stay true
+ * to a simple job: validating input.
  *
  * @package HylianShield
  * @subpackage Validator
