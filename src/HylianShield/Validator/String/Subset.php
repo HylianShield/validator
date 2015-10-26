@@ -34,7 +34,7 @@ abstract class Subset extends \HylianShield\Validator\Range\Mutable
      *
      * @var callable $lengthCheck
      */
-    protected $lengthCheck = 'mb_strlen';
+    protected $lengthCheck = 'checkLength';
 
     /**
      * The hexadecimal boundaries of the active ranges.
@@ -42,6 +42,17 @@ abstract class Subset extends \HylianShield\Validator\Range\Mutable
      * @var array $ranges
      */
     protected $ranges = array();
+
+    /**
+     * Check the length of the given string.
+     *
+     * @param string $string
+     * @return int
+     */
+    public function checkLength($string)
+    {
+        return mb_strlen($string, static::ENCODING);
+    }
 
     /**
      * Create a validator based on the ranges written in the current validator.
@@ -57,6 +68,10 @@ abstract class Subset extends \HylianShield\Validator\Range\Mutable
         // Create a pattern based on the active range of this subset.
         $pattern = preg_quote(implode('', $this->getRange()), '/');
         $pattern = "/^[{$pattern}]+$/um";
+
+        if (is_string($this->lengthCheck)) {
+            $this->lengthCheck = array($this, $this->lengthCheck);
+        }
 
         // If the internal and current regex encoding don't match, use a specialized validator.
         if ($encoding !== $originalEncoding) {
