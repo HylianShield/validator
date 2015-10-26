@@ -1,5 +1,7 @@
 # Validator
 
+[![Join the chat at https://gitter.im/HylianShield/validator](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/HylianShield/validator?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 HylianShield will barricade nasty data from your application. It tries to solve this by supplying powerful validators.
 
 Data validation is not just about keeping your application secure. Although it should help you determine if data was malformed, it will also help you write stricter and less buggy code.
