@@ -24,7 +24,7 @@ use \HylianShield\Validator\Url\Network\Parser\QueryParser;
 use \HylianShield\Validator\Url\Network\Parser\UrlStringParser;
 use \HylianShield\Validator\Url\Network\Rule\AllowedParametersRule;
 use \HylianShield\Validator\Url\Network\Rule\HostRule;
-use \HylianShield\Validator\Url\Network\Rule\InvalidParametersRule;
+use \HylianShield\Validator\Url\Network\Rule\IllegalParametersRule;
 use \HylianShield\Validator\Url\Network\Rule\PasswordRule;
 use \HylianShield\Validator\Url\Network\Rule\PathRule;
 use \HylianShield\Validator\Url\Network\Rule\PortRule;
@@ -198,7 +198,7 @@ class InstructionSet implements InstructionSetInterface
 
         if ($definition->hasInvalidParameters()) {
             $this->addRule(
-                InvalidParametersRule::fromDefinition($definition)
+                IllegalParametersRule::fromDefinition($definition)
             );
         }
 
