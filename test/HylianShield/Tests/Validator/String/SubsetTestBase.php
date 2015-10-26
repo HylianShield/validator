@@ -15,7 +15,7 @@ use \HylianShield\Validator\String\Subset;
 /**
  * SubsetTestBase.
  */
-class SubsetTestBase extends \HylianShield\Tests\Validator\TestBase
+abstract class SubsetTestBase extends \HylianShield\Tests\Validator\TestBase
 {
     /**
      * The name of our class to test.
@@ -37,6 +37,13 @@ class SubsetTestBase extends \HylianShield\Tests\Validator\TestBase
      * @var array $invalidCharacters
      */
     protected $invalidCharacters;
+
+    /**
+     * The checker for string lengths.
+     *
+     * @var callable $lengthChecker
+     */
+    private $lengthChecker;
 
     /**
      * Set up a common validator.
@@ -89,6 +96,76 @@ class SubsetTestBase extends \HylianShield\Tests\Validator\TestBase
             // Add this character as a validation that should fail.
             $this->validations[] = array($char, false);
         }
+    }
+
+    /**
+     * Getter for the lengthChecker property.
+     *
+     * @return callable
+     */
+    protected function getLengthChecker()
+    {
+        if (!isset($this->lengthChecker)) {
+            $reflection = new \ReflectionObject($this->validator);
+            $property = $reflection->getProperty('lengthCheck');
+            $property->setAccessible(true);
+            $this->lengthChecker = $property->getValue($this->validator);
+            $property->setAccessible(false);
+        }
+
+        return $this->lengthChecker;
+    }
+
+    /**
+     * Provide calls for the string length validation test.
+     *
+     * @return array
+     */
+    final public function stringLengthValidationProvider()
+    {
+        parent::setUp();
+
+        $reflection = new \ReflectionObject($this->validator);
+        $property = $reflection->getProperty('ranges');
+        $property->setAccessible(true);
+        $ranges = $property->getValue($this->validator);
+        $property->setAccessible(false);
+
+        $rv = array();
+
+        foreach ($ranges as $range) {
+            foreach ($range as $hex) {
+                $rv[] = array(
+                    html_entity_decode(
+                        '&#' . hexdec($hex) . ';',
+                        ENT_QUOTES,
+                        $reflection->getConstant('ENCODING')
+                    ),
+                    // Should be 1 in length.
+                    1
+                );
+            }
+        }
+
+        return $rv;
+    }
+
+    /**
+     * Test different string lengths using the string length checker.
+     *
+     * @param string $string
+     * @param integer $length
+     * @dataProvider stringLengthValidationProvider
+     */
+    final public function testStringLength($string, $length)
+    {
+        $this->assertEquals(
+            $length,
+            call_user_func(
+                $this->getLengthChecker(),
+                $string
+            )
+        );
     }
 
     /**
