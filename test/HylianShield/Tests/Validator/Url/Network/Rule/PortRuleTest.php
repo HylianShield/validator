@@ -8,7 +8,7 @@
 
 namespace HylianShield\Tests\Validator\Url\Network\Rule;
 
-use HylianShield\Validator\Url\Network\Rule\PortRule;
+use \HylianShield\Validator\Url\Network\Rule\PortRule;
 
 /**
  * Test the port rule.

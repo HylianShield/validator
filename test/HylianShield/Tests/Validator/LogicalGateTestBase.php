@@ -8,7 +8,6 @@
 
 namespace HylianShield\Tests\Validator;
 
-use HylianShield\ValidatorInterface;
 use \ReflectionClass;
 use \HylianShield\Validator;
 
