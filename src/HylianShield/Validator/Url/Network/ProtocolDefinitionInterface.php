@@ -76,12 +76,12 @@ interface ProtocolDefinitionInterface
     public function hasAllowedParameters();
 
     /**
-     * Getter for the invalidParameters property.
+     * Getter for the illegalParameters property.
      *
      * @return array
-     * @throws \LogicException when property invalidParameters is not set.
+     * @throws \LogicException when property illegalParameters is not set.
      */
-    public function getInvalidParameters();
+    public function getIllegalParameters();
 
     /**
      * Whether the definition holds invalid parameters.

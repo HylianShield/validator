@@ -65,9 +65,9 @@ class ProtocolDefinition implements ProtocolDefinitionInterface
     /**
      * A list of invalid query parameters.
      *
-     * @var array $invalidParameters
+     * @var array $illegalParameters
      */
-    protected $invalidParameters = array();
+    protected $illegalParameters = array();
 
     /**
      * A list of required query parameters.
@@ -315,20 +315,20 @@ class ProtocolDefinition implements ProtocolDefinitionInterface
     }
 
     /**
-     * Getter for the invalidParameters property.
+     * Getter for the illegalParameters property.
      *
      * @return array
-     * @throws \LogicException when property invalidParameters is not set.
+     * @throws \LogicException when property illegalParameters is not set.
      */
-    public function getInvalidParameters()
+    public function getIllegalParameters()
     {
-        if (!isset($this->invalidParameters)) {
+        if (!isset($this->illegalParameters)) {
             throw new \LogicException(
-                'Missing property invalidParameters'
+                'Missing property illegalParameters'
             );
         }
 
-        return $this->invalidParameters;
+        return $this->illegalParameters;
     }
 
     /**
@@ -338,18 +338,18 @@ class ProtocolDefinition implements ProtocolDefinitionInterface
      */
     public function hasInvalidParameters()
     {
-        return (bool) $this->invalidParameters;
+        return (bool) $this->illegalParameters;
     }
 
     /**
-     * Setter for the invalidParameters property.
+     * Setter for the illegalParameters property.
      *
-     * @param array $invalidParameters
+     * @param array $illegalParameters
      * @return static
      */
-    public function setInvalidParameters(array $invalidParameters)
+    public function setIllegalParameters(array $illegalParameters)
     {
-        $this->invalidParameters = $invalidParameters;
+        $this->illegalParameters = $illegalParameters;
 
         return $this;
     }
@@ -403,7 +403,7 @@ class ProtocolDefinition implements ProtocolDefinitionInterface
     {
         return (
             $this->allowedParameters
-            || $this->invalidParameters
+            || $this->illegalParameters
             || $this->requiredParameters
         );
     }

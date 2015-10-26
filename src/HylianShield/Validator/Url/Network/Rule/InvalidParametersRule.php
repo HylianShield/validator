@@ -42,7 +42,7 @@ class InvalidParametersRule implements RuleInterface
     public static function fromDefinition(
         ProtocolDefinitionInterface $definition
     ) {
-        return new static($definition->getInvalidParameters());
+        return new static($definition->getIllegalParameters());
     }
 
     /**

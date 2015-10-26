@@ -254,7 +254,7 @@ class CustomProtocolTest extends \HylianShield\Tests\Validator\TestBase
     public function testInvalidParameters(ProtocolDefinition $definition)
     {
         $invalidParameters = array('sword', 'shield', 'boomerang', 'bomb');
-        $definition->setInvalidParameters($invalidParameters);
+        $definition->setIllegalParameters($invalidParameters);
 
         $base = 'hyr://goron.shop/stock?';
 
