@@ -8,7 +8,7 @@
 
 namespace HylianShield\Validator;
 
-use HylianShield\Validator\Context\ContextInterface;
+use \HylianShield\Validator\Context\ContextInterface;
 
 /**
  * CoreFunction.

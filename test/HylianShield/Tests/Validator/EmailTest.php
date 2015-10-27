@@ -38,4 +38,27 @@ class EmailTest extends \HylianShield\Tests\Validator\TestBase
         array('x+1234@mail.issuetracker.com', true),
         array('€αβγδε@woop.woop.woop', false)
     );
+
+    /**
+     * Test that the constructor throws when the filter is mis-configured.
+     *
+     * @return void
+     * @expectedException \LogicException
+     * @expectedExceptionMessage Invalid filter configured!
+     * @requires PHP 5.4
+     */
+    public function testIllegalFilter()
+    {
+        $validator = clone $this->validator;
+        $reflection = new \ReflectionObject($validator);
+
+        $property = $reflection->getProperty('filter');
+        $property->setAccessible(true);
+        $property->setValue($validator, null);
+        $property->setAccessible(false);
+
+        $reflection
+            ->getConstructor()
+            ->invoke($validator);
+    }
 }

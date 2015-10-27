@@ -8,7 +8,7 @@
 
 namespace HylianShield\Validator;
 
-use HylianShield\Validator\Context\ContextInterface;
+use \HylianShield\Validator\Context\ContextInterface;
 
 /**
  * LogicalXor.
@@ -26,12 +26,13 @@ class LogicalXor extends \HylianShield\Validator\LogicalGate
      * Initialize the validator.
      *
      * @param array $validators
+     * @return \Closure
      */
     final protected function createValidator(array $validators = array())
     {
         // Create a custom validator.
         // Since it is XOR, only one match should happen.
-        $this->validator = function (
+        return function (
             $value,
             ContextInterface $context
         ) use (

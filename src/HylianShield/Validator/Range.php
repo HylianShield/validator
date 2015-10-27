@@ -8,8 +8,6 @@
 
 namespace HylianShield\Validator;
 
-use \LogicException;
-
 /**
  * Range.
  */
@@ -39,7 +37,7 @@ abstract class Range extends \HylianShield\Validator
     /**
      * The validator.
      *
-     * @var callable $validator
+     * @var \Closure $validator
      */
     protected $validator;
 
@@ -53,94 +51,186 @@ abstract class Range extends \HylianShield\Validator
     /**
      * Initialize the validator.
      *
-     * @return void
+     * @return \Closure
      */
-    final protected function initialize() {
+    final protected function initialize()
+    {
+        // Forward validator creation logic to concrete validators.
         $validator = $this->createValidator();
+        $lengthCheck = $this->lengthCheck;
 
-        if (!is_callable($validator)) {
-            // @codeCoverageIgnoreStart
-            throw new LogicException('Validator should be callable!');
-            // @codeCoverageIgnoreEnd
-        }
-
-        if (!is_callable($this->lengthCheck)) {
-            // @codeCoverageIgnoreStart
-            throw new LogicException('Length checker should be callable!');
-            // @codeCoverageIgnoreEnd
-        }
-
-        $lengthCheck =& $this->lengthCheck;
-        $minLength =& $this->minLength;
-        $maxLength =& $this->maxLength;
+        $minLength = $this->minLength;
+        $maxLength = $this->maxLength;
 
         // We create a number of scenarios to optimize validators.
         // The first one doesn't require a length check at all.
-        if (!isset($minLength) && !isset($maxLength)) {
-            $this->validator = $validator;
-        } elseif (!isset($minLength)) {
-            // We only need to check the max length here.
-            $this->validator = function ($value) use ($validator, $lengthCheck, $maxLength) {
-                // Check if the basic validation validates.
-                if (!call_user_func_array($validator, array($value))) {
-                    return false;
-                }
-
-                // Check if the maximum length validates.
-                if (call_user_func_array($lengthCheck, array($value)) > $maxLength) {
-                    return false;
-                }
-
-                return true;
-            };
-        } elseif (!isset($maxLength)) {
-            // We only need to check the min length here.
-            $this->validator = function ($value) use ($validator, $lengthCheck, $minLength) {
-                // Check if the basic validation validates.
-                if (!call_user_func_array($validator, array($value))) {
-                    return false;
-                }
-
-                // Check if the minimum length validates.
-                if (call_user_func_array($lengthCheck, array($value)) < $minLength) {
-                    return false;
-                }
-
-                return true;
-            };
-        } else {
-            $this->validator = function (
-                $value
-            ) use (
-                $validator,
-                $minLength,
-                $maxLength,
-                $lengthCheck
-            ) {
-                // Check if the basic validation validates.
-                if (!call_user_func_array($validator, array($value))) {
-                    return false;
-                }
-
-                // Check if the minimum length validates.
-                // Cache the length, in case maxLength needs it.
-                if ($minLength !== null
-                    && ($length = call_user_func_array($lengthCheck, array($value))) < $minLength
-                ) {
-                    return false;
-                }
-
-                // Check if the maximum length validates.
-                // Use a cached version of the length, if available, or trigger the length check.
-                if ($maxLength !== null
-                    && (isset($length) ? $length : call_user_func_array($lengthCheck, array($value))) > $maxLength
-                ) {
-                    return false;
-                }
-
-                return true;
-            };
+        if (!isset($this->minLength) && !isset($this->maxLength)) {
+            return $this->validator = $this->createBasicValidator($validator);
         }
+
+        if (!isset($minLength)) {
+            // We only need to check the max length here.
+            return $this->validator = $this->createMaximalLengthValidator(
+                $validator,
+                $lengthCheck
+            );
+        }
+
+        if (!isset($maxLength)) {
+            // We only need to check the min length here.
+            return $this->validator = $this->createMinimalLengthValidator(
+                $validator,
+                $lengthCheck
+            );
+        }
+
+        return $this->validator = $this->createRangedValidator(
+            $validator,
+            $lengthCheck
+        );
+    }
+
+    /**
+     * Create a basic validator without length checks.
+     *
+     * @param callable $validator
+     * @return \Closure
+     * @throws \InvalidArgumentException when $validator is not a callable
+     */
+    private function createBasicValidator($validator)
+    {
+        if (!is_callable($validator)) {
+            throw new \InvalidArgumentException(
+                'Validator should be callable!'
+            );
+        }
+
+        /**
+         * Internal validator.
+         *
+         * @param mixed $value
+         * @return bool
+         */
+        return function ($value) use ($validator) {
+            return (bool) $validator($value);
+        };
+    }
+
+    /**
+     * Create a validator for the minimal length of the range.
+     *
+     * @param callable $validator
+     * @param callable $lengthCheck
+     * @return \Closure
+     * @throws \InvalidArgumentException when $validator is not a callable
+     * @throws \InvalidArgumentException when $lengthCheck is not a callable
+     */
+    private function createMinimalLengthValidator($validator, $lengthCheck)
+    {
+        if (!is_callable($validator)) {
+            throw new \InvalidArgumentException(
+                'Validator should be callable!'
+            );
+        }
+
+        if (!is_callable($this->lengthCheck)) {
+            throw new \InvalidArgumentException(
+                'Length checker should be callable!'
+            );
+        }
+
+        $minLength = $this->minLength;
+
+        /**
+         * Internal validator.
+         *
+         * @param mixed $value
+         * @return bool
+         */
+        return function ($value) use ($validator, $lengthCheck, $minLength) {
+            return $validator($value) && $lengthCheck($value) >= $minLength;
+        };
+    }
+
+    /**
+     * Create a validator for the maximal length of the range.
+     *
+     * @param callable $validator
+     * @param callable $lengthCheck
+     * @return \Closure
+     * @throws \InvalidArgumentException when $validator is not a callable
+     * @throws \InvalidArgumentException when $lengthCheck is not a callable
+     */
+    private function createMaximalLengthValidator($validator, $lengthCheck)
+    {
+        if (!is_callable($validator)) {
+            throw new \InvalidArgumentException(
+                'Validator should be callable!'
+            );
+        }
+
+        if (!is_callable($this->lengthCheck)) {
+            throw new \InvalidArgumentException(
+                'Length checker should be callable!'
+            );
+        }
+
+        $maxLength = $this->maxLength;
+
+        /**
+         * Internal validator.
+         *
+         * @param mixed $value
+         * @return bool
+         */
+        return function ($value) use ($validator, $lengthCheck, $maxLength) {
+            return $validator($value) && $lengthCheck($value) <= $maxLength;
+        };
+    }
+
+    /**
+     * Create a validator for the minimal length and maximal of the range.
+     *
+     * @param callable $validator
+     * @param callable $lengthCheck
+     * @return \Closure
+     * @throws \InvalidArgumentException when $validator is not a callable
+     * @throws \InvalidArgumentException when $lengthCheck is not a callable
+     */
+    private function createRangedValidator($validator, $lengthCheck)
+    {
+        if (!is_callable($validator)) {
+            throw new \InvalidArgumentException(
+                'Validator should be callable!'
+            );
+        }
+
+        if (!is_callable($this->lengthCheck)) {
+            throw new \InvalidArgumentException(
+                'Length checker should be callable!'
+            );
+        }
+
+        $minLength = $this->minLength;
+        $maxLength = $this->maxLength;
+
+        /**
+         * Internal validator.
+         *
+         * @param mixed $value
+         * @return bool
+         */
+        return function ($value) use (
+            $validator,
+            $lengthCheck,
+            $minLength,
+            $maxLength
+        ) {
+            return $validator($value) && (
+                ($length = $lengthCheck($value)) >= $minLength
+                && $length <= $maxLength
+            );
+        };
     }
 
     /**
@@ -148,16 +238,17 @@ abstract class Range extends \HylianShield\Validator
      *
      * @return callable
      */
-    protected function createValidator() {
+    protected function createValidator()
+    {
         return $this->validator;
     }
 
     /**
-     * Return an indentifier.
+     * Return an identifier.
      *
      * @return string
      */
-    public function __tostring()
+    public function __toString()
     {
         $min = $this->minLength === null
             ? '_'

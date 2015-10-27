@@ -72,11 +72,11 @@ class Regexp extends \HylianShield\Validator
     }
 
     /**
-     * Return an indentifier.
+     * Return an identifier.
      *
      * @return string
      */
-    final public function __tostring()
+    final public function __toString()
     {
         return "{$this->type}:{$this->pattern}";
     }

@@ -51,4 +51,33 @@ class CoreArrayTest extends \HylianShield\Tests\Validator\TestBase
         $this->validations[] = array(new \ArrayObject, false);
         parent::setUp();
     }
+
+    /**
+     * Provide illegal constructor arguments.
+     *
+     * @return array
+     */
+    public function illegalConstructorArgumentsProvider()
+    {
+        return array(
+            array(null, 'aap'),
+            array(12, 'aap'),
+            array('aap', null),
+            array('aap', 12)
+        );
+    }
+
+    /**
+     * Test that the constructor throws an invalid argument exception.
+     *
+     * @param mixed $min
+     * @param mixed $max
+     * @return void
+     * @dataProvider illegalConstructorArgumentsProvider
+     * @expectedException \InvalidArgumentException
+     */
+    public function testInvalidConstructorArguments($min, $max)
+    {
+        new CoreArray($min, $max);
+    }
 }

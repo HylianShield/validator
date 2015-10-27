@@ -1,4 +1,5 @@
 language: php
+sudo: false
 php:
   - 5.3
   - 5.4
@@ -13,3 +14,10 @@ script:
   - phpunit -c test/phpunit.xml
 after_script:
   - php vendor/bin/coveralls -v
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/669c175b0489f1325449
+    on_success: always
+    on_failure: always
+    on_start: always

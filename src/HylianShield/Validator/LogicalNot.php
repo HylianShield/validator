@@ -58,7 +58,7 @@ class LogicalNot extends \HylianShield\Validator
      *
      * @return string
      */
-    final public function __tostring()
+    final public function __toString()
     {
         return call_user_func_array($this->gateType, array());
     }

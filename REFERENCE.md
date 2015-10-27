@@ -69,13 +69,13 @@ echo $validator; // integer(1, 100)
 - `CoreClass\Method(string $class)`
 
 ## Number
-- `Float([integer $minLength][, integer $maxLength])`
+- `Float([integer|float $minLength][, integer|float $maxLength])`
 - `Float\Negative`
 - `Float\Positive`
 - `Integer([integer $minLength][, integer $maxLength])`
 - `Integer\Negative`
 - `Integer\Positive`
-- `Number([integer $minLength][, integer $maxLength])`
+- `Number([integer|float $minLength][, integer|float $maxLength])`
 - `Number\Negative`
 - `Number\Positive`
 
@@ -91,16 +91,17 @@ echo $validator; // integer(1, 100)
 - `Url\Network\Http`
 - `Url\Network\Https`
 - `Url\Network\Webpage`
+- `Url\Network\CustomProtocol(Url\Network\ProtocolDefinitionInterface $definition)`
 
 ## Email
 - `Email`
 
 ## LogicalGate
 
-- `LogicalAnd(\HylianShield\ValidatorÌnterface $a, \HylianShield\ValidatorÌnterface $b, [, ...])`
-- `LogicalOr(\HylianShield\ValidatorÌnterface $a, \HylianShield\ValidatorÌnterface $b, [, ...])`
-- `LogicalXor(\HylianShield\ValidatorÌnterface $a, \HylianShield\ValidatorÌnterface $b)`
-- `LogicalNot(\HylianShield\ValidatorÌnterface $validator)`
+- `LogicalAnd(ValidatorÌnterface $a, ValidatorÌnterface $b, [, ...])`
+- `LogicalOr(ValidatorÌnterface $a, ValidatorÌnterface $b, [, ...])`
+- `LogicalXor(ValidatorÌnterface $a, ValidatorÌnterface $b)`
+- `LogicalNot(ValidatorÌnterface $validator)`
 
 ## Financial
 
