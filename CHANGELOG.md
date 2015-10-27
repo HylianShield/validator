@@ -1,3 +1,26 @@
+# v0.9.0
+
+- Fixed code complexity issues in `Range` and `Url\Network` validator.
+- Removed all instances of `@codeCoverageIgnoreStart` and patched unit tests accordingly.
+- Introduced `ProtocolDefinition` to specify network protocol definitions
+- Introduced `InstructionSet` to convert protocol definitions into rules and parsers
+- Added `CustomProtocol` network validator
+
+# v0.8.3
+
+- Fixed multi-byte length checks
+
+# v0.8.2
+
+- Restored code coverage to 100%
+- Split off interpolation of violation into `InterpolatableInterface` and `InterpolatableIndicationAbstract`
+- Added unit tests to cover validator context entities
+- Fixed unit test for validator abstract; added test for deprecated method calls when deprecated errors are suppressed
+
+# v0.8.1
+
+- Patched the Base64 validator
+
 # v0.8.0
 
 - Added an interface for validators
