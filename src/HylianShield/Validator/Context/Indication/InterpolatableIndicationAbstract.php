@@ -65,7 +65,7 @@ abstract class InterpolatableIndicationAbstract extends IndicationAbstract imple
 
         $interpolations = $this->getInterpolations();
 
-        // Ensure the longest keys fo first, for the best matches.
+        // Ensure the longest keys go first, for the best matches.
         krsort($interpolations);
 
         // Return an interpolated translation string.
