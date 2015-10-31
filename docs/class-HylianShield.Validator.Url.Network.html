@@ -62,9 +62,13 @@
 							</ul></li>
 				<li class="active"><a href="namespace-HylianShield.Validator.Url.html">Url<span></span></a>
 						<ul>
-				<li><a href="namespace-HylianShield.Validator.Url.Network.html">Network</a>
+				<li><a href="namespace-HylianShield.Validator.Url.Network.html">Network<span></span></a>
+						<ul>
+				<li><a href="namespace-HylianShield.Validator.Url.Network.Parser.html">Parser</a>
 						</li>
-							</ul></li></ul></li></ul></li>
+				<li><a href="namespace-HylianShield.Validator.Url.Network.Rule.html">Rule</a>
+						</li>
+							</ul></li></ul></li></ul></li></ul></li>
 			</ul>
 		</div>
 
@@ -147,6 +151,7 @@
 
 	<div>
 		<h4>Direct known subclasses</h4>
+			<a href="class-HylianShield.Validator.Url.Network.CustomProtocol.html">HylianShield\Validator\Url\Network\CustomProtocol</a>, 
 			<a href="class-HylianShield.Validator.Url.Network.Http.html">HylianShield\Validator\Url\Network\Http</a>, 
 			<a href="class-HylianShield.Validator.Url.Network.Https.html">HylianShield\Validator\Url\Network\Https</a>
 	</div>
@@ -162,7 +167,7 @@
 		<b>Namespace:</b> <a href="namespace-HylianShield.html">HylianShield</a>\<a href="namespace-HylianShield.Validator.html">Validator</a>\<a href="namespace-HylianShield.Validator.Url.html">Url</a><br>
 		
 
-		<b>Located at</b> <a href="source-class-HylianShield.Validator.Url.Network.html#11-230" title="Go to source code">HylianShield/Validator/Url/Network.php</a><br>
+		<b>Located at</b> <a href="source-class-HylianShield.Validator.Url.Network.html#18-177" title="Go to source code">HylianShield/Validator/Url/Network.php</a><br>
 	</div>
 
 
@@ -172,7 +177,7 @@
 	<tr data-order="__construct" id="___construct">
 
 		<td class="attributes"><code>
-			final public 
+			 public 
 			
 			
 			</code>
@@ -180,7 +185,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-HylianShield.Validator.Url.Network.html#86-229" title="Go to source code">__construct</a>( )</code>
+		<code><a href="source-class-HylianShield.Validator.Url.Network.html#115-125" title="Go to source code">__construct</a>( )</code>
 
 		<div class="description short">
 			
@@ -224,6 +229,287 @@
 
 
 
+	<table class="summary constants" id="constants">
+	<caption>Constants summary</caption>
+	<tr data-order="VIOLATION_PARSER" id="VIOLATION_PARSER">
+
+		<td class="attributes"><code>integer</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-HylianShield.Validator.Url.Network.html#23-29" title="Go to source code"><b>VIOLATION_PARSER</b></a>
+			</code>
+
+			<div class="description short">
+				
+<p>The violation code when a value was supplied to a parser, which could not be
+properly processed.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>The violation code when a value was supplied to a parser, which could not be
+properly processed.</p>
+
+
+			</div>
+		</td>
+		<td class="value"><div><a href="#VIOLATION_PARSER" class="anchor">#</a><code><span class="php-num">1</span></code></div></td>
+	</tr>
+	<tr data-order="VIOLATION_HOST" id="VIOLATION_HOST">
+
+		<td class="attributes"><code>integer</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-HylianShield.Validator.Url.Network.html#31-36" title="Go to source code"><b>VIOLATION_HOST</b></a>
+			</code>
+
+			<div class="description short">
+				
+<p>The violation code when the host index is missing.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>The violation code when the host index is missing.</p>
+
+
+			</div>
+		</td>
+		<td class="value"><div><a href="#VIOLATION_HOST" class="anchor">#</a><code><span class="php-num">2</span></code></div></td>
+	</tr>
+	<tr data-order="VIOLATION_MISSING_SCHEME" id="VIOLATION_MISSING_SCHEME">
+
+		<td class="attributes"><code>integer</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-HylianShield.Validator.Url.Network.html#38-43" title="Go to source code"><b>VIOLATION_MISSING_SCHEME</b></a>
+			</code>
+
+			<div class="description short">
+				
+<p>The violation code when the scheme index is missing.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>The violation code when the scheme index is missing.</p>
+
+
+			</div>
+		</td>
+		<td class="value"><div><a href="#VIOLATION_MISSING_SCHEME" class="anchor">#</a><code><span class="php-num">4</span></code></div></td>
+	</tr>
+	<tr data-order="VIOLATION_ILLEGAL_SCHEME" id="VIOLATION_ILLEGAL_SCHEME">
+
+		<td class="attributes"><code>integer</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-HylianShield.Validator.Url.Network.html#45-50" title="Go to source code"><b>VIOLATION_ILLEGAL_SCHEME</b></a>
+			</code>
+
+			<div class="description short">
+				
+<p>The violation code when the scheme is illegal.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>The violation code when the scheme is illegal.</p>
+
+
+			</div>
+		</td>
+		<td class="value"><div><a href="#VIOLATION_ILLEGAL_SCHEME" class="anchor">#</a><code><span class="php-num">8</span></code></div></td>
+	</tr>
+	<tr data-order="VIOLATION_EMPTY_PATH" id="VIOLATION_EMPTY_PATH">
+
+		<td class="attributes"><code>integer</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-HylianShield.Validator.Url.Network.html#52-57" title="Go to source code"><b>VIOLATION_EMPTY_PATH</b></a>
+			</code>
+
+			<div class="description short">
+				
+<p>The violation code when the path is empty.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>The violation code when the path is empty.</p>
+
+
+			</div>
+		</td>
+		<td class="value"><div><a href="#VIOLATION_EMPTY_PATH" class="anchor">#</a><code><span class="php-num">16</span></code></div></td>
+	</tr>
+	<tr data-order="VIOLATION_EMPTY_USER" id="VIOLATION_EMPTY_USER">
+
+		<td class="attributes"><code>integer</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-HylianShield.Validator.Url.Network.html#59-64" title="Go to source code"><b>VIOLATION_EMPTY_USER</b></a>
+			</code>
+
+			<div class="description short">
+				
+<p>The violation code when the user is empty.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>The violation code when the user is empty.</p>
+
+
+			</div>
+		</td>
+		<td class="value"><div><a href="#VIOLATION_EMPTY_USER" class="anchor">#</a><code><span class="php-num">32</span></code></div></td>
+	</tr>
+	<tr data-order="VIOLATION_EMPTY_PASSWORD" id="VIOLATION_EMPTY_PASSWORD">
+
+		<td class="attributes"><code>integer</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-HylianShield.Validator.Url.Network.html#66-71" title="Go to source code"><b>VIOLATION_EMPTY_PASSWORD</b></a>
+			</code>
+
+			<div class="description short">
+				
+<p>The violation code when the password is empty.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>The violation code when the password is empty.</p>
+
+
+			</div>
+		</td>
+		<td class="value"><div><a href="#VIOLATION_EMPTY_PASSWORD" class="anchor">#</a><code><span class="php-num">64</span></code></div></td>
+	</tr>
+	<tr data-order="VIOLATION_MISSING_PORT" id="VIOLATION_MISSING_PORT">
+
+		<td class="attributes"><code>integer</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-HylianShield.Validator.Url.Network.html#73-78" title="Go to source code"><b>VIOLATION_MISSING_PORT</b></a>
+			</code>
+
+			<div class="description short">
+				
+<p>The violation code when the port is missing.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>The violation code when the port is missing.</p>
+
+
+			</div>
+		</td>
+		<td class="value"><div><a href="#VIOLATION_MISSING_PORT" class="anchor">#</a><code><span class="php-num">128</span></code></div></td>
+	</tr>
+	<tr data-order="VIOLATION_ILLEGAL_PORT" id="VIOLATION_ILLEGAL_PORT">
+
+		<td class="attributes"><code>integer</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-HylianShield.Validator.Url.Network.html#80-85" title="Go to source code"><b>VIOLATION_ILLEGAL_PORT</b></a>
+			</code>
+
+			<div class="description short">
+				
+<p>The violation code when the port is illegal.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>The violation code when the port is illegal.</p>
+
+
+			</div>
+		</td>
+		<td class="value"><div><a href="#VIOLATION_ILLEGAL_PORT" class="anchor">#</a><code><span class="php-num">256</span></code></div></td>
+	</tr>
+	<tr data-order="VIOLATION_ALLOWED_PARAMETER" id="VIOLATION_ALLOWED_PARAMETER">
+
+		<td class="attributes"><code>integer</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-HylianShield.Validator.Url.Network.html#87-92" title="Go to source code"><b>VIOLATION_ALLOWED_PARAMETER</b></a>
+			</code>
+
+			<div class="description short">
+				
+<p>The violation code when a parameter was not allowed.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>The violation code when a parameter was not allowed.</p>
+
+
+			</div>
+		</td>
+		<td class="value"><div><a href="#VIOLATION_ALLOWED_PARAMETER" class="anchor">#</a><code><span class="php-num">512</span></code></div></td>
+	</tr>
+	<tr data-order="VIOLATION_INVALID_PARAMETER" id="VIOLATION_INVALID_PARAMETER">
+
+		<td class="attributes"><code>integer</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-HylianShield.Validator.Url.Network.html#94-99" title="Go to source code"><b>VIOLATION_INVALID_PARAMETER</b></a>
+			</code>
+
+			<div class="description short">
+				
+<p>The violation code when a parameter was blacklisted.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>The violation code when a parameter was blacklisted.</p>
+
+
+			</div>
+		</td>
+		<td class="value"><div><a href="#VIOLATION_INVALID_PARAMETER" class="anchor">#</a><code><span class="php-num">1024</span></code></div></td>
+	</tr>
+	<tr data-order="VIOLATION_REQUIRED_PARAMETER" id="VIOLATION_REQUIRED_PARAMETER">
+
+		<td class="attributes"><code>integer</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-HylianShield.Validator.Url.Network.html#101-106" title="Go to source code"><b>VIOLATION_REQUIRED_PARAMETER</b></a>
+			</code>
+
+			<div class="description short">
+				
+<p>The violation when a required parameter was missing.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>The violation when a required parameter was missing.</p>
+
+
+			</div>
+		</td>
+		<td class="value"><div><a href="#VIOLATION_REQUIRED_PARAMETER" class="anchor">#</a><code><span class="php-num">2048</span></code></div></td>
+	</tr>
+	</table>
 
 
 
@@ -242,6 +528,6 @@
 </div>
 </div>
 <script src="resources/combined.js?2724989544"></script>
-<script src="elementlist.js?986181166"></script>
+<script src="elementlist.js?396755229"></script>
 </body>
 </html>
