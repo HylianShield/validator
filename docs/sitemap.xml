@@ -66,6 +66,12 @@
 <url>
 	<loc>http://hylianshield.github.io/validator/docs/namespace-HylianShield.Validator.Url.Network.html</loc>
 </url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/namespace-HylianShield.Validator.Url.Network.Parser.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/namespace-HylianShield.Validator.Url.Network.Rule.html</loc>
+</url>
 
 
 <url>
@@ -237,10 +243,64 @@
 	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Url.Network.html</loc>
 </url>
 <url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Url.Network.CustomProtocol.html</loc>
+</url>
+<url>
 	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Url.Network.Http.html</loc>
 </url>
 <url>
 	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Url.Network.Https.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Url.Network.InstructionSet.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Url.Network.Parser.CallbackParser.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Url.Network.Parser.ParserAbstract.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Url.Network.Parser.PathParser.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Url.Network.Parser.QueryParser.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Url.Network.Parser.UrlStringParser.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Url.Network.ProtocolDefinition.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Url.Network.Rule.AllowedParametersRule.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Url.Network.Rule.HostRule.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Url.Network.Rule.IllegalParametersRule.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Url.Network.Rule.PasswordRule.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Url.Network.Rule.PathRule.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Url.Network.Rule.PortRule.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Url.Network.Rule.RequiredParametersRule.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Url.Network.Rule.RuleAbstract.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Url.Network.Rule.SchemeRule.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Url.Network.Rule.UserRule.html</loc>
 </url>
 <url>
 	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Url.Webpage.html</loc>
@@ -264,6 +324,21 @@
 	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Context.Indication.ViolationInterface.html</loc>
 </url>
 <url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Url.Network.InstructionSetInterface.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Url.Network.Parser.ParserInterface.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Url.Network.ProtocolDefinitionInterface.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Url.Network.Rule.RuleInterface.html</loc>
+</url>
+<url>
 	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.ValidatorInterface.html</loc>
+</url>
+<url>
+	<loc>http://hylianshield.github.io/validator/docs/class-HylianShield.Validator.Url.Network.Parser.ParserException.html</loc>
 </url>
 </urlset>
