@@ -1,5 +1,5 @@
 # Summary
 
 * [Welcome](welcome.md)
-* Installation
+* [Installation](installation.md)
 
