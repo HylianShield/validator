@@ -1,4 +1,3 @@
 # Summary
 
-* [Reference](reference.md)
 
