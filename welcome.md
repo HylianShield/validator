@@ -10,8 +10,6 @@ We recognize that PHP has no proper type hinting for scalar data types. This is 
 
 ## User guide
 
-- [How to play: An installation manual](INSTALLATION.md)
-- [API Docs: A completely generated API documentation](http://hylianshield.github.io/validator/)
 - [Use case: An example of the HylianShield validator in action](USECASE.md)
 - [Reference: An overview of the available validators and their arguments](REFERENCE.md)
 - [Debugging: Add some context and meaning to failing validations](DEBUGGING.md)
