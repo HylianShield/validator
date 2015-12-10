@@ -2,5 +2,5 @@
 
 * [Welcome](welcome.md)
 * [Installation](installation.md)
-* Usecase
+* [Usecase](usecase.md)
 
