@@ -11,8 +11,7 @@
     },
     {
       "name": "Jan-Marten de Boer",
-      "role": "Developer",
-      "email": "github@johmanx.com"
+      "role": "Developer"
     }
   ],
   "minimum-stability": "dev",

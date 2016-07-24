@@ -1,10 +1,19 @@
 <?php
-namespace HylianShield\Validator;
+namespace HylianShield\Validator\Collection;
 
+use HylianShield\Validator\ValidatorCollectionInterface;
+use HylianShield\Validator\ValidatorInterface;
 use SplObjectStorage;
 
-class ValidatorCollection implements ValidatorCollectionInterface
+abstract class AbstractValidatorCollection implements ValidatorCollectionInterface
 {
+    /**
+     * The type of collection.
+     *
+     * @var string
+     */
+    const COLLECTION_TYPE = 'abstract';
+
     /**
      * @var SplObjectStorage
      */
@@ -18,11 +27,17 @@ class ValidatorCollection implements ValidatorCollectionInterface
     private $identifier;
 
     /**
-     * ValidatorCollection constructor.
+     * Storage getter.
+     *
+     * @return SplObjectStorage|ValidatorInterface[]
      */
-    public function __construct()
+    final protected function getStorage(): SplObjectStorage
     {
-        $this->storage = new SplObjectStorage();
+        if ($this->storage === null) {
+            $this->storage = new SplObjectStorage();
+        }
+
+        return $this->storage;
     }
 
     /**
@@ -47,7 +62,7 @@ class ValidatorCollection implements ValidatorCollectionInterface
         $this->resetIdentifier();
 
         $this
-            ->storage
+            ->getStorage()
             ->attach($validator);
 
         return $this;
@@ -65,34 +80,10 @@ class ValidatorCollection implements ValidatorCollectionInterface
         $this->resetIdentifier();
 
         $this
-            ->storage
+            ->getStorage()
             ->detach($validator);
 
         return $this;
-    }
-
-    /**
-     * Validate the given subject.
-     *
-     * @param mixed $subject
-     * @return bool
-     */
-    public function validate($subject): bool
-    {
-        $validators = $this->storage;
-        $valid = $validators->count() > 0;
-
-        /** @var ValidatorInterface $validator */
-        foreach ($validators as $validator) {
-            $valid = $validator->validate($subject);
-
-            // No need to keep on checking.
-            if ($valid !== true) {
-                break;
-            }
-        }
-
-        return $valid;
     }
 
     /**
@@ -100,18 +91,19 @@ class ValidatorCollection implements ValidatorCollectionInterface
      *
      * @return string
      */
-    public function getIdentifier(): string
+    final public function getIdentifier(): string
     {
         if ($this->identifier === null) {
             /** @var ValidatorInterface[] $validators */
             $validators = [];
 
-            foreach ($this->storage as $validator) {
+            foreach ($this->getStorage() as $validator) {
                 $validators[] = $validator;
             }
 
             $this->identifier = sprintf(
-                '(%s)',
+                '%s(%s)',
+                static::COLLECTION_TYPE,
                 implode(
                     ', ',
                     array_map(
