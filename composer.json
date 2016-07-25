@@ -35,6 +35,7 @@
   "archive": {
     "exclude": [
       "tests",
+      "examples",
       ".gitignore",
       ".travis.yml",
       "phpunit.xml"
