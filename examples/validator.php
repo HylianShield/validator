@@ -56,13 +56,13 @@ $collection->addValidator($foo);
 $collection->addValidator($bar);
 
 
-echo var_export($collection->validate('Foo'), true); // true
-echo var_export($collection->validate('Bar'), true); // false
-echo var_export($collection->getIdentifier(), true); // "all(<Foo>, <Bar>)"
+echo var_export($collection->validate('Foo'), true) . PHP_EOL; // true
+echo var_export($collection->validate('Bar'), true) . PHP_EOL; // false
+echo var_export($collection->getIdentifier(), true) . PHP_EOL; // 'all(<Foo>, <Bar>)'
 
 $collection->removeValidator($foo);
 $collection->addValidator(new NotValidator($foo));
 
-echo var_export($collection->validate('Foo'), true); // false
-echo var_export($collection->validate('Bar'), true); // true
-echo var_export($collection->getIdentifier(), true); // "all(<Bar>, <not(<Foo>)>)"
+echo var_export($collection->validate('Foo'), true) . PHP_EOL; // false
+echo var_export($collection->validate('Bar'), true) . PHP_EOL; // true
+echo var_export($collection->getIdentifier(), true) . PHP_EOL; // 'all(<Bar>, <not(<Foo>)>)'
