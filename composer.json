@@ -32,6 +32,9 @@
       "HylianShield\\Tests\\Validator\\": "tests"
     }
   },
+  "suggest": {
+    "hylianshield/validator-pcre": "Use PCRE regular expressions as validator."
+  },
   "archive": {
     "exclude": [
       "tests",
