@@ -106,3 +106,73 @@ $notValidator->validate('somethingElse'); // true
 echo $validator->getIdentifier(); // something
 echo $notValidator->getIdentifier(); // not(<something>)
 ```
+
+## Anonymous validator
+
+As of PHP 7, PHP supports anonymous classes. One can easily create a
+custom validator without having to introduce a fully qualified class name
+for its validator.
+
+```php
+use HylianShield\Validator\ValidatorInterface;
+use Acme\User\UserManagerInterface;
+
+$userValidator = new class($userManager) implements ValidatorInterface {
+    /**
+     * @var UserManagerInterface
+     */
+    protected $userManager;
+    
+    /**
+     * Initialize a new user validator.
+     *
+     * @param UserManagerInterface $userManager
+     */*
+    public function __construct(UserManagerInterface $userManager)
+    {
+        $this->userManager = $userManager;
+    }
+    
+    /**
+     * Get the identifier for the validator.
+     *
+     * @return string
+     */
+    public function getIdentifier(): string
+    {
+        return 'user';
+    }
+
+    /**
+     * Validate the given subject.
+     *
+     * @param mixed $subject
+     * @return bool
+     */
+    public function validate($subject): bool
+    {
+        return $this->userManager->contains($subject);
+    }
+};
+```
+
+And with this you have created a validator that can assert if a given
+user exists.
+
+You could even combine it with existing validators.
+
+```php
+use HylianShield\Validator\Collection\MatchAllCollection;
+use Acme\User\Role\RoleValidator;
+use Acme\User\Role\AdminRole;
+
+$adminValidator = new MatchAllCollection(
+    $userValidator,
+    new RoleValidator(AdminRole::IDENTIFIER)
+);
+
+$adminValidator->validate($nonexistentUser); // false
+$adminValidator->validate($normalUser);      // false
+$adminValidator->validate($adminUser);       // true
+echo $adminValidator->getIdentifier();       // all(<user>, <role:admin>)
+```
