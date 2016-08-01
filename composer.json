@@ -7,11 +7,11 @@
   "authors": [
     {
       "name": "Remko Silvis",
-      "role": "Developer"
+      "role": "developer"
     },
     {
       "name": "Jan-Marten de Boer",
-      "role": "Developer"
+      "role": "developer"
     }
   ],
   "minimum-stability": "dev",
