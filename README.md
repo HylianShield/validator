@@ -1,28 +1,108 @@
-# Validator
+# HylianShield Validator
 
-[![Join the chat at https://gitter.im/HylianShield/validator](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/HylianShield/validator?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Build Status](https://travis-ci.org/HylianShield/validator.png?branch=master)](https://travis-ci.org/HylianShield/validator) [![Latest Stable Version](https://poser.pugx.org/hylianshield/validator/v/stable.png)](https://packagist.org/packages/hylianshield/validator) [![Coverage Status](https://coveralls.io/repos/HylianShield/validator/badge.svg?branch=master&service=github)](https://coveralls.io/github/HylianShield/validator?branch=master)
+The HylianShield validator is a validation package, built to create a
+common validator interface.
 
-HylianShield will barricade nasty data from your application. It tries to solve this by supplying powerful validators.
+Its current release is explicitly built with PHP7 in mind.
+When compared to its predecessor, the current version of the
+HylianShield validator package is stripped down to the bare essential
+needs for validation.
 
-Data validation is not just about keeping your application secure. Although it should help you determine if data was malformed, it will also help you write stricter and less buggy code.
+## Installation
 
-We recognize that PHP has no proper type hinting for scalar data types. This is a huge pain to deal with, since arguments that should accept scalar values, actually will support the `mixed` data type, meaning any and all data you find laying around in your application can be sent through there.
+`composer require hylianshield/validator:^2.0.0`
 
-## User guide
+## Configuration
 
-- [How to play: An installation manual](INSTALLATION.md)
-- [API Docs: A completely generated API documentation](http://hylianshield.github.io/validator/)
-- [Use case: An example of the HylianShield validator in action](USECASE.md)
-- [Reference: An overview of the available validators and their arguments](REFERENCE.md)
-- [Debugging: Add some context and meaning to failing validations](DEBUGGING.md)
-- [Frameworks: 1-2-3-go. Direct integration with your framework](FRAMEWORKS.md)
-- [Changelog: What changed in the last versions?](CHANGELOG.md)
-- [Contributing: How do I add a validator in the mix?](CONTRIBUTING.md)
+For this package, there is no configuration to consider.
 
-## Support
+## Validator
 
-To a fault, we support PHP 5.3, 5.4, 5.5 and 5.6, which are all unit tested using Travis CI.
+A validator consists of at least the following two methods:
 
-## TL;DR
+### getIdentifier
 
-HylianShield [*validator*](http://hylianshield.github.io/validator/) is an *awesome* project, works on your [*framework*](FRAMEWORKS.md) or *custom* code base. It uses [*composer*](INSTALLATION.md) as dependency manager, is hosted on [*packagist*](https://packagist.org/packages/hylianshield/validator). [#TravisCI](https://travis-ci.org/HylianShield/validator) #PHP5.3 #PHP5.4 #PHP5.5 #PHP5.6
+```php
+public function getIdentifier(): string
+```
+
+This method is used to create a unique identifier for the validator.
+It is of use when debugging behavior of validators or identifying 
+validators that have blocked out certain validation subjects.
+
+### validate
+
+```php
+public function validate($subject): bool
+```
+
+The validate method accepts a validation subject and returns whether the
+subject is or is not valid.
+
+## Validator Collection
+
+Besides an interface for validators to implement, a validator collection
+interface is exposed.
+
+This collection itself implements an interface that extends the validator
+interface. Therefore, a validator collection itself is a validator.
+
+Besides the shared functionality of a validator, it has a method to add
+a validator, as well as a method to remove a validator.
+
+If the `validate` method is called on a collection, it will validate
+against the validators inside the collection.
+
+Depending on which of the following collections is used, the validation
+result will differ:
+
+| Collection          | Result                                                  |
+|---------------------|---------------------------------------------------------|
+| MatchAllCollection  | Returns true when all internal validators return true.  |
+| MatchNoneCollection | Returns true when all internal validators return false. |
+| MatchAnyCollection  | Returns true when any internal validator returns true.  |
+
+Because a collection is a validator itself, it can accept another
+collection as a registered validator.
+
+**Note:** To not negatively impact performance, there is no test against
+registering collections recursively.
+Because of this, when a collection is poorly built, it may render
+function nesting overflows.
+
+Additionally, the collections keep nesting the formatting of identifiers.
+Given that a `MatchAnyCollection` holds validators with identifiers *Foo*
+and *Bar*, respectively, the identifier of the collection will be:
+
+```
+any(<Foo>, <Bar>)
+```
+
+If one would nest a level deeper, combined with `MatchAllCollection`,
+one can get the following:
+
+```
+any(<Foo>, all(<Bar>, <Baz>))
+```
+
+This particular validator will pass if the *Foo* validator passes, if
+both the *Bar* and *Baz* validators pass or if all three validators pass.
+
+## NotValidator
+
+When one wants to invert the validation of any given validator or
+collection, one can wrap it around a `NotValidator`.
+
+```php
+/** ValidatorInterface $validator */
+$notValidator = new NotValidator($validator);
+
+$validator->validate('something'); // true
+$notValidator->validate('something'); // false
+
+$validator->validate('somethingElse'); // false
+$notValidator->validate('somethingElse'); // true
+
+echo $validator->getIdentifier(); // something
+echo $notValidator->getIdentifier(); // not(<something>)
+```
