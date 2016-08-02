@@ -166,8 +166,9 @@ use HylianShield\Validator\Collection\MatchAllCollection;
 use Acme\User\Role\RoleValidator;
 use Acme\User\Role\AdminRole;
 
-$adminValidator = new MatchAllCollection(
-    $userValidator,
+$adminValidator = new MatchAllCollection();
+$adminValidator->addValidator($userValidator);
+$adminValidator->addValidator(
     new RoleValidator(AdminRole::IDENTIFIER)
 );
 
