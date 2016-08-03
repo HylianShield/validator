@@ -55,17 +55,14 @@ $collection = new MatchAllCollection();
 $collection->addValidator($foo);
 $collection->addValidator($bar);
 
-var_dump(
-    $collection->validate('Foo'), // true
-    $collection->validate('Bar'), // false
-    $collection->getIdentifier()  // "all(<Foo>, <Bar>)"
-);
+
+echo var_export($collection->validate('Foo'), true) . PHP_EOL; // true
+echo var_export($collection->validate('Bar'), true) . PHP_EOL; // false
+echo var_export($collection->getIdentifier(), true) . PHP_EOL; // 'all(<Foo>, <Bar>)'
 
 $collection->removeValidator($foo);
 $collection->addValidator(new NotValidator($foo));
 
-var_dump(
-    $collection->validate('Foo'), // false
-    $collection->validate('Bar'), // true
-    $collection->getIdentifier()  // "all(<Bar>, <not(<Foo>)>)"
-);
+echo var_export($collection->validate('Foo'), true) . PHP_EOL; // false
+echo var_export($collection->validate('Bar'), true) . PHP_EOL; // true
+echo var_export($collection->getIdentifier(), true) . PHP_EOL; // 'all(<Bar>, <not(<Foo>)>)'
