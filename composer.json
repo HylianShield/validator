@@ -7,11 +7,11 @@
   "authors": [
     {
       "name": "Remko Silvis",
-      "role": "Developer"
+      "role": "developer"
     },
     {
       "name": "Jan-Marten de Boer",
-      "role": "Developer"
+      "role": "developer"
     }
   ],
   "minimum-stability": "dev",
@@ -31,6 +31,9 @@
     "psr-4": {
       "HylianShield\\Tests\\Validator\\": "tests"
     }
+  },
+  "suggest": {
+    "hylianshield/validator-pcre": "Use PCRE regular expressions as validator."
   },
   "archive": {
     "exclude": [
