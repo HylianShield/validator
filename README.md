@@ -196,5 +196,5 @@ $filtered = array_filter($input, new Invoker($validator));
 
 This also works for validator collections.
 
-See [the code example](examples/invoker.php) for an implementation of the
+See invoker code example under `examples/` for an implementation of the
 invoker.
