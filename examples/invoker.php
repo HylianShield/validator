@@ -5,10 +5,9 @@ use HylianShield\Validator\ValidatorInterface;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$minimumAge = 18;
-$now        = new DateTimeImmutable('now');
+$now = new DateTimeImmutable('now');
 
-$ageValidator = new class($minimumAge, $now) implements ValidatorInterface {
+$ageValidator = new class(18, $now) implements ValidatorInterface {
     /**
      * @var int
      */
@@ -76,7 +75,7 @@ $disallowedAges = array_filter(
     new Invoker(new NotValidator($ageValidator))
 );
 
-echo sprintf('Minimum age: %s', $minimumAge) . PHP_EOL;
+echo sprintf('Validator: %s', $ageValidator->getIdentifier()) . PHP_EOL;
 
 $outputAge = function (DateTimeInterface $date) use ($now) {
     $diff = $date->diff($now, false);
