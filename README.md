@@ -10,7 +10,7 @@ needs for validation.
 
 ## Installation
 
-`composer require hylianshield/validator:^2.0.0`
+`composer require hylianshield/validator:^2.1.0`
 
 ## Configuration
 
@@ -177,3 +177,24 @@ $adminValidator->validate($normalUser);      // false
 $adminValidator->validate($adminUser);       // true
 echo $adminValidator->getIdentifier();       // all(<user>, <role:admin>)
 ```
+
+## Invoker
+
+In previous versions of this package, one could pass a validator on to
+functions like `array_filter` and `array_map`.
+
+To properly separate concerns in code and to keep the validator interface
+clean for implementations, this is now solved by a separate `Invoker` object.
+
+One simply wraps the validator like so:
+
+```php
+use HylianShield\Validator\Invoker;
+
+$filtered = array_filter($input, new Invoker($validator));
+```
+
+This also works for validator collections.
+
+See [the code example](examples/invoker.php) for an implementation of the
+invoker.
