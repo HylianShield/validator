@@ -4,11 +4,14 @@ namespace HylianShield\Validator\Collection;
 class MatchAllCollection extends AbstractValidatorCollection
 {
     /**
-     * The type of collection.
+     * Get the type of collection.
      *
-     * @var string
+     * @return string
      */
-    const COLLECTION_TYPE = 'all';
+    public function getCollectionType(): string
+    {
+        return 'all';
+    }
 
     /**
      * Validate the given subject.

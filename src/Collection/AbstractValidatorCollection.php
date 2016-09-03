@@ -8,13 +8,6 @@ use SplObjectStorage;
 abstract class AbstractValidatorCollection implements ValidatorCollectionInterface
 {
     /**
-     * The type of collection.
-     *
-     * @var string
-     */
-    const COLLECTION_TYPE = 'abstract';
-
-    /**
      * @var SplObjectStorage
      */
     private $storage;
@@ -25,6 +18,13 @@ abstract class AbstractValidatorCollection implements ValidatorCollectionInterfa
      * @var string
      */
     private $identifier;
+
+    /**
+     * Get the type of collection.
+     *
+     * @return string
+     */
+    abstract public function getCollectionType(): string;
 
     /**
      * Storage getter.
@@ -103,7 +103,7 @@ abstract class AbstractValidatorCollection implements ValidatorCollectionInterfa
 
             $this->identifier = sprintf(
                 '%s(%s)',
-                static::COLLECTION_TYPE,
+                $this->getCollectionType(),
                 implode(
                     ', ',
                     array_map(
