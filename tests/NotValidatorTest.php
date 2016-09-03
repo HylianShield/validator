@@ -13,7 +13,7 @@ class NotValidatorTest extends AbstractValidatorTestCase
     public function testGetIdentifier()
     {
         $validator = new NotValidator(
-            $this->createValidatorMock(static::VALIDATION_SUBJECT)
+            $this->createValidatorMock($this->getValidationSubject())
         );
 
         $this->assertRegExp('/^not\(<.+>\)$/', $validator->getIdentifier());
@@ -27,10 +27,10 @@ class NotValidatorTest extends AbstractValidatorTestCase
     public function testInvertedValidation()
     {
         $validator = new NotValidator(
-            $this->createValidatorMock(static::VALIDATION_SUBJECT)
+            $this->createValidatorMock($this->getValidationSubject())
         );
 
-        $this->assertFalse($validator->validate(static::VALIDATION_SUBJECT));
+        $this->assertFalse($validator->validate($this->getValidationSubject()));
         $this->assertTrue($validator->validate('Clearly not a valid value'));
     }
 }

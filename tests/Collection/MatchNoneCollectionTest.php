@@ -25,7 +25,7 @@ class MatchNoneCollectionTest extends AbstractValidatorCollectionTest
     public function testValidate(AbstractValidatorCollection $collection)
     {
         $this->assertInstanceOf(MatchNoneCollection::class, $collection);
-        $this->assertTrue($collection->validate(static::VALIDATION_SUBJECT));
+        $this->assertTrue($collection->validate($this->getValidationSubject()));
 
         $collection->addValidator($this->createValidatorMock('Foo'));
         $collection->addValidator($this->createValidatorMock('Bar'));

@@ -4,11 +4,14 @@ namespace HylianShield\Validator\Collection;
 class MatchNoneCollection extends AbstractValidatorCollection
 {
     /**
-     * The type of collection.
+     * Get the type of collection.
      *
-     * @var string
+     * @return string
      */
-    const COLLECTION_TYPE = 'none';
+    public function getCollectionType(): string
+    {
+        return 'none';
+    }
 
     /**
      * Validate the given subject.

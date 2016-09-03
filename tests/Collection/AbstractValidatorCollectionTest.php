@@ -4,7 +4,7 @@ namespace HylianShield\Tests\Validator\Collection;
 use HylianShield\Tests\Validator\AbstractValidatorTestCase;
 use HylianShield\Validator\Collection\AbstractValidatorCollection;
 
-class AbstractValidatorCollectionTest extends AbstractValidatorTestCase
+abstract class AbstractValidatorCollectionTest extends AbstractValidatorTestCase
 {
     /**
      * Create a collection.
@@ -48,14 +48,14 @@ class AbstractValidatorCollectionTest extends AbstractValidatorTestCase
         $collection->addValidator($baz);
 
         $this->assertEquals(
-            sprintf('%s(<Bar>, <Baz>)', $collection::COLLECTION_TYPE),
+            sprintf('%s(<Bar>, <Baz>)', $collection->getCollectionType()),
             $collection->getIdentifier()
         );
 
         $collection->removeValidator($bar);
 
         $this->assertEquals(
-            sprintf('%s(<Baz>)', $collection::COLLECTION_TYPE),
+            sprintf('%s(<Baz>)', $collection->getCollectionType()),
             $collection->getIdentifier()
         );
     }
