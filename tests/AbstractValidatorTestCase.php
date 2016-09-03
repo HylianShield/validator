@@ -5,14 +5,15 @@ use HylianShield\Validator\ValidatorInterface;
 use PHPUnit_Framework_MockObject_MockObject;
 use PHPUnit_Framework_TestCase;
 
-class AbstractValidatorTestCase extends PHPUnit_Framework_TestCase
+abstract class AbstractValidatorTestCase extends PHPUnit_Framework_TestCase
 {
     /**
-     * The validation subject.
-     *
-     * @var string
+     * @return string
      */
-    const VALIDATION_SUBJECT = 'Foo';
+    protected function getValidationSubject(): string
+    {
+        return 'Foo';
+    }
 
     /**
      * Create a validator for the given subject.

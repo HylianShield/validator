@@ -4,7 +4,7 @@ namespace HylianShield\Tests\Validator\Collection;
 use HylianShield\Tests\Validator\AbstractValidatorTestCase;
 use HylianShield\Validator\Collection\AbstractValidatorCollection;
 
-class AbstractValidatorCollectionTest extends AbstractValidatorTestCase
+abstract class AbstractValidatorCollectionTest extends AbstractValidatorTestCase
 {
     /**
      * Create a collection.
