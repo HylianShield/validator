@@ -1,32 +1,9 @@
 <?php
 use HylianShield\Validator\ValidatorInterface;
-use Psr\Log\AbstractLogger;
-use Psr\Log\LoggerInterface;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$logger = new class extends AbstractLogger implements LoggerInterface
-{
-    /**
-     * Logs with an arbitrary level.
-     *
-     * @param mixed $level
-     * @param string $message
-     * @param array $context
-     * @return null
-     */
-    public function log($level, $message, array $context = array())
-    {
-        echo json_encode(
-            [
-                'level' => $level,
-                'message' => $message,
-                'context' => $context
-            ],
-            JSON_PRETTY_PRINT
-        ) . PHP_EOL;
-    }
-};
+$context = new SplDoublyLinkedList();
 
 $validator = new class implements ValidatorInterface
 {
@@ -52,7 +29,7 @@ $validator = new class implements ValidatorInterface
     }
 };
 
-$mediator = new class($validator, $logger) implements ValidatorInterface
+$mediator = new class($validator, $context) implements ValidatorInterface
 {
     /**
      * @var ValidatorInterface
@@ -60,22 +37,22 @@ $mediator = new class($validator, $logger) implements ValidatorInterface
     private $validator;
 
     /**
-     * @var LoggerInterface
+     * @var SplDoublyLinkedList
      */
-    private $logger;
+    private $context;
 
     /**
-     * ValidatorLogMediator constructor.
+     * Mediator  constructor.
      *
-     * @param ValidatorInterface $validator
-     * @param LoggerInterface $logger
+     * @param ValidatorInterface  $validator
+     * @param SplDoublyLinkedList $context
      */
     public function __construct(
         ValidatorInterface $validator,
-        LoggerInterface $logger
+        ArrayAccess $context
     ) {
         $this->validator = $validator;
-        $this->logger = $logger;
+        $this->context   = $context;
     }
 
     /**
@@ -99,15 +76,12 @@ $mediator = new class($validator, $logger) implements ValidatorInterface
         $isValid = $this->validator->validate($subject);
 
         $this
-            ->logger
-            ->debug(
-                sprintf(
-                    'Validation \'%s\': %s',
-                    $this->getIdentifier(),
-                    var_export($isValid, true)
-                ),
-                ['subject' => $subject]
-            );
+            ->context
+            ->push([
+                'identifier' => $this->getIdentifier(),
+                'subject' => $subject,
+                'isValid' => $isValid
+            ]);
 
         return $isValid;
     }
@@ -115,3 +89,7 @@ $mediator = new class($validator, $logger) implements ValidatorInterface
 
 $mediator->validate('foo');
 $mediator->validate('Foo');
+
+foreach ($context as $validation) {
+    echo json_encode($validation, JSON_PRETTY_PRINT) . PHP_EOL;
+}
