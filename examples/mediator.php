@@ -49,7 +49,7 @@ $mediator = new class($validator, $context) implements ValidatorInterface
      */
     public function __construct(
         ValidatorInterface $validator,
-        ArrayAccess $context
+        SplDoublyLinkedList $context
     ) {
         $this->validator = $validator;
         $this->context   = $context;
