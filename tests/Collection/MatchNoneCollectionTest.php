@@ -19,12 +19,12 @@ class MatchNoneCollectionTest extends AbstractValidatorCollectionTest
      *
      * @param AbstractValidatorCollection $collection
      *
-     * @return void
+     * @return MatchNoneCollection
      * @dataProvider collectionProvider
      */
-    public function testValidate(AbstractValidatorCollection $collection)
-    {
-        $this->assertInstanceOf(MatchNoneCollection::class, $collection);
+    public function testValidate(
+        AbstractValidatorCollection $collection
+    ): MatchNoneCollection {
         $this->assertTrue($collection->validate($this->getValidationSubject()));
 
         $collection->addValidator($this->createValidatorMock('Foo'));
@@ -32,5 +32,7 @@ class MatchNoneCollectionTest extends AbstractValidatorCollectionTest
 
         $this->assertFalse($collection->validate('Foo'));
         $this->assertTrue($collection->validate('Baz'));
+
+        return $collection;
     }
 }

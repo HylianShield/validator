@@ -87,6 +87,7 @@ $mediator = new class($validator, $context) implements ValidatorInterface
     }
 };
 
+/** @var ValidatorInterface $mediator */
 $mediator->validate('foo');
 $mediator->validate('Foo');
 

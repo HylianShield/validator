@@ -20,11 +20,11 @@ class MatchAnyCollectionTest extends AbstractValidatorCollectionTest
      * @param AbstractValidatorCollection $collection
      *
      * @dataProvider collectionProvider
-     * @return void
+     * @return MatchAnyCollection
      */
-    public function testValidate(AbstractValidatorCollection $collection)
-    {
-        $this->assertInstanceOf(MatchAnyCollection::class, $collection);
+    public function testValidate(
+        AbstractValidatorCollection $collection
+    ): MatchAnyCollection {
         $this->assertFalse($collection->validate($this->getValidationSubject()));
 
         $foo = $this->createValidatorMock('Foo');
@@ -50,5 +50,7 @@ class MatchAnyCollectionTest extends AbstractValidatorCollectionTest
         $collection->addValidator($baz);
 
         $this->assertTrue($collection->validate('Bar'));
+
+        return $collection;
     }
 }
