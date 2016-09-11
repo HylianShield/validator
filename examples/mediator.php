@@ -100,8 +100,7 @@ $mediator = new class($validator, $logger) implements ValidatorInterface
 
         $this
             ->logger
-            ->log(
-                'debug',
+            ->debug(
                 sprintf(
                     'Validation \'%s\': %s',
                     $this->getIdentifier(),
