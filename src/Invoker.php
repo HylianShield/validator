@@ -23,8 +23,8 @@ class Invoker implements InvokerInterface
      *
      * @return bool
      */
-    public function __invoke(): bool
+    public function __invoke(...$args): bool
     {
-        return $this->validator->validate(...func_get_args());
+        return $this->validator->validate(...$args);
     }
 }

@@ -12,5 +12,5 @@ interface InvokerInterface
      *
      * @return bool
      */
-    public function __invoke() : bool;
+    public function __invoke(...$args) : bool;
 }
